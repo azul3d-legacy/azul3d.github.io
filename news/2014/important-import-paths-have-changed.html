@@ -95,34 +95,48 @@
 
 
 
-<h1 class="hdr ">A 3D game engine written in Go!</h1>
+<h1 class="hdr ">Important - Import Paths Have Changed</h1>
 <span class="section ">
-	<span class="list">
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content">State of the art shader-based modern 3D game engine.</span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content">Cross-platform, Windows and Linux <a href="/doc/platform-support.html">support</a>.</span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content">OpenGL 2.x based renderer.</span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content">3D audio via OpenAL.</span></span>
-	</span>
+	<p>During the <a href="/news/2014/moving-from-google-code-to-github.html">big move to GitHub</a> we reconsidered the layout of the versioned import paths of Azul3D packages.</p>
+	<p>Since one of the goals in our move to GitHub was to split up Azul3D's packages into multiple smaller repositories, it makes sense that we would want to possibly make API-incompatible changes (by incremented a version number, as usual) of a specific package <em>independent</em> of other packages: something that we couldn't do with the old versioning scheme.</p>
 </span>
 
 
-<h1 id="installation" class="hdr "><a href="#installation" title="permalink">»</a>&nbsp;Installation <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<h1 id="what-to-do" class="hdr "><a href="#what-to-do" title="permalink">»</a>&nbsp;What To Do <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section ">
+	<p>Updating to the new import path scheme is easy using a modified go-fix command:</p>
 	<span class="list">
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">go get azul3d.org/examples/...</span></span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">go install azul3d.org/examples/...</span></span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="/doc/install">Installation Guides</a></span></span>
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">go get azul3d.org/azulfix</span></span></span>
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">azulfix path/to/src/</span></span></span>
 	</span>
+	<p>Which will rewrite all azul3d.org/v1 import paths to their new counterparts.</p>
 </span>
 
 
-<h1 id="news" class="hdr "><a href="#news" title="permalink">»</a>&nbsp;News <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<h1 id="why" class="hdr "><a href="#why" title="permalink">»</a>&nbsp;Why? <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section ">
+	<p>Looking at the previous import paths we had paths that looked like this:</p>
 	<span class="list">
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="/news/2014/important-import-paths-have-changed.html">Important - Import Paths Have Changed</a></span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="/news/2014/moving-from-google-code-to-github.html">Moving From Google Code To GitHub</a></span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="/news/">&gt;&gt;&gt;&nbsp;more news</a></span></span>
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">azul3d.org/<em>v1</em>/pkg</span></span></span>
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">azul3d.org/<em>v1</em>/pkg/subpkg</span></span></span>
 	</span>
+	<p>Because the version number is stored in the middle of the URL, it would not be possible to have packages with different versions because they are all under the same version number. Instead, by moving the version to the end, we can have import paths like this:</p>
+	<span class="list">
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">azul3d.org/pkg.<em>v1</em></span></span></span>
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">azul3d.org/pkg/subpkg.<em>v1</em></span></span></span>
+	</span>
+	<p>Which allows us to increment the version numbers of specific packages independently of one-another. This is crucial going forward because it means we can break API-compatability of a single package, but leave other ones alone. In code however you will still reference the packages using just:</p>
+	<span class="list">
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">kg.DoSomething()</span></span></span>
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">subpkg.DoSomething()</span></span></span>
+	</span>
+	<p>All in all, upgrading to the new system is made easy by the <em>azulfix</em> tool and going forward this will allow for better code in many situations.</p>
+</span>
+
+
+<h1 id="implementation" class="hdr "><a href="#implementation" title="permalink">»</a>&nbsp;Implementation <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section ">
+	<p>If any part of this article is confusing to you, or if you're interested in the implementation details, please see <a href="/doc/versioning.html">this page</a>.</p>
 </span>
 
 	</div>

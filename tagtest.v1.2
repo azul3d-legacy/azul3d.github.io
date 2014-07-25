@@ -1,0 +1,3941 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="description" content="A 3D game engine written in Go!">
+		<meta name="author" content="The Azul3D Authors">
+		<title>Azul3D</title>
+		<link rel="shortcut icon" href="/content/favicon.png"> 
+
+		
+		<link rel="stylesheet" type="text/css" href="/content/reset.css">
+
+		
+		<link href='http://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Cutive+Mono' rel='stylesheet' type='text/css'>
+
+		
+		<link href='/content/dejavusans_book/stylesheet.css' rel='stylesheet' type='text/css'>
+
+		
+		<link href='/content/brandico/brandico.css' rel='stylesheet' type='text/css'>
+
+		
+		
+
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+		
+		<link rel="stylesheet" type="text/css" href="/content/stylesheet.css">
+		<link rel="stylesheet" type="text/css" href="/content/mq.css">
+	</head>
+	<body>
+
+
+<div id="top"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="toparea">
+	<div id="logo">
+		<a href="/"><span class="biohazard">☣</span>
+		<span>Azul3D</span></a>
+	</div>
+
+	<div id="shortbar">
+		<a href="https://github.com/azul3d" target="_blank"><i class="icon-github menuIcon"></i><div class="title">GitHub</div></a>
+		<a href="https://twitter.com/hashtag/azul3d" target="_blank"><i class="icon-twitter-bird menuIcon"></i><div class="title">Twitter</div></a>
+		<a href="https://www.facebook.com/pages/Azul3D/651643168254798" target="_blank"><i class="icon-facebook menuIcon"></i><div class="title">Facebook</div></a>
+		<a href="https://groups.google.com/forum/#!forum/azul3d" target="_blank" class="mail"><i class="menuIcon mailIcon">✉</i><div class="title">Mailing List</div></a>
+	</div>
+</div>
+
+<div id="navigation">
+	<h1>Navigation</h1>
+	<span class="list">
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="/">Home</a></span></span>
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="/news">News</a></span></span>
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="/packages.html">Packages</a></span></span>
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="/doc/faq.html">FAQ</a></span></span>
+	</span>
+</div>
+
+
+<div id="content-container">
+	<div id="content" class="pkg-content">
+
+
+
+
+
+
+<h1 class="hdr pkg hdr-general">Package net</h1>
+<span class="section pkg general">
+	
+		
+			<p><em>Version 1.2</em></p>
+		
+	
+	<span class="pkg import">import "azul3d.org/tagtest.v1.2"</span>
+	<span class="list">
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#versions">Versions</a></span></span>
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#overview">Overview</a></span></span>
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#index">Index</a></span></span>
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#package-files">Package Files</a></span></span>
+	</span>
+	
+
+	
+		
+	
+</span>
+
+
+
+<h1 id="versions" class="hdr pkg hdr-versions"><a href="#versions" title="permalink">»</a>&nbsp;Versions <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg versions">
+	
+		<p>You are viewing the latest version of this package (v1.2).</p>
+	
+	<p>Other versions of this package are available as follows. Version zero (v0) is the in-development version of this package and should not generally be used (see <a href="/doc/versioning.html#development-versions">here</a> for more details).</p>
+	<span class="list">
+		
+			
+			
+			
+				
+					<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="tagtest.v1.2" title="azul3d.org/tagtest.v1.2">v1.2</a> (latest version)</span></span>
+				
+			
+		
+			
+			
+			
+				
+					<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="tagtest.v1" title="azul3d.org/tagtest.v1">v1</a></span></span>
+				
+			
+		
+			
+			
+			
+				<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="tagtest.v0" title="azul3d.org/tagtest.v0">v0</a> (in development)</span></span>
+			
+		
+	</span>
+</span>
+
+
+
+<h1 id="overview" class="hdr pkg hdr-overview"><a href="#overview" title="permalink">»</a>&nbsp;Overview <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg overview">
+	<p>
+Package net provides a portable interface for network I/O, including
+TCP/IP, UDP, domain name resolution, and Unix domain sockets.
+</p>
+<p>
+Although the package provides access to low-level networking
+primitives, most clients will need only the basic interface provided
+by the Dial, Listen, and Accept functions and the associated
+Conn and Listener interfaces. The crypto/tls package uses
+the same interfaces and similar Dial and Listen functions.
+</p>
+<p>
+The Dial function connects to a server:
+</p>
+<pre>conn, err := net.Dial(&#34;tcp&#34;, &#34;google.com:80&#34;)
+if err != nil {
+	// handle error
+}
+fmt.Fprintf(conn, &#34;GET / HTTP/1.0\r\n\r\n&#34;)
+status, err := bufio.NewReader(conn).ReadString(&#39;\n&#39;)
+// ...
+</pre>
+<p>
+The Listen function creates servers:
+</p>
+<pre>ln, err := net.Listen(&#34;tcp&#34;, &#34;:8080&#34;)
+if err != nil {
+	// handle error
+}
+for {
+	conn, err := ln.Accept()
+	if err != nil {
+		// handle error
+		continue
+	}
+	go handleConnection(conn)
+}
+</pre>
+
+</span>
+
+
+<h1 id="index" class="hdr pkg hdr-index"><a href="#index" title="permalink">»</a>&nbsp;Index <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg index">
+	<span class="list">
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#constants">Constants</a></span></span>
+		
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#variables">Variables</a></span></span>
+		
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#InterfaceAddrs">func InterfaceAddrs() ([]Addr, error)</a></span></span>
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Interfaces">func Interfaces() ([]Interface, error)</a></span></span>
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#JoinHostPort">func JoinHostPort(host, port string) string</a></span></span>
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#LookupAddr">func LookupAddr(addr string) (name []string, err error)</a></span></span>
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#LookupCNAME">func LookupCNAME(name string) (cname string, err error)</a></span></span>
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#LookupHost">func LookupHost(host string) (addrs []string, err error)</a></span></span>
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#LookupIP">func LookupIP(host string) (addrs []IP, err error)</a></span></span>
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#LookupMX">func LookupMX(name string) (mx []*MX, err error)</a></span></span>
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#LookupNS">func LookupNS(name string) (ns []*NS, err error)</a></span></span>
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#LookupPort">func LookupPort(network, service string) (port int, err error)</a></span></span>
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#LookupSRV">func LookupSRV(service, proto, name string) (cname string, addrs []*SRV, err error)</a></span></span>
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#LookupTXT">func LookupTXT(name string) (txt []string, err error)</a></span></span>
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#SplitHostPort">func SplitHostPort(hostport string) (host, port string, err error)</a></span></span>
+		
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Addr">type Addr</a></span></span>
+			
+			
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#AddrError">type AddrError</a></span></span>
+			
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#AddrError.Error">func (e *AddrError) Error() string</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#AddrError.Temporary">func (e *AddrError) Temporary() bool</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#AddrError.Timeout">func (e *AddrError) Timeout() bool</a></span></span>
+			
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Conn">type Conn</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Dial">func Dial(network, address string) (Conn, error)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#DialTimeout">func DialTimeout(network, address string, timeout time.Duration) (Conn, error)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#FileConn">func FileConn(f *os.File) (c Conn, err error)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Pipe">func Pipe() (Conn, Conn)</a></span></span>
+			
+			
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#DNSConfigError">type DNSConfigError</a></span></span>
+			
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#DNSConfigError.Error">func (e *DNSConfigError) Error() string</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#DNSConfigError.Temporary">func (e *DNSConfigError) Temporary() bool</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#DNSConfigError.Timeout">func (e *DNSConfigError) Timeout() bool</a></span></span>
+			
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#DNSError">type DNSError</a></span></span>
+			
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#DNSError.Error">func (e *DNSError) Error() string</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#DNSError.Temporary">func (e *DNSError) Temporary() bool</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#DNSError.Timeout">func (e *DNSError) Timeout() bool</a></span></span>
+			
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#DialErrorTest">type DialErrorTest</a></span></span>
+			
+			
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Dialer">type Dialer</a></span></span>
+			
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Dialer.Dial">func (d *Dialer) Dial(network, address string) (Conn, error)</a></span></span>
+			
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Error">type Error</a></span></span>
+			
+			
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Flags">type Flags</a></span></span>
+			
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Flags.String">func (f Flags) String() string</a></span></span>
+			
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#HardwareAddr">type HardwareAddr</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#ParseMAC">func ParseMAC(s string) (hw HardwareAddr, err error)</a></span></span>
+			
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#HardwareAddr.String">func (a HardwareAddr) String() string</a></span></span>
+			
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#IP">type IP</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#IPv4">func IPv4(a, b, c, d byte) IP</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#ParseCIDR">func ParseCIDR(s string) (IP, *IPNet, error)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#ParseIP">func ParseIP(s string) IP</a></span></span>
+			
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#IP.DefaultMask">func (ip IP) DefaultMask() IPMask</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#IP.Equal">func (ip IP) Equal(x IP) bool</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#IP.IsGlobalUnicast">func (ip IP) IsGlobalUnicast() bool</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#IP.IsInterfaceLocalMulticast">func (ip IP) IsInterfaceLocalMulticast() bool</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#IP.IsLinkLocalMulticast">func (ip IP) IsLinkLocalMulticast() bool</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#IP.IsLinkLocalUnicast">func (ip IP) IsLinkLocalUnicast() bool</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#IP.IsLoopback">func (ip IP) IsLoopback() bool</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#IP.IsMulticast">func (ip IP) IsMulticast() bool</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#IP.IsUnspecified">func (ip IP) IsUnspecified() bool</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#IP.MarshalText">func (ip IP) MarshalText() ([]byte, error)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#IP.Mask">func (ip IP) Mask(mask IPMask) IP</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#IP.String">func (ip IP) String() string</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#IP.To16">func (ip IP) To16() IP</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#IP.To4">func (ip IP) To4() IP</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#IP.UnmarshalText">func (ip *IP) UnmarshalText(text []byte) error</a></span></span>
+			
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#IPAddr">type IPAddr</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#ResolveIPAddr">func ResolveIPAddr(net, addr string) (*IPAddr, error)</a></span></span>
+			
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#IPAddr.Network">func (a *IPAddr) Network() string</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#IPAddr.String">func (a *IPAddr) String() string</a></span></span>
+			
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#IPConn">type IPConn</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#DialIP">func DialIP(netProto string, laddr, raddr *IPAddr) (*IPConn, error)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#ListenIP">func ListenIP(netProto string, laddr *IPAddr) (*IPConn, error)</a></span></span>
+			
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#IPConn.Close">func (c *IPConn) Close() error</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#IPConn.File">func (c *IPConn) File() (f *os.File, err error)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#IPConn.LocalAddr">func (c *IPConn) LocalAddr() Addr</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#IPConn.Read">func (c *IPConn) Read(b []byte) (int, error)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#IPConn.ReadFrom">func (c *IPConn) ReadFrom(b []byte) (int, Addr, error)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#IPConn.ReadFromIP">func (c *IPConn) ReadFromIP(b []byte) (int, *IPAddr, error)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#IPConn.ReadMsgIP">func (c *IPConn) ReadMsgIP(b, oob []byte) (n, oobn, flags int, addr *IPAddr, err error)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#IPConn.RemoteAddr">func (c *IPConn) RemoteAddr() Addr</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#IPConn.SetDeadline">func (c *IPConn) SetDeadline(t time.Time) error</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#IPConn.SetReadBuffer">func (c *IPConn) SetReadBuffer(bytes int) error</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#IPConn.SetReadDeadline">func (c *IPConn) SetReadDeadline(t time.Time) error</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#IPConn.SetWriteBuffer">func (c *IPConn) SetWriteBuffer(bytes int) error</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#IPConn.SetWriteDeadline">func (c *IPConn) SetWriteDeadline(t time.Time) error</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#IPConn.Write">func (c *IPConn) Write(b []byte) (int, error)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#IPConn.WriteMsgIP">func (c *IPConn) WriteMsgIP(b, oob []byte, addr *IPAddr) (n, oobn int, err error)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#IPConn.WriteTo">func (c *IPConn) WriteTo(b []byte, addr Addr) (int, error)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#IPConn.WriteToIP">func (c *IPConn) WriteToIP(b []byte, addr *IPAddr) (int, error)</a></span></span>
+			
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#IPMask">type IPMask</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#CIDRMask">func CIDRMask(ones, bits int) IPMask</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#IPv4Mask">func IPv4Mask(a, b, c, d byte) IPMask</a></span></span>
+			
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#IPMask.Size">func (m IPMask) Size() (ones, bits int)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#IPMask.String">func (m IPMask) String() string</a></span></span>
+			
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#IPNet">type IPNet</a></span></span>
+			
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#IPNet.Contains">func (n *IPNet) Contains(ip IP) bool</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#IPNet.Network">func (n *IPNet) Network() string</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#IPNet.String">func (n *IPNet) String() string</a></span></span>
+			
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Interface">type Interface</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#InterfaceByIndex">func InterfaceByIndex(index int) (*Interface, error)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#InterfaceByName">func InterfaceByName(name string) (*Interface, error)</a></span></span>
+			
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Interface.Addrs">func (ifi *Interface) Addrs() ([]Addr, error)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Interface.MulticastAddrs">func (ifi *Interface) MulticastAddrs() ([]Addr, error)</a></span></span>
+			
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#InvalidAddrError">type InvalidAddrError</a></span></span>
+			
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#InvalidAddrError.Error">func (e InvalidAddrError) Error() string</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#InvalidAddrError.Temporary">func (e InvalidAddrError) Temporary() bool</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#InvalidAddrError.Timeout">func (e InvalidAddrError) Timeout() bool</a></span></span>
+			
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Listener">type Listener</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#FileListener">func FileListener(f *os.File) (l Listener, err error)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Listen">func Listen(net, laddr string) (Listener, error)</a></span></span>
+			
+			
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#MX">type MX</a></span></span>
+			
+			
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#NS">type NS</a></span></span>
+			
+			
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#OpError">type OpError</a></span></span>
+			
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#OpError.Error">func (e *OpError) Error() string</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#OpError.Temporary">func (e *OpError) Temporary() bool</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#OpError.Timeout">func (e *OpError) Timeout() bool</a></span></span>
+			
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#PacketConn">type PacketConn</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#FilePacketConn">func FilePacketConn(f *os.File) (c PacketConn, err error)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#ListenPacket">func ListenPacket(net, laddr string) (PacketConn, error)</a></span></span>
+			
+			
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#ParseError">type ParseError</a></span></span>
+			
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#ParseError.Error">func (e *ParseError) Error() string</a></span></span>
+			
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#SRV">type SRV</a></span></span>
+			
+			
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#TCPAddr">type TCPAddr</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#ResolveTCPAddr">func ResolveTCPAddr(net, addr string) (*TCPAddr, error)</a></span></span>
+			
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#TCPAddr.Network">func (a *TCPAddr) Network() string</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#TCPAddr.String">func (a *TCPAddr) String() string</a></span></span>
+			
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#TCPConn">type TCPConn</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#DialTCP">func DialTCP(net string, laddr, raddr *TCPAddr) (*TCPConn, error)</a></span></span>
+			
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#TCPConn.Close">func (c *TCPConn) Close() error</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#TCPConn.CloseRead">func (c *TCPConn) CloseRead() error</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#TCPConn.CloseWrite">func (c *TCPConn) CloseWrite() error</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#TCPConn.File">func (c *TCPConn) File() (f *os.File, err error)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#TCPConn.LocalAddr">func (c *TCPConn) LocalAddr() Addr</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#TCPConn.Read">func (c *TCPConn) Read(b []byte) (int, error)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#TCPConn.ReadFrom">func (c *TCPConn) ReadFrom(r io.Reader) (int64, error)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#TCPConn.RemoteAddr">func (c *TCPConn) RemoteAddr() Addr</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#TCPConn.SetDeadline">func (c *TCPConn) SetDeadline(t time.Time) error</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#TCPConn.SetKeepAlive">func (c *TCPConn) SetKeepAlive(keepalive bool) error</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#TCPConn.SetKeepAlivePeriod">func (c *TCPConn) SetKeepAlivePeriod(d time.Duration) error</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#TCPConn.SetLinger">func (c *TCPConn) SetLinger(sec int) error</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#TCPConn.SetNoDelay">func (c *TCPConn) SetNoDelay(noDelay bool) error</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#TCPConn.SetReadBuffer">func (c *TCPConn) SetReadBuffer(bytes int) error</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#TCPConn.SetReadDeadline">func (c *TCPConn) SetReadDeadline(t time.Time) error</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#TCPConn.SetWriteBuffer">func (c *TCPConn) SetWriteBuffer(bytes int) error</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#TCPConn.SetWriteDeadline">func (c *TCPConn) SetWriteDeadline(t time.Time) error</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#TCPConn.Write">func (c *TCPConn) Write(b []byte) (int, error)</a></span></span>
+			
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#TCPListener">type TCPListener</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#ListenTCP">func ListenTCP(net string, laddr *TCPAddr) (*TCPListener, error)</a></span></span>
+			
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#TCPListener.Accept">func (l *TCPListener) Accept() (Conn, error)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#TCPListener.AcceptTCP">func (l *TCPListener) AcceptTCP() (*TCPConn, error)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#TCPListener.Addr">func (l *TCPListener) Addr() Addr</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#TCPListener.Close">func (l *TCPListener) Close() error</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#TCPListener.File">func (l *TCPListener) File() (f *os.File, err error)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#TCPListener.SetDeadline">func (l *TCPListener) SetDeadline(t time.Time) error</a></span></span>
+			
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UDPAddr">type UDPAddr</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#ResolveUDPAddr">func ResolveUDPAddr(net, addr string) (*UDPAddr, error)</a></span></span>
+			
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UDPAddr.Network">func (a *UDPAddr) Network() string</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UDPAddr.String">func (a *UDPAddr) String() string</a></span></span>
+			
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UDPConn">type UDPConn</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#DialUDP">func DialUDP(net string, laddr, raddr *UDPAddr) (*UDPConn, error)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#ListenMulticastUDP">func ListenMulticastUDP(net string, ifi *Interface, gaddr *UDPAddr) (*UDPConn, error)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#ListenUDP">func ListenUDP(net string, laddr *UDPAddr) (*UDPConn, error)</a></span></span>
+			
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UDPConn.Close">func (c *UDPConn) Close() error</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UDPConn.File">func (c *UDPConn) File() (f *os.File, err error)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UDPConn.LocalAddr">func (c *UDPConn) LocalAddr() Addr</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UDPConn.Read">func (c *UDPConn) Read(b []byte) (int, error)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UDPConn.ReadFrom">func (c *UDPConn) ReadFrom(b []byte) (int, Addr, error)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UDPConn.ReadFromUDP">func (c *UDPConn) ReadFromUDP(b []byte) (n int, addr *UDPAddr, err error)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UDPConn.ReadMsgUDP">func (c *UDPConn) ReadMsgUDP(b, oob []byte) (n, oobn, flags int, addr *UDPAddr, err error)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UDPConn.RemoteAddr">func (c *UDPConn) RemoteAddr() Addr</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UDPConn.SetDeadline">func (c *UDPConn) SetDeadline(t time.Time) error</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UDPConn.SetReadBuffer">func (c *UDPConn) SetReadBuffer(bytes int) error</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UDPConn.SetReadDeadline">func (c *UDPConn) SetReadDeadline(t time.Time) error</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UDPConn.SetWriteBuffer">func (c *UDPConn) SetWriteBuffer(bytes int) error</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UDPConn.SetWriteDeadline">func (c *UDPConn) SetWriteDeadline(t time.Time) error</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UDPConn.Write">func (c *UDPConn) Write(b []byte) (int, error)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UDPConn.WriteMsgUDP">func (c *UDPConn) WriteMsgUDP(b, oob []byte, addr *UDPAddr) (n, oobn int, err error)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UDPConn.WriteTo">func (c *UDPConn) WriteTo(b []byte, addr Addr) (int, error)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UDPConn.WriteToUDP">func (c *UDPConn) WriteToUDP(b []byte, addr *UDPAddr) (int, error)</a></span></span>
+			
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UnixAddr">type UnixAddr</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#ResolveUnixAddr">func ResolveUnixAddr(net, addr string) (*UnixAddr, error)</a></span></span>
+			
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UnixAddr.Network">func (a *UnixAddr) Network() string</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UnixAddr.String">func (a *UnixAddr) String() string</a></span></span>
+			
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UnixConn">type UnixConn</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#DialUnix">func DialUnix(net string, laddr, raddr *UnixAddr) (*UnixConn, error)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#ListenUnixgram">func ListenUnixgram(net string, laddr *UnixAddr) (*UnixConn, error)</a></span></span>
+			
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UnixConn.Close">func (c *UnixConn) Close() error</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UnixConn.CloseRead">func (c *UnixConn) CloseRead() error</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UnixConn.CloseWrite">func (c *UnixConn) CloseWrite() error</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UnixConn.File">func (c *UnixConn) File() (f *os.File, err error)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UnixConn.LocalAddr">func (c *UnixConn) LocalAddr() Addr</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UnixConn.Read">func (c *UnixConn) Read(b []byte) (int, error)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UnixConn.ReadFrom">func (c *UnixConn) ReadFrom(b []byte) (int, Addr, error)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UnixConn.ReadFromUnix">func (c *UnixConn) ReadFromUnix(b []byte) (int, *UnixAddr, error)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UnixConn.ReadMsgUnix">func (c *UnixConn) ReadMsgUnix(b, oob []byte) (n, oobn, flags int, addr *UnixAddr, err error)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UnixConn.RemoteAddr">func (c *UnixConn) RemoteAddr() Addr</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UnixConn.SetDeadline">func (c *UnixConn) SetDeadline(t time.Time) error</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UnixConn.SetReadBuffer">func (c *UnixConn) SetReadBuffer(bytes int) error</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UnixConn.SetReadDeadline">func (c *UnixConn) SetReadDeadline(t time.Time) error</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UnixConn.SetWriteBuffer">func (c *UnixConn) SetWriteBuffer(bytes int) error</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UnixConn.SetWriteDeadline">func (c *UnixConn) SetWriteDeadline(t time.Time) error</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UnixConn.Write">func (c *UnixConn) Write(b []byte) (int, error)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UnixConn.WriteMsgUnix">func (c *UnixConn) WriteMsgUnix(b, oob []byte, addr *UnixAddr) (n, oobn int, err error)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UnixConn.WriteTo">func (c *UnixConn) WriteTo(b []byte, addr Addr) (int, error)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UnixConn.WriteToUnix">func (c *UnixConn) WriteToUnix(b []byte, addr *UnixAddr) (int, error)</a></span></span>
+			
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UnixListener">type UnixListener</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#ListenUnix">func ListenUnix(net string, laddr *UnixAddr) (*UnixListener, error)</a></span></span>
+			
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UnixListener.Accept">func (l *UnixListener) Accept() (Conn, error)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UnixListener.AcceptUnix">func (l *UnixListener) AcceptUnix() (*UnixConn, error)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UnixListener.Addr">func (l *UnixListener) Addr() Addr</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UnixListener.Close">func (l *UnixListener) Close() error</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UnixListener.File">func (l *UnixListener) File() (*os.File, error)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UnixListener.SetDeadline">func (l *UnixListener) SetDeadline(t time.Time) error</a></span></span>
+			
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UnknownNetworkError">type UnknownNetworkError</a></span></span>
+			
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UnknownNetworkError.Error">func (e UnknownNetworkError) Error() string</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UnknownNetworkError.Temporary">func (e UnknownNetworkError) Temporary() bool</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#UnknownNetworkError.Timeout">func (e UnknownNetworkError) Timeout() bool</a></span></span>
+			
+		
+	</span>
+</span>
+
+
+
+
+<h1 id="constants" class="hdr pkg hdr-constants"><a href="#constants" title="permalink">»</a>&nbsp;Constants <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg constants">
+	
+		<pre>const (
+	IPv4len	= 4
+	IPv6len	= 16
+)</pre>
+		<p>IP address lengths (bytes).
+</p>
+	
+</span>
+
+
+
+
+
+<h1 id="variables" class="hdr pkg hdr-variables"><a href="#variables" title="permalink">»</a>&nbsp;Variables <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg variables">
+	
+		<pre>var (
+	IPv4bcast	= IPv4(255, 255, 255, 255)	// broadcast
+	IPv4allsys	= IPv4(224, 0, 0, 1)		// all systems
+	IPv4allrouter	= IPv4(224, 0, 0, 2)		// all routers
+	IPv4zero	= IPv4(0, 0, 0, 0)		// all zeros
+)</pre>
+		<p>Well-known IPv4 addresses
+</p>
+	
+		<pre>var (
+	IPv6zero			= IP{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+	IPv6unspecified			= IP{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+	IPv6loopback			= IP{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}
+	IPv6interfacelocalallnodes	= IP{0xff, 0x01, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x01}
+	IPv6linklocalallnodes		= IP{0xff, 0x02, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x01}
+	IPv6linklocalallrouters		= IP{0xff, 0x02, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x02}
+)</pre>
+		<p>Well-known IPv6 addresses
+</p>
+	
+		<pre>var (
+	ErrWriteToConnected = errors.New(&#34;use of WriteTo with pre-connected connection&#34;)
+)</pre>
+		<p>Various errors contained in OpError.
+</p>
+	
+</span>
+
+
+
+
+
+	<h1 id="InterfaceAddrs" class="hdr pkg hdr-function"><a href="#InterfaceAddrs" title="permalink">»</a>&nbsp;func InterfaceAddrs() ([]Addr, error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg function">
+		<pre>func InterfaceAddrs() ([]Addr, error)</pre>
+		<p>
+InterfaceAddrs returns a list of the system&#39;s network interface
+addresses.
+</p>
+
+	</span>
+
+	<h1 id="Interfaces" class="hdr pkg hdr-function"><a href="#Interfaces" title="permalink">»</a>&nbsp;func Interfaces() ([]Interface, error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg function">
+		<pre>func Interfaces() ([]Interface, error)</pre>
+		<p>
+Interfaces returns a list of the system&#39;s network interfaces.
+</p>
+
+	</span>
+
+	<h1 id="JoinHostPort" class="hdr pkg hdr-function"><a href="#JoinHostPort" title="permalink">»</a>&nbsp;func JoinHostPort(host, port string) string <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg function">
+		<pre>func JoinHostPort(host, port string) string</pre>
+		<p>
+JoinHostPort combines host and port into a network address of the
+form &#34;host:port&#34; or, if host contains a colon or a percent sign,
+&#34;[host]:port&#34;.
+</p>
+
+	</span>
+
+	<h1 id="LookupAddr" class="hdr pkg hdr-function"><a href="#LookupAddr" title="permalink">»</a>&nbsp;func LookupAddr(addr string) (name []string, err error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg function">
+		<pre>func LookupAddr(addr string) (name []string, err error)</pre>
+		<p>
+LookupAddr performs a reverse lookup for the given address, returning a list
+of names mapping to that address.
+</p>
+
+	</span>
+
+	<h1 id="LookupCNAME" class="hdr pkg hdr-function"><a href="#LookupCNAME" title="permalink">»</a>&nbsp;func LookupCNAME(name string) (cname string, err error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg function">
+		<pre>func LookupCNAME(name string) (cname string, err error)</pre>
+		<p>
+LookupCNAME returns the canonical DNS host for the given name.
+Callers that do not care about the canonical name can call
+LookupHost or LookupIP directly; both take care of resolving
+the canonical name as part of the lookup.
+</p>
+
+	</span>
+
+	<h1 id="LookupHost" class="hdr pkg hdr-function"><a href="#LookupHost" title="permalink">»</a>&nbsp;func LookupHost(host string) (addrs []string, err error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg function">
+		<pre>func LookupHost(host string) (addrs []string, err error)</pre>
+		<p>
+LookupHost looks up the given host using the local resolver.
+It returns an array of that host&#39;s addresses.
+</p>
+
+	</span>
+
+	<h1 id="LookupIP" class="hdr pkg hdr-function"><a href="#LookupIP" title="permalink">»</a>&nbsp;func LookupIP(host string) (addrs []IP, err error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg function">
+		<pre>func LookupIP(host string) (addrs []IP, err error)</pre>
+		<p>
+LookupIP looks up host using the local resolver.
+It returns an array of that host&#39;s IPv4 and IPv6 addresses.
+</p>
+
+	</span>
+
+	<h1 id="LookupMX" class="hdr pkg hdr-function"><a href="#LookupMX" title="permalink">»</a>&nbsp;func LookupMX(name string) (mx []*MX, err error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg function">
+		<pre>func LookupMX(name string) (mx []*MX, err error)</pre>
+		<p>
+LookupMX returns the DNS MX records for the given domain name sorted by preference.
+</p>
+
+	</span>
+
+	<h1 id="LookupNS" class="hdr pkg hdr-function"><a href="#LookupNS" title="permalink">»</a>&nbsp;func LookupNS(name string) (ns []*NS, err error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg function">
+		<pre>func LookupNS(name string) (ns []*NS, err error)</pre>
+		<p>
+LookupNS returns the DNS NS records for the given domain name.
+</p>
+
+	</span>
+
+	<h1 id="LookupPort" class="hdr pkg hdr-function"><a href="#LookupPort" title="permalink">»</a>&nbsp;func LookupPort(network, service string) (port int, err error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg function">
+		<pre>func LookupPort(network, service string) (port int, err error)</pre>
+		<p>
+LookupPort looks up the port for the given network and service.
+</p>
+
+	</span>
+
+	<h1 id="LookupSRV" class="hdr pkg hdr-function"><a href="#LookupSRV" title="permalink">»</a>&nbsp;func LookupSRV(service, proto, name string) (cname string, addrs []*SRV, err error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg function">
+		<pre>func LookupSRV(service, proto, name string) (cname string, addrs []*SRV, err error)</pre>
+		<p>
+LookupSRV tries to resolve an SRV query of the given service,
+protocol, and domain name.  The proto is &#34;tcp&#34; or &#34;udp&#34;.
+The returned records are sorted by priority and randomized
+by weight within a priority.
+</p>
+<p>
+LookupSRV constructs the DNS name to look up following RFC 2782.
+That is, it looks up _service._proto.name.  To accommodate services
+publishing SRV records under non-standard names, if both service
+and proto are empty strings, LookupSRV looks up name directly.
+</p>
+
+	</span>
+
+	<h1 id="LookupTXT" class="hdr pkg hdr-function"><a href="#LookupTXT" title="permalink">»</a>&nbsp;func LookupTXT(name string) (txt []string, err error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg function">
+		<pre>func LookupTXT(name string) (txt []string, err error)</pre>
+		<p>
+LookupTXT returns the DNS TXT records for the given domain name.
+</p>
+
+	</span>
+
+	<h1 id="SplitHostPort" class="hdr pkg hdr-function"><a href="#SplitHostPort" title="permalink">»</a>&nbsp;func SplitHostPort(hostport string) (host, port string, err error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg function">
+		<pre>func SplitHostPort(hostport string) (host, port string, err error)</pre>
+		<p>
+SplitHostPort splits a network address of the form &#34;host:port&#34;,
+&#34;[host]:port&#34; or &#34;[ipv6-host%zone]:port&#34; into host or
+ipv6-host%zone and port.  A literal address or host name for IPv6
+must be enclosed in square brackets, as in &#34;[::1]:80&#34;,
+&#34;[ipv6-host]:http&#34; or &#34;[ipv6-host%zone]:80&#34;.
+</p>
+
+	</span>
+
+
+
+
+
+	
+	<h1 id="Addr" class="hdr pkg hdr-type"><a href="#Addr" title="permalink">»</a>&nbsp;type Addr <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg type">
+		<pre>type Addr interface {
+	Network() string	// name of the network
+	String() string		// string form of address
+}</pre>
+		<p>
+Addr represents a network end point address.
+</p>
+
+	</span>
+
+	
+	
+
+	
+	
+
+	
+	<h1 id="AddrError" class="hdr pkg hdr-type"><a href="#AddrError" title="permalink">»</a>&nbsp;type AddrError <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg type">
+		<pre>type AddrError struct {
+	Err	string
+	Addr	string
+}</pre>
+		
+	</span>
+
+	
+	
+
+	
+	
+		
+		<h1 id="AddrError.Error" class="hdr pkg hdr-method"><a href="#AddrError.Error" title="permalink">»</a>&nbsp;func (e *AddrError) Error() string <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (e *AddrError) Error() string</pre>
+			
+		</span>
+	
+		
+		<h1 id="AddrError.Temporary" class="hdr pkg hdr-method"><a href="#AddrError.Temporary" title="permalink">»</a>&nbsp;func (e *AddrError) Temporary() bool <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (e *AddrError) Temporary() bool</pre>
+			
+		</span>
+	
+		
+		<h1 id="AddrError.Timeout" class="hdr pkg hdr-method"><a href="#AddrError.Timeout" title="permalink">»</a>&nbsp;func (e *AddrError) Timeout() bool <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (e *AddrError) Timeout() bool</pre>
+			
+		</span>
+	
+
+	
+	<h1 id="Conn" class="hdr pkg hdr-type"><a href="#Conn" title="permalink">»</a>&nbsp;type Conn <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg type">
+		<pre>type Conn interface {
+	// Read reads data from the connection.
+	// Read can be made to time out and return a Error with Timeout() == true
+	// after a fixed time limit; see SetDeadline and SetReadDeadline.
+	Read(b []byte) (n int, err error)
+
+	// Write writes data to the connection.
+	// Write can be made to time out and return a Error with Timeout() == true
+	// after a fixed time limit; see SetDeadline and SetWriteDeadline.
+	Write(b []byte) (n int, err error)
+
+	// Close closes the connection.
+	// Any blocked Read or Write operations will be unblocked and return errors.
+	Close() error
+
+	// LocalAddr returns the local network address.
+	LocalAddr() Addr
+
+	// RemoteAddr returns the remote network address.
+	RemoteAddr() Addr
+
+	// SetDeadline sets the read and write deadlines associated
+	// with the connection. It is equivalent to calling both
+	// SetReadDeadline and SetWriteDeadline.
+	//
+	// A deadline is an absolute time after which I/O operations
+	// fail with a timeout (see type Error) instead of
+	// blocking. The deadline applies to all future I/O, not just
+	// the immediately following call to Read or Write.
+	//
+	// An idle timeout can be implemented by repeatedly extending
+	// the deadline after successful Read or Write calls.
+	//
+	// A zero value for t means I/O operations will not time out.
+	SetDeadline(t time.Time) error
+
+	// SetReadDeadline sets the deadline for future Read calls.
+	// A zero value for t means Read will not time out.
+	SetReadDeadline(t time.Time) error
+
+	// SetWriteDeadline sets the deadline for future Write calls.
+	// Even if write times out, it may return n &gt; 0, indicating that
+	// some of the data was successfully written.
+	// A zero value for t means Write will not time out.
+	SetWriteDeadline(t time.Time) error
+}</pre>
+		<p>
+Conn is a generic stream-oriented network connection.
+</p>
+<p>
+Multiple goroutines may invoke methods on a Conn simultaneously.
+</p>
+
+	</span>
+
+	
+	
+		<h1 id="Dial" class="hdr pkg hdr-function"><a href="#Dial" title="permalink">»</a>&nbsp;func Dial(network, address string) (Conn, error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg function">
+			<pre>func Dial(network, address string) (Conn, error)</pre>
+			<p>
+Dial connects to the address on the named network.
+</p>
+<p>
+Known networks are &#34;tcp&#34;, &#34;tcp4&#34; (IPv4-only), &#34;tcp6&#34; (IPv6-only),
+&#34;udp&#34;, &#34;udp4&#34; (IPv4-only), &#34;udp6&#34; (IPv6-only), &#34;ip&#34;, &#34;ip4&#34;
+(IPv4-only), &#34;ip6&#34; (IPv6-only), &#34;unix&#34;, &#34;unixgram&#34; and
+&#34;unixpacket&#34;.
+</p>
+<p>
+For TCP and UDP networks, addresses have the form host:port.
+If host is a literal IPv6 address or host name, it must be enclosed
+in square brackets as in &#34;[::1]:80&#34;, &#34;[ipv6-host]:http&#34; or
+&#34;[ipv6-host%zone]:80&#34;.
+The functions JoinHostPort and SplitHostPort manipulate addresses
+in this form.
+</p>
+<p>
+Examples:
+</p>
+<pre>Dial(&#34;tcp&#34;, &#34;12.34.56.78:80&#34;)
+Dial(&#34;tcp&#34;, &#34;google.com:http&#34;)
+Dial(&#34;tcp&#34;, &#34;[2001:db8::1]:http&#34;)
+Dial(&#34;tcp&#34;, &#34;[fe80::1%lo0]:80&#34;)
+</pre>
+<p>
+For IP networks, the network must be &#34;ip&#34;, &#34;ip4&#34; or &#34;ip6&#34; followed
+by a colon and a protocol number or name and the addr must be a
+literal IP address.
+</p>
+<p>
+Examples:
+</p>
+<pre>Dial(&#34;ip4:1&#34;, &#34;127.0.0.1&#34;)
+Dial(&#34;ip6:ospf&#34;, &#34;::1&#34;)
+</pre>
+<p>
+For Unix networks, the address must be a file system path.
+</p>
+
+		</span>
+	
+		<h1 id="DialTimeout" class="hdr pkg hdr-function"><a href="#DialTimeout" title="permalink">»</a>&nbsp;func DialTimeout(network, address string, timeout time.Duration) (Conn, error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg function">
+			<pre>func DialTimeout(network, address string, timeout time.Duration) (Conn, error)</pre>
+			<p>
+DialTimeout acts like Dial but takes a timeout.
+The timeout includes name resolution, if required.
+</p>
+
+		</span>
+	
+		<h1 id="FileConn" class="hdr pkg hdr-function"><a href="#FileConn" title="permalink">»</a>&nbsp;func FileConn(f *os.File) (c Conn, err error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg function">
+			<pre>func FileConn(f *os.File) (c Conn, err error)</pre>
+			<p>
+FileConn returns a copy of the network connection corresponding to
+the open file f.  It is the caller&#39;s responsibility to close f when
+finished.  Closing c does not affect f, and closing f does not
+affect c.
+</p>
+
+		</span>
+	
+		<h1 id="Pipe" class="hdr pkg hdr-function"><a href="#Pipe" title="permalink">»</a>&nbsp;func Pipe() (Conn, Conn) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg function">
+			<pre>func Pipe() (Conn, Conn)</pre>
+			<p>
+Pipe creates a synchronous, in-memory, full duplex
+network connection; both ends implement the Conn interface.
+Reads on one end are matched with writes on the other,
+copying data directly between the two; there is no internal
+buffering.
+</p>
+
+		</span>
+	
+
+	
+	
+
+	
+	<h1 id="DNSConfigError" class="hdr pkg hdr-type"><a href="#DNSConfigError" title="permalink">»</a>&nbsp;type DNSConfigError <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg type">
+		<pre>type DNSConfigError struct {
+	Err error
+}</pre>
+		<p>
+DNSConfigError represents an error reading the machine&#39;s DNS configuration.
+</p>
+
+	</span>
+
+	
+	
+
+	
+	
+		
+		<h1 id="DNSConfigError.Error" class="hdr pkg hdr-method"><a href="#DNSConfigError.Error" title="permalink">»</a>&nbsp;func (e *DNSConfigError) Error() string <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (e *DNSConfigError) Error() string</pre>
+			
+		</span>
+	
+		
+		<h1 id="DNSConfigError.Temporary" class="hdr pkg hdr-method"><a href="#DNSConfigError.Temporary" title="permalink">»</a>&nbsp;func (e *DNSConfigError) Temporary() bool <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (e *DNSConfigError) Temporary() bool</pre>
+			
+		</span>
+	
+		
+		<h1 id="DNSConfigError.Timeout" class="hdr pkg hdr-method"><a href="#DNSConfigError.Timeout" title="permalink">»</a>&nbsp;func (e *DNSConfigError) Timeout() bool <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (e *DNSConfigError) Timeout() bool</pre>
+			
+		</span>
+	
+
+	
+	<h1 id="DNSError" class="hdr pkg hdr-type"><a href="#DNSError" title="permalink">»</a>&nbsp;type DNSError <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg type">
+		<pre>type DNSError struct {
+	Err		string	// description of the error
+	Name		string	// name looked for
+	Server		string	// server used
+	IsTimeout	bool
+}</pre>
+		<p>
+DNSError represents a DNS lookup error.
+</p>
+
+	</span>
+
+	
+	
+
+	
+	
+		
+		<h1 id="DNSError.Error" class="hdr pkg hdr-method"><a href="#DNSError.Error" title="permalink">»</a>&nbsp;func (e *DNSError) Error() string <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (e *DNSError) Error() string</pre>
+			
+		</span>
+	
+		
+		<h1 id="DNSError.Temporary" class="hdr pkg hdr-method"><a href="#DNSError.Temporary" title="permalink">»</a>&nbsp;func (e *DNSError) Temporary() bool <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (e *DNSError) Temporary() bool</pre>
+			
+		</span>
+	
+		
+		<h1 id="DNSError.Timeout" class="hdr pkg hdr-method"><a href="#DNSError.Timeout" title="permalink">»</a>&nbsp;func (e *DNSError) Timeout() bool <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (e *DNSError) Timeout() bool</pre>
+			
+		</span>
+	
+
+	
+	<h1 id="DialErrorTest" class="hdr pkg hdr-type"><a href="#DialErrorTest" title="permalink">»</a>&nbsp;type DialErrorTest <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg type">
+		<pre>type DialErrorTest struct {
+	Net	string
+	Raddr	string
+	Pattern	string
+}</pre>
+		
+	</span>
+
+	
+	
+
+	
+	
+
+	
+	<h1 id="Dialer" class="hdr pkg hdr-type"><a href="#Dialer" title="permalink">»</a>&nbsp;type Dialer <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg type">
+		<pre>type Dialer struct {
+	// Timeout is the maximum amount of time a dial will wait for
+	// a connect to complete. If Deadline is also set, it may fail
+	// earlier.
+	//
+	// The default is no timeout.
+	//
+	// With or without a timeout, the operating system may impose
+	// its own earlier timeout. For instance, TCP timeouts are
+	// often around 3 minutes.
+	Timeout	time.Duration
+
+	// Deadline is the absolute point in time after which dials
+	// will fail. If Timeout is set, it may fail earlier.
+	// Zero means no deadline, or dependent on the operating system
+	// as with the Timeout option.
+	Deadline	time.Time
+
+	// LocalAddr is the local address to use when dialing an
+	// address. The address must be of a compatible type for the
+	// network being dialed.
+	// If nil, a local address is automatically chosen.
+	LocalAddr	Addr
+
+	// DualStack allows a single dial to attempt to establish
+	// multiple IPv4 and IPv6 connections and to return the first
+	// established connection when the network is &#34;tcp&#34; and the
+	// destination is a host name that has multiple address family
+	// DNS records.
+	DualStack	bool
+
+	// KeepAlive specifies the keep-alive period for an active
+	// network connection.
+	// If zero, keep-alives are not enabled. Network protocols
+	// that do not support keep-alives ignore this field.
+	KeepAlive	time.Duration
+}</pre>
+		<p>
+A Dialer contains options for connecting to an address.
+</p>
+<p>
+The zero value for each field is equivalent to dialing
+without that option. Dialing with the zero value of Dialer
+is therefore equivalent to just calling the Dial function.
+</p>
+
+	</span>
+
+	
+	
+
+	
+	
+		
+		<h1 id="Dialer.Dial" class="hdr pkg hdr-method"><a href="#Dialer.Dial" title="permalink">»</a>&nbsp;func (d *Dialer) Dial(network, address string) (Conn, error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (d *Dialer) Dial(network, address string) (Conn, error)</pre>
+			<p>
+Dial connects to the address on the named network.
+</p>
+<p>
+See func Dial for a description of the network and address
+parameters.
+</p>
+
+		</span>
+	
+
+	
+	<h1 id="Error" class="hdr pkg hdr-type"><a href="#Error" title="permalink">»</a>&nbsp;type Error <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg type">
+		<pre>type Error interface {
+	error
+	Timeout() bool		// Is the error a timeout?
+	Temporary() bool	// Is the error temporary?
+}</pre>
+		<p>
+An Error represents a network error.
+</p>
+
+	</span>
+
+	
+	
+
+	
+	
+
+	
+	<h1 id="Flags" class="hdr pkg hdr-type"><a href="#Flags" title="permalink">»</a>&nbsp;type Flags <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg type">
+		<pre>type Flags uint</pre>
+		
+	</span>
+
+	
+	
+
+	
+	
+		
+		<h1 id="Flags.String" class="hdr pkg hdr-method"><a href="#Flags.String" title="permalink">»</a>&nbsp;func (f Flags) String() string <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (f Flags) String() string</pre>
+			
+		</span>
+	
+
+	
+	<h1 id="HardwareAddr" class="hdr pkg hdr-type"><a href="#HardwareAddr" title="permalink">»</a>&nbsp;type HardwareAddr <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg type">
+		<pre>type HardwareAddr []byte</pre>
+		<p>
+A HardwareAddr represents a physical hardware address.
+</p>
+
+	</span>
+
+	
+	
+		<h1 id="ParseMAC" class="hdr pkg hdr-function"><a href="#ParseMAC" title="permalink">»</a>&nbsp;func ParseMAC(s string) (hw HardwareAddr, err error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg function">
+			<pre>func ParseMAC(s string) (hw HardwareAddr, err error)</pre>
+			<p>
+ParseMAC parses s as an IEEE 802 MAC-48, EUI-48, or EUI-64 using one of the
+following formats:
+</p>
+<pre>01:23:45:67:89:ab
+01:23:45:67:89:ab:cd:ef
+01-23-45-67-89-ab
+01-23-45-67-89-ab-cd-ef
+0123.4567.89ab
+0123.4567.89ab.cdef
+</pre>
+
+		</span>
+	
+
+	
+	
+		
+		<h1 id="HardwareAddr.String" class="hdr pkg hdr-method"><a href="#HardwareAddr.String" title="permalink">»</a>&nbsp;func (a HardwareAddr) String() string <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (a HardwareAddr) String() string</pre>
+			
+		</span>
+	
+
+	
+	<h1 id="IP" class="hdr pkg hdr-type"><a href="#IP" title="permalink">»</a>&nbsp;type IP <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg type">
+		<pre>type IP []byte</pre>
+		<p>
+An IP is a single IP address, a slice of bytes.
+Functions in this package accept either 4-byte (IPv4)
+or 16-byte (IPv6) slices as input.
+</p>
+<p>
+Note that in this documentation, referring to an
+IP address as an IPv4 address or an IPv6 address
+is a semantic property of the address, not just the
+length of the byte slice: a 16-byte slice can still
+be an IPv4 address.
+</p>
+
+	</span>
+
+	
+	
+		<h1 id="IPv4" class="hdr pkg hdr-function"><a href="#IPv4" title="permalink">»</a>&nbsp;func IPv4(a, b, c, d byte) IP <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg function">
+			<pre>func IPv4(a, b, c, d byte) IP</pre>
+			<p>
+IPv4 returns the IP address (in 16-byte form) of the
+IPv4 address a.b.c.d.
+</p>
+
+		</span>
+	
+		<h1 id="ParseCIDR" class="hdr pkg hdr-function"><a href="#ParseCIDR" title="permalink">»</a>&nbsp;func ParseCIDR(s string) (IP, *IPNet, error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg function">
+			<pre>func ParseCIDR(s string) (IP, *IPNet, error)</pre>
+			<p>
+ParseCIDR parses s as a CIDR notation IP address and mask,
+like &#34;192.168.100.1/24&#34; or &#34;2001:DB8::/48&#34;, as defined in
+RFC 4632 and RFC 4291.
+</p>
+<p>
+It returns the IP address and the network implied by the IP
+and mask.  For example, ParseCIDR(&#34;192.168.100.1/16&#34;) returns
+the IP address 192.168.100.1 and the network 192.168.0.0/16.
+</p>
+
+		</span>
+	
+		<h1 id="ParseIP" class="hdr pkg hdr-function"><a href="#ParseIP" title="permalink">»</a>&nbsp;func ParseIP(s string) IP <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg function">
+			<pre>func ParseIP(s string) IP</pre>
+			<p>
+ParseIP parses s as an IP address, returning the result.
+The string s can be in dotted decimal (&#34;74.125.19.99&#34;)
+or IPv6 (&#34;2001:4860:0:2001::68&#34;) form.
+If s is not a valid textual representation of an IP address,
+ParseIP returns nil.
+</p>
+
+		</span>
+	
+
+	
+	
+		
+		<h1 id="IP.DefaultMask" class="hdr pkg hdr-method"><a href="#IP.DefaultMask" title="permalink">»</a>&nbsp;func (ip IP) DefaultMask() IPMask <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (ip IP) DefaultMask() IPMask</pre>
+			<p>
+DefaultMask returns the default IP mask for the IP address ip.
+Only IPv4 addresses have default masks; DefaultMask returns
+nil if ip is not a valid IPv4 address.
+</p>
+
+		</span>
+	
+		
+		<h1 id="IP.Equal" class="hdr pkg hdr-method"><a href="#IP.Equal" title="permalink">»</a>&nbsp;func (ip IP) Equal(x IP) bool <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (ip IP) Equal(x IP) bool</pre>
+			<p>
+Equal returns true if ip and x are the same IP address.
+An IPv4 address and that same address in IPv6 form are
+considered to be equal.
+</p>
+
+		</span>
+	
+		
+		<h1 id="IP.IsGlobalUnicast" class="hdr pkg hdr-method"><a href="#IP.IsGlobalUnicast" title="permalink">»</a>&nbsp;func (ip IP) IsGlobalUnicast() bool <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (ip IP) IsGlobalUnicast() bool</pre>
+			<p>
+IsGlobalUnicast returns true if ip is a global unicast
+address.
+</p>
+
+		</span>
+	
+		
+		<h1 id="IP.IsInterfaceLocalMulticast" class="hdr pkg hdr-method"><a href="#IP.IsInterfaceLocalMulticast" title="permalink">»</a>&nbsp;func (ip IP) IsInterfaceLocalMulticast() bool <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (ip IP) IsInterfaceLocalMulticast() bool</pre>
+			<p>
+IsInterfaceLinkLocalMulticast returns true if ip is
+an interface-local multicast address.
+</p>
+
+		</span>
+	
+		
+		<h1 id="IP.IsLinkLocalMulticast" class="hdr pkg hdr-method"><a href="#IP.IsLinkLocalMulticast" title="permalink">»</a>&nbsp;func (ip IP) IsLinkLocalMulticast() bool <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (ip IP) IsLinkLocalMulticast() bool</pre>
+			<p>
+IsLinkLocalMulticast returns true if ip is a link-local
+multicast address.
+</p>
+
+		</span>
+	
+		
+		<h1 id="IP.IsLinkLocalUnicast" class="hdr pkg hdr-method"><a href="#IP.IsLinkLocalUnicast" title="permalink">»</a>&nbsp;func (ip IP) IsLinkLocalUnicast() bool <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (ip IP) IsLinkLocalUnicast() bool</pre>
+			<p>
+IsLinkLocalUnicast returns true if ip is a link-local
+unicast address.
+</p>
+
+		</span>
+	
+		
+		<h1 id="IP.IsLoopback" class="hdr pkg hdr-method"><a href="#IP.IsLoopback" title="permalink">»</a>&nbsp;func (ip IP) IsLoopback() bool <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (ip IP) IsLoopback() bool</pre>
+			<p>
+IsLoopback returns true if ip is a loopback address.
+</p>
+
+		</span>
+	
+		
+		<h1 id="IP.IsMulticast" class="hdr pkg hdr-method"><a href="#IP.IsMulticast" title="permalink">»</a>&nbsp;func (ip IP) IsMulticast() bool <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (ip IP) IsMulticast() bool</pre>
+			<p>
+IsMulticast returns true if ip is a multicast address.
+</p>
+
+		</span>
+	
+		
+		<h1 id="IP.IsUnspecified" class="hdr pkg hdr-method"><a href="#IP.IsUnspecified" title="permalink">»</a>&nbsp;func (ip IP) IsUnspecified() bool <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (ip IP) IsUnspecified() bool</pre>
+			<p>
+IsUnspecified returns true if ip is an unspecified address.
+</p>
+
+		</span>
+	
+		
+		<h1 id="IP.MarshalText" class="hdr pkg hdr-method"><a href="#IP.MarshalText" title="permalink">»</a>&nbsp;func (ip IP) MarshalText() ([]byte, error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (ip IP) MarshalText() ([]byte, error)</pre>
+			<p>
+MarshalText implements the encoding.TextMarshaler interface.
+The encoding is the same as returned by String.
+</p>
+
+		</span>
+	
+		
+		<h1 id="IP.Mask" class="hdr pkg hdr-method"><a href="#IP.Mask" title="permalink">»</a>&nbsp;func (ip IP) Mask(mask IPMask) IP <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (ip IP) Mask(mask IPMask) IP</pre>
+			<p>
+Mask returns the result of masking the IP address ip with mask.
+</p>
+
+		</span>
+	
+		
+		<h1 id="IP.String" class="hdr pkg hdr-method"><a href="#IP.String" title="permalink">»</a>&nbsp;func (ip IP) String() string <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (ip IP) String() string</pre>
+			<p>
+String returns the string form of the IP address ip.
+If the address is an IPv4 address, the string representation
+is dotted decimal (&#34;74.125.19.99&#34;).  Otherwise the representation
+is IPv6 (&#34;2001:4860:0:2001::68&#34;).
+</p>
+
+		</span>
+	
+		
+		<h1 id="IP.To16" class="hdr pkg hdr-method"><a href="#IP.To16" title="permalink">»</a>&nbsp;func (ip IP) To16() IP <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (ip IP) To16() IP</pre>
+			<p>
+To16 converts the IP address ip to a 16-byte representation.
+If ip is not an IP address (it is the wrong length), To16 returns nil.
+</p>
+
+		</span>
+	
+		
+		<h1 id="IP.To4" class="hdr pkg hdr-method"><a href="#IP.To4" title="permalink">»</a>&nbsp;func (ip IP) To4() IP <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (ip IP) To4() IP</pre>
+			<p>
+To4 converts the IPv4 address ip to a 4-byte representation.
+If ip is not an IPv4 address, To4 returns nil.
+</p>
+
+		</span>
+	
+		
+		<h1 id="IP.UnmarshalText" class="hdr pkg hdr-method"><a href="#IP.UnmarshalText" title="permalink">»</a>&nbsp;func (ip *IP) UnmarshalText(text []byte) error <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (ip *IP) UnmarshalText(text []byte) error</pre>
+			<p>
+UnmarshalText implements the encoding.TextUnmarshaler interface.
+The IP address is expected in a form accepted by ParseIP.
+</p>
+
+		</span>
+	
+
+	
+	<h1 id="IPAddr" class="hdr pkg hdr-type"><a href="#IPAddr" title="permalink">»</a>&nbsp;type IPAddr <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg type">
+		<pre>type IPAddr struct {
+	IP	IP
+	Zone	string	// IPv6 scoped addressing zone
+}</pre>
+		<p>
+IPAddr represents the address of an IP end point.
+</p>
+
+	</span>
+
+	
+	
+		<h1 id="ResolveIPAddr" class="hdr pkg hdr-function"><a href="#ResolveIPAddr" title="permalink">»</a>&nbsp;func ResolveIPAddr(net, addr string) (*IPAddr, error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg function">
+			<pre>func ResolveIPAddr(net, addr string) (*IPAddr, error)</pre>
+			<p>
+ResolveIPAddr parses addr as an IP address of the form &#34;host&#34; or
+&#34;ipv6-host%zone&#34; and resolves the domain name on the network net,
+which must be &#34;ip&#34;, &#34;ip4&#34; or &#34;ip6&#34;.
+</p>
+
+		</span>
+	
+
+	
+	
+		
+		<h1 id="IPAddr.Network" class="hdr pkg hdr-method"><a href="#IPAddr.Network" title="permalink">»</a>&nbsp;func (a *IPAddr) Network() string <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (a *IPAddr) Network() string</pre>
+			<p>
+Network returns the address&#39;s network name, &#34;ip&#34;.
+</p>
+
+		</span>
+	
+		
+		<h1 id="IPAddr.String" class="hdr pkg hdr-method"><a href="#IPAddr.String" title="permalink">»</a>&nbsp;func (a *IPAddr) String() string <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (a *IPAddr) String() string</pre>
+			
+		</span>
+	
+
+	
+	<h1 id="IPConn" class="hdr pkg hdr-type"><a href="#IPConn" title="permalink">»</a>&nbsp;type IPConn <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg type">
+		<pre>type IPConn struct {
+	// contains filtered or unexported fields
+}</pre>
+		<p>
+IPConn is the implementation of the Conn and PacketConn interfaces
+for IP network connections.
+</p>
+
+	</span>
+
+	
+	
+		<h1 id="DialIP" class="hdr pkg hdr-function"><a href="#DialIP" title="permalink">»</a>&nbsp;func DialIP(netProto string, laddr, raddr *IPAddr) (*IPConn, error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg function">
+			<pre>func DialIP(netProto string, laddr, raddr *IPAddr) (*IPConn, error)</pre>
+			<p>
+DialIP connects to the remote address raddr on the network protocol
+netProto, which must be &#34;ip&#34;, &#34;ip4&#34;, or &#34;ip6&#34; followed by a colon
+and a protocol number or name.
+</p>
+
+		</span>
+	
+		<h1 id="ListenIP" class="hdr pkg hdr-function"><a href="#ListenIP" title="permalink">»</a>&nbsp;func ListenIP(netProto string, laddr *IPAddr) (*IPConn, error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg function">
+			<pre>func ListenIP(netProto string, laddr *IPAddr) (*IPConn, error)</pre>
+			<p>
+ListenIP listens for incoming IP packets addressed to the local
+address laddr.  The returned connection&#39;s ReadFrom and WriteTo
+methods can be used to receive and send IP packets with per-packet
+addressing.
+</p>
+
+		</span>
+	
+
+	
+	
+		
+		<h1 id="IPConn.Close" class="hdr pkg hdr-method"><a href="#IPConn.Close" title="permalink">»</a>&nbsp;func (c *IPConn) Close() error <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *IPConn) Close() error</pre>
+			<p>
+Close closes the connection.
+</p>
+
+		</span>
+	
+		
+		<h1 id="IPConn.File" class="hdr pkg hdr-method"><a href="#IPConn.File" title="permalink">»</a>&nbsp;func (c *IPConn) File() (f *os.File, err error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *IPConn) File() (f *os.File, err error)</pre>
+			<p>
+File sets the underlying os.File to blocking mode and returns a copy.
+It is the caller&#39;s responsibility to close f when finished.
+Closing c does not affect f, and closing f does not affect c.
+</p>
+<p>
+The returned os.File&#39;s file descriptor is different from the connection&#39;s.
+Attempting to change properties of the original using this duplicate
+may or may not have the desired effect.
+</p>
+
+		</span>
+	
+		
+		<h1 id="IPConn.LocalAddr" class="hdr pkg hdr-method"><a href="#IPConn.LocalAddr" title="permalink">»</a>&nbsp;func (c *IPConn) LocalAddr() Addr <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *IPConn) LocalAddr() Addr</pre>
+			<p>
+LocalAddr returns the local network address.
+</p>
+
+		</span>
+	
+		
+		<h1 id="IPConn.Read" class="hdr pkg hdr-method"><a href="#IPConn.Read" title="permalink">»</a>&nbsp;func (c *IPConn) Read(b []byte) (int, error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *IPConn) Read(b []byte) (int, error)</pre>
+			<p>
+Read implements the Conn Read method.
+</p>
+
+		</span>
+	
+		
+		<h1 id="IPConn.ReadFrom" class="hdr pkg hdr-method"><a href="#IPConn.ReadFrom" title="permalink">»</a>&nbsp;func (c *IPConn) ReadFrom(b []byte) (int, Addr, error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *IPConn) ReadFrom(b []byte) (int, Addr, error)</pre>
+			<p>
+ReadFrom implements the PacketConn ReadFrom method.
+</p>
+
+		</span>
+	
+		
+		<h1 id="IPConn.ReadFromIP" class="hdr pkg hdr-method"><a href="#IPConn.ReadFromIP" title="permalink">»</a>&nbsp;func (c *IPConn) ReadFromIP(b []byte) (int, *IPAddr, error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *IPConn) ReadFromIP(b []byte) (int, *IPAddr, error)</pre>
+			<p>
+ReadFromIP reads an IP packet from c, copying the payload into b.
+It returns the number of bytes copied into b and the return address
+that was on the packet.
+</p>
+<p>
+ReadFromIP can be made to time out and return an error with
+Timeout() == true after a fixed time limit; see SetDeadline and
+SetReadDeadline.
+</p>
+
+		</span>
+	
+		
+		<h1 id="IPConn.ReadMsgIP" class="hdr pkg hdr-method"><a href="#IPConn.ReadMsgIP" title="permalink">»</a>&nbsp;func (c *IPConn) ReadMsgIP(b, oob []byte) (n, oobn, flags int, addr *IPAddr, err error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *IPConn) ReadMsgIP(b, oob []byte) (n, oobn, flags int, addr *IPAddr, err error)</pre>
+			<p>
+ReadMsgIP reads a packet from c, copying the payload into b and the
+associated out-of-band data into oob.  It returns the number of
+bytes copied into b, the number of bytes copied into oob, the flags
+that were set on the packet and the source address of the packet.
+</p>
+
+		</span>
+	
+		
+		<h1 id="IPConn.RemoteAddr" class="hdr pkg hdr-method"><a href="#IPConn.RemoteAddr" title="permalink">»</a>&nbsp;func (c *IPConn) RemoteAddr() Addr <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *IPConn) RemoteAddr() Addr</pre>
+			<p>
+RemoteAddr returns the remote network address.
+</p>
+
+		</span>
+	
+		
+		<h1 id="IPConn.SetDeadline" class="hdr pkg hdr-method"><a href="#IPConn.SetDeadline" title="permalink">»</a>&nbsp;func (c *IPConn) SetDeadline(t time.Time) error <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *IPConn) SetDeadline(t time.Time) error</pre>
+			<p>
+SetDeadline implements the Conn SetDeadline method.
+</p>
+
+		</span>
+	
+		
+		<h1 id="IPConn.SetReadBuffer" class="hdr pkg hdr-method"><a href="#IPConn.SetReadBuffer" title="permalink">»</a>&nbsp;func (c *IPConn) SetReadBuffer(bytes int) error <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *IPConn) SetReadBuffer(bytes int) error</pre>
+			<p>
+SetReadBuffer sets the size of the operating system&#39;s
+receive buffer associated with the connection.
+</p>
+
+		</span>
+	
+		
+		<h1 id="IPConn.SetReadDeadline" class="hdr pkg hdr-method"><a href="#IPConn.SetReadDeadline" title="permalink">»</a>&nbsp;func (c *IPConn) SetReadDeadline(t time.Time) error <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *IPConn) SetReadDeadline(t time.Time) error</pre>
+			<p>
+SetReadDeadline implements the Conn SetReadDeadline method.
+</p>
+
+		</span>
+	
+		
+		<h1 id="IPConn.SetWriteBuffer" class="hdr pkg hdr-method"><a href="#IPConn.SetWriteBuffer" title="permalink">»</a>&nbsp;func (c *IPConn) SetWriteBuffer(bytes int) error <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *IPConn) SetWriteBuffer(bytes int) error</pre>
+			<p>
+SetWriteBuffer sets the size of the operating system&#39;s
+transmit buffer associated with the connection.
+</p>
+
+		</span>
+	
+		
+		<h1 id="IPConn.SetWriteDeadline" class="hdr pkg hdr-method"><a href="#IPConn.SetWriteDeadline" title="permalink">»</a>&nbsp;func (c *IPConn) SetWriteDeadline(t time.Time) error <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *IPConn) SetWriteDeadline(t time.Time) error</pre>
+			<p>
+SetWriteDeadline implements the Conn SetWriteDeadline method.
+</p>
+
+		</span>
+	
+		
+		<h1 id="IPConn.Write" class="hdr pkg hdr-method"><a href="#IPConn.Write" title="permalink">»</a>&nbsp;func (c *IPConn) Write(b []byte) (int, error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *IPConn) Write(b []byte) (int, error)</pre>
+			<p>
+Write implements the Conn Write method.
+</p>
+
+		</span>
+	
+		
+		<h1 id="IPConn.WriteMsgIP" class="hdr pkg hdr-method"><a href="#IPConn.WriteMsgIP" title="permalink">»</a>&nbsp;func (c *IPConn) WriteMsgIP(b, oob []byte, addr *IPAddr) (n, oobn int, err error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *IPConn) WriteMsgIP(b, oob []byte, addr *IPAddr) (n, oobn int, err error)</pre>
+			<p>
+WriteMsgIP writes a packet to addr via c, copying the payload from
+b and the associated out-of-band data from oob.  It returns the
+number of payload and out-of-band bytes written.
+</p>
+
+		</span>
+	
+		
+		<h1 id="IPConn.WriteTo" class="hdr pkg hdr-method"><a href="#IPConn.WriteTo" title="permalink">»</a>&nbsp;func (c *IPConn) WriteTo(b []byte, addr Addr) (int, error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *IPConn) WriteTo(b []byte, addr Addr) (int, error)</pre>
+			<p>
+WriteTo implements the PacketConn WriteTo method.
+</p>
+
+		</span>
+	
+		
+		<h1 id="IPConn.WriteToIP" class="hdr pkg hdr-method"><a href="#IPConn.WriteToIP" title="permalink">»</a>&nbsp;func (c *IPConn) WriteToIP(b []byte, addr *IPAddr) (int, error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *IPConn) WriteToIP(b []byte, addr *IPAddr) (int, error)</pre>
+			<p>
+WriteToIP writes an IP packet to addr via c, copying the payload
+from b.
+</p>
+<p>
+WriteToIP can be made to time out and return an error with
+Timeout() == true after a fixed time limit; see SetDeadline and
+SetWriteDeadline.  On packet-oriented connections, write timeouts
+are rare.
+</p>
+
+		</span>
+	
+
+	
+	<h1 id="IPMask" class="hdr pkg hdr-type"><a href="#IPMask" title="permalink">»</a>&nbsp;type IPMask <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg type">
+		<pre>type IPMask []byte</pre>
+		<p>
+An IP mask is an IP address.
+</p>
+
+	</span>
+
+	
+	
+		<h1 id="CIDRMask" class="hdr pkg hdr-function"><a href="#CIDRMask" title="permalink">»</a>&nbsp;func CIDRMask(ones, bits int) IPMask <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg function">
+			<pre>func CIDRMask(ones, bits int) IPMask</pre>
+			<p>
+CIDRMask returns an IPMask consisting of `ones&#39; 1 bits
+followed by 0s up to a total length of `bits&#39; bits.
+For a mask of this form, CIDRMask is the inverse of IPMask.Size.
+</p>
+
+		</span>
+	
+		<h1 id="IPv4Mask" class="hdr pkg hdr-function"><a href="#IPv4Mask" title="permalink">»</a>&nbsp;func IPv4Mask(a, b, c, d byte) IPMask <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg function">
+			<pre>func IPv4Mask(a, b, c, d byte) IPMask</pre>
+			<p>
+IPv4Mask returns the IP mask (in 4-byte form) of the
+IPv4 mask a.b.c.d.
+</p>
+
+		</span>
+	
+
+	
+	
+		
+		<h1 id="IPMask.Size" class="hdr pkg hdr-method"><a href="#IPMask.Size" title="permalink">»</a>&nbsp;func (m IPMask) Size() (ones, bits int) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (m IPMask) Size() (ones, bits int)</pre>
+			<p>
+Size returns the number of leading ones and total bits in the mask.
+If the mask is not in the canonical form--ones followed by zeros--then
+Size returns 0, 0.
+</p>
+
+		</span>
+	
+		
+		<h1 id="IPMask.String" class="hdr pkg hdr-method"><a href="#IPMask.String" title="permalink">»</a>&nbsp;func (m IPMask) String() string <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (m IPMask) String() string</pre>
+			<p>
+String returns the hexadecimal form of m, with no punctuation.
+</p>
+
+		</span>
+	
+
+	
+	<h1 id="IPNet" class="hdr pkg hdr-type"><a href="#IPNet" title="permalink">»</a>&nbsp;type IPNet <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg type">
+		<pre>type IPNet struct {
+	IP	IP	// network number
+	Mask	IPMask	// network mask
+}</pre>
+		<p>
+An IPNet represents an IP network.
+</p>
+
+	</span>
+
+	
+	
+
+	
+	
+		
+		<h1 id="IPNet.Contains" class="hdr pkg hdr-method"><a href="#IPNet.Contains" title="permalink">»</a>&nbsp;func (n *IPNet) Contains(ip IP) bool <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (n *IPNet) Contains(ip IP) bool</pre>
+			<p>
+Contains reports whether the network includes ip.
+</p>
+
+		</span>
+	
+		
+		<h1 id="IPNet.Network" class="hdr pkg hdr-method"><a href="#IPNet.Network" title="permalink">»</a>&nbsp;func (n *IPNet) Network() string <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (n *IPNet) Network() string</pre>
+			<p>
+Network returns the address&#39;s network name, &#34;ip+net&#34;.
+</p>
+
+		</span>
+	
+		
+		<h1 id="IPNet.String" class="hdr pkg hdr-method"><a href="#IPNet.String" title="permalink">»</a>&nbsp;func (n *IPNet) String() string <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (n *IPNet) String() string</pre>
+			<p>
+String returns the CIDR notation of n like &#34;192.168.100.1/24&#34;
+or &#34;2001:DB8::/48&#34; as defined in RFC 4632 and RFC 4291.
+If the mask is not in the canonical form, it returns the
+string which consists of an IP address, followed by a slash
+character and a mask expressed as hexadecimal form with no
+punctuation like &#34;192.168.100.1/c000ff00&#34;.
+</p>
+
+		</span>
+	
+
+	
+	<h1 id="Interface" class="hdr pkg hdr-type"><a href="#Interface" title="permalink">»</a>&nbsp;type Interface <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg type">
+		<pre>type Interface struct {
+	Index		int		// positive integer that starts at one, zero is never used
+	MTU		int		// maximum transmission unit
+	Name		string		// e.g., &#34;en0&#34;, &#34;lo0&#34;, &#34;eth0.100&#34;
+	HardwareAddr	HardwareAddr	// IEEE MAC-48, EUI-48 and EUI-64 form
+	Flags		Flags		// e.g., FlagUp, FlagLoopback, FlagMulticast
+}</pre>
+		<p>
+Interface represents a mapping between network interface name
+and index.  It also represents network interface facility
+information.
+</p>
+
+	</span>
+
+	
+	
+		<h1 id="InterfaceByIndex" class="hdr pkg hdr-function"><a href="#InterfaceByIndex" title="permalink">»</a>&nbsp;func InterfaceByIndex(index int) (*Interface, error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg function">
+			<pre>func InterfaceByIndex(index int) (*Interface, error)</pre>
+			<p>
+InterfaceByIndex returns the interface specified by index.
+</p>
+
+		</span>
+	
+		<h1 id="InterfaceByName" class="hdr pkg hdr-function"><a href="#InterfaceByName" title="permalink">»</a>&nbsp;func InterfaceByName(name string) (*Interface, error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg function">
+			<pre>func InterfaceByName(name string) (*Interface, error)</pre>
+			<p>
+InterfaceByName returns the interface specified by name.
+</p>
+
+		</span>
+	
+
+	
+	
+		
+		<h1 id="Interface.Addrs" class="hdr pkg hdr-method"><a href="#Interface.Addrs" title="permalink">»</a>&nbsp;func (ifi *Interface) Addrs() ([]Addr, error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (ifi *Interface) Addrs() ([]Addr, error)</pre>
+			<p>
+Addrs returns interface addresses for a specific interface.
+</p>
+
+		</span>
+	
+		
+		<h1 id="Interface.MulticastAddrs" class="hdr pkg hdr-method"><a href="#Interface.MulticastAddrs" title="permalink">»</a>&nbsp;func (ifi *Interface) MulticastAddrs() ([]Addr, error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (ifi *Interface) MulticastAddrs() ([]Addr, error)</pre>
+			<p>
+MulticastAddrs returns multicast, joined group addresses for
+a specific interface.
+</p>
+
+		</span>
+	
+
+	
+	<h1 id="InvalidAddrError" class="hdr pkg hdr-type"><a href="#InvalidAddrError" title="permalink">»</a>&nbsp;type InvalidAddrError <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg type">
+		<pre>type InvalidAddrError string</pre>
+		
+	</span>
+
+	
+	
+
+	
+	
+		
+		<h1 id="InvalidAddrError.Error" class="hdr pkg hdr-method"><a href="#InvalidAddrError.Error" title="permalink">»</a>&nbsp;func (e InvalidAddrError) Error() string <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (e InvalidAddrError) Error() string</pre>
+			
+		</span>
+	
+		
+		<h1 id="InvalidAddrError.Temporary" class="hdr pkg hdr-method"><a href="#InvalidAddrError.Temporary" title="permalink">»</a>&nbsp;func (e InvalidAddrError) Temporary() bool <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (e InvalidAddrError) Temporary() bool</pre>
+			
+		</span>
+	
+		
+		<h1 id="InvalidAddrError.Timeout" class="hdr pkg hdr-method"><a href="#InvalidAddrError.Timeout" title="permalink">»</a>&nbsp;func (e InvalidAddrError) Timeout() bool <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (e InvalidAddrError) Timeout() bool</pre>
+			
+		</span>
+	
+
+	
+	<h1 id="Listener" class="hdr pkg hdr-type"><a href="#Listener" title="permalink">»</a>&nbsp;type Listener <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg type">
+		<pre>type Listener interface {
+	// Accept waits for and returns the next connection to the listener.
+	Accept() (c Conn, err error)
+
+	// Close closes the listener.
+	// Any blocked Accept operations will be unblocked and return errors.
+	Close() error
+
+	// Addr returns the listener&#39;s network address.
+	Addr() Addr
+}</pre>
+		<p>
+A Listener is a generic network listener for stream-oriented protocols.
+</p>
+<p>
+Multiple goroutines may invoke methods on a Listener simultaneously.
+</p>
+
+	</span>
+
+	
+	
+		<h1 id="FileListener" class="hdr pkg hdr-function"><a href="#FileListener" title="permalink">»</a>&nbsp;func FileListener(f *os.File) (l Listener, err error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg function">
+			<pre>func FileListener(f *os.File) (l Listener, err error)</pre>
+			<p>
+FileListener returns a copy of the network listener corresponding
+to the open file f.  It is the caller&#39;s responsibility to close l
+when finished.  Closing l does not affect f, and closing f does not
+affect l.
+</p>
+
+		</span>
+	
+		<h1 id="Listen" class="hdr pkg hdr-function"><a href="#Listen" title="permalink">»</a>&nbsp;func Listen(net, laddr string) (Listener, error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg function">
+			<pre>func Listen(net, laddr string) (Listener, error)</pre>
+			<p>
+Listen announces on the local network address laddr.
+The network net must be a stream-oriented network: &#34;tcp&#34;, &#34;tcp4&#34;,
+&#34;tcp6&#34;, &#34;unix&#34; or &#34;unixpacket&#34;.
+See Dial for the syntax of laddr.
+</p>
+
+		</span>
+	
+
+	
+	
+
+	
+	<h1 id="MX" class="hdr pkg hdr-type"><a href="#MX" title="permalink">»</a>&nbsp;type MX <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg type">
+		<pre>type MX struct {
+	Host	string
+	Pref	uint16
+}</pre>
+		<p>
+An MX represents a single DNS MX record.
+</p>
+
+	</span>
+
+	
+	
+
+	
+	
+
+	
+	<h1 id="NS" class="hdr pkg hdr-type"><a href="#NS" title="permalink">»</a>&nbsp;type NS <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg type">
+		<pre>type NS struct {
+	Host string
+}</pre>
+		<p>
+An NS represents a single DNS NS record.
+</p>
+
+	</span>
+
+	
+	
+
+	
+	
+
+	
+	<h1 id="OpError" class="hdr pkg hdr-type"><a href="#OpError" title="permalink">»</a>&nbsp;type OpError <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg type">
+		<pre>type OpError struct {
+	// Op is the operation which caused the error, such as
+	// &#34;read&#34; or &#34;write&#34;.
+	Op	string
+
+	// Net is the network type on which this error occurred,
+	// such as &#34;tcp&#34; or &#34;udp6&#34;.
+	Net	string
+
+	// Addr is the network address on which this error occurred.
+	Addr	Addr
+
+	// Err is the error that occurred during the operation.
+	Err	error
+}</pre>
+		<p>
+OpError is the error type usually returned by functions in the net
+package. It describes the operation, network type, and address of
+an error.
+</p>
+
+	</span>
+
+	
+	
+
+	
+	
+		
+		<h1 id="OpError.Error" class="hdr pkg hdr-method"><a href="#OpError.Error" title="permalink">»</a>&nbsp;func (e *OpError) Error() string <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (e *OpError) Error() string</pre>
+			
+		</span>
+	
+		
+		<h1 id="OpError.Temporary" class="hdr pkg hdr-method"><a href="#OpError.Temporary" title="permalink">»</a>&nbsp;func (e *OpError) Temporary() bool <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (e *OpError) Temporary() bool</pre>
+			
+		</span>
+	
+		
+		<h1 id="OpError.Timeout" class="hdr pkg hdr-method"><a href="#OpError.Timeout" title="permalink">»</a>&nbsp;func (e *OpError) Timeout() bool <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (e *OpError) Timeout() bool</pre>
+			
+		</span>
+	
+
+	
+	<h1 id="PacketConn" class="hdr pkg hdr-type"><a href="#PacketConn" title="permalink">»</a>&nbsp;type PacketConn <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg type">
+		<pre>type PacketConn interface {
+	// ReadFrom reads a packet from the connection,
+	// copying the payload into b.  It returns the number of
+	// bytes copied into b and the return address that
+	// was on the packet.
+	// ReadFrom can be made to time out and return
+	// an error with Timeout() == true after a fixed time limit;
+	// see SetDeadline and SetReadDeadline.
+	ReadFrom(b []byte) (n int, addr Addr, err error)
+
+	// WriteTo writes a packet with payload b to addr.
+	// WriteTo can be made to time out and return
+	// an error with Timeout() == true after a fixed time limit;
+	// see SetDeadline and SetWriteDeadline.
+	// On packet-oriented connections, write timeouts are rare.
+	WriteTo(b []byte, addr Addr) (n int, err error)
+
+	// Close closes the connection.
+	// Any blocked ReadFrom or WriteTo operations will be unblocked and return errors.
+	Close() error
+
+	// LocalAddr returns the local network address.
+	LocalAddr() Addr
+
+	// SetDeadline sets the read and write deadlines associated
+	// with the connection.
+	SetDeadline(t time.Time) error
+
+	// SetReadDeadline sets the deadline for future Read calls.
+	// If the deadline is reached, Read will fail with a timeout
+	// (see type Error) instead of blocking.
+	// A zero value for t means Read will not time out.
+	SetReadDeadline(t time.Time) error
+
+	// SetWriteDeadline sets the deadline for future Write calls.
+	// If the deadline is reached, Write will fail with a timeout
+	// (see type Error) instead of blocking.
+	// A zero value for t means Write will not time out.
+	// Even if write times out, it may return n &gt; 0, indicating that
+	// some of the data was successfully written.
+	SetWriteDeadline(t time.Time) error
+}</pre>
+		<p>
+PacketConn is a generic packet-oriented network connection.
+</p>
+<p>
+Multiple goroutines may invoke methods on a PacketConn simultaneously.
+</p>
+
+	</span>
+
+	
+	
+		<h1 id="FilePacketConn" class="hdr pkg hdr-function"><a href="#FilePacketConn" title="permalink">»</a>&nbsp;func FilePacketConn(f *os.File) (c PacketConn, err error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg function">
+			<pre>func FilePacketConn(f *os.File) (c PacketConn, err error)</pre>
+			<p>
+FilePacketConn returns a copy of the packet network connection
+corresponding to the open file f.  It is the caller&#39;s
+responsibility to close f when finished.  Closing c does not affect
+f, and closing f does not affect c.
+</p>
+
+		</span>
+	
+		<h1 id="ListenPacket" class="hdr pkg hdr-function"><a href="#ListenPacket" title="permalink">»</a>&nbsp;func ListenPacket(net, laddr string) (PacketConn, error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg function">
+			<pre>func ListenPacket(net, laddr string) (PacketConn, error)</pre>
+			<p>
+ListenPacket announces on the local network address laddr.
+The network net must be a packet-oriented network: &#34;udp&#34;, &#34;udp4&#34;,
+&#34;udp6&#34;, &#34;ip&#34;, &#34;ip4&#34;, &#34;ip6&#34; or &#34;unixgram&#34;.
+See Dial for the syntax of laddr.
+</p>
+
+		</span>
+	
+
+	
+	
+
+	
+	<h1 id="ParseError" class="hdr pkg hdr-type"><a href="#ParseError" title="permalink">»</a>&nbsp;type ParseError <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg type">
+		<pre>type ParseError struct {
+	Type	string
+	Text	string
+}</pre>
+		<p>
+A ParseError represents a malformed text string and the type of string that was expected.
+</p>
+
+	</span>
+
+	
+	
+
+	
+	
+		
+		<h1 id="ParseError.Error" class="hdr pkg hdr-method"><a href="#ParseError.Error" title="permalink">»</a>&nbsp;func (e *ParseError) Error() string <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (e *ParseError) Error() string</pre>
+			
+		</span>
+	
+
+	
+	<h1 id="SRV" class="hdr pkg hdr-type"><a href="#SRV" title="permalink">»</a>&nbsp;type SRV <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg type">
+		<pre>type SRV struct {
+	Target		string
+	Port		uint16
+	Priority	uint16
+	Weight		uint16
+}</pre>
+		<p>
+An SRV represents a single DNS SRV record.
+</p>
+
+	</span>
+
+	
+	
+
+	
+	
+
+	
+	<h1 id="TCPAddr" class="hdr pkg hdr-type"><a href="#TCPAddr" title="permalink">»</a>&nbsp;type TCPAddr <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg type">
+		<pre>type TCPAddr struct {
+	IP	IP
+	Port	int
+	Zone	string	// IPv6 scoped addressing zone
+}</pre>
+		<p>
+TCPAddr represents the address of a TCP end point.
+</p>
+
+	</span>
+
+	
+	
+		<h1 id="ResolveTCPAddr" class="hdr pkg hdr-function"><a href="#ResolveTCPAddr" title="permalink">»</a>&nbsp;func ResolveTCPAddr(net, addr string) (*TCPAddr, error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg function">
+			<pre>func ResolveTCPAddr(net, addr string) (*TCPAddr, error)</pre>
+			<p>
+ResolveTCPAddr parses addr as a TCP address of the form &#34;host:port&#34;
+or &#34;[ipv6-host%zone]:port&#34; and resolves a pair of domain name and
+port name on the network net, which must be &#34;tcp&#34;, &#34;tcp4&#34; or
+&#34;tcp6&#34;.  A literal address or host name for IPv6 must be enclosed
+in square brackets, as in &#34;[::1]:80&#34;, &#34;[ipv6-host]:http&#34; or
+&#34;[ipv6-host%zone]:80&#34;.
+</p>
+
+		</span>
+	
+
+	
+	
+		
+		<h1 id="TCPAddr.Network" class="hdr pkg hdr-method"><a href="#TCPAddr.Network" title="permalink">»</a>&nbsp;func (a *TCPAddr) Network() string <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (a *TCPAddr) Network() string</pre>
+			<p>
+Network returns the address&#39;s network name, &#34;tcp&#34;.
+</p>
+
+		</span>
+	
+		
+		<h1 id="TCPAddr.String" class="hdr pkg hdr-method"><a href="#TCPAddr.String" title="permalink">»</a>&nbsp;func (a *TCPAddr) String() string <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (a *TCPAddr) String() string</pre>
+			
+		</span>
+	
+
+	
+	<h1 id="TCPConn" class="hdr pkg hdr-type"><a href="#TCPConn" title="permalink">»</a>&nbsp;type TCPConn <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg type">
+		<pre>type TCPConn struct {
+	// contains filtered or unexported fields
+}</pre>
+		<p>
+TCPConn is an implementation of the Conn interface for TCP network
+connections.
+</p>
+
+	</span>
+
+	
+	
+		<h1 id="DialTCP" class="hdr pkg hdr-function"><a href="#DialTCP" title="permalink">»</a>&nbsp;func DialTCP(net string, laddr, raddr *TCPAddr) (*TCPConn, error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg function">
+			<pre>func DialTCP(net string, laddr, raddr *TCPAddr) (*TCPConn, error)</pre>
+			<p>
+DialTCP connects to the remote address raddr on the network net,
+which must be &#34;tcp&#34;, &#34;tcp4&#34;, or &#34;tcp6&#34;.  If laddr is not nil, it is
+used as the local address for the connection.
+</p>
+
+		</span>
+	
+
+	
+	
+		
+		<h1 id="TCPConn.Close" class="hdr pkg hdr-method"><a href="#TCPConn.Close" title="permalink">»</a>&nbsp;func (c *TCPConn) Close() error <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *TCPConn) Close() error</pre>
+			<p>
+Close closes the connection.
+</p>
+
+		</span>
+	
+		
+		<h1 id="TCPConn.CloseRead" class="hdr pkg hdr-method"><a href="#TCPConn.CloseRead" title="permalink">»</a>&nbsp;func (c *TCPConn) CloseRead() error <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *TCPConn) CloseRead() error</pre>
+			<p>
+CloseRead shuts down the reading side of the TCP connection.
+Most callers should just use Close.
+</p>
+
+		</span>
+	
+		
+		<h1 id="TCPConn.CloseWrite" class="hdr pkg hdr-method"><a href="#TCPConn.CloseWrite" title="permalink">»</a>&nbsp;func (c *TCPConn) CloseWrite() error <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *TCPConn) CloseWrite() error</pre>
+			<p>
+CloseWrite shuts down the writing side of the TCP connection.
+Most callers should just use Close.
+</p>
+
+		</span>
+	
+		
+		<h1 id="TCPConn.File" class="hdr pkg hdr-method"><a href="#TCPConn.File" title="permalink">»</a>&nbsp;func (c *TCPConn) File() (f *os.File, err error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *TCPConn) File() (f *os.File, err error)</pre>
+			<p>
+File sets the underlying os.File to blocking mode and returns a copy.
+It is the caller&#39;s responsibility to close f when finished.
+Closing c does not affect f, and closing f does not affect c.
+</p>
+<p>
+The returned os.File&#39;s file descriptor is different from the connection&#39;s.
+Attempting to change properties of the original using this duplicate
+may or may not have the desired effect.
+</p>
+
+		</span>
+	
+		
+		<h1 id="TCPConn.LocalAddr" class="hdr pkg hdr-method"><a href="#TCPConn.LocalAddr" title="permalink">»</a>&nbsp;func (c *TCPConn) LocalAddr() Addr <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *TCPConn) LocalAddr() Addr</pre>
+			<p>
+LocalAddr returns the local network address.
+</p>
+
+		</span>
+	
+		
+		<h1 id="TCPConn.Read" class="hdr pkg hdr-method"><a href="#TCPConn.Read" title="permalink">»</a>&nbsp;func (c *TCPConn) Read(b []byte) (int, error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *TCPConn) Read(b []byte) (int, error)</pre>
+			<p>
+Read implements the Conn Read method.
+</p>
+
+		</span>
+	
+		
+		<h1 id="TCPConn.ReadFrom" class="hdr pkg hdr-method"><a href="#TCPConn.ReadFrom" title="permalink">»</a>&nbsp;func (c *TCPConn) ReadFrom(r io.Reader) (int64, error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *TCPConn) ReadFrom(r io.Reader) (int64, error)</pre>
+			<p>
+ReadFrom implements the io.ReaderFrom ReadFrom method.
+</p>
+
+		</span>
+	
+		
+		<h1 id="TCPConn.RemoteAddr" class="hdr pkg hdr-method"><a href="#TCPConn.RemoteAddr" title="permalink">»</a>&nbsp;func (c *TCPConn) RemoteAddr() Addr <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *TCPConn) RemoteAddr() Addr</pre>
+			<p>
+RemoteAddr returns the remote network address.
+</p>
+
+		</span>
+	
+		
+		<h1 id="TCPConn.SetDeadline" class="hdr pkg hdr-method"><a href="#TCPConn.SetDeadline" title="permalink">»</a>&nbsp;func (c *TCPConn) SetDeadline(t time.Time) error <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *TCPConn) SetDeadline(t time.Time) error</pre>
+			<p>
+SetDeadline implements the Conn SetDeadline method.
+</p>
+
+		</span>
+	
+		
+		<h1 id="TCPConn.SetKeepAlive" class="hdr pkg hdr-method"><a href="#TCPConn.SetKeepAlive" title="permalink">»</a>&nbsp;func (c *TCPConn) SetKeepAlive(keepalive bool) error <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *TCPConn) SetKeepAlive(keepalive bool) error</pre>
+			<p>
+SetKeepAlive sets whether the operating system should send
+keepalive messages on the connection.
+</p>
+
+		</span>
+	
+		
+		<h1 id="TCPConn.SetKeepAlivePeriod" class="hdr pkg hdr-method"><a href="#TCPConn.SetKeepAlivePeriod" title="permalink">»</a>&nbsp;func (c *TCPConn) SetKeepAlivePeriod(d time.Duration) error <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *TCPConn) SetKeepAlivePeriod(d time.Duration) error</pre>
+			<p>
+SetKeepAlivePeriod sets period between keep alives.
+</p>
+
+		</span>
+	
+		
+		<h1 id="TCPConn.SetLinger" class="hdr pkg hdr-method"><a href="#TCPConn.SetLinger" title="permalink">»</a>&nbsp;func (c *TCPConn) SetLinger(sec int) error <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *TCPConn) SetLinger(sec int) error</pre>
+			<p>
+SetLinger sets the behavior of Close on a connection which still
+has data waiting to be sent or to be acknowledged.
+</p>
+<p>
+If sec &lt; 0 (the default), the operating system finishes sending the
+data in the background.
+</p>
+<p>
+If sec == 0, the operating system discards any unsent or
+unacknowledged data.
+</p>
+<p>
+If sec &gt; 0, the data is sent in the background as with sec &lt; 0. On
+some operating systems after sec seconds have elapsed any remaining
+unsent data may be discarded.
+</p>
+
+		</span>
+	
+		
+		<h1 id="TCPConn.SetNoDelay" class="hdr pkg hdr-method"><a href="#TCPConn.SetNoDelay" title="permalink">»</a>&nbsp;func (c *TCPConn) SetNoDelay(noDelay bool) error <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *TCPConn) SetNoDelay(noDelay bool) error</pre>
+			<p>
+SetNoDelay controls whether the operating system should delay
+packet transmission in hopes of sending fewer packets (Nagle&#39;s
+algorithm).  The default is true (no delay), meaning that data is
+sent as soon as possible after a Write.
+</p>
+
+		</span>
+	
+		
+		<h1 id="TCPConn.SetReadBuffer" class="hdr pkg hdr-method"><a href="#TCPConn.SetReadBuffer" title="permalink">»</a>&nbsp;func (c *TCPConn) SetReadBuffer(bytes int) error <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *TCPConn) SetReadBuffer(bytes int) error</pre>
+			<p>
+SetReadBuffer sets the size of the operating system&#39;s
+receive buffer associated with the connection.
+</p>
+
+		</span>
+	
+		
+		<h1 id="TCPConn.SetReadDeadline" class="hdr pkg hdr-method"><a href="#TCPConn.SetReadDeadline" title="permalink">»</a>&nbsp;func (c *TCPConn) SetReadDeadline(t time.Time) error <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *TCPConn) SetReadDeadline(t time.Time) error</pre>
+			<p>
+SetReadDeadline implements the Conn SetReadDeadline method.
+</p>
+
+		</span>
+	
+		
+		<h1 id="TCPConn.SetWriteBuffer" class="hdr pkg hdr-method"><a href="#TCPConn.SetWriteBuffer" title="permalink">»</a>&nbsp;func (c *TCPConn) SetWriteBuffer(bytes int) error <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *TCPConn) SetWriteBuffer(bytes int) error</pre>
+			<p>
+SetWriteBuffer sets the size of the operating system&#39;s
+transmit buffer associated with the connection.
+</p>
+
+		</span>
+	
+		
+		<h1 id="TCPConn.SetWriteDeadline" class="hdr pkg hdr-method"><a href="#TCPConn.SetWriteDeadline" title="permalink">»</a>&nbsp;func (c *TCPConn) SetWriteDeadline(t time.Time) error <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *TCPConn) SetWriteDeadline(t time.Time) error</pre>
+			<p>
+SetWriteDeadline implements the Conn SetWriteDeadline method.
+</p>
+
+		</span>
+	
+		
+		<h1 id="TCPConn.Write" class="hdr pkg hdr-method"><a href="#TCPConn.Write" title="permalink">»</a>&nbsp;func (c *TCPConn) Write(b []byte) (int, error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *TCPConn) Write(b []byte) (int, error)</pre>
+			<p>
+Write implements the Conn Write method.
+</p>
+
+		</span>
+	
+
+	
+	<h1 id="TCPListener" class="hdr pkg hdr-type"><a href="#TCPListener" title="permalink">»</a>&nbsp;type TCPListener <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg type">
+		<pre>type TCPListener struct {
+	// contains filtered or unexported fields
+}</pre>
+		<p>
+TCPListener is a TCP network listener.  Clients should typically
+use variables of type Listener instead of assuming TCP.
+</p>
+
+	</span>
+
+	
+	
+		<h1 id="ListenTCP" class="hdr pkg hdr-function"><a href="#ListenTCP" title="permalink">»</a>&nbsp;func ListenTCP(net string, laddr *TCPAddr) (*TCPListener, error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg function">
+			<pre>func ListenTCP(net string, laddr *TCPAddr) (*TCPListener, error)</pre>
+			<p>
+ListenTCP announces on the TCP address laddr and returns a TCP
+listener.  Net must be &#34;tcp&#34;, &#34;tcp4&#34;, or &#34;tcp6&#34;.  If laddr has a
+port of 0, ListenTCP will choose an available port.  The caller can
+use the Addr method of TCPListener to retrieve the chosen address.
+</p>
+
+		</span>
+	
+
+	
+	
+		
+		<h1 id="TCPListener.Accept" class="hdr pkg hdr-method"><a href="#TCPListener.Accept" title="permalink">»</a>&nbsp;func (l *TCPListener) Accept() (Conn, error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (l *TCPListener) Accept() (Conn, error)</pre>
+			<p>
+Accept implements the Accept method in the Listener interface; it
+waits for the next call and returns a generic Conn.
+</p>
+
+		</span>
+	
+		
+		<h1 id="TCPListener.AcceptTCP" class="hdr pkg hdr-method"><a href="#TCPListener.AcceptTCP" title="permalink">»</a>&nbsp;func (l *TCPListener) AcceptTCP() (*TCPConn, error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (l *TCPListener) AcceptTCP() (*TCPConn, error)</pre>
+			<p>
+AcceptTCP accepts the next incoming call and returns the new
+connection.
+</p>
+
+		</span>
+	
+		
+		<h1 id="TCPListener.Addr" class="hdr pkg hdr-method"><a href="#TCPListener.Addr" title="permalink">»</a>&nbsp;func (l *TCPListener) Addr() Addr <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (l *TCPListener) Addr() Addr</pre>
+			<p>
+Addr returns the listener&#39;s network address, a *TCPAddr.
+</p>
+
+		</span>
+	
+		
+		<h1 id="TCPListener.Close" class="hdr pkg hdr-method"><a href="#TCPListener.Close" title="permalink">»</a>&nbsp;func (l *TCPListener) Close() error <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (l *TCPListener) Close() error</pre>
+			<p>
+Close stops listening on the TCP address.
+Already Accepted connections are not closed.
+</p>
+
+		</span>
+	
+		
+		<h1 id="TCPListener.File" class="hdr pkg hdr-method"><a href="#TCPListener.File" title="permalink">»</a>&nbsp;func (l *TCPListener) File() (f *os.File, err error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (l *TCPListener) File() (f *os.File, err error)</pre>
+			<p>
+File returns a copy of the underlying os.File, set to blocking
+mode.  It is the caller&#39;s responsibility to close f when finished.
+Closing l does not affect f, and closing f does not affect l.
+</p>
+<p>
+The returned os.File&#39;s file descriptor is different from the
+connection&#39;s.  Attempting to change properties of the original
+using this duplicate may or may not have the desired effect.
+</p>
+
+		</span>
+	
+		
+		<h1 id="TCPListener.SetDeadline" class="hdr pkg hdr-method"><a href="#TCPListener.SetDeadline" title="permalink">»</a>&nbsp;func (l *TCPListener) SetDeadline(t time.Time) error <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (l *TCPListener) SetDeadline(t time.Time) error</pre>
+			<p>
+SetDeadline sets the deadline associated with the listener.
+A zero time value disables the deadline.
+</p>
+
+		</span>
+	
+
+	
+	<h1 id="UDPAddr" class="hdr pkg hdr-type"><a href="#UDPAddr" title="permalink">»</a>&nbsp;type UDPAddr <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg type">
+		<pre>type UDPAddr struct {
+	IP	IP
+	Port	int
+	Zone	string	// IPv6 scoped addressing zone
+}</pre>
+		<p>
+UDPAddr represents the address of a UDP end point.
+</p>
+
+	</span>
+
+	
+	
+		<h1 id="ResolveUDPAddr" class="hdr pkg hdr-function"><a href="#ResolveUDPAddr" title="permalink">»</a>&nbsp;func ResolveUDPAddr(net, addr string) (*UDPAddr, error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg function">
+			<pre>func ResolveUDPAddr(net, addr string) (*UDPAddr, error)</pre>
+			<p>
+ResolveUDPAddr parses addr as a UDP address of the form &#34;host:port&#34;
+or &#34;[ipv6-host%zone]:port&#34; and resolves a pair of domain name and
+port name on the network net, which must be &#34;udp&#34;, &#34;udp4&#34; or
+&#34;udp6&#34;.  A literal address or host name for IPv6 must be enclosed
+in square brackets, as in &#34;[::1]:80&#34;, &#34;[ipv6-host]:http&#34; or
+&#34;[ipv6-host%zone]:80&#34;.
+</p>
+
+		</span>
+	
+
+	
+	
+		
+		<h1 id="UDPAddr.Network" class="hdr pkg hdr-method"><a href="#UDPAddr.Network" title="permalink">»</a>&nbsp;func (a *UDPAddr) Network() string <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (a *UDPAddr) Network() string</pre>
+			<p>
+Network returns the address&#39;s network name, &#34;udp&#34;.
+</p>
+
+		</span>
+	
+		
+		<h1 id="UDPAddr.String" class="hdr pkg hdr-method"><a href="#UDPAddr.String" title="permalink">»</a>&nbsp;func (a *UDPAddr) String() string <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (a *UDPAddr) String() string</pre>
+			
+		</span>
+	
+
+	
+	<h1 id="UDPConn" class="hdr pkg hdr-type"><a href="#UDPConn" title="permalink">»</a>&nbsp;type UDPConn <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg type">
+		<pre>type UDPConn struct {
+	// contains filtered or unexported fields
+}</pre>
+		<p>
+UDPConn is the implementation of the Conn and PacketConn interfaces
+for UDP network connections.
+</p>
+
+	</span>
+
+	
+	
+		<h1 id="DialUDP" class="hdr pkg hdr-function"><a href="#DialUDP" title="permalink">»</a>&nbsp;func DialUDP(net string, laddr, raddr *UDPAddr) (*UDPConn, error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg function">
+			<pre>func DialUDP(net string, laddr, raddr *UDPAddr) (*UDPConn, error)</pre>
+			<p>
+DialUDP connects to the remote address raddr on the network net,
+which must be &#34;udp&#34;, &#34;udp4&#34;, or &#34;udp6&#34;.  If laddr is not nil, it is
+used as the local address for the connection.
+</p>
+
+		</span>
+	
+		<h1 id="ListenMulticastUDP" class="hdr pkg hdr-function"><a href="#ListenMulticastUDP" title="permalink">»</a>&nbsp;func ListenMulticastUDP(net string, ifi *Interface, gaddr *UDPAddr) (*UDPConn, error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg function">
+			<pre>func ListenMulticastUDP(net string, ifi *Interface, gaddr *UDPAddr) (*UDPConn, error)</pre>
+			<p>
+ListenMulticastUDP listens for incoming multicast UDP packets
+addressed to the group address gaddr on ifi, which specifies the
+interface to join.  ListenMulticastUDP uses default multicast
+interface if ifi is nil.
+</p>
+
+		</span>
+	
+		<h1 id="ListenUDP" class="hdr pkg hdr-function"><a href="#ListenUDP" title="permalink">»</a>&nbsp;func ListenUDP(net string, laddr *UDPAddr) (*UDPConn, error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg function">
+			<pre>func ListenUDP(net string, laddr *UDPAddr) (*UDPConn, error)</pre>
+			<p>
+ListenUDP listens for incoming UDP packets addressed to the local
+address laddr.  Net must be &#34;udp&#34;, &#34;udp4&#34;, or &#34;udp6&#34;.  If laddr has
+a port of 0, ListenUDP will choose an available port.
+The LocalAddr method of the returned UDPConn can be used to
+discover the port.  The returned connection&#39;s ReadFrom and WriteTo
+methods can be used to receive and send UDP packets with per-packet
+addressing.
+</p>
+
+		</span>
+	
+
+	
+	
+		
+		<h1 id="UDPConn.Close" class="hdr pkg hdr-method"><a href="#UDPConn.Close" title="permalink">»</a>&nbsp;func (c *UDPConn) Close() error <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *UDPConn) Close() error</pre>
+			<p>
+Close closes the connection.
+</p>
+
+		</span>
+	
+		
+		<h1 id="UDPConn.File" class="hdr pkg hdr-method"><a href="#UDPConn.File" title="permalink">»</a>&nbsp;func (c *UDPConn) File() (f *os.File, err error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *UDPConn) File() (f *os.File, err error)</pre>
+			<p>
+File sets the underlying os.File to blocking mode and returns a copy.
+It is the caller&#39;s responsibility to close f when finished.
+Closing c does not affect f, and closing f does not affect c.
+</p>
+<p>
+The returned os.File&#39;s file descriptor is different from the connection&#39;s.
+Attempting to change properties of the original using this duplicate
+may or may not have the desired effect.
+</p>
+
+		</span>
+	
+		
+		<h1 id="UDPConn.LocalAddr" class="hdr pkg hdr-method"><a href="#UDPConn.LocalAddr" title="permalink">»</a>&nbsp;func (c *UDPConn) LocalAddr() Addr <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *UDPConn) LocalAddr() Addr</pre>
+			<p>
+LocalAddr returns the local network address.
+</p>
+
+		</span>
+	
+		
+		<h1 id="UDPConn.Read" class="hdr pkg hdr-method"><a href="#UDPConn.Read" title="permalink">»</a>&nbsp;func (c *UDPConn) Read(b []byte) (int, error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *UDPConn) Read(b []byte) (int, error)</pre>
+			<p>
+Read implements the Conn Read method.
+</p>
+
+		</span>
+	
+		
+		<h1 id="UDPConn.ReadFrom" class="hdr pkg hdr-method"><a href="#UDPConn.ReadFrom" title="permalink">»</a>&nbsp;func (c *UDPConn) ReadFrom(b []byte) (int, Addr, error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *UDPConn) ReadFrom(b []byte) (int, Addr, error)</pre>
+			<p>
+ReadFrom implements the PacketConn ReadFrom method.
+</p>
+
+		</span>
+	
+		
+		<h1 id="UDPConn.ReadFromUDP" class="hdr pkg hdr-method"><a href="#UDPConn.ReadFromUDP" title="permalink">»</a>&nbsp;func (c *UDPConn) ReadFromUDP(b []byte) (n int, addr *UDPAddr, err error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *UDPConn) ReadFromUDP(b []byte) (n int, addr *UDPAddr, err error)</pre>
+			<p>
+ReadFromUDP reads a UDP packet from c, copying the payload into b.
+It returns the number of bytes copied into b and the return address
+that was on the packet.
+</p>
+<p>
+ReadFromUDP can be made to time out and return an error with
+Timeout() == true after a fixed time limit; see SetDeadline and
+SetReadDeadline.
+</p>
+
+		</span>
+	
+		
+		<h1 id="UDPConn.ReadMsgUDP" class="hdr pkg hdr-method"><a href="#UDPConn.ReadMsgUDP" title="permalink">»</a>&nbsp;func (c *UDPConn) ReadMsgUDP(b, oob []byte) (n, oobn, flags int, addr *UDPAddr, err error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *UDPConn) ReadMsgUDP(b, oob []byte) (n, oobn, flags int, addr *UDPAddr, err error)</pre>
+			<p>
+ReadMsgUDP reads a packet from c, copying the payload into b and
+the associated out-of-band data into oob.  It returns the number
+of bytes copied into b, the number of bytes copied into oob, the
+flags that were set on the packet and the source address of the
+packet.
+</p>
+
+		</span>
+	
+		
+		<h1 id="UDPConn.RemoteAddr" class="hdr pkg hdr-method"><a href="#UDPConn.RemoteAddr" title="permalink">»</a>&nbsp;func (c *UDPConn) RemoteAddr() Addr <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *UDPConn) RemoteAddr() Addr</pre>
+			<p>
+RemoteAddr returns the remote network address.
+</p>
+
+		</span>
+	
+		
+		<h1 id="UDPConn.SetDeadline" class="hdr pkg hdr-method"><a href="#UDPConn.SetDeadline" title="permalink">»</a>&nbsp;func (c *UDPConn) SetDeadline(t time.Time) error <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *UDPConn) SetDeadline(t time.Time) error</pre>
+			<p>
+SetDeadline implements the Conn SetDeadline method.
+</p>
+
+		</span>
+	
+		
+		<h1 id="UDPConn.SetReadBuffer" class="hdr pkg hdr-method"><a href="#UDPConn.SetReadBuffer" title="permalink">»</a>&nbsp;func (c *UDPConn) SetReadBuffer(bytes int) error <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *UDPConn) SetReadBuffer(bytes int) error</pre>
+			<p>
+SetReadBuffer sets the size of the operating system&#39;s
+receive buffer associated with the connection.
+</p>
+
+		</span>
+	
+		
+		<h1 id="UDPConn.SetReadDeadline" class="hdr pkg hdr-method"><a href="#UDPConn.SetReadDeadline" title="permalink">»</a>&nbsp;func (c *UDPConn) SetReadDeadline(t time.Time) error <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *UDPConn) SetReadDeadline(t time.Time) error</pre>
+			<p>
+SetReadDeadline implements the Conn SetReadDeadline method.
+</p>
+
+		</span>
+	
+		
+		<h1 id="UDPConn.SetWriteBuffer" class="hdr pkg hdr-method"><a href="#UDPConn.SetWriteBuffer" title="permalink">»</a>&nbsp;func (c *UDPConn) SetWriteBuffer(bytes int) error <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *UDPConn) SetWriteBuffer(bytes int) error</pre>
+			<p>
+SetWriteBuffer sets the size of the operating system&#39;s
+transmit buffer associated with the connection.
+</p>
+
+		</span>
+	
+		
+		<h1 id="UDPConn.SetWriteDeadline" class="hdr pkg hdr-method"><a href="#UDPConn.SetWriteDeadline" title="permalink">»</a>&nbsp;func (c *UDPConn) SetWriteDeadline(t time.Time) error <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *UDPConn) SetWriteDeadline(t time.Time) error</pre>
+			<p>
+SetWriteDeadline implements the Conn SetWriteDeadline method.
+</p>
+
+		</span>
+	
+		
+		<h1 id="UDPConn.Write" class="hdr pkg hdr-method"><a href="#UDPConn.Write" title="permalink">»</a>&nbsp;func (c *UDPConn) Write(b []byte) (int, error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *UDPConn) Write(b []byte) (int, error)</pre>
+			<p>
+Write implements the Conn Write method.
+</p>
+
+		</span>
+	
+		
+		<h1 id="UDPConn.WriteMsgUDP" class="hdr pkg hdr-method"><a href="#UDPConn.WriteMsgUDP" title="permalink">»</a>&nbsp;func (c *UDPConn) WriteMsgUDP(b, oob []byte, addr *UDPAddr) (n, oobn int, err error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *UDPConn) WriteMsgUDP(b, oob []byte, addr *UDPAddr) (n, oobn int, err error)</pre>
+			<p>
+WriteMsgUDP writes a packet to addr via c, copying the payload from
+b and the associated out-of-band data from oob.  It returns the
+number of payload and out-of-band bytes written.
+</p>
+
+		</span>
+	
+		
+		<h1 id="UDPConn.WriteTo" class="hdr pkg hdr-method"><a href="#UDPConn.WriteTo" title="permalink">»</a>&nbsp;func (c *UDPConn) WriteTo(b []byte, addr Addr) (int, error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *UDPConn) WriteTo(b []byte, addr Addr) (int, error)</pre>
+			<p>
+WriteTo implements the PacketConn WriteTo method.
+</p>
+
+		</span>
+	
+		
+		<h1 id="UDPConn.WriteToUDP" class="hdr pkg hdr-method"><a href="#UDPConn.WriteToUDP" title="permalink">»</a>&nbsp;func (c *UDPConn) WriteToUDP(b []byte, addr *UDPAddr) (int, error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *UDPConn) WriteToUDP(b []byte, addr *UDPAddr) (int, error)</pre>
+			<p>
+WriteToUDP writes a UDP packet to addr via c, copying the payload
+from b.
+</p>
+<p>
+WriteToUDP can be made to time out and return an error with
+Timeout() == true after a fixed time limit; see SetDeadline and
+SetWriteDeadline.  On packet-oriented connections, write timeouts
+are rare.
+</p>
+
+		</span>
+	
+
+	
+	<h1 id="UnixAddr" class="hdr pkg hdr-type"><a href="#UnixAddr" title="permalink">»</a>&nbsp;type UnixAddr <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg type">
+		<pre>type UnixAddr struct {
+	Name	string
+	Net	string
+}</pre>
+		<p>
+UnixAddr represents the address of a Unix domain socket end point.
+</p>
+
+	</span>
+
+	
+	
+		<h1 id="ResolveUnixAddr" class="hdr pkg hdr-function"><a href="#ResolveUnixAddr" title="permalink">»</a>&nbsp;func ResolveUnixAddr(net, addr string) (*UnixAddr, error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg function">
+			<pre>func ResolveUnixAddr(net, addr string) (*UnixAddr, error)</pre>
+			<p>
+ResolveUnixAddr parses addr as a Unix domain socket address.
+The string net gives the network name, &#34;unix&#34;, &#34;unixgram&#34; or
+&#34;unixpacket&#34;.
+</p>
+
+		</span>
+	
+
+	
+	
+		
+		<h1 id="UnixAddr.Network" class="hdr pkg hdr-method"><a href="#UnixAddr.Network" title="permalink">»</a>&nbsp;func (a *UnixAddr) Network() string <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (a *UnixAddr) Network() string</pre>
+			<p>
+Network returns the address&#39;s network name, &#34;unix&#34;, &#34;unixgram&#34; or
+&#34;unixpacket&#34;.
+</p>
+
+		</span>
+	
+		
+		<h1 id="UnixAddr.String" class="hdr pkg hdr-method"><a href="#UnixAddr.String" title="permalink">»</a>&nbsp;func (a *UnixAddr) String() string <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (a *UnixAddr) String() string</pre>
+			
+		</span>
+	
+
+	
+	<h1 id="UnixConn" class="hdr pkg hdr-type"><a href="#UnixConn" title="permalink">»</a>&nbsp;type UnixConn <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg type">
+		<pre>type UnixConn struct {
+	// contains filtered or unexported fields
+}</pre>
+		<p>
+UnixConn is an implementation of the Conn interface for connections
+to Unix domain sockets.
+</p>
+
+	</span>
+
+	
+	
+		<h1 id="DialUnix" class="hdr pkg hdr-function"><a href="#DialUnix" title="permalink">»</a>&nbsp;func DialUnix(net string, laddr, raddr *UnixAddr) (*UnixConn, error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg function">
+			<pre>func DialUnix(net string, laddr, raddr *UnixAddr) (*UnixConn, error)</pre>
+			<p>
+DialUnix connects to the remote address raddr on the network net,
+which must be &#34;unix&#34;, &#34;unixgram&#34; or &#34;unixpacket&#34;.  If laddr is not
+nil, it is used as the local address for the connection.
+</p>
+
+		</span>
+	
+		<h1 id="ListenUnixgram" class="hdr pkg hdr-function"><a href="#ListenUnixgram" title="permalink">»</a>&nbsp;func ListenUnixgram(net string, laddr *UnixAddr) (*UnixConn, error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg function">
+			<pre>func ListenUnixgram(net string, laddr *UnixAddr) (*UnixConn, error)</pre>
+			<p>
+ListenUnixgram listens for incoming Unix datagram packets addressed
+to the local address laddr.  The network net must be &#34;unixgram&#34;.
+The returned connection&#39;s ReadFrom and WriteTo methods can be used
+to receive and send packets with per-packet addressing.
+</p>
+
+		</span>
+	
+
+	
+	
+		
+		<h1 id="UnixConn.Close" class="hdr pkg hdr-method"><a href="#UnixConn.Close" title="permalink">»</a>&nbsp;func (c *UnixConn) Close() error <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *UnixConn) Close() error</pre>
+			<p>
+Close closes the connection.
+</p>
+
+		</span>
+	
+		
+		<h1 id="UnixConn.CloseRead" class="hdr pkg hdr-method"><a href="#UnixConn.CloseRead" title="permalink">»</a>&nbsp;func (c *UnixConn) CloseRead() error <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *UnixConn) CloseRead() error</pre>
+			<p>
+CloseRead shuts down the reading side of the Unix domain connection.
+Most callers should just use Close.
+</p>
+
+		</span>
+	
+		
+		<h1 id="UnixConn.CloseWrite" class="hdr pkg hdr-method"><a href="#UnixConn.CloseWrite" title="permalink">»</a>&nbsp;func (c *UnixConn) CloseWrite() error <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *UnixConn) CloseWrite() error</pre>
+			<p>
+CloseWrite shuts down the writing side of the Unix domain connection.
+Most callers should just use Close.
+</p>
+
+		</span>
+	
+		
+		<h1 id="UnixConn.File" class="hdr pkg hdr-method"><a href="#UnixConn.File" title="permalink">»</a>&nbsp;func (c *UnixConn) File() (f *os.File, err error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *UnixConn) File() (f *os.File, err error)</pre>
+			<p>
+File sets the underlying os.File to blocking mode and returns a copy.
+It is the caller&#39;s responsibility to close f when finished.
+Closing c does not affect f, and closing f does not affect c.
+</p>
+<p>
+The returned os.File&#39;s file descriptor is different from the connection&#39;s.
+Attempting to change properties of the original using this duplicate
+may or may not have the desired effect.
+</p>
+
+		</span>
+	
+		
+		<h1 id="UnixConn.LocalAddr" class="hdr pkg hdr-method"><a href="#UnixConn.LocalAddr" title="permalink">»</a>&nbsp;func (c *UnixConn) LocalAddr() Addr <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *UnixConn) LocalAddr() Addr</pre>
+			<p>
+LocalAddr returns the local network address.
+</p>
+
+		</span>
+	
+		
+		<h1 id="UnixConn.Read" class="hdr pkg hdr-method"><a href="#UnixConn.Read" title="permalink">»</a>&nbsp;func (c *UnixConn) Read(b []byte) (int, error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *UnixConn) Read(b []byte) (int, error)</pre>
+			<p>
+Read implements the Conn Read method.
+</p>
+
+		</span>
+	
+		
+		<h1 id="UnixConn.ReadFrom" class="hdr pkg hdr-method"><a href="#UnixConn.ReadFrom" title="permalink">»</a>&nbsp;func (c *UnixConn) ReadFrom(b []byte) (int, Addr, error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *UnixConn) ReadFrom(b []byte) (int, Addr, error)</pre>
+			<p>
+ReadFrom implements the PacketConn ReadFrom method.
+</p>
+
+		</span>
+	
+		
+		<h1 id="UnixConn.ReadFromUnix" class="hdr pkg hdr-method"><a href="#UnixConn.ReadFromUnix" title="permalink">»</a>&nbsp;func (c *UnixConn) ReadFromUnix(b []byte) (int, *UnixAddr, error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *UnixConn) ReadFromUnix(b []byte) (int, *UnixAddr, error)</pre>
+			<p>
+ReadFromUnix reads a packet from c, copying the payload into b.  It
+returns the number of bytes copied into b and the source address of
+the packet.
+</p>
+<p>
+ReadFromUnix can be made to time out and return an error with
+Timeout() == true after a fixed time limit; see SetDeadline and
+SetReadDeadline.
+</p>
+
+		</span>
+	
+		
+		<h1 id="UnixConn.ReadMsgUnix" class="hdr pkg hdr-method"><a href="#UnixConn.ReadMsgUnix" title="permalink">»</a>&nbsp;func (c *UnixConn) ReadMsgUnix(b, oob []byte) (n, oobn, flags int, addr *UnixAddr, err error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *UnixConn) ReadMsgUnix(b, oob []byte) (n, oobn, flags int, addr *UnixAddr, err error)</pre>
+			<p>
+ReadMsgUnix reads a packet from c, copying the payload into b and
+the associated out-of-band data into oob.  It returns the number of
+bytes copied into b, the number of bytes copied into oob, the flags
+that were set on the packet, and the source address of the packet.
+</p>
+
+		</span>
+	
+		
+		<h1 id="UnixConn.RemoteAddr" class="hdr pkg hdr-method"><a href="#UnixConn.RemoteAddr" title="permalink">»</a>&nbsp;func (c *UnixConn) RemoteAddr() Addr <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *UnixConn) RemoteAddr() Addr</pre>
+			<p>
+RemoteAddr returns the remote network address.
+</p>
+
+		</span>
+	
+		
+		<h1 id="UnixConn.SetDeadline" class="hdr pkg hdr-method"><a href="#UnixConn.SetDeadline" title="permalink">»</a>&nbsp;func (c *UnixConn) SetDeadline(t time.Time) error <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *UnixConn) SetDeadline(t time.Time) error</pre>
+			<p>
+SetDeadline implements the Conn SetDeadline method.
+</p>
+
+		</span>
+	
+		
+		<h1 id="UnixConn.SetReadBuffer" class="hdr pkg hdr-method"><a href="#UnixConn.SetReadBuffer" title="permalink">»</a>&nbsp;func (c *UnixConn) SetReadBuffer(bytes int) error <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *UnixConn) SetReadBuffer(bytes int) error</pre>
+			<p>
+SetReadBuffer sets the size of the operating system&#39;s
+receive buffer associated with the connection.
+</p>
+
+		</span>
+	
+		
+		<h1 id="UnixConn.SetReadDeadline" class="hdr pkg hdr-method"><a href="#UnixConn.SetReadDeadline" title="permalink">»</a>&nbsp;func (c *UnixConn) SetReadDeadline(t time.Time) error <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *UnixConn) SetReadDeadline(t time.Time) error</pre>
+			<p>
+SetReadDeadline implements the Conn SetReadDeadline method.
+</p>
+
+		</span>
+	
+		
+		<h1 id="UnixConn.SetWriteBuffer" class="hdr pkg hdr-method"><a href="#UnixConn.SetWriteBuffer" title="permalink">»</a>&nbsp;func (c *UnixConn) SetWriteBuffer(bytes int) error <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *UnixConn) SetWriteBuffer(bytes int) error</pre>
+			<p>
+SetWriteBuffer sets the size of the operating system&#39;s
+transmit buffer associated with the connection.
+</p>
+
+		</span>
+	
+		
+		<h1 id="UnixConn.SetWriteDeadline" class="hdr pkg hdr-method"><a href="#UnixConn.SetWriteDeadline" title="permalink">»</a>&nbsp;func (c *UnixConn) SetWriteDeadline(t time.Time) error <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *UnixConn) SetWriteDeadline(t time.Time) error</pre>
+			<p>
+SetWriteDeadline implements the Conn SetWriteDeadline method.
+</p>
+
+		</span>
+	
+		
+		<h1 id="UnixConn.Write" class="hdr pkg hdr-method"><a href="#UnixConn.Write" title="permalink">»</a>&nbsp;func (c *UnixConn) Write(b []byte) (int, error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *UnixConn) Write(b []byte) (int, error)</pre>
+			<p>
+Write implements the Conn Write method.
+</p>
+
+		</span>
+	
+		
+		<h1 id="UnixConn.WriteMsgUnix" class="hdr pkg hdr-method"><a href="#UnixConn.WriteMsgUnix" title="permalink">»</a>&nbsp;func (c *UnixConn) WriteMsgUnix(b, oob []byte, addr *UnixAddr) (n, oobn int, err error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *UnixConn) WriteMsgUnix(b, oob []byte, addr *UnixAddr) (n, oobn int, err error)</pre>
+			<p>
+WriteMsgUnix writes a packet to addr via c, copying the payload
+from b and the associated out-of-band data from oob.  It returns
+the number of payload and out-of-band bytes written.
+</p>
+
+		</span>
+	
+		
+		<h1 id="UnixConn.WriteTo" class="hdr pkg hdr-method"><a href="#UnixConn.WriteTo" title="permalink">»</a>&nbsp;func (c *UnixConn) WriteTo(b []byte, addr Addr) (int, error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *UnixConn) WriteTo(b []byte, addr Addr) (int, error)</pre>
+			<p>
+WriteTo implements the PacketConn WriteTo method.
+</p>
+
+		</span>
+	
+		
+		<h1 id="UnixConn.WriteToUnix" class="hdr pkg hdr-method"><a href="#UnixConn.WriteToUnix" title="permalink">»</a>&nbsp;func (c *UnixConn) WriteToUnix(b []byte, addr *UnixAddr) (int, error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *UnixConn) WriteToUnix(b []byte, addr *UnixAddr) (int, error)</pre>
+			<p>
+WriteToUnix writes a packet to addr via c, copying the payload from b.
+</p>
+<p>
+WriteToUnix can be made to time out and return an error with
+Timeout() == true after a fixed time limit; see SetDeadline and
+SetWriteDeadline.  On packet-oriented connections, write timeouts
+are rare.
+</p>
+
+		</span>
+	
+
+	
+	<h1 id="UnixListener" class="hdr pkg hdr-type"><a href="#UnixListener" title="permalink">»</a>&nbsp;type UnixListener <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg type">
+		<pre>type UnixListener struct {
+	// contains filtered or unexported fields
+}</pre>
+		<p>
+UnixListener is a Unix domain socket listener.  Clients should
+typically use variables of type Listener instead of assuming Unix
+domain sockets.
+</p>
+
+	</span>
+
+	
+	
+		<h1 id="ListenUnix" class="hdr pkg hdr-function"><a href="#ListenUnix" title="permalink">»</a>&nbsp;func ListenUnix(net string, laddr *UnixAddr) (*UnixListener, error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg function">
+			<pre>func ListenUnix(net string, laddr *UnixAddr) (*UnixListener, error)</pre>
+			<p>
+ListenUnix announces on the Unix domain socket laddr and returns a
+Unix listener.  The network net must be &#34;unix&#34; or &#34;unixpacket&#34;.
+</p>
+
+		</span>
+	
+
+	
+	
+		
+		<h1 id="UnixListener.Accept" class="hdr pkg hdr-method"><a href="#UnixListener.Accept" title="permalink">»</a>&nbsp;func (l *UnixListener) Accept() (Conn, error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (l *UnixListener) Accept() (Conn, error)</pre>
+			<p>
+Accept implements the Accept method in the Listener interface; it
+waits for the next call and returns a generic Conn.
+</p>
+
+		</span>
+	
+		
+		<h1 id="UnixListener.AcceptUnix" class="hdr pkg hdr-method"><a href="#UnixListener.AcceptUnix" title="permalink">»</a>&nbsp;func (l *UnixListener) AcceptUnix() (*UnixConn, error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (l *UnixListener) AcceptUnix() (*UnixConn, error)</pre>
+			<p>
+AcceptUnix accepts the next incoming call and returns the new
+connection.
+</p>
+
+		</span>
+	
+		
+		<h1 id="UnixListener.Addr" class="hdr pkg hdr-method"><a href="#UnixListener.Addr" title="permalink">»</a>&nbsp;func (l *UnixListener) Addr() Addr <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (l *UnixListener) Addr() Addr</pre>
+			<p>
+Addr returns the listener&#39;s network address.
+</p>
+
+		</span>
+	
+		
+		<h1 id="UnixListener.Close" class="hdr pkg hdr-method"><a href="#UnixListener.Close" title="permalink">»</a>&nbsp;func (l *UnixListener) Close() error <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (l *UnixListener) Close() error</pre>
+			<p>
+Close stops listening on the Unix address.  Already accepted
+connections are not closed.
+</p>
+
+		</span>
+	
+		
+		<h1 id="UnixListener.File" class="hdr pkg hdr-method"><a href="#UnixListener.File" title="permalink">»</a>&nbsp;func (l *UnixListener) File() (*os.File, error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (l *UnixListener) File() (*os.File, error)</pre>
+			<p>
+File returns a copy of the underlying os.File, set to blocking
+mode.  It is the caller&#39;s responsibility to close f when finished.
+Closing l does not affect f, and closing f does not affect l.
+</p>
+<p>
+The returned os.File&#39;s file descriptor is different from the
+connection&#39;s.  Attempting to change properties of the original
+using this duplicate may or may not have the desired effect.
+</p>
+
+		</span>
+	
+		
+		<h1 id="UnixListener.SetDeadline" class="hdr pkg hdr-method"><a href="#UnixListener.SetDeadline" title="permalink">»</a>&nbsp;func (l *UnixListener) SetDeadline(t time.Time) error <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (l *UnixListener) SetDeadline(t time.Time) error</pre>
+			<p>
+SetDeadline sets the deadline associated with the listener.
+A zero time value disables the deadline.
+</p>
+
+		</span>
+	
+
+	
+	<h1 id="UnknownNetworkError" class="hdr pkg hdr-type"><a href="#UnknownNetworkError" title="permalink">»</a>&nbsp;type UnknownNetworkError <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg type">
+		<pre>type UnknownNetworkError string</pre>
+		
+	</span>
+
+	
+	
+
+	
+	
+		
+		<h1 id="UnknownNetworkError.Error" class="hdr pkg hdr-method"><a href="#UnknownNetworkError.Error" title="permalink">»</a>&nbsp;func (e UnknownNetworkError) Error() string <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (e UnknownNetworkError) Error() string</pre>
+			
+		</span>
+	
+		
+		<h1 id="UnknownNetworkError.Temporary" class="hdr pkg hdr-method"><a href="#UnknownNetworkError.Temporary" title="permalink">»</a>&nbsp;func (e UnknownNetworkError) Temporary() bool <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (e UnknownNetworkError) Temporary() bool</pre>
+			
+		</span>
+	
+		
+		<h1 id="UnknownNetworkError.Timeout" class="hdr pkg hdr-method"><a href="#UnknownNetworkError.Timeout" title="permalink">»</a>&nbsp;func (e UnknownNetworkError) Timeout() bool <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (e UnknownNetworkError) Timeout() bool</pre>
+			
+		</span>
+	
+
+
+
+<h1 id="package-files" class="hdr pkg hdr-files"><a href="#package-files" title="permalink">»</a>&nbsp;Package Files <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg files">
+	<p>
+	<a href="https:/github.com/azul3d/tagtest/blob/v1.2/dial.go" title="view source">dial.go</a>
+	
+	<a href="https:/github.com/azul3d/tagtest/blob/v1.2/dnsclient.go" title="view source">dnsclient.go</a>
+	
+	<a href="https:/github.com/azul3d/tagtest/blob/v1.2/dnsmsg.go" title="view source">dnsmsg.go</a>
+	
+	<a href="https:/github.com/azul3d/tagtest/blob/v1.2/hosts.go" title="view source">hosts.go</a>
+	
+	<a href="https:/github.com/azul3d/tagtest/blob/v1.2/interface.go" title="view source">interface.go</a>
+	
+	<a href="https:/github.com/azul3d/tagtest/blob/v1.2/ip.go" title="view source">ip.go</a>
+	
+	<a href="https:/github.com/azul3d/tagtest/blob/v1.2/iprawsock.go" title="view source">iprawsock.go</a>
+	
+	<a href="https:/github.com/azul3d/tagtest/blob/v1.2/ipsock.go" title="view source">ipsock.go</a>
+	
+	<a href="https:/github.com/azul3d/tagtest/blob/v1.2/lookup.go" title="view source">lookup.go</a>
+	
+	<a href="https:/github.com/azul3d/tagtest/blob/v1.2/mac.go" title="view source">mac.go</a>
+	
+	<a href="https:/github.com/azul3d/tagtest/blob/v1.2/net.go" title="view source">net.go</a>
+	
+	<a href="https:/github.com/azul3d/tagtest/blob/v1.2/parse.go" title="view source">parse.go</a>
+	
+	<a href="https:/github.com/azul3d/tagtest/blob/v1.2/pipe.go" title="view source">pipe.go</a>
+	
+	<a href="https:/github.com/azul3d/tagtest/blob/v1.2/port.go" title="view source">port.go</a>
+	
+	<a href="https:/github.com/azul3d/tagtest/blob/v1.2/race.go" title="view source">race.go</a>
+	
+	<a href="https:/github.com/azul3d/tagtest/blob/v1.2/race0.go" title="view source">race0.go</a>
+	
+	<a href="https:/github.com/azul3d/tagtest/blob/v1.2/singleflight.go" title="view source">singleflight.go</a>
+	
+	<a href="https:/github.com/azul3d/tagtest/blob/v1.2/tcpsock.go" title="view source">tcpsock.go</a>
+	
+	<a href="https:/github.com/azul3d/tagtest/blob/v1.2/udpsock.go" title="view source">udpsock.go</a>
+	
+	<a href="https:/github.com/azul3d/tagtest/blob/v1.2/unixsock.go" title="view source">unixsock.go</a>
+	</p>
+
+	<h2><span class="linkarea">(<a href="#" id="tagged-files-toggle">show tagged files</a>)</span></h2>
+	<span id="tagged-files">
+		<h2>Bsd Files</h2>
+		<p>
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/cgo_bsd.go" title="view source">cgo_bsd.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/interface_bsd.go" title="view source">interface_bsd.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/sock_bsd.go" title="view source">sock_bsd.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/sockopt_bsd.go" title="view source">sockopt_bsd.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/sockoptip_bsd.go" title="view source">sockoptip_bsd.go</a>
+		</p>
+	
+		<h2>Bsd Test Files</h2>
+		<p>
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/interface_bsd_test.go" title="view source">interface_bsd_test.go</a>
+		</p>
+	
+		<h2>Cloexec Files</h2>
+		<p>
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/sock_cloexec.go" title="view source">sock_cloexec.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/sys_cloexec.go" title="view source">sys_cloexec.go</a>
+		</p>
+	
+		<h2>Darwin Files</h2>
+		<p>
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/interface_darwin.go" title="view source">interface_darwin.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/tcpsockopt_darwin.go" title="view source">tcpsockopt_darwin.go</a>
+		</p>
+	
+		<h2>Dragonfly Files</h2>
+		<p>
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/interface_dragonfly.go" title="view source">interface_dragonfly.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/sendfile_dragonfly.go" title="view source">sendfile_dragonfly.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/tcpsockopt_dragonfly.go" title="view source">tcpsockopt_dragonfly.go</a>
+		</p>
+	
+		<h2>Freebsd Files</h2>
+		<p>
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/interface_freebsd.go" title="view source">interface_freebsd.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/sendfile_freebsd.go" title="view source">sendfile_freebsd.go</a>
+		</p>
+	
+		<h2>Gen Files</h2>
+		<p>
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/dial_gen.go" title="view source">dial_gen.go</a>
+		</p>
+	
+		<h2>Gen Test Files</h2>
+		<p>
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/dial_gen_test.go" title="view source">dial_gen_test.go</a>
+		</p>
+	
+		<h2>Last Test Files</h2>
+		<p>
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/z_last_test.go" title="view source">z_last_test.go</a>
+		</p>
+	
+		<h2>Linux Files</h2>
+		<p>
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/cgo_linux.go" title="view source">cgo_linux.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/interface_linux.go" title="view source">interface_linux.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/sendfile_linux.go" title="view source">sendfile_linux.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/sock_linux.go" title="view source">sock_linux.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/sockopt_linux.go" title="view source">sockopt_linux.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/sockoptip_linux.go" title="view source">sockoptip_linux.go</a>
+		</p>
+	
+		<h2>Linux Test Files</h2>
+		<p>
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/interface_linux_test.go" title="view source">interface_linux_test.go</a>
+		</p>
+	
+		<h2>Mutex Files</h2>
+		<p>
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/fd_mutex.go" title="view source">fd_mutex.go</a>
+		</p>
+	
+		<h2>Mutex Test Files</h2>
+		<p>
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/fd_mutex_test.go" title="view source">fd_mutex_test.go</a>
+		</p>
+	
+		<h2>Netbsd Files</h2>
+		<p>
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/cgo_netbsd.go" title="view source">cgo_netbsd.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/interface_netbsd.go" title="view source">interface_netbsd.go</a>
+		</p>
+	
+		<h2>Openbsd Files</h2>
+		<p>
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/cgo_openbsd.go" title="view source">cgo_openbsd.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/interface_openbsd.go" title="view source">interface_openbsd.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/tcpsockopt_openbsd.go" title="view source">tcpsockopt_openbsd.go</a>
+		</p>
+	
+		<h2>Plan9 Files</h2>
+		<p>
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/fd_plan9.go" title="view source">fd_plan9.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/file_plan9.go" title="view source">file_plan9.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/iprawsock_plan9.go" title="view source">iprawsock_plan9.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/ipsock_plan9.go" title="view source">ipsock_plan9.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/lookup_plan9.go" title="view source">lookup_plan9.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/sock_plan9.go" title="view source">sock_plan9.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/sockopt_plan9.go" title="view source">sockopt_plan9.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/tcpsock_plan9.go" title="view source">tcpsock_plan9.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/tcpsockopt_plan9.go" title="view source">tcpsockopt_plan9.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/udpsock_plan9.go" title="view source">udpsock_plan9.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/unixsock_plan9.go" title="view source">unixsock_plan9.go</a>
+		</p>
+	
+		<h2>Poll Nacl Files</h2>
+		<p>
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/fd_poll_nacl.go" title="view source">fd_poll_nacl.go</a>
+		</p>
+	
+		<h2>Poll Runtime Files</h2>
+		<p>
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/fd_poll_runtime.go" title="view source">fd_poll_runtime.go</a>
+		</p>
+	
+		<h2>Posix Files</h2>
+		<p>
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/iprawsock_posix.go" title="view source">iprawsock_posix.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/ipsock_posix.go" title="view source">ipsock_posix.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/sock_posix.go" title="view source">sock_posix.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/sockopt_posix.go" title="view source">sockopt_posix.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/sockoptip_posix.go" title="view source">sockoptip_posix.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/tcpsock_posix.go" title="view source">tcpsock_posix.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/tcpsockopt_posix.go" title="view source">tcpsockopt_posix.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/udpsock_posix.go" title="view source">udpsock_posix.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/unixsock_posix.go" title="view source">unixsock_posix.go</a>
+		</p>
+	
+		<h2>Posix Test Files</h2>
+		<p>
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/unicast_posix_test.go" title="view source">unicast_posix_test.go</a>
+		</p>
+	
+		<h2>Solaris Files</h2>
+		<p>
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/sock_solaris.go" title="view source">sock_solaris.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/sockopt_solaris.go" title="view source">sockopt_solaris.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/tcpsockopt_solaris.go" title="view source">tcpsockopt_solaris.go</a>
+		</p>
+	
+		<h2>Stub Files</h2>
+		<p>
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/cgo_stub.go" title="view source">cgo_stub.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/interface_stub.go" title="view source">interface_stub.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/sendfile_stub.go" title="view source">sendfile_stub.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/sockoptip_stub.go" title="view source">sockoptip_stub.go</a>
+		</p>
+	
+		<h2>Test Files</h2>
+		<p>
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/conn_test.go" title="view source">conn_test.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/dial_test.go" title="view source">dial_test.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/dialgoogle_test.go" title="view source">dialgoogle_test.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/dnsclient_test.go" title="view source">dnsclient_test.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/dnsmsg_test.go" title="view source">dnsmsg_test.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/dnsname_test.go" title="view source">dnsname_test.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/file_test.go" title="view source">file_test.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/hosts_test.go" title="view source">hosts_test.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/interface_test.go" title="view source">interface_test.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/ip_test.go" title="view source">ip_test.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/ipraw_test.go" title="view source">ipraw_test.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/ipsock_test.go" title="view source">ipsock_test.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/lookup_test.go" title="view source">lookup_test.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/mac_test.go" title="view source">mac_test.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/mockicmp_test.go" title="view source">mockicmp_test.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/mockserver_test.go" title="view source">mockserver_test.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/multicast_test.go" title="view source">multicast_test.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/net_test.go" title="view source">net_test.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/packetconn_test.go" title="view source">packetconn_test.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/parse_test.go" title="view source">parse_test.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/pipe_test.go" title="view source">pipe_test.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/port_test.go" title="view source">port_test.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/protoconn_test.go" title="view source">protoconn_test.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/server_test.go" title="view source">server_test.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/tcp_test.go" title="view source">tcp_test.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/timeout_test.go" title="view source">timeout_test.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/udp_test.go" title="view source">udp_test.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/unix_test.go" title="view source">unix_test.go</a>
+		</p>
+	
+		<h2>Unix Files</h2>
+		<p>
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/cgo_unix.go" title="view source">cgo_unix.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/dnsclient_unix.go" title="view source">dnsclient_unix.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/dnsconfig_unix.go" title="view source">dnsconfig_unix.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/fd_unix.go" title="view source">fd_unix.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/file_unix.go" title="view source">file_unix.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/lookup_unix.go" title="view source">lookup_unix.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/port_unix.go" title="view source">port_unix.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/tcpsockopt_unix.go" title="view source">tcpsockopt_unix.go</a>
+		</p>
+	
+		<h2>Unix Test Files</h2>
+		<p>
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/cgo_unix_test.go" title="view source">cgo_unix_test.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/dnsclient_unix_test.go" title="view source">dnsclient_unix_test.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/dnsconfig_unix_test.go" title="view source">dnsconfig_unix_test.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/fd_unix_test.go" title="view source">fd_unix_test.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/interface_unix_test.go" title="view source">interface_unix_test.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/netgo_unix_test.go" title="view source">netgo_unix_test.go</a>
+		</p>
+	
+		<h2>Windows Files</h2>
+		<p>
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/fd_windows.go" title="view source">fd_windows.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/file_windows.go" title="view source">file_windows.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/interface_windows.go" title="view source">interface_windows.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/lookup_windows.go" title="view source">lookup_windows.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/sendfile_windows.go" title="view source">sendfile_windows.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/sock_windows.go" title="view source">sock_windows.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/sockopt_windows.go" title="view source">sockopt_windows.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/sockoptip_windows.go" title="view source">sockoptip_windows.go</a>
+		
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/tcpsockopt_windows.go" title="view source">tcpsockopt_windows.go</a>
+		</p>
+	
+		<h2>Windows Test Files</h2>
+		<p>
+		<a href="https:/github.com/azul3d/tagtest/blob/v1.2/net_windows_test.go" title="view source">net_windows_test.go</a>
+		</p>
+	</span>
+</span>
+
+
+<script>
+$(function() {
+	$("#tagged-files").slideUp();
+	var toggle = true;
+	$("#tagged-files-toggle").click(function(event) {
+		event.preventDefault();
+		toggle = !toggle;
+		if(toggle) {
+			$("#tagged-files").slideUp();
+			$("#tagged-files-toggle").html("show tagged files");
+		} else {
+			$("#tagged-files").slideDown();
+			$("#tagged-files-toggle").html("hide tagged files");
+		}
+	});
+});
+</script>
+
+	</div>
+</div>
+
+
+<div id="footer">
+	<div>© 2014 The Azul3D Authors, All Rights Reserved.</div>
+	<div>Unless noted otherwise, the content of this page is licensed under the Creative Commons Attribution 3.0 License, and code is licensed under a BSD license.</div>
+</div>
+
+
+<script>
+$(document).ready(function() {
+	$("body").css("opacity", 0);
+});
+
+$(window).ready(function() {
+	var fadeIn = function(self, delay) {
+		self.css("opacity", 0).delay(delay).animate({opacity: 1}, "slow");
+	}
+
+	var fromSameSite = document.referrer.indexOf(location.protocol + "//" + location.host) === 0;
+
+	
+	
+	var longPage = $(document).height() > $(window).height() * 3;
+	if(fromSameSite || longPage) {
+		fadeIn($("body"), 10);
+	} else {
+		var workingIndex = 0;
+		var speed = 75;
+		$("#content").children().each(function(index) {
+			fadeIn($(this), 1000 + (speed * workingIndex));
+			workingIndex++;
+			if($(this).hasClass("list")) {
+				$(this).children().each(function(index) {
+					fadeIn($(this), 1000 + (speed * workingIndex));
+					workingIndex++;
+				});
+			}
+		});
+
+		var w = $("#shortbar").width();
+		$("#shortbar").css({
+			right: -w-1 + "px",
+			opacity: 0
+		}).delay(10).animate({
+			right: "0px",
+			opacity: 1
+			}, "slow");
+
+		var w = $("#navigation").width();
+		$("#navigation").css({
+			left: -w-1 + "px",
+			opacity: 0
+		}).delay(10).animate({
+			left: "0px",
+			opacity: 1
+			}, "slow");
+
+		fadeIn($("#logo"), 10);
+		fadeIn($("body"), 10);
+	}
+})
+</script>
+	</body>
+</html>
+
+
+

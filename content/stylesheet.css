@@ -1,0 +1,342 @@
+/*
+	Copyright 2014 The Azul3D Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+*/
+
+body, html{
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+/* Gecko dotted outline removal */
+:focus {outline:none;}
+::-moz-focus-inner {border:0;}
+
+em{
+	font-style: italic;
+}
+
+strong{
+	font-weight: bold;
+}
+
+body{
+	font-family: 'Audiowide', cursive;
+	font-size: 16px;
+	color: black;
+	overflow-x: hidden;
+	line-height: 125%;
+}
+
+/*
+	Main Layout
+*/
+body{
+	white-space: nowrap;
+}
+#toparea, #navigation, #content-container, #footer{
+	white-space: normal;
+}
+
+#navigation {
+	text-align: left;
+	display: inline-block;
+	float: left;
+	padding-top: 1.5em;
+	padding-left: 3em;
+	padding-right: 1em;
+}
+#navigation .list {
+	padding-left: 1.25em;
+}
+
+#content-container {
+	margin-left: 13.5em;
+	min-height: 60%;
+	text-align: center;
+}
+#content{
+	white-space: normal;
+	text-align: left;
+	min-height: 100%;
+	display: inline-block;
+}
+#content.slim{
+	margin-left: -13.5em;
+	max-width: 60%;
+}
+
+#toparea {
+	/* Wraps shortbar and logo. Must have valid height for both. */
+	height: 7em;
+}
+
+
+/*
+	Shortcut Bar
+*/
+#shortbar{
+	float: right;
+	display: inline-block;
+	vertical-align: top;
+	overflow: hidden;
+	padding-top: 1.4em;
+	padding-right: 1.5em;
+	text-align: left;
+}
+#shortbar .mail {
+	text-decoration: none;
+}
+#shortbar a{
+	display: inline-block;
+	color: black;
+}
+#shortbar .title{
+	text-align: center;
+	padding-bottom: 1em;
+	text-decoration: underline;
+}
+
+
+/*
+	Logo
+*/
+#logo{
+	float: left;
+	display: inline-block;
+	padding-left: 1.2em;
+	padding-top: -.25em;
+}
+#logo>a{
+	margin: 0;
+	padding: 0;
+	color: black;
+	text-decoration: none; /* remove underline */
+}
+#logo>a>span:first-child{
+	font-size: 6em;
+	line-height: 100%;
+	vertical-align: middle;
+}
+#logo>a>span:last-child{
+	/*background-image: url(/content/symbol_64x64.png);
+	background-repeat: no-repeat;*/
+	position: relative;
+	top: .1em;
+	vertical-align: middle;
+	font-size: 3.3em;
+}
+
+
+.biohazard{
+	font-family: "dejavu_sansbook";
+}
+
+.code{
+	font-family: 'Cutive Mono';
+	padding: .21em;
+	background-color: #d6d6d6;
+}
+
+span{
+	display: inline-block;
+}
+
+.section{
+	font-family: Arial, Helvetica, sans-serif;
+	padding-left: 1em;
+
+	width: 90%;
+	width: -moz-calc(100% - 1em);
+	width: -webkit-calc(100% - 1em);
+	width: calc(100% - 1em);
+}
+
+p{
+	padding-bottom: .5em;
+}
+
+.code{
+	display: inline-block;
+	max-width: 45em;
+}
+
+h1>.toplink{
+	font-size: 63%;
+}
+
+#top{
+	float: left;
+	width: 0;
+	height: 0;
+	margin: 0;
+	padding: 0; 
+}
+
+table{
+	font-family: Arial, Helvetica, sans-serif;
+	padding-bottom: 1em;
+	margin-bottom: .5em;
+}
+
+thead{
+	font-family: 'Cutive Mono';
+	border-bottom: 1px solid black;
+	font-weight: bold;
+	background-color: #d6d6d6;
+}
+
+table tr:nth-child(even) {
+	background-color: #d6d6d6;
+}
+
+table td{
+	padding: .25em;
+	padding-right: 1em;
+}
+
+.list{
+	display: block;
+    list-style-type: none;
+    padding: 0px;
+	padding-top: .5em;
+	padding-bottom: .5em;
+	padding-left: 1.25em;
+}
+
+.list .item {
+	display: block;
+	padding-bottom: .6em;
+	vertical-align: middle;
+	white-space: nowrap;
+}
+.list .item .content{
+	white-space: normal;
+	vertical-align: middle;
+}
+.list .item .indent{
+	padding-left: 1.5em;
+}
+
+
+.menuIcon{
+	display: block;
+	color: black;
+	font-size: 1.5em;
+	text-align: center;
+	padding-top: .3em;
+	padding-bottom: .3em;
+	padding-left: .5em;
+	padding-right: .5em;
+}
+
+.mailIcon{
+	margin-top: -.3em;
+	margin-bottom: -.3em;
+	font-family: "dejavu_sansbook";
+	font-size: 2.1em;
+	line-height: 100%;
+}
+
+h1{
+	font-size: 1.5em;
+	line-height: 125%;
+	padding-top: .25em;
+	padding-bottom: .5em;
+}
+
+h2{
+	font-size: 1.25em;
+	line-height: 112%;
+	padding-bottom: .5em;
+}
+
+h2 .linkarea{
+	font-size: 93%;
+}
+
+#footer{
+	width: 100%;
+	padding-bottom: 1.5em;
+}
+#footer div{
+	padding-left: 1.5em;
+	padding-right: 1.5em;
+	text-align: center;
+	font-size: 75%;
+	line-height: 132%;
+}
+
+
+/*
+	Package Documentation Styling.
+*/
+#content.pkg-content{
+	max-width: 80%;
+}
+.pkg, .pkg.general>p:first-child, .pkg.general>.sub{
+	font-family: Arial, Helvetica, sans-serif;
+}
+.pkg h2, .pkg.general, .pkg.hdr {
+	font-family: 'Audiowide', cursive;
+}
+.pkg.hdr{
+	padding-bottom: .1em;
+}
+.pkg.general>.sub{
+	padding-left: 1em;
+}
+.pkg.hdr-general{
+	padding-bottom: 0;
+}
+.pkg.section a{
+	text-decoration: none;
+}
+.pkg.versions a, .pkg.general>.sub a{
+	text-decoration: underline;
+}
+.pkg.section a:hover{
+	text-decoration: underline;
+}
+
+.pkg.overview>p:first-child{
+	/* Package Synopsis */
+}
+
+.pkg.import, .pkg>pre{
+	/* Package Import Line */
+	margin-bottom: 1em;
+	max-width: 100%;
+}
+.pkg>pre{
+	margin-left: .6em;
+}
+.pkg.section>pre{
+	overflow: auto;
+	word-wrap: normal;
+	white-space: pre;
+	display: inline-block;
+	width: 80%;
+
+	/* 12px is too small, 16px is too big (16*0.87 = 13.92px) */
+	font-size: 87%;
+}
+.pkg.import, .pkg>pre{
+	/* Package Overview Code Sections */
+	font-family: 'Cutive Mono';
+	background-color: #e2e2e2;
+	padding: .21em;
+}
+
+.pkg.hdr-function, .pkg.hdr-type, .pkg.hdr-method {
+	font-size: 105%;
+}
+
+.pkg.files h2, .pkg.files span{
+	padding-bottom: .25em;
+}
+.pkg.files p{
+	padding-left: .75em;
+}

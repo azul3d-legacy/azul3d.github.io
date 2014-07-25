@@ -1,0 +1,245 @@
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="description" content="A 3D game engine written in Go!">
+		<meta name="author" content="The Azul3D Authors">
+		<title>Azul3D</title>
+		<link rel="shortcut icon" href="/content/favicon.png"> 
+
+		
+		<link rel="stylesheet" type="text/css" href="/content/reset.css">
+
+		
+		<link href='http://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Cutive+Mono' rel='stylesheet' type='text/css'>
+
+		
+		<link href='/content/dejavusans_book/stylesheet.css' rel='stylesheet' type='text/css'>
+
+		
+		<link href='/content/brandico/brandico.css' rel='stylesheet' type='text/css'>
+
+		
+		
+
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+		
+		<link rel="stylesheet" type="text/css" href="/content/stylesheet.css">
+		<link rel="stylesheet" type="text/css" href="/content/mq.css">
+	</head>
+	<body>
+
+
+<div id="top"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="toparea">
+	<div id="logo">
+		<a href="/"><span class="biohazard">☣</span>
+		<span>Azul3D</span></a>
+	</div>
+
+	<div id="shortbar">
+		<a href="https://github.com/azul3d" target="_blank"><i class="icon-github menuIcon"></i><div class="title">GitHub</div></a>
+		<a href="https://twitter.com/hashtag/azul3d" target="_blank"><i class="icon-twitter-bird menuIcon"></i><div class="title">Twitter</div></a>
+		<a href="https://www.facebook.com/pages/Azul3D/651643168254798" target="_blank"><i class="icon-facebook menuIcon"></i><div class="title">Facebook</div></a>
+		<a href="https://groups.google.com/forum/#!forum/azul3d" target="_blank" class="mail"><i class="menuIcon mailIcon">✉</i><div class="title">Mailing List</div></a>
+	</div>
+</div>
+
+<div id="navigation">
+	<h1>Navigation</h1>
+	<span class="list">
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="/">Home</a></span></span>
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="/news">News</a></span></span>
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="/packages.html">Packages</a></span></span>
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="/doc/faq.html">FAQ</a></span></span>
+	</span>
+</div>
+
+
+<div id="content-container">
+	<div id="content" class="slim">
+
+
+
+<h1 class="hdr ">Windows Installation</h1>
+<span class="section ">
+	<p>What follows is a detailed step-by-step guide on installing Azul3D on a windows 386/amd64 platform. For other platforms please see <a href="/doc/install">this page</a>.</p>
+
+	<span class="list">
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#install-go">Install Go</a></span></span>
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#install-git">Install Git</a></span></span>
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#install-mingw-32">Install MinGW (32-bit Windows)</a></span></span>
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#install-mingw-64">Install MinGW (64-bit Windows)</a></span></span>
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#compiling-the-examples">Compiling The Examples</a></span></span>
+	</span>
+</span>
+
+
+<h1 id="install-go" class="hdr "><a href="#install-go" title="permalink">»</a>&nbsp;Install Go <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section ">
+	<p>Install the latest version of Go from <a href="http://golang.org/doc/install">here</a>.</p>
+	<p>Set the environment variable GOPATH, for example:</p>
+	<span class="list">
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">C:\Users\joe\Desktop\godev</span></span></span>
+	</span>
+</span>
+
+
+<h1 id="install-git" class="hdr "><a href="#install-git" title="permalink">»</a>&nbsp;Install Git <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section ">
+	<p>Install git (use default installation options) from <a href="http://git-scm.com/downloads">here</a>.</p>
+	<p>(32-bit Windows) Add git to the PATH environment variable:</p>
+	<span class="list">
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">C:\Program Files\Git\bin</span></span></span>
+	</span>
+	<p>(64-bit Windows) Add git to the PATH environment variable:</p>
+	<span class="list">
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">C:\Program Files (x86)\Git\bin</span></span></span>
+	</span>
+</span>
+
+
+<h1 id="install-mingw-32-bit-windows" class="hdr "><a href="#install-mingw-32-bit-windows" title="permalink">»</a>&nbsp;Install MinGW (32-bit Windows) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section ">
+	<p>Download "mingw-get-setup.exe" from <a href="http://sourceforge.net/projects/mingw/files/">here</a>. Install using the default options, then launch the program and select the following:</p>
+	<table>
+		<thead><td>Package</td><td>Class</td></thead>
+		<tr><td>mingw32-base</td><td>bin</td></tr>
+		<tr><td>mingw32-gcc-g++</td><td>bin</td></tr>
+		<tr><td>mingw32-gcc-g++</td><td>dev</td></tr>
+	</table>
+	<span class="list">
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content">Click "Installation -> Apply Changes"</span></span>
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content">Click "Apply"</span></span>
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content">Wait for downloading to finish, then close the application.</span></span>
+	</span>
+	<p>Add MinGW to the PATH environment variable:</p>
+	<span class="list">
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">C:\MinGW\bin</span></span></span>
+	</span>
+</span>
+
+
+<h1 id="install-mingw-64-bit-windows" class="hdr "><a href="#install-mingw-64-bit-windows" title="permalink">»</a>&nbsp;Install MinGW (64-bit Windows) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section ">
+	<p>For a amd64 mingw compiler we reccomend the pre-built binaries found <a href="http://sourceforge.net/projects/mingwbuilds/files/host-windows/releases/4.8.0/64-bit/threads-posix/seh/x64-4.8.0-release-posix-seh-rev2.7z/download">here</a>.</p>
+	<p>You can download <a href="http://downloads.sourceforge.net/sevenzip/7z920-x64.msi">7-zip</a> to extract the compressed archive.</p>
+	<p>Extract the mingw64 folder into:</p>
+	<span class="list">
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">C:\mingw64</span></span></span>
+	</span>
+	<p>Add MinGW to the PATH environment variable:</p>
+	<span class="list">
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">C:\mingw64\bin</span></span></span>
+	</span>
+</span>
+
+
+<h1 id="compiling-the-examples" class="hdr "><a href="#compiling-the-examples" title="permalink">»</a>&nbsp;Compiling The Examples <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section ">
+	<p>You are almost finished! Download, compile, and run the examples by following the steps <a href="/doc/install">here</a>.</p>
+</span>
+
+	</div>
+</div>
+
+
+<div id="footer">
+	<div>© 2014 The Azul3D Authors, All Rights Reserved.</div>
+	<div>Unless noted otherwise, the content of this page is licensed under the Creative Commons Attribution 3.0 License, and code is licensed under a BSD license.</div>
+</div>
+
+
+<script>
+$(document).ready(function() {
+	$("body").css("opacity", 0);
+});
+
+$(window).ready(function() {
+	var fadeIn = function(self, delay) {
+		self.css("opacity", 0).delay(delay).animate({opacity: 1}, "slow");
+	}
+
+	var fromSameSite = document.referrer.indexOf(location.protocol + "//" + location.host) === 0;
+
+	
+	
+	var longPage = $(document).height() > $(window).height() * 3;
+	if(fromSameSite || longPage) {
+		fadeIn($("body"), 10);
+	} else {
+		var workingIndex = 0;
+		var speed = 75;
+		$("#content").children().each(function(index) {
+			fadeIn($(this), 1000 + (speed * workingIndex));
+			workingIndex++;
+			if($(this).hasClass("list")) {
+				$(this).children().each(function(index) {
+					fadeIn($(this), 1000 + (speed * workingIndex));
+					workingIndex++;
+				});
+			}
+		});
+
+		var w = $("#shortbar").width();
+		$("#shortbar").css({
+			right: -w-1 + "px",
+			opacity: 0
+		}).delay(10).animate({
+			right: "0px",
+			opacity: 1
+			}, "slow");
+
+		var w = $("#navigation").width();
+		$("#navigation").css({
+			left: -w-1 + "px",
+			opacity: 0
+		}).delay(10).animate({
+			left: "0px",
+			opacity: 1
+			}, "slow");
+
+		fadeIn($("#logo"), 10);
+		fadeIn($("body"), 10);
+	}
+})
+</script>
+	</body>
+</html>
+
+
+

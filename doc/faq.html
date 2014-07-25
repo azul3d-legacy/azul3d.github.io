@@ -1,0 +1,279 @@
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="description" content="A 3D game engine written in Go!">
+		<meta name="author" content="The Azul3D Authors">
+		<title>Azul3D</title>
+		<link rel="shortcut icon" href="/content/favicon.png"> 
+
+		
+		<link rel="stylesheet" type="text/css" href="/content/reset.css">
+
+		
+		<link href='http://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Cutive+Mono' rel='stylesheet' type='text/css'>
+
+		
+		<link href='/content/dejavusans_book/stylesheet.css' rel='stylesheet' type='text/css'>
+
+		
+		<link href='/content/brandico/brandico.css' rel='stylesheet' type='text/css'>
+
+		
+		
+
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+		
+		<link rel="stylesheet" type="text/css" href="/content/stylesheet.css">
+		<link rel="stylesheet" type="text/css" href="/content/mq.css">
+	</head>
+	<body>
+
+
+<div id="top"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="toparea">
+	<div id="logo">
+		<a href="/"><span class="biohazard">☣</span>
+		<span>Azul3D</span></a>
+	</div>
+
+	<div id="shortbar">
+		<a href="https://github.com/azul3d" target="_blank"><i class="icon-github menuIcon"></i><div class="title">GitHub</div></a>
+		<a href="https://twitter.com/hashtag/azul3d" target="_blank"><i class="icon-twitter-bird menuIcon"></i><div class="title">Twitter</div></a>
+		<a href="https://www.facebook.com/pages/Azul3D/651643168254798" target="_blank"><i class="icon-facebook menuIcon"></i><div class="title">Facebook</div></a>
+		<a href="https://groups.google.com/forum/#!forum/azul3d" target="_blank" class="mail"><i class="menuIcon mailIcon">✉</i><div class="title">Mailing List</div></a>
+	</div>
+</div>
+
+<div id="navigation">
+	<h1>Navigation</h1>
+	<span class="list">
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="/">Home</a></span></span>
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="/news">News</a></span></span>
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="/packages.html">Packages</a></span></span>
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="/doc/faq.html">FAQ</a></span></span>
+	</span>
+</div>
+
+
+<div id="content-container">
+	<div id="content" class="slim">
+
+
+
+<h1 class="hdr ">FAQ</h1>
+<span class="section ">
+	<p>Compiled here is a list of frequently asked questions about Azul3D. If you have questions not listed here please ask in the <a href="https://groups.google.com/forum/#!forum/azul3d">Mailing List</a>.</p>
+
+	<span class="list">
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#what-is-azul3d">What is Azul3D?</a></span></span>
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#why-go">Why Go?</a></span></span>
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#what-does-it-provide">What does it provide?</a></span></span>
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#how-do-i-install-it">How do I install it?</a></span></span>
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#how-does-versioning-work">How does versioning work?</a></span></span>
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#what-about-the-garbage-collector">What about the garbage collector?</a></span></span>
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#does-it-have-a-level-editor">Does it have a level editor?</a></span></span>
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#can-it-be-scripted">Can it be scripted?</a></span></span>
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#where-can-i-report-bugs">Where can I report bugs?</a></span></span>
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#where-can-i-request-features">Where can I request features?</a></span></span>
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#how-can-i-get-in-touch">How can I get in touch?</a></span></span>
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#what-types-of-applications">What types of applications?</a></span></span>
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#what-platforms-are-supported">What platforms are supported?</a></span></span>
+	</span>
+</span>
+
+
+<h1 id="what-is-azul3d" class="hdr "><a href="#what-is-azul3d" title="permalink">»</a>&nbsp;What is Azul3D? <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section ">
+	<p>Azul3D is a 3D game engine written entirely from the ground up in the Go programming language. It is suitable for most types of 2D and 3D applications, it can even be used for non-game interactive applications. Unlike other modern game engines like Unity, JMonkey, etc, Azul3D does not attempt to provide anything more than programming packages suitable for game developers. There is no custom IDE, nor level editor.</p>
+	<p>It is a game engine for programmers, by programmers. It is minimalistic, but also extensable compared to most other engines.</p>
+	<p>It tries to provide the things that most game developers will use daily -- and it tries to provide them well.</p>
+</span>
+
+
+<h1 id="why-go" class="hdr "><a href="#why-go" title="permalink">»</a>&nbsp;Why Go? <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section ">
+	<p>Go is one of the very few languages in existence today that provides concurrency at a language level, additionally, Go is compiled into native binaries and has the potential to reach C/C++ speeds. Only some of the most advanced open source game engines today provide good support for multi-threaded rendering and, because of Go, Azul3D is able to provide that feature with ease and simplicity.</p>
+	<p>There are many other areas where Go could accel well at game development -- Go has syntax familiar to those coming from scripting languages and ideally games written in Go would also be 'scripted' in Go. You can also imagine each computer player in a simulated game being controlled by it's own goroutine -- something that would not be possible with the threading model present in other languages.</p>
+</span>
+
+
+<h1 id="what-does-it-provide" class="hdr "><a href="#what-does-it-provide" title="permalink">»</a>&nbsp;What does it provide? <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section ">
+	<p>Azul3D provides a set of packages for developing games and other interactive 2D or 3D applications in Go, a list of those packages and their documentation can be found <a href="/pkg">here</a>.</p>
+</span>
+
+
+<h1 id="how-do-i-install-it" class="hdr "><a href="#how-do-i-install-it" title="permalink">»</a>&nbsp;How do I install it? <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section ">
+	<p>Please see the <a href="/doc/install">installation page</a>.</p>
+</span>
+
+
+<h1 id="how-does-versioning-work" class="hdr "><a href="#how-does-versioning-work" title="permalink">»</a>&nbsp;How does versioning work? <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section ">
+	<p>Please see the <a href="/doc/versioning.html">versioning page</a>.</p>
+</span>
+
+
+<h1 id="what-about-the-garbage-collector" class="hdr "><a href="#what-about-the-garbage-collector" title="permalink">»</a>&nbsp;What about the garbage collector? <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section ">
+	<p>Go is by specification a <em>garbage collected programming language</em>, this means that developers do not need to manually control memory but also means they must be aware of how the garbage collector works in order to receive exceptional performance.</p>
+	<p>The default implementation of Go, uses a <em>stop-the-world</em> garbage collector. This means application code is paused while memory is being garbage collected. If this happens often, your graphical application will appear to be slow or laggy.</p>
+	<p>But Go is different from other garbage collected languages because it gives you much more control over garbage collection and memory management in general. In truth garbage collection does not hinder game development as much as people generally think because of the following reasons:</p>
+	<span class="list">
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content">OpenGL uses double buffering, when a frame is submitted to OpenGL it doesn't actually show up until the buffer swapping occurs.</span></span>
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content">Azul3D uses a multi-threaded renderer, providing yet-another level of buffering (application logic and the renderer operate independently).</span></span>
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content">GC pause times are often small, and much of the time negligible. If a developer pays special care to not make lots of garbage, all the better.</span></span>
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content">Go 1.3 introduced <a href="http://www.golang.org/pkg/sync/#Pool">sync.Pool</a>, a garbage collector aware free list which allows developers to alleviate GC pressure by re-using old already allocated objects.</span></span>
+	</span>
+</span>
+
+
+<h1 id="does-it-have-a-level-editor" class="hdr "><a href="#does-it-have-a-level-editor" title="permalink">»</a>&nbsp;Does it have a level editor? <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section ">
+	<p>No, and it likely never will. Azul3D is for programmers and doesn't provide GUI-editors. With that being said, there may be importers in the future for 3D modelers which will make importing scenes from those 3D modelers (such as Blender) into Azul3D trivial.</p> 
+</span>
+
+
+<h1 id="can-it-be-scripted" class="hdr "><a href="#can-it-be-scripted" title="permalink">»</a>&nbsp;Can it be scripted? <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section ">
+	<p>One of the key points of making games in Go is the easy syntax. You probably don't actually need a scripting language at all. With that being said, you could probably use some scripting language that can interact with Go to script games, yes.</p>
+</span>
+
+
+<h1 id="where-can-i-report-bugs" class="hdr "><a href="#where-can-i-report-bugs" title="permalink">»</a>&nbsp;Where can I report bugs? <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section ">
+	<p>We appreciate that bugs specific to a single package be reported on that package's GitHub repository.</p>
+	<p>For bugs related to this website, etc, please file them <a href="https://github.com/azul3d/issues/issues">here</a>.</p>
+</span>
+
+
+<h1 id="where-can-i-request-features" class="hdr "><a href="#where-can-i-request-features" title="permalink">»</a>&nbsp;Where can I request features? <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section ">
+	<p>We appreciate that feature requests specific to a single package be requested on that package's GitHub issue tracker.</p>
+	<p>For feature requests not related to any package, or related to this website, etc, please request them by creating an issue them <a href="https://github.com/azul3d/issues/issues">here</a>.</p>
+</span>
+
+
+<h1 id="how-can-i-get-in-touch" class="hdr "><a href="#how-can-i-get-in-touch" title="permalink">»</a>&nbsp;How can I get in touch? <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section ">
+	<p>Please make a post on the <a href="https://groups.google.com/forum/#!forum/azul3d">Mailing List</a>.</p>
+</span>
+
+
+<h1 id="what-types-of-applications" class="hdr "><a href="#what-types-of-applications" title="permalink">»</a>&nbsp;What types of applications? <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section ">
+	<p>Any 2D or 3D application, but we mostly support games.</p>
+</span>
+
+
+<h1 id="what-platforms-are-supported" class="hdr "><a href="#what-platforms-are-supported" title="permalink">»</a>&nbsp;What platforms are supported? <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section ">
+	<p>Please see the <a href="/doc/platform-support.html">platform support</a>.</p>
+</span>
+
+
+	</div>
+</div>
+
+
+<div id="footer">
+	<div>© 2014 The Azul3D Authors, All Rights Reserved.</div>
+	<div>Unless noted otherwise, the content of this page is licensed under the Creative Commons Attribution 3.0 License, and code is licensed under a BSD license.</div>
+</div>
+
+
+<script>
+$(document).ready(function() {
+	$("body").css("opacity", 0);
+});
+
+$(window).ready(function() {
+	var fadeIn = function(self, delay) {
+		self.css("opacity", 0).delay(delay).animate({opacity: 1}, "slow");
+	}
+
+	var fromSameSite = document.referrer.indexOf(location.protocol + "//" + location.host) === 0;
+
+	
+	
+	var longPage = $(document).height() > $(window).height() * 3;
+	if(fromSameSite || longPage) {
+		fadeIn($("body"), 10);
+	} else {
+		var workingIndex = 0;
+		var speed = 75;
+		$("#content").children().each(function(index) {
+			fadeIn($(this), 1000 + (speed * workingIndex));
+			workingIndex++;
+			if($(this).hasClass("list")) {
+				$(this).children().each(function(index) {
+					fadeIn($(this), 1000 + (speed * workingIndex));
+					workingIndex++;
+				});
+			}
+		});
+
+		var w = $("#shortbar").width();
+		$("#shortbar").css({
+			right: -w-1 + "px",
+			opacity: 0
+		}).delay(10).animate({
+			right: "0px",
+			opacity: 1
+			}, "slow");
+
+		var w = $("#navigation").width();
+		$("#navigation").css({
+			left: -w-1 + "px",
+			opacity: 0
+		}).delay(10).animate({
+			left: "0px",
+			opacity: 1
+			}, "slow");
+
+		fadeIn($("#logo"), 10);
+		fadeIn($("body"), 10);
+	}
+})
+</script>
+	</body>
+</html>
+
+
+

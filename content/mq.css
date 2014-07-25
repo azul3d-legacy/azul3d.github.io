@@ -1,0 +1,87 @@
+/* Portrait and landscape phones */
+@media only screen 
+and (min-width: 25px)
+and (max-width: 1024px) {
+	body{
+		font-size: 14px;
+	}
+	#toparea{
+		text-align: center;
+		height: auto;
+	}
+	#logo{
+		display: block;
+		float: none;
+		padding-left: 0;
+		padding-right: 0;
+	}
+	#shortbar{
+		display: inline-block;
+		float: none;
+		padding-top: .5em;
+		padding-left: 0;
+		padding-right: 0;
+	}
+	#navigation{
+		text-align: center;
+		display: block;
+		float: none;
+		padding-top: .5em;
+		padding-left: 0;
+		padding-right: 0;
+		font-size: 96%; /* Trickery to get one-line navigation area on iPhones */
+	}
+	#navigation>h1 {
+		display: none;
+	}
+	#navigation>.list {
+		padding-left: 0;
+		padding-top: 0;
+	}
+	#navigation>.list>.item {
+		display: inline-block;
+		padding-left: .5em;
+	}
+	#content-container {
+		margin-left: 0;
+		max-width: 90%;
+	}
+	#content, #content.slim {
+		margin-left: 1em;
+		margin-right: 1em;
+		max-width: initial;
+	}
+	.list>.item{
+		max-width: 90%;
+	}
+	#content.pkg-content{
+		max-width: 100%;
+	}
+	.pkg.section>pre{
+		width: 100%;
+	}
+}
+
+/* Desktops and laptops ----------- */
+@media only screen 
+and (min-width : 1024px) {
+	#content.slim{
+		max-width: 75%;
+	}
+}
+
+/* Large screens ----------- */
+@media only screen 
+and (min-width : 1600px) {
+	#content.slim{
+		max-width: 60%;
+	}
+}
+
+/* 1080+ Large screens ----------- */
+@media only screen 
+and (min-width : 1920px) {
+	#content.slim{
+		max-width: 55%;
+	}
+}
