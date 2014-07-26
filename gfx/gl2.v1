@@ -1,0 +1,604 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="description" content="A 3D game engine written in Go!">
+		<meta name="author" content="The Azul3D Authors">
+		<title>Azul3D</title>
+		<link rel="shortcut icon" href="/content/favicon.png"> 
+
+		
+		<link rel="stylesheet" type="text/css" href="/content/reset.css">
+
+		
+		<link href='http://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Cutive+Mono' rel='stylesheet' type='text/css'>
+
+		
+		<link href='/content/dejavusans_book/stylesheet.css' rel='stylesheet' type='text/css'>
+
+		
+		<link href='/content/brandico/brandico.css' rel='stylesheet' type='text/css'>
+
+		
+		
+
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+		
+		<link rel="stylesheet" type="text/css" href="/content/stylesheet.css">
+		<link rel="stylesheet" type="text/css" href="/content/mq.css">
+	</head>
+	<body>
+
+
+<div id="top"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="toparea">
+	<div id="logo">
+		<a href="/"><span class="biohazard">☣</span>
+		<span>Azul3D</span></a>
+	</div>
+
+	<div id="shortbar">
+		<a href="https://github.com/azul3d" target="_blank"><i class="icon-github menuIcon"></i><div class="title">GitHub</div></a>
+		<a href="https://twitter.com/hashtag/azul3d" target="_blank"><i class="icon-twitter-bird menuIcon"></i><div class="title">Twitter</div></a>
+		<a href="https://www.facebook.com/pages/Azul3D/651643168254798" target="_blank"><i class="icon-facebook menuIcon"></i><div class="title">Facebook</div></a>
+		<a href="https://groups.google.com/forum/#!forum/azul3d" target="_blank" class="mail"><i class="menuIcon mailIcon">✉</i><div class="title">Mailing List</div></a>
+	</div>
+</div>
+
+<div id="navigation">
+	<h1>Navigation</h1>
+	<span class="list">
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="/">Home</a></span></span>
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="/news">News</a></span></span>
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="/packages.html">Packages</a></span></span>
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="/doc/faq.html">FAQ</a></span></span>
+	</span>
+</div>
+
+
+<div id="content-container">
+	<div id="content" class="pkg-content">
+
+
+
+
+
+
+<h1 class="hdr pkg hdr-general">Package gl2</h1>
+<span class="section pkg general">
+	
+		
+			<p><em>Version 1</em></p>
+		
+	
+	<span class="pkg import">import "azul3d.org/gfx/gl2.v1"</span>
+	<span class="list">
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#versions">Versions</a></span></span>
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#overview">Overview</a></span></span>
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#index">Index</a></span></span>
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#package-files">Package Files</a></span></span>
+	</span>
+	
+
+	
+		
+	
+</span>
+
+
+
+<h1 id="versions" class="hdr pkg hdr-versions"><a href="#versions" title="permalink">»</a>&nbsp;Versions <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg versions">
+	
+		<p>You are viewing the latest version of this package (v1).</p>
+	
+	<p>Other versions of this package are available as follows. Version zero (v0) is the in-development version of this package and should not generally be used (see <a href="/doc/versioning.html#development-versions">here</a> for more details).</p>
+	<span class="list">
+		
+			
+			
+			
+				
+					<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="gfx/gl2.v1" title="azul3d.org/gfx/gl2.v1">v1</a> (latest version)</span></span>
+				
+			
+		
+			
+			
+			
+				<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="gfx/gl2.v0" title="azul3d.org/gfx/gl2.v0">v0</a> (in development)</span></span>
+			
+		
+	</span>
+</span>
+
+
+
+<h1 id="overview" class="hdr pkg hdr-overview"><a href="#overview" title="permalink">»</a>&nbsp;Overview <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg overview">
+	<p>
+Package gl2 provides an OpenGL 2 based graphics renderer.
+</p>
+<p>
+The behavior of the renderer is defined fully in the gfx package (as such
+this package only makes mention of strictly OpenGL related caveats like
+initialization, etc).
+</p>
+
+</span>
+
+
+<h1 id="index" class="hdr pkg hdr-index"><a href="#index" title="permalink">»</a>&nbsp;Index <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg index">
+	<span class="list">
+		
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#variables">Variables</a></span></span>
+		
+		
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Renderer">type Renderer</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#New">func New(keepState bool) (*Renderer, error)</a></span></span>
+			
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Renderer.Bounds">func (r *Renderer) Bounds() image.Rectangle</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Renderer.Clear">func (r *Renderer) Clear(rect image.Rectangle, bg gfx.Color)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Renderer.ClearDepth">func (r *Renderer) ClearDepth(rect image.Rectangle, depth float64)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Renderer.ClearStencil">func (r *Renderer) ClearStencil(rect image.Rectangle, stencil int)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Renderer.Clock">func (r *Renderer) Clock() *clock.Clock</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Renderer.Download">func (r *Renderer) Download(rect image.Rectangle, complete chan image.Image)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Renderer.Draw">func (r *Renderer) Draw(rect image.Rectangle, o *gfx.Object, c *gfx.Camera)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Renderer.GPUInfo">func (r *Renderer) GPUInfo() gfx.GPUInfo</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Renderer.LoadMesh">func (r *Renderer) LoadMesh(m *gfx.Mesh, done chan *gfx.Mesh)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Renderer.LoadShader">func (r *Renderer) LoadShader(s *gfx.Shader, done chan *gfx.Shader)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Renderer.LoadTexture">func (r *Renderer) LoadTexture(t *gfx.Texture, done chan *gfx.Texture)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Renderer.MSAA">func (r *Renderer) MSAA() (msaa bool)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Renderer.Precision">func (r *Renderer) Precision() gfx.Precision</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Renderer.QueryWait">func (r *Renderer) QueryWait()</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Renderer.Render">func (r *Renderer) Render()</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Renderer.RenderToTexture">func (r *Renderer) RenderToTexture(t *gfx.Texture) gfx.Canvas</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Renderer.SetDebugOutput">func (r *Renderer) SetDebugOutput(w io.Writer)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Renderer.SetMSAA">func (r *Renderer) SetMSAA(msaa bool)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Renderer.UpdateBounds">func (r *Renderer) UpdateBounds(bounds image.Rectangle)</a></span></span>
+			
+		
+	</span>
+</span>
+
+
+
+
+
+
+
+
+<h1 id="variables" class="hdr pkg hdr-variables"><a href="#variables" title="permalink">»</a>&nbsp;Variables <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg variables">
+	
+		<pre>var ErrInvalidVersion = errors.New(&#34;invalid OpenGL version; must be at least OpenGL 2.0&#34;)</pre>
+		<p>Used when attempting to create an OpenGL 2.0 renderer in a lesser OpenGL context.
+</p>
+	
+</span>
+
+
+
+
+
+
+
+
+
+	
+	<h1 id="Renderer" class="hdr pkg hdr-type"><a href="#Renderer" title="permalink">»</a>&nbsp;type Renderer <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg type">
+		<pre>type Renderer struct {
+	// Render and loader execution channels.
+	RenderExec	chan func() bool
+	LoaderExec	chan func()
+	// contains filtered or unexported fields
+}</pre>
+		<p>
+Renderer is an OpenGL 2 based graphics renderer, it runs independant of the
+window management library being used (GLFW, SDL, Chippy, QML, etc).
+</p>
+<p>
+The renderer primarily uses two independant OpenGL contexts, one is used for
+rendering and one is used for managing resources like meshes, textures, and
+shaders which allows for asynchronous loading (although it is also possible
+to use only a single OpenGL context for windowing libraries that do not
+support multiple, but this will inheritly disable asynchronous loading).
+</p>
+
+	</span>
+
+	
+	
+		<h1 id="New" class="hdr pkg hdr-function"><a href="#New" title="permalink">»</a>&nbsp;func New(keepState bool) (*Renderer, error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg function">
+			<pre>func New(keepState bool) (*Renderer, error)</pre>
+			<p>
+New returns a new OpenGL 2 based graphics renderer. If any error is returned
+then a nil renderer is also returned. This function must be called only when
+an OpenGL 2 context is active.
+</p>
+<p>
+keepState specifies whether or not the existing graphics state should be
+maintained between frames. If set to true then before rendering a frame the
+graphics state will be saved, the frame rendered, and the old graphics state
+restored again. This is particularly useful when the renderer must cooperate
+with another renderer (e.g. QT5). Do not turn it on needlessly though as it
+does come with a performance cost.
+</p>
+
+		</span>
+	
+
+	
+	
+		
+		<h1 id="Renderer.Bounds" class="hdr pkg hdr-method"><a href="#Renderer.Bounds" title="permalink">»</a>&nbsp;func (r *Renderer) Bounds() image.Rectangle <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (r *Renderer) Bounds() image.Rectangle</pre>
+			<p>
+Implements gfx.Renderer interface.
+</p>
+
+		</span>
+	
+		
+		<h1 id="Renderer.Clear" class="hdr pkg hdr-method"><a href="#Renderer.Clear" title="permalink">»</a>&nbsp;func (r *Renderer) Clear(rect image.Rectangle, bg gfx.Color) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (r *Renderer) Clear(rect image.Rectangle, bg gfx.Color)</pre>
+			<p>
+Implements gfx.Renderer interface.
+</p>
+
+		</span>
+	
+		
+		<h1 id="Renderer.ClearDepth" class="hdr pkg hdr-method"><a href="#Renderer.ClearDepth" title="permalink">»</a>&nbsp;func (r *Renderer) ClearDepth(rect image.Rectangle, depth float64) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (r *Renderer) ClearDepth(rect image.Rectangle, depth float64)</pre>
+			<p>
+Implements gfx.Renderer interface.
+</p>
+
+		</span>
+	
+		
+		<h1 id="Renderer.ClearStencil" class="hdr pkg hdr-method"><a href="#Renderer.ClearStencil" title="permalink">»</a>&nbsp;func (r *Renderer) ClearStencil(rect image.Rectangle, stencil int) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (r *Renderer) ClearStencil(rect image.Rectangle, stencil int)</pre>
+			<p>
+Implements gfx.Renderer interface.
+</p>
+
+		</span>
+	
+		
+		<h1 id="Renderer.Clock" class="hdr pkg hdr-method"><a href="#Renderer.Clock" title="permalink">»</a>&nbsp;func (r *Renderer) Clock() *clock.Clock <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (r *Renderer) Clock() *clock.Clock</pre>
+			<p>
+Implements gfx.Renderer interface.
+</p>
+
+		</span>
+	
+		
+		<h1 id="Renderer.Download" class="hdr pkg hdr-method"><a href="#Renderer.Download" title="permalink">»</a>&nbsp;func (r *Renderer) Download(rect image.Rectangle, complete chan image.Image) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (r *Renderer) Download(rect image.Rectangle, complete chan image.Image)</pre>
+			<p>
+Implements gfx.Downloadable interface.
+</p>
+
+		</span>
+	
+		
+		<h1 id="Renderer.Draw" class="hdr pkg hdr-method"><a href="#Renderer.Draw" title="permalink">»</a>&nbsp;func (r *Renderer) Draw(rect image.Rectangle, o *gfx.Object, c *gfx.Camera) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (r *Renderer) Draw(rect image.Rectangle, o *gfx.Object, c *gfx.Camera)</pre>
+			<p>
+Implements gfx.Renderer interface.
+</p>
+
+		</span>
+	
+		
+		<h1 id="Renderer.GPUInfo" class="hdr pkg hdr-method"><a href="#Renderer.GPUInfo" title="permalink">»</a>&nbsp;func (r *Renderer) GPUInfo() gfx.GPUInfo <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (r *Renderer) GPUInfo() gfx.GPUInfo</pre>
+			<p>
+Implements gfx.Renderer interface.
+</p>
+
+		</span>
+	
+		
+		<h1 id="Renderer.LoadMesh" class="hdr pkg hdr-method"><a href="#Renderer.LoadMesh" title="permalink">»</a>&nbsp;func (r *Renderer) LoadMesh(m *gfx.Mesh, done chan *gfx.Mesh) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (r *Renderer) LoadMesh(m *gfx.Mesh, done chan *gfx.Mesh)</pre>
+			<p>
+Implements gfx.Renderer interface.
+</p>
+
+		</span>
+	
+		
+		<h1 id="Renderer.LoadShader" class="hdr pkg hdr-method"><a href="#Renderer.LoadShader" title="permalink">»</a>&nbsp;func (r *Renderer) LoadShader(s *gfx.Shader, done chan *gfx.Shader) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (r *Renderer) LoadShader(s *gfx.Shader, done chan *gfx.Shader)</pre>
+			<p>
+Implements gfx.Renderer interface.
+</p>
+
+		</span>
+	
+		
+		<h1 id="Renderer.LoadTexture" class="hdr pkg hdr-method"><a href="#Renderer.LoadTexture" title="permalink">»</a>&nbsp;func (r *Renderer) LoadTexture(t *gfx.Texture, done chan *gfx.Texture) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (r *Renderer) LoadTexture(t *gfx.Texture, done chan *gfx.Texture)</pre>
+			<p>
+Implements gfx.Renderer interface.
+</p>
+
+		</span>
+	
+		
+		<h1 id="Renderer.MSAA" class="hdr pkg hdr-method"><a href="#Renderer.MSAA" title="permalink">»</a>&nbsp;func (r *Renderer) MSAA() (msaa bool) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (r *Renderer) MSAA() (msaa bool)</pre>
+			<p>
+Implements gfx.Canvas interface.
+</p>
+
+		</span>
+	
+		
+		<h1 id="Renderer.Precision" class="hdr pkg hdr-method"><a href="#Renderer.Precision" title="permalink">»</a>&nbsp;func (r *Renderer) Precision() gfx.Precision <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (r *Renderer) Precision() gfx.Precision</pre>
+			<p>
+Implements gfx.Renderer interface.
+</p>
+
+		</span>
+	
+		
+		<h1 id="Renderer.QueryWait" class="hdr pkg hdr-method"><a href="#Renderer.QueryWait" title="permalink">»</a>&nbsp;func (r *Renderer) QueryWait() <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (r *Renderer) QueryWait()</pre>
+			<p>
+Implements gfx.Renderer interface.
+</p>
+
+		</span>
+	
+		
+		<h1 id="Renderer.Render" class="hdr pkg hdr-method"><a href="#Renderer.Render" title="permalink">»</a>&nbsp;func (r *Renderer) Render() <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (r *Renderer) Render()</pre>
+			<p>
+Implements gfx.Renderer interface.
+</p>
+
+		</span>
+	
+		
+		<h1 id="Renderer.RenderToTexture" class="hdr pkg hdr-method"><a href="#Renderer.RenderToTexture" title="permalink">»</a>&nbsp;func (r *Renderer) RenderToTexture(t *gfx.Texture) gfx.Canvas <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (r *Renderer) RenderToTexture(t *gfx.Texture) gfx.Canvas</pre>
+			<p>
+Implements gfx.Renderer interface.
+</p>
+
+		</span>
+	
+		
+		<h1 id="Renderer.SetDebugOutput" class="hdr pkg hdr-method"><a href="#Renderer.SetDebugOutput" title="permalink">»</a>&nbsp;func (r *Renderer) SetDebugOutput(w io.Writer) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (r *Renderer) SetDebugOutput(w io.Writer)</pre>
+			<p>
+SetDebugOutput sets the writer, w, to write debug output to. It will mostly
+contain just shader debug information, but other information may be written
+in the future as well.
+</p>
+
+		</span>
+	
+		
+		<h1 id="Renderer.SetMSAA" class="hdr pkg hdr-method"><a href="#Renderer.SetMSAA" title="permalink">»</a>&nbsp;func (r *Renderer) SetMSAA(msaa bool) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (r *Renderer) SetMSAA(msaa bool)</pre>
+			<p>
+Implements gfx.Canvas interface.
+</p>
+
+		</span>
+	
+		
+		<h1 id="Renderer.UpdateBounds" class="hdr pkg hdr-method"><a href="#Renderer.UpdateBounds" title="permalink">»</a>&nbsp;func (r *Renderer) UpdateBounds(bounds image.Rectangle) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (r *Renderer) UpdateBounds(bounds image.Rectangle)</pre>
+			<p>
+UpdateBounds updates the effective bounding rectangle of this renderer. It
+must be called whenever the OpenGL canvas size should change (e.g. on window
+resize).
+</p>
+
+		</span>
+	
+
+
+
+<h1 id="package-files" class="hdr pkg hdr-files"><a href="#package-files" title="permalink">»</a>&nbsp;Package Files <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg files">
+	<p>
+	<a href="https:/github.com/azul3d/gfx/gl2/blob/v1/doc.go" title="view source">doc.go</a>
+	
+	<a href="https:/github.com/azul3d/gfx/gl2/blob/v1/draw.go" title="view source">draw.go</a>
+	
+	<a href="https:/github.com/azul3d/gfx/gl2/blob/v1/gl2.go" title="view source">gl2.go</a>
+	
+	<a href="https:/github.com/azul3d/gfx/gl2/blob/v1/loadmesh.go" title="view source">loadmesh.go</a>
+	
+	<a href="https:/github.com/azul3d/gfx/gl2/blob/v1/loadshader.go" title="view source">loadshader.go</a>
+	
+	<a href="https:/github.com/azul3d/gfx/gl2/blob/v1/loadtexture.go" title="view source">loadtexture.go</a>
+	
+	<a href="https:/github.com/azul3d/gfx/gl2/blob/v1/state.go" title="view source">state.go</a>
+	</p>
+
+	<h2><span class="linkarea">(<a href="#" id="tagged-files-toggle">show tagged files</a>)</span></h2>
+	<span id="tagged-files">
+		<h2>Test Files</h2>
+		<p>
+		<a href="https:/github.com/azul3d/gfx/gl2/blob/v1/gl2_test.go" title="view source">gl2_test.go</a>
+		</p>
+	</span>
+</span>
+
+
+<script>
+$(function() {
+	$("#tagged-files").slideUp();
+	var toggle = true;
+	$("#tagged-files-toggle").click(function(event) {
+		event.preventDefault();
+		toggle = !toggle;
+		if(toggle) {
+			$("#tagged-files").slideUp();
+			$("#tagged-files-toggle").html("show tagged files");
+		} else {
+			$("#tagged-files").slideDown();
+			$("#tagged-files-toggle").html("hide tagged files");
+		}
+	});
+});
+</script>
+
+	</div>
+</div>
+
+
+<div id="footer">
+	<div>© 2014 The Azul3D Authors, All Rights Reserved.</div>
+	<div>Unless noted otherwise, the content of this page is licensed under the Creative Commons Attribution 3.0 License, and code is licensed under a BSD license.</div>
+</div>
+
+
+<script>
+$(document).ready(function() {
+	$("body").css("opacity", 0);
+});
+
+$(window).ready(function() {
+	var fadeIn = function(self, delay) {
+		self.css("opacity", 0).delay(delay).animate({opacity: 1}, "slow");
+	}
+
+	var fromSameSite = document.referrer.indexOf(location.protocol + "//" + location.host) === 0;
+
+	
+	
+	var longPage = $(document).height() > $(window).height() * 3;
+	if(fromSameSite || longPage) {
+		fadeIn($("body"), 10);
+	} else {
+		var workingIndex = 0;
+		var speed = 75;
+		$("#content").children().each(function(index) {
+			fadeIn($(this), 1000 + (speed * workingIndex));
+			workingIndex++;
+			if($(this).hasClass("list")) {
+				$(this).children().each(function(index) {
+					fadeIn($(this), 1000 + (speed * workingIndex));
+					workingIndex++;
+				});
+			}
+		});
+
+		var w = $("#shortbar").width();
+		$("#shortbar").css({
+			right: -w-1 + "px",
+			opacity: 0
+		}).delay(10).animate({
+			right: "0px",
+			opacity: 1
+			}, "slow");
+
+		var w = $("#navigation").width();
+		$("#navigation").css({
+			left: -w-1 + "px",
+			opacity: 0
+		}).delay(10).animate({
+			left: "0px",
+			opacity: 1
+			}, "slow");
+
+		fadeIn($("#logo"), 10);
+		fadeIn($("body"), 10);
+	}
+})
+</script>
+	</body>
+</html>
+
+
+

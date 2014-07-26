@@ -1,0 +1,837 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="description" content="A 3D game engine written in Go!">
+		<meta name="author" content="The Azul3D Authors">
+		<title>Azul3D</title>
+		<link rel="shortcut icon" href="/content/favicon.png"> 
+
+		
+		<link rel="stylesheet" type="text/css" href="/content/reset.css">
+
+		
+		<link href='http://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Cutive+Mono' rel='stylesheet' type='text/css'>
+
+		
+		<link href='/content/dejavusans_book/stylesheet.css' rel='stylesheet' type='text/css'>
+
+		
+		<link href='/content/brandico/brandico.css' rel='stylesheet' type='text/css'>
+
+		
+		
+
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+		
+		<link rel="stylesheet" type="text/css" href="/content/stylesheet.css">
+		<link rel="stylesheet" type="text/css" href="/content/mq.css">
+	</head>
+	<body>
+
+
+<div id="top"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="toparea">
+	<div id="logo">
+		<a href="/"><span class="biohazard">☣</span>
+		<span>Azul3D</span></a>
+	</div>
+
+	<div id="shortbar">
+		<a href="https://github.com/azul3d" target="_blank"><i class="icon-github menuIcon"></i><div class="title">GitHub</div></a>
+		<a href="https://twitter.com/hashtag/azul3d" target="_blank"><i class="icon-twitter-bird menuIcon"></i><div class="title">Twitter</div></a>
+		<a href="https://www.facebook.com/pages/Azul3D/651643168254798" target="_blank"><i class="icon-facebook menuIcon"></i><div class="title">Facebook</div></a>
+		<a href="https://groups.google.com/forum/#!forum/azul3d" target="_blank" class="mail"><i class="menuIcon mailIcon">✉</i><div class="title">Mailing List</div></a>
+	</div>
+</div>
+
+<div id="navigation">
+	<h1>Navigation</h1>
+	<span class="list">
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="/">Home</a></span></span>
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="/news">News</a></span></span>
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="/packages.html">Packages</a></span></span>
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="/doc/faq.html">FAQ</a></span></span>
+	</span>
+</div>
+
+
+<div id="content-container">
+	<div id="content" class="pkg-content">
+
+
+
+
+
+
+<h1 class="hdr pkg hdr-general">Package clock</h1>
+<span class="section pkg general">
+	
+		
+			<p><em>Version 1</em></p>
+		
+	
+	<span class="pkg import">import "azul3d.org/clock.v1"</span>
+	<span class="list">
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#versions">Versions</a></span></span>
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#overview">Overview</a></span></span>
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#index">Index</a></span></span>
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#package-files">Package Files</a></span></span>
+	</span>
+	
+
+	
+		
+	
+</span>
+
+
+
+<h1 id="versions" class="hdr pkg hdr-versions"><a href="#versions" title="permalink">»</a>&nbsp;Versions <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg versions">
+	
+		<p>You are viewing the latest version of this package (v1).</p>
+	
+	<p>Other versions of this package are available as follows. Version zero (v0) is the in-development version of this package and should not generally be used (see <a href="/doc/versioning.html#development-versions">here</a> for more details).</p>
+	<span class="list">
+		
+			
+			
+			
+				
+					<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="clock.v1" title="azul3d.org/clock.v1">v1</a> (latest version)</span></span>
+				
+			
+		
+			
+			
+			
+				<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="clock.v0" title="azul3d.org/clock.v0">v0</a> (in development)</span></span>
+			
+		
+	</span>
+</span>
+
+
+
+<h1 id="overview" class="hdr pkg hdr-overview"><a href="#overview" title="permalink">»</a>&nbsp;Overview <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg overview">
+	<p>
+Package clock implements an high resolution clock for measuring real-time
+application statistics.
+</p>
+<p>
+An Time() function is provided, which returns the time since the program
+started, it can be very useful on it&#39;s own, as on Windows this package uses
+cgo to call QueryPerformanceFrequency and QueryPerformanceCounter, which
+provides an higher resolution time than Go&#39;s time package.
+</p>
+<p>
+An the case of an visual application, an typical use case would be creating
+an single Clock for each &#34;renderer&#34;, and then invoke Clock.Tick() at the
+start of every frame before it is rendered.
+</p>
+<p>
+When using an maximum frame rate, Clock.Tick() blocks for an little while to
+ensure running at least under Clock.MaxFrameRate(), if you simply ignore
+this blocking or push it to another goroutine, you&#39;ll lose the whole point
+of having an maximum frame rate specified.
+</p>
+
+</span>
+
+
+<h1 id="index" class="hdr pkg hdr-index"><a href="#index" title="permalink">»</a>&nbsp;Index <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg index">
+	<span class="list">
+		
+		
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Time">func Time() time.Duration</a></span></span>
+		
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Clock">type Clock</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#New">func New() *Clock</a></span></span>
+			
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Clock.AverageFrameRate">func (c *Clock) AverageFrameRate() float64</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Clock.AverageFrameRateSamples">func (c *Clock) AverageFrameRateSamples() int</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Clock.Delta">func (c *Clock) Delta() time.Duration</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Clock.Dt">func (c *Clock) Dt() float64</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Clock.FixedDelta">func (c *Clock) FixedDelta() time.Duration</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Clock.FrameCount">func (c *Clock) FrameCount() uint64</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Clock.FrameRate">func (c *Clock) FrameRate() float64</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Clock.FrameRateDeviation">func (c *Clock) FrameRateDeviation() float64</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Clock.LastFrame">func (c *Clock) LastFrame() time.Duration</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Clock.MaxDelta">func (c *Clock) MaxDelta() time.Duration</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Clock.MaxFrameRate">func (c *Clock) MaxFrameRate() float64</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Clock.Reset">func (c *Clock) Reset()</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Clock.ResetFrameCount">func (c *Clock) ResetFrameCount()</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Clock.ResetLastFrame">func (c *Clock) ResetLastFrame()</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Clock.SetAverageFrameRateSamples">func (c *Clock) SetAverageFrameRateSamples(n int)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Clock.SetFixedDelta">func (c *Clock) SetFixedDelta(delta time.Duration)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Clock.SetFrameCount">func (c *Clock) SetFrameCount(count uint64)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Clock.SetMaxDelta">func (c *Clock) SetMaxDelta(max time.Duration)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Clock.SetMaxFrameRate">func (c *Clock) SetMaxFrameRate(max float64)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Clock.Tick">func (c *Clock) Tick()</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Clock.Time">func (c *Clock) Time() time.Duration</a></span></span>
+			
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Stats">type Stats</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#NewStats">func NewStats() *Stats</a></span></span>
+			
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Stats.Add">func (s *Stats) Add(category string, samples uint)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Stats.Begin">func (s *Stats) Begin(category string)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Stats.Enabled">func (s *Stats) Enabled() bool</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Stats.End">func (s *Stats) End(category string)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Stats.Has">func (s *Stats) Has(category string) bool</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Stats.LastSample">func (s *Stats) LastSample(category string) time.Duration</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Stats.Remove">func (s *Stats) Remove(category string)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Stats.Samples">func (s *Stats) Samples(category string) []time.Duration</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Stats.SetEnabled">func (s *Stats) SetEnabled(enabled bool)</a></span></span>
+			
+		
+	</span>
+</span>
+
+
+
+
+
+
+
+
+
+
+
+
+	<h1 id="Time" class="hdr pkg hdr-function"><a href="#Time" title="permalink">»</a>&nbsp;func Time() time.Duration <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg function">
+		<pre>func Time() time.Duration</pre>
+		<p>
+In here we simply fallback to the standard time package for systems that
+already support high resolution timers.
+</p>
+<p>
+Since this relies on system time and the user might change their time
+resulting in a negative time occuring, we enforce a positive delta duration
+of at least 100us.
+</p>
+
+	</span>
+
+
+
+
+
+	
+	<h1 id="Clock" class="hdr pkg hdr-type"><a href="#Clock" title="permalink">»</a>&nbsp;type Clock <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg type">
+		<pre>type Clock struct {
+	// contains filtered or unexported fields
+}</pre>
+		<p>
+Clock is a high resolution clock for measuring real-time application
+statistics.
+</p>
+
+	</span>
+
+	
+	
+		<h1 id="New" class="hdr pkg hdr-function"><a href="#New" title="permalink">»</a>&nbsp;func New() *Clock <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg function">
+			<pre>func New() *Clock</pre>
+			<p>
+New returns an new *Clock, with:
+</p>
+<p>
+1. It&#39;s start time set to the current time (via Clock.Reset).
+</p>
+<p>
+2. It&#39;s maximum frame rate set to 75 (Note: This is good practice because not all computers
+have working support for high resolution clocks, by setting an maximum frame rate, you ensure
+that you will never get Clock.Delta() values equal to zero.)
+</p>
+<p>
+2. It&#39;s number of average frame rate samples set to 120 (via Clock.SetAverageFrameRateSamples).
+</p>
+
+		</span>
+	
+
+	
+	
+		
+		<h1 id="Clock.AverageFrameRate" class="hdr pkg hdr-method"><a href="#Clock.AverageFrameRate" title="permalink">»</a>&nbsp;func (c *Clock) AverageFrameRate() float64 <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *Clock) AverageFrameRate() float64</pre>
+			<p>
+AverageFrameRate returns the average number of frames per second that have occured over the last
+Clock.AverageFrameRateSamples() frames.
+</p>
+
+		</span>
+	
+		
+		<h1 id="Clock.AverageFrameRateSamples" class="hdr pkg hdr-method"><a href="#Clock.AverageFrameRateSamples" title="permalink">»</a>&nbsp;func (c *Clock) AverageFrameRateSamples() int <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *Clock) AverageFrameRateSamples() int</pre>
+			<p>
+AverageFrameRateSamples returns the number of previous frames that are sampled each frame to
+determine the average frame rate.
+</p>
+
+		</span>
+	
+		
+		<h1 id="Clock.Delta" class="hdr pkg hdr-method"><a href="#Clock.Delta" title="permalink">»</a>&nbsp;func (c *Clock) Delta() time.Duration <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *Clock) Delta() time.Duration</pre>
+			<p>
+Delta returns the time between the start of the current frame and the start of the last frame.
+</p>
+<p>
+If Clock.FixedDelta() returns non-zero, then this function returns that value instead.
+</p>
+<p>
+The value returned will be clamped to clock.MaxDelta(), regardless if the value returned would
+otherwise be larger.
+</p>
+<p>
+The duration returned will never be less than zero as long as clock.Tick() has been called at
+least once previously.
+</p>
+
+		</span>
+	
+		
+		<h1 id="Clock.Dt" class="hdr pkg hdr-method"><a href="#Clock.Dt" title="permalink">»</a>&nbsp;func (c *Clock) Dt() float64 <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *Clock) Dt() float64</pre>
+			<p>
+Dt is short-hand for:
+</p>
+<pre>dt := float64(c.Delta()) / float64(time.Second)
+</pre>
+<p>
+which is useful for applying movement over time.
+</p>
+
+		</span>
+	
+		
+		<h1 id="Clock.FixedDelta" class="hdr pkg hdr-method"><a href="#Clock.FixedDelta" title="permalink">»</a>&nbsp;func (c *Clock) FixedDelta() time.Duration <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *Clock) FixedDelta() time.Duration</pre>
+			<p>
+FixedDelta returns the duration which is to be handed out via Clock.Delta() instead of the
+actual calculated delta.
+</p>
+<p>
+If time.Duration(0) is returned, then there is no fixed delta specified currently.
+</p>
+
+		</span>
+	
+		
+		<h1 id="Clock.FrameCount" class="hdr pkg hdr-method"><a href="#Clock.FrameCount" title="permalink">»</a>&nbsp;func (c *Clock) FrameCount() uint64 <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *Clock) FrameCount() uint64</pre>
+			<p>
+FrameCount returns the number of frames that have rendered
+</p>
+
+		</span>
+	
+		
+		<h1 id="Clock.FrameRate" class="hdr pkg hdr-method"><a href="#Clock.FrameRate" title="permalink">»</a>&nbsp;func (c *Clock) FrameRate() float64 <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *Clock) FrameRate() float64</pre>
+			<p>
+FrameRate returns the number of frames per second according to this Clock
+</p>
+
+		</span>
+	
+		
+		<h1 id="Clock.FrameRateDeviation" class="hdr pkg hdr-method"><a href="#Clock.FrameRateDeviation" title="permalink">»</a>&nbsp;func (c *Clock) FrameRateDeviation() float64 <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *Clock) FrameRateDeviation() float64</pre>
+			<p>
+FrameRateDeviation returns the standard deviation of the frame times that have occured over the
+last AverageFrameRateSamples() frames.
+</p>
+
+		</span>
+	
+		
+		<h1 id="Clock.LastFrame" class="hdr pkg hdr-method"><a href="#Clock.LastFrame" title="permalink">»</a>&nbsp;func (c *Clock) LastFrame() time.Duration <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *Clock) LastFrame() time.Duration</pre>
+			<p>
+LastFrame returns the time at which the last frame began, in time since the program started.
+</p>
+
+		</span>
+	
+		
+		<h1 id="Clock.MaxDelta" class="hdr pkg hdr-method"><a href="#Clock.MaxDelta" title="permalink">»</a>&nbsp;func (c *Clock) MaxDelta() time.Duration <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *Clock) MaxDelta() time.Duration</pre>
+			<p>
+MaxDelta returns the duration which serves as the maximum duration returned by Clock.Delta()
+</p>
+<p>
+Zero is considered &#34;no maximum delta&#34;.
+</p>
+
+		</span>
+	
+		
+		<h1 id="Clock.MaxFrameRate" class="hdr pkg hdr-method"><a href="#Clock.MaxFrameRate" title="permalink">»</a>&nbsp;func (c *Clock) MaxFrameRate() float64 <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *Clock) MaxFrameRate() float64</pre>
+			<p>
+MaxFrameRate returns the maximum frame rate of this Clock, as it was set previously by
+Clock.SetMaxFrameRate()
+</p>
+
+		</span>
+	
+		
+		<h1 id="Clock.Reset" class="hdr pkg hdr-method"><a href="#Clock.Reset" title="permalink">»</a>&nbsp;func (c *Clock) Reset() <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *Clock) Reset()</pre>
+			<p>
+Reset resets this clock&#39;s starting time, as if it had just been created.
+</p>
+
+		</span>
+	
+		
+		<h1 id="Clock.ResetFrameCount" class="hdr pkg hdr-method"><a href="#Clock.ResetFrameCount" title="permalink">»</a>&nbsp;func (c *Clock) ResetFrameCount() <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *Clock) ResetFrameCount()</pre>
+			<p>
+ResetFrameCount resets the frame counter of this Clock to zero.
+</p>
+<p>
+Short hand for Clock.SetFrameCount(0)
+</p>
+
+		</span>
+	
+		
+		<h1 id="Clock.ResetLastFrame" class="hdr pkg hdr-method"><a href="#Clock.ResetLastFrame" title="permalink">»</a>&nbsp;func (c *Clock) ResetLastFrame() <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *Clock) ResetLastFrame()</pre>
+			<p>
+ResetLastFrame resets this Clock&#39;s last frame time to the current real time, as if the frame had
+just begun.
+</p>
+
+		</span>
+	
+		
+		<h1 id="Clock.SetAverageFrameRateSamples" class="hdr pkg hdr-method"><a href="#Clock.SetAverageFrameRateSamples" title="permalink">»</a>&nbsp;func (c *Clock) SetAverageFrameRateSamples(n int) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *Clock) SetAverageFrameRateSamples(n int)</pre>
+			<p>
+SetAverageFrameRateSamples specifies the number of previous frames to sample each frame to
+determine the average frame rate.
+</p>
+<p>
+Note: This means allocating an []float64 of size n, so be thoughtful.
+</p>
+
+		</span>
+	
+		
+		<h1 id="Clock.SetFixedDelta" class="hdr pkg hdr-method"><a href="#Clock.SetFixedDelta" title="permalink">»</a>&nbsp;func (c *Clock) SetFixedDelta(delta time.Duration) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *Clock) SetFixedDelta(delta time.Duration)</pre>
+			<p>
+SetFixedDelta specifies an duration to be handed out via Clock.Delta() instead of the actual
+calculated delta.
+</p>
+
+		</span>
+	
+		
+		<h1 id="Clock.SetFrameCount" class="hdr pkg hdr-method"><a href="#Clock.SetFrameCount" title="permalink">»</a>&nbsp;func (c *Clock) SetFrameCount(count uint64) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *Clock) SetFrameCount(count uint64)</pre>
+			<p>
+SetFrameCount specifies the current number of frames that have rendered
+</p>
+
+		</span>
+	
+		
+		<h1 id="Clock.SetMaxDelta" class="hdr pkg hdr-method"><a href="#Clock.SetMaxDelta" title="permalink">»</a>&nbsp;func (c *Clock) SetMaxDelta(max time.Duration) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *Clock) SetMaxDelta(max time.Duration)</pre>
+			<p>
+SetMaxDelta specifies an duration which will serve as the maximum duration returned by
+Clock.Delta()
+</p>
+<p>
+Zero is considered &#34;no maximum delta&#34;.
+</p>
+
+		</span>
+	
+		
+		<h1 id="Clock.SetMaxFrameRate" class="hdr pkg hdr-method"><a href="#Clock.SetMaxFrameRate" title="permalink">»</a>&nbsp;func (c *Clock) SetMaxFrameRate(max float64) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *Clock) SetMaxFrameRate(max float64)</pre>
+			<p>
+SetMaxFrameRate specifies an maximum frame rate, calls to Clock.Tick() will block for whatever
+time is significant enough to ensure that the frame rate is at max this number.
+</p>
+<p>
+If max is zero, it is considered &#34;no maximum frame rate&#34;.
+</p>
+<p>
+If max is less than zero, an panic occurs.
+</p>
+
+		</span>
+	
+		
+		<h1 id="Clock.Tick" class="hdr pkg hdr-method"><a href="#Clock.Tick" title="permalink">»</a>&nbsp;func (c *Clock) Tick() <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *Clock) Tick()</pre>
+			<p>
+Tick signals to this Clock that an new frame has just begun
+</p>
+
+		</span>
+	
+		
+		<h1 id="Clock.Time" class="hdr pkg hdr-method"><a href="#Clock.Time" title="permalink">»</a>&nbsp;func (c *Clock) Time() time.Duration <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c *Clock) Time() time.Duration</pre>
+			<p>
+Time returns the duration of time that has passed since this clock started or was last reset.
+</p>
+
+		</span>
+	
+
+	
+	<h1 id="Stats" class="hdr pkg hdr-type"><a href="#Stats" title="permalink">»</a>&nbsp;type Stats <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg type">
+		<pre>type Stats struct {
+	// contains filtered or unexported fields
+}</pre>
+		<p>
+Stats allows you to create linear performance samples using categories.
+</p>
+
+	</span>
+
+	
+	
+		<h1 id="NewStats" class="hdr pkg hdr-function"><a href="#NewStats" title="permalink">»</a>&nbsp;func NewStats() *Stats <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg function">
+			<pre>func NewStats() *Stats</pre>
+			<p>
+NewStats returns an new initialized *Stats struct.
+</p>
+
+		</span>
+	
+
+	
+	
+		
+		<h1 id="Stats.Add" class="hdr pkg hdr-method"><a href="#Stats.Add" title="permalink">»</a>&nbsp;func (s *Stats) Add(category string, samples uint) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (s *Stats) Add(category string, samples uint)</pre>
+			<p>
+Add adds the specified category, after this operation samples may be created or retrieved.
+</p>
+<p>
+the samples parameter specifies how many samples will at max exist within the category.
+</p>
+
+		</span>
+	
+		
+		<h1 id="Stats.Begin" class="hdr pkg hdr-method"><a href="#Stats.Begin" title="permalink">»</a>&nbsp;func (s *Stats) Begin(category string) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (s *Stats) Begin(category string)</pre>
+			<p>
+Begin creates an new sample under the specified category, whose time will begin being measured
+at this very moment, if taking samples is enabled.
+</p>
+<p>
+If an sample already exists (and was not ended) for this category, then the previous sample will
+be ended, and an new one started.
+</p>
+<p>
+If the specified category does not exist, an panic occurs.
+</p>
+
+		</span>
+	
+		
+		<h1 id="Stats.Enabled" class="hdr pkg hdr-method"><a href="#Stats.Enabled" title="permalink">»</a>&nbsp;func (s *Stats) Enabled() bool <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (s *Stats) Enabled() bool</pre>
+			<p>
+Enabled tells whether or not taking samples is currently enabled or not.
+</p>
+
+		</span>
+	
+		
+		<h1 id="Stats.End" class="hdr pkg hdr-method"><a href="#Stats.End" title="permalink">»</a>&nbsp;func (s *Stats) End(category string) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (s *Stats) End(category string)</pre>
+			<p>
+End stops the current sample under the specified category, if taking samples is enabled.
+</p>
+<p>
+If an sample for this category was not previously started, then this function is no-op.
+</p>
+<p>
+If the specified category does not exist, an panic occurs.
+</p>
+
+		</span>
+	
+		
+		<h1 id="Stats.Has" class="hdr pkg hdr-method"><a href="#Stats.Has" title="permalink">»</a>&nbsp;func (s *Stats) Has(category string) bool <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (s *Stats) Has(category string) bool</pre>
+			<p>
+Has tells whether or not the specified category exists.
+</p>
+
+		</span>
+	
+		
+		<h1 id="Stats.LastSample" class="hdr pkg hdr-method"><a href="#Stats.LastSample" title="permalink">»</a>&nbsp;func (s *Stats) LastSample(category string) time.Duration <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (s *Stats) LastSample(category string) time.Duration</pre>
+			<p>
+LastSample returns the last sample (or 0) of the specified category.
+</p>
+
+		</span>
+	
+		
+		<h1 id="Stats.Remove" class="hdr pkg hdr-method"><a href="#Stats.Remove" title="permalink">»</a>&nbsp;func (s *Stats) Remove(category string) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (s *Stats) Remove(category string)</pre>
+			<p>
+Remove removes the specified category and all samples associated with it.
+</p>
+
+		</span>
+	
+		
+		<h1 id="Stats.Samples" class="hdr pkg hdr-method"><a href="#Stats.Samples" title="permalink">»</a>&nbsp;func (s *Stats) Samples(category string) []time.Duration <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (s *Stats) Samples(category string) []time.Duration</pre>
+			<p>
+Samples returns all samples of the specified category, or nil if the category does not exist.
+</p>
+
+		</span>
+	
+		
+		<h1 id="Stats.SetEnabled" class="hdr pkg hdr-method"><a href="#Stats.SetEnabled" title="permalink">»</a>&nbsp;func (s *Stats) SetEnabled(enabled bool) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (s *Stats) SetEnabled(enabled bool)</pre>
+			<p>
+SetEnabled specifies whether or not to enable taking samples, if off (false), then calls to
+Begin() and End() are no-op.
+</p>
+
+		</span>
+	
+
+
+
+<h1 id="package-files" class="hdr pkg hdr-files"><a href="#package-files" title="permalink">»</a>&nbsp;Package Files <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg files">
+	<p>
+	<a href="https:/github.com/azul3d/clock/blob/v1/clock.go" title="view source">clock.go</a>
+	
+	<a href="https:/github.com/azul3d/clock/blob/v1/highres.go" title="view source">highres.go</a>
+	
+	<a href="https:/github.com/azul3d/clock/blob/v1/stats.go" title="view source">stats.go</a>
+	</p>
+
+	<h2><span class="linkarea">(<a href="#" id="tagged-files-toggle">show tagged files</a>)</span></h2>
+	<span id="tagged-files">
+		<h2>Test Files</h2>
+		<p>
+		<a href="https:/github.com/azul3d/clock/blob/v1/time_test.go" title="view source">time_test.go</a>
+		</p>
+	
+		<h2>Windows Files</h2>
+		<p>
+		<a href="https:/github.com/azul3d/clock/blob/v1/highres_windows.go" title="view source">highres_windows.go</a>
+		</p>
+	</span>
+</span>
+
+
+<script>
+$(function() {
+	$("#tagged-files").slideUp();
+	var toggle = true;
+	$("#tagged-files-toggle").click(function(event) {
+		event.preventDefault();
+		toggle = !toggle;
+		if(toggle) {
+			$("#tagged-files").slideUp();
+			$("#tagged-files-toggle").html("show tagged files");
+		} else {
+			$("#tagged-files").slideDown();
+			$("#tagged-files-toggle").html("hide tagged files");
+		}
+	});
+});
+</script>
+
+	</div>
+</div>
+
+
+<div id="footer">
+	<div>© 2014 The Azul3D Authors, All Rights Reserved.</div>
+	<div>Unless noted otherwise, the content of this page is licensed under the Creative Commons Attribution 3.0 License, and code is licensed under a BSD license.</div>
+</div>
+
+
+<script>
+$(document).ready(function() {
+	$("body").css("opacity", 0);
+});
+
+$(window).ready(function() {
+	var fadeIn = function(self, delay) {
+		self.css("opacity", 0).delay(delay).animate({opacity: 1}, "slow");
+	}
+
+	var fromSameSite = document.referrer.indexOf(location.protocol + "//" + location.host) === 0;
+
+	
+	
+	var longPage = $(document).height() > $(window).height() * 3;
+	if(fromSameSite || longPage) {
+		fadeIn($("body"), 10);
+	} else {
+		var workingIndex = 0;
+		var speed = 75;
+		$("#content").children().each(function(index) {
+			fadeIn($(this), 1000 + (speed * workingIndex));
+			workingIndex++;
+			if($(this).hasClass("list")) {
+				$(this).children().each(function(index) {
+					fadeIn($(this), 1000 + (speed * workingIndex));
+					workingIndex++;
+				});
+			}
+		});
+
+		var w = $("#shortbar").width();
+		$("#shortbar").css({
+			right: -w-1 + "px",
+			opacity: 0
+		}).delay(10).animate({
+			right: "0px",
+			opacity: 1
+			}, "slow");
+
+		var w = $("#navigation").width();
+		$("#navigation").css({
+			left: -w-1 + "px",
+			opacity: 0
+		}).delay(10).animate({
+			left: "0px",
+			opacity: 1
+			}, "slow");
+
+		fadeIn($("#logo"), 10);
+		fadeIn($("body"), 10);
+	}
+})
+</script>
+	</body>
+</html>
+
+
+
