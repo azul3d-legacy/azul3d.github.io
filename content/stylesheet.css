@@ -308,6 +308,7 @@ h2 .linkarea{
 	font-size: 130%;
 	font-weight: bold;
 	padding-bottom: .25em;
+	padding-left: .25em;
 }
 
 .pkg.import, .pkg>pre{
