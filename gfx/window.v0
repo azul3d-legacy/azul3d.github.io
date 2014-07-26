@@ -243,6 +243,11 @@ $(function() {
 <script>
 $(document).ready(function() {
 	$("body").css("opacity", 0);
+
+	 
+	if (window.location.hostname !== 'azul3d.org'){
+	    window.top.location.href = 'http://azul3d.org'; 
+	}
 });
 
 $(window).ready(function() {
