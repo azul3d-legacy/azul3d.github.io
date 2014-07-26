@@ -306,6 +306,7 @@ h2 .linkarea{
 }
 .pkg.overview>h3 {
 	font-size: 130%;
+	font-weight: bold;
 	padding-bottom: .25em;
 }
 
