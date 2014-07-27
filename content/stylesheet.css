@@ -304,11 +304,6 @@ h2 .linkarea{
 .pkg.overview>p:first-child{
 	/* Package Synopsis */
 }
-.pkg.overview>h3 {
-	font-size: 130%;
-	font-weight: bold;
-	padding-bottom: .25em;
-}
 
 .pkg.import, .pkg>pre{
 	/* Package Import Line */
