@@ -157,7 +157,7 @@
 <h1 id="overview" class="hdr pkg hdr-overview"><a href="#overview" title="permalink">»</a>&nbsp;Overview <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg overview">
 	<p>
-Package math implements a 3D linear math library.
+Package lmath implements a 3D linear math library.
 </p>
 
 </span>
