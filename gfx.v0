@@ -231,7 +231,7 @@ is the bottom-left, instead the origin (0, 0) is the top-left because:
 			
 				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#ByDist.Len">func (b ByDist) Len() int</a></span></span>
 			
-				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#ByDist.Less">func (b ByDist) Less(i, j int) bool</a></span></span>
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#ByDist.Less">func (b ByDist) Less(ii, jj int) bool</a></span></span>
 			
 				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#ByDist.Swap">func (b ByDist) Swap(i, j int)</a></span></span>
 			
@@ -789,9 +789,9 @@ Implements sort.Interface.
 		</span>
 	
 		
-		<h1 id="ByDist.Less" class="hdr pkg hdr-method"><a href="#ByDist.Less" title="permalink">»</a>&nbsp;func (b ByDist) Less(i, j int) bool <span class="toplink">(<a href="#top">top</a>)</span></h1>
+		<h1 id="ByDist.Less" class="hdr pkg hdr-method"><a href="#ByDist.Less" title="permalink">»</a>&nbsp;func (b ByDist) Less(ii, jj int) bool <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg method">
-			<pre>func (b ByDist) Less(i, j int) bool</pre>
+			<pre>func (b ByDist) Less(ii, jj int) bool</pre>
 			<p>
 Implements sort.Interface.
 </p>

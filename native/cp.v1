@@ -4878,7 +4878,17 @@ This damping value is different than those of cpDampedSpring and cpDampedRotaryS
 		<h1 id="Space.DebugDraw" class="hdr pkg hdr-method"><a href="#Space.DebugDraw" title="permalink">»</a>&nbsp;func (s *Space) DebugDraw(options *SpaceDebugDrawOptions) <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg method">
 			<pre>func (s *Space) DebugDraw(options *SpaceDebugDrawOptions)</pre>
-			
+			<p>
+DebugDraw draws the space using the debug draw options (which includes
+callbacks for performing the actual drawing). All options fields are
+entirely optional (callbacks may be nil, etc).
+</p>
+<p>
+options.Data is arbitrary user data fed into the callbacks (this is just for
+a 1:1 mapping of chipmunks API, in Go you can just use a closure and access
+the data itself not storing it inside options.Data).
+</p>
+
 		</span>
 	
 		
@@ -5860,6 +5870,11 @@ Inverse of Vrotate().
 		<h2>Linux Amd64 Files</h2>
 		<p>
 		<a href="https:/github.com/azul3d/native/cp/blob/v1/types_linux_amd64.go" title="view source">types_linux_amd64.go</a>
+		</p>
+	
+		<h2>Test Files</h2>
+		<p>
+		<a href="https:/github.com/azul3d/native/cp/blob/v1/debugdraw_test.go" title="view source">debugdraw_test.go</a>
 		</p>
 	
 		<h2>Windows Amd64 Files</h2>
