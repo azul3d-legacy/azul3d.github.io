@@ -132,7 +132,7 @@
 	</span>
 	<p>Which allows us to increment the version numbers of specific packages independently of one-another. This is crucial going forward because it means we can break API-compatability of a single package, but leave other ones alone. In code however you will still reference the packages using just:</p>
 	<span class="list">
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">kg.DoSomething()</span></span></span>
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">pkg.DoSomething()</span></span></span>
 		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">subpkg.DoSomething()</span></span></span>
 	</span>
 	<p>All in all, upgrading to the new system is made easy by the <em>azulfix</em> tool and going forward this will allow for better code in many situations.</p>
