@@ -283,6 +283,22 @@ is the bottom-left, instead the origin (0, 0) is the top-left because:
 			
 			
 		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#DSFormat">type DSFormat</a></span></span>
+			
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#DSFormat.DepthBits">func (f DSFormat) DepthBits() uint8</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#DSFormat.IsCombined">func (f DSFormat) IsCombined() bool</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#DSFormat.IsDepth">func (f DSFormat) IsDepth() bool</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#DSFormat.IsStencil">func (f DSFormat) IsStencil() bool</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#DSFormat.StencilBits">func (f DSFormat) StencilBits() uint8</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#DSFormat.String">func (t DSFormat) String() string</a></span></span>
+			
+		
 			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Destroyable">type Destroyable</a></span></span>
 			
 			
@@ -367,6 +383,20 @@ is the bottom-left, instead the origin (0, 0) is the top-left because:
 			
 			
 		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#RTTConfig">type RTTConfig</a></span></span>
+			
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#RTTConfig.Valid">func (c RTTConfig) Valid() bool</a></span></span>
+			
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#RTTFormats">type RTTFormats</a></span></span>
+			
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#RTTFormats.Choose">func (f RTTFormats) Choose(p Precision, compression bool) (color TexFormat, depth, stencil DSFormat)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#RTTFormats.ChooseConfig">func (f RTTFormats) ChooseConfig(p Precision, compression bool) RTTConfig</a></span></span>
+			
+		
 			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Renderer">type Renderer</a></span></span>
 			
 				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Nil">func Nil() Renderer</a></span></span>
@@ -421,6 +451,10 @@ is the bottom-left, instead the origin (0, 0) is the top-left because:
 		
 			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#TexFormat">type TexFormat</a></span></span>
 			
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#TexFormat.Bits">func (t TexFormat) Bits() (r, g, b, a uint8)</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#TexFormat.String">func (t TexFormat) String() string</a></span></span>
 			
 		
 			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#TexWrap">type TexWrap</a></span></span>
@@ -682,6 +716,24 @@ is the bottom-left, instead the origin (0, 0) is the top-left because:
 		<p></p>
 	
 		<pre>const (
+	// Zero-value depth/stencil format. Used to represent nil/none/zero.
+	ZeroDSFormat	DSFormat	= iota
+
+	// The 16-bit depth buffer format.
+	Depth16
+
+	// The 24-bit depth buffer format.
+	Depth24
+
+	// The 32-bit depth buffer format.
+	Depth32
+
+	// The 24-bit depth buffer, combined with 8-bit stencil buffer format.
+	Depth24AndStencil8
+)</pre>
+		<p></p>
+	
+		<pre>const (
 	// Culls only back faces (i.e. only the front side is rendered).
 	BackFaceCulling	FaceCullMode	= iota
 
@@ -749,8 +801,11 @@ is the bottom-left, instead the origin (0, 0) is the top-left because:
 		<p></p>
 	
 		<pre>const (
+	// Zero-value texture format. Used to represent nil/none/zero.
+	ZeroTexFormat	TexFormat	= iota
+
 	// RGBA is a standard 32-bit premultiplied alpha image format.
-	RGBA	TexFormat	= iota
+	RGBA
 
 	// RGB is a standard 24-bit RGB image format with no alpha component.
 	RGB
@@ -1489,6 +1544,103 @@ space.
 	
 
 	
+	<h1 id="DSFormat" class="hdr pkg hdr-type"><a href="#DSFormat" title="permalink">»</a>&nbsp;type DSFormat <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg type">
+		<pre>type DSFormat uint8</pre>
+		<p>
+DSFormat specifies a single depth or stencil buffer storage format.
+</p>
+
+	</span>
+
+	
+	
+
+	
+	
+		
+		<h1 id="DSFormat.DepthBits" class="hdr pkg hdr-method"><a href="#DSFormat.DepthBits" title="permalink">»</a>&nbsp;func (f DSFormat) DepthBits() uint8 <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (f DSFormat) DepthBits() uint8</pre>
+			<p>
+DepthBits returns the number of depth bits in this format. For example:
+</p>
+<pre>Depth16 == 16
+Depth24AndStencil8 == 24
+</pre>
+
+		</span>
+	
+		
+		<h1 id="DSFormat.IsCombined" class="hdr pkg hdr-method"><a href="#DSFormat.IsCombined" title="permalink">»</a>&nbsp;func (f DSFormat) IsCombined() bool <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (f DSFormat) IsCombined() bool</pre>
+			<p>
+IsCombined tells if f is a combined depth and stencil buffer format. It must
+be one of the following:
+</p>
+<pre>Depth24AndStencil8
+</pre>
+
+		</span>
+	
+		
+		<h1 id="DSFormat.IsDepth" class="hdr pkg hdr-method"><a href="#DSFormat.IsDepth" title="permalink">»</a>&nbsp;func (f DSFormat) IsDepth() bool <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (f DSFormat) IsDepth() bool</pre>
+			<p>
+IsDepth tells if f is a valid depth buffer format. It must be one of the
+following:
+</p>
+<pre>Depth16
+Depth24
+Depth32
+Depth24AndStencil8
+</pre>
+
+		</span>
+	
+		
+		<h1 id="DSFormat.IsStencil" class="hdr pkg hdr-method"><a href="#DSFormat.IsStencil" title="permalink">»</a>&nbsp;func (f DSFormat) IsStencil() bool <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (f DSFormat) IsStencil() bool</pre>
+			<p>
+IsStencil tells if f is a valid stencil buffer format. It must be one of the
+following:
+</p>
+<pre>Depth24AndStencil8
+</pre>
+
+		</span>
+	
+		
+		<h1 id="DSFormat.StencilBits" class="hdr pkg hdr-method"><a href="#DSFormat.StencilBits" title="permalink">»</a>&nbsp;func (f DSFormat) StencilBits() uint8 <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (f DSFormat) StencilBits() uint8</pre>
+			<p>
+StencilBits returns the number of stencil bits in this format. For example:
+</p>
+<pre>Depth24AndStencil8 == 8
+Depth16 == 0
+</pre>
+
+		</span>
+	
+		
+		<h1 id="DSFormat.String" class="hdr pkg hdr-method"><a href="#DSFormat.String" title="permalink">»</a>&nbsp;func (t DSFormat) String() string <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (t DSFormat) String() string</pre>
+			<p>
+String returns a string name for this depth/stencil buffer format. For
+example:
+</p>
+<pre>Depth24AndStencil8 -&gt; &#34;Depth24AndStencil8&#34;
+</pre>
+
+		</span>
+	
+
+	
 	<h1 id="Destroyable" class="hdr pkg hdr-type"><a href="#Destroyable" title="permalink">»</a>&nbsp;type Destroyable <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg type">
 		<pre>type Destroyable interface {
@@ -1621,6 +1773,9 @@ e.g. BackFaceCulling -&gt; &#34;BackFaceCulling&#34;
 	// 512x512, etc) or else the texture will be resized by the renderer to the
 	// nearest power-of-two.
 	NPOT	bool
+
+	// The formats available for render-to-texture (RTT).
+	RTTFormats
 
 	// Major and minor versions of the OpenGL version in use, or -1 if not
 	// available. For example:
@@ -1980,6 +2135,11 @@ renderers will create these.
 		<pre>type NativeTexture interface {
 	Destroyable
 	Downloadable
+
+	// ChosenFormat tells the texture format chosen by the renderer for storing
+	// this texture on the graphics device. It may differ from the Texture&#39;s
+	// Format field only if the graphics device does not support that format.
+	ChosenFormat() TexFormat
 }</pre>
 		<p>
 NativeTexture represents the native object of a *Texture, the renderer is
@@ -2158,7 +2318,7 @@ The object&#39;s write lock must be held for this method to operate safely.
 }</pre>
 		<p>
 Precision represents the precision in bits of the color, depth, and stencil
-buffers.
+buffers as well as the number of samples per pixel.
 </p>
 
 	</span>
@@ -2167,6 +2327,127 @@ buffers.
 	
 
 	
+	
+
+	
+	<h1 id="RTTConfig" class="hdr pkg hdr-type"><a href="#RTTConfig" title="permalink">»</a>&nbsp;type RTTConfig <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg type">
+		<pre>type RTTConfig struct {
+	// Bounds is the target resolution of the canvas to render at. If it is an
+	// empty rectangle, the renderer&#39;s bounds is used instead.
+	Bounds	image.Rectangle
+
+	// The number of samples to use for multisampling. It should be one of the
+	// numbers listed in the GPUInfo.RTTFormats structure.
+	Samples	int
+
+	// Color, Depth, and Stencil textures, each of these texture&#39;s Format
+	// fields are explicitly ignored (see the format fields below). If any of
+	// these textures are non-nil, the results of that buffer (e.g. the color
+	// buffer) are stored into that texture.
+	//
+	// Specify nil for any you do not intend to use as a texture (e.g. if you
+	// want a 16-bit depth buffer but do not intend to use it as a texture, you
+	// could set Depth == nil and DepthFormat == Depth16).
+	Color, Depth, Stencil	*Texture
+
+	// Color format to use for the color buffer, it should be one listed in the
+	// GPUInfo.RTTFormats structure.
+	ColorFormat	TexFormat
+
+	// Depth and Stencil formats to use for the depth and stencil buffers,
+	// respectively. They should be ones listed in the GPUInfo.RTTFormats
+	// structure.
+	//
+	// Combined depth and stencil formats can be used (e.g. by setting
+	// both DepthFormat and StencilFormat to Depth24AndStencil8), they are
+	// often faster and use less memory, but with the caveat that they cannot
+	// be used as textures.
+	DepthFormat, StencilFormat	DSFormat
+}</pre>
+		<p>
+RTTConfig represents a configuration used for creating a render-to-texture
+(RTT) canvas. At least one of Color, Depth, or Stencil textures must be non
+nil.
+</p>
+
+	</span>
+
+	
+	
+
+	
+	
+		
+		<h1 id="RTTConfig.Valid" class="hdr pkg hdr-method"><a href="#RTTConfig.Valid" title="permalink">»</a>&nbsp;func (c RTTConfig) Valid() bool <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (c RTTConfig) Valid() bool</pre>
+			<p>
+Valid tells if this render-to-texture (RTT) configuration is valid or not, a
+configuration is considered invalid if:
+</p>
+<pre>1. All three textures are nil.
+2. Any non-nil texture is not accompanies by a format.
+3. Either DepthFormat.IsCombined() or StencilFormat.IsCombined() and the other
+   is not.
+</pre>
+
+		</span>
+	
+
+	
+	<h1 id="RTTFormats" class="hdr pkg hdr-type"><a href="#RTTFormats" title="permalink">»</a>&nbsp;type RTTFormats <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg type">
+		<pre>type RTTFormats struct {
+	// Slice of sample counts available for multisampling.
+	Samples	[]int
+
+	// Slice of color buffer formats.
+	ColorFormats	[]TexFormat
+
+	// Slices of depth and stencil buffer formats.
+	DepthFormats, StencilFormats	[]DSFormat
+}</pre>
+		<p>
+RTTFormats represents color, depth, and stencil buffer formats applicable to
+render-to-texture (RTT).
+</p>
+
+	</span>
+
+	
+	
+
+	
+	
+		
+		<h1 id="RTTFormats.Choose" class="hdr pkg hdr-method"><a href="#RTTFormats.Choose" title="permalink">»</a>&nbsp;func (f RTTFormats) Choose(p Precision, compression bool) (color TexFormat, depth, stencil DSFormat) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (f RTTFormats) Choose(p Precision, compression bool) (color TexFormat, depth, stencil DSFormat)</pre>
+			<p>
+Choose returns a color, depth, and stencil format from the formats, f. It
+tries to choose the most applicable one to the requested precision. If
+compression is true, it tries to choose the most compressed format.
+</p>
+
+		</span>
+	
+		
+		<h1 id="RTTFormats.ChooseConfig" class="hdr pkg hdr-method"><a href="#RTTFormats.ChooseConfig" title="permalink">»</a>&nbsp;func (f RTTFormats) ChooseConfig(p Precision, compression bool) RTTConfig <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (f RTTFormats) ChooseConfig(p Precision, compression bool) RTTConfig</pre>
+			<p>
+ChooseConfig is short-hand for:
+</p>
+<pre>colorFormat, depthFormat, stencilFormat := f.Choose(p, compression)
+cfg := RTTConfig{
+    ColorFormat: colorFormat,
+    DepthFormat: depthFormat,
+    StencilFormat: stencilFormat,
+}
+</pre>
+
+		</span>
 	
 
 	
@@ -2218,15 +2499,21 @@ buffers.
 	// channel is not nil and sending would not block.
 	LoadShader(s *Shader, done chan *Shader)
 
-	// RenderToTexture should return a canvas that when drawn to the results
-	// are stored inside of the given texture that may then be used in other
-	// drawing operations.
+	// RenderToTexture creates and returns a canvas that when rendered to,
+	// stores the results into one or multiple of the tree textures (Color,
+	// Depth, Stencil) of the given configuration.
 	//
-	// If the texture&#39;s bounding rectangle is empty then it will be set to the
-	// bounds of this renderer&#39;s canvas. The texture&#39;s bounding rectangle is
-	// what effectively determines the resolution at which the returned canvas
-	// and texture render at.
-	RenderToTexture(t *Texture) Canvas
+	// If the any of the configuration&#39;s formats are not supported by the
+	// graphics hardware (i.e. not in GPUInfo.RTTFormats), then nil is
+	// returned.
+	//
+	// If the given configuration is not valid (see the cfg.Valid method) then
+	// a panic will occur.
+	//
+	// Any non-nil texture in the configuration will be set to loaded, will
+	// have ClearData() called on it, and will have it&#39;s bounds set to
+	// cfg.Bounds.
+	RenderToTexture(cfg RTTConfig) Canvas
 }</pre>
 		<p>
 Renderer is capable of loading meshes, textures, and shaders. A renderer can
@@ -2642,6 +2929,39 @@ TexFormat specifies a single texture storage format.
 
 	
 	
+		
+		<h1 id="TexFormat.Bits" class="hdr pkg hdr-method"><a href="#TexFormat.Bits" title="permalink">»</a>&nbsp;func (t TexFormat) Bits() (r, g, b, a uint8) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (t TexFormat) Bits() (r, g, b, a uint8)</pre>
+			<p>
+Bits returns the number of bits per color component in this texture format.
+For example:
+</p>
+<pre>r, g, b, a := RGB.Bits()
+r == 8 &amp;&amp; g == 8 &amp;&amp; b == 8 &amp;&amp; a == 0
+</pre>
+<p>
+A panic will occur if the format is not one of the predefined ones in this
+package.
+</p>
+<p>
+ZeroTexFormat, DXT1, DXT3, and DXT5 formats will return only zero.
+</p>
+
+		</span>
+	
+		
+		<h1 id="TexFormat.String" class="hdr pkg hdr-method"><a href="#TexFormat.String" title="permalink">»</a>&nbsp;func (t TexFormat) String() string <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (t TexFormat) String() string</pre>
+			<p>
+String returns a string name for this texture format. For example:
+</p>
+<pre>RGBA -&gt; &#34;RGBA&#34;
+</pre>
+
+		</span>
+	
 
 	
 	<h1 id="TexWrap" class="hdr pkg hdr-type"><a href="#TexWrap" title="permalink">»</a>&nbsp;type TexWrap <span class="toplink">(<a href="#top">top</a>)</span></h1>
@@ -2703,7 +3023,8 @@ e.g. Repeat -&gt; &#34;Repeat&#34;
 	// result in lossy conversions (e.g. RGB would lose the alpha channel, etc).
 	//
 	// If the format is not supported then the renderer may use an image format
-	// that is similar and is supported.
+	// that is similar and is supported (and the format chosen by the renderer
+	// can be determined via NativeTexture&#39;s ChosenFormat method).
 	Format	TexFormat
 
 	// The U and V wrap modes of this texture.
@@ -3224,6 +3545,8 @@ Vec3 converts this 32-bit Vec3 to a 64-bit lmath.Vec3 vector.
 	<a href="https:/github.com/azul3d/gfx/blob/v1/object.go" title="view source">object.go</a>
 	
 	<a href="https:/github.com/azul3d/gfx/blob/v1/render.go" title="view source">render.go</a>
+	
+	<a href="https:/github.com/azul3d/gfx/blob/v1/rtt.go" title="view source">rtt.go</a>
 	
 	<a href="https:/github.com/azul3d/gfx/blob/v1/shader.go" title="view source">shader.go</a>
 	

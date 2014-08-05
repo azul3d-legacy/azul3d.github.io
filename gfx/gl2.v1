@@ -166,6 +166,19 @@ The behavior of the renderer is defined fully in the gfx package (as such
 this package only makes mention of strictly OpenGL related caveats like
 initialization, etc).
 </p>
+<p>
+When performing render-to-texture (RTT), feedback loops are explicitly
+prohibited. This means that the renderer will panic if you attempt to draw
+an object to an RTT canvas when the object uses the literal RTT texture in
+itself. Through OpenGL the result of this is at best a corrupt image -- and
+at worst driver-level memory corruption (hence it is not allowed).
+</p>
+<p>
+A texture can turn on and off mipmapped by setting it&#39;s minification filter
+to a mipmapped or non-mipmapped filter after the texture has been loaded,
+but mipmapped can only be turned on with a loaded texture if when it loaded
+it had a mipmapped minification filter set on it.
+</p>
 
 </span>
 
@@ -184,7 +197,7 @@ initialization, etc).
 				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#New">func New(keepState bool) (*Renderer, error)</a></span></span>
 			
 			
-				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Renderer.Bounds">func (r *Renderer) Bounds() image.Rectangle</a></span></span>
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Renderer.Bounds">func (c Renderer) Bounds() image.Rectangle</a></span></span>
 			
 				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Renderer.Clear">func (r *Renderer) Clear(rect image.Rectangle, bg gfx.Color)</a></span></span>
 			
@@ -206,19 +219,19 @@ initialization, etc).
 			
 				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Renderer.LoadTexture">func (r *Renderer) LoadTexture(t *gfx.Texture, done chan *gfx.Texture)</a></span></span>
 			
-				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Renderer.MSAA">func (r *Renderer) MSAA() (msaa bool)</a></span></span>
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Renderer.MSAA">func (c Renderer) MSAA() bool</a></span></span>
 			
-				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Renderer.Precision">func (r *Renderer) Precision() gfx.Precision</a></span></span>
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Renderer.Precision">func (c Renderer) Precision() gfx.Precision</a></span></span>
 			
 				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Renderer.QueryWait">func (r *Renderer) QueryWait()</a></span></span>
 			
 				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Renderer.Render">func (r *Renderer) Render()</a></span></span>
 			
-				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Renderer.RenderToTexture">func (r *Renderer) RenderToTexture(t *gfx.Texture) gfx.Canvas</a></span></span>
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Renderer.RenderToTexture">func (r *Renderer) RenderToTexture(cfg gfx.RTTConfig) gfx.Canvas</a></span></span>
 			
 				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Renderer.SetDebugOutput">func (r *Renderer) SetDebugOutput(w io.Writer)</a></span></span>
 			
-				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Renderer.SetMSAA">func (r *Renderer) SetMSAA(msaa bool)</a></span></span>
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Renderer.SetMSAA">func (c Renderer) SetMSAA(msaa bool)</a></span></span>
 			
 				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Renderer.UpdateBounds">func (r *Renderer) UpdateBounds(bounds image.Rectangle)</a></span></span>
 			
@@ -254,6 +267,7 @@ initialization, etc).
 	<h1 id="Renderer" class="hdr pkg hdr-type"><a href="#Renderer" title="permalink">»</a>&nbsp;type Renderer <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg type">
 		<pre>type Renderer struct {
+
 	// Render and loader execution channels.
 	RenderExec	chan func() bool
 	LoaderExec	chan func()
@@ -298,11 +312,11 @@ does come with a performance cost.
 	
 	
 		
-		<h1 id="Renderer.Bounds" class="hdr pkg hdr-method"><a href="#Renderer.Bounds" title="permalink">»</a>&nbsp;func (r *Renderer) Bounds() image.Rectangle <span class="toplink">(<a href="#top">top</a>)</span></h1>
+		<h1 id="Renderer.Bounds" class="hdr pkg hdr-method"><a href="#Renderer.Bounds" title="permalink">»</a>&nbsp;func (c Renderer) Bounds() image.Rectangle <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg method">
-			<pre>func (r *Renderer) Bounds() image.Rectangle</pre>
+			<pre>func (c Renderer) Bounds() image.Rectangle</pre>
 			<p>
-Implements gfx.Renderer interface.
+Implements the gfx.Canvas interface.
 </p>
 
 		</span>
@@ -312,7 +326,7 @@ Implements gfx.Renderer interface.
 <span class="section pkg method">
 			<pre>func (r *Renderer) Clear(rect image.Rectangle, bg gfx.Color)</pre>
 			<p>
-Implements gfx.Renderer interface.
+Implements gfx.Canvas interface.
 </p>
 
 		</span>
@@ -322,7 +336,7 @@ Implements gfx.Renderer interface.
 <span class="section pkg method">
 			<pre>func (r *Renderer) ClearDepth(rect image.Rectangle, depth float64)</pre>
 			<p>
-Implements gfx.Renderer interface.
+Implements gfx.Canvas interface.
 </p>
 
 		</span>
@@ -332,7 +346,7 @@ Implements gfx.Renderer interface.
 <span class="section pkg method">
 			<pre>func (r *Renderer) ClearStencil(rect image.Rectangle, stencil int)</pre>
 			<p>
-Implements gfx.Renderer interface.
+Implements gfx.Canvas interface.
 </p>
 
 		</span>
@@ -362,7 +376,7 @@ Implements gfx.Downloadable interface.
 <span class="section pkg method">
 			<pre>func (r *Renderer) Draw(rect image.Rectangle, o *gfx.Object, c *gfx.Camera)</pre>
 			<p>
-Implements gfx.Renderer interface.
+Implements gfx.Canvas interface.
 </p>
 
 		</span>
@@ -408,9 +422,9 @@ Implements gfx.Renderer interface.
 		</span>
 	
 		
-		<h1 id="Renderer.MSAA" class="hdr pkg hdr-method"><a href="#Renderer.MSAA" title="permalink">»</a>&nbsp;func (r *Renderer) MSAA() (msaa bool) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+		<h1 id="Renderer.MSAA" class="hdr pkg hdr-method"><a href="#Renderer.MSAA" title="permalink">»</a>&nbsp;func (c Renderer) MSAA() bool <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg method">
-			<pre>func (r *Renderer) MSAA() (msaa bool)</pre>
+			<pre>func (c Renderer) MSAA() bool</pre>
 			<p>
 Implements gfx.Canvas interface.
 </p>
@@ -418,11 +432,11 @@ Implements gfx.Canvas interface.
 		</span>
 	
 		
-		<h1 id="Renderer.Precision" class="hdr pkg hdr-method"><a href="#Renderer.Precision" title="permalink">»</a>&nbsp;func (r *Renderer) Precision() gfx.Precision <span class="toplink">(<a href="#top">top</a>)</span></h1>
+		<h1 id="Renderer.Precision" class="hdr pkg hdr-method"><a href="#Renderer.Precision" title="permalink">»</a>&nbsp;func (c Renderer) Precision() gfx.Precision <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg method">
-			<pre>func (r *Renderer) Precision() gfx.Precision</pre>
+			<pre>func (c Renderer) Precision() gfx.Precision</pre>
 			<p>
-Implements gfx.Renderer interface.
+Implements gfx.Canvas interface.
 </p>
 
 		</span>
@@ -432,7 +446,7 @@ Implements gfx.Renderer interface.
 <span class="section pkg method">
 			<pre>func (r *Renderer) QueryWait()</pre>
 			<p>
-Implements gfx.Renderer interface.
+Implements gfx.Canvas interface.
 </p>
 
 		</span>
@@ -442,15 +456,15 @@ Implements gfx.Renderer interface.
 <span class="section pkg method">
 			<pre>func (r *Renderer) Render()</pre>
 			<p>
-Implements gfx.Renderer interface.
+Implements gfx.Canvas interface.
 </p>
 
 		</span>
 	
 		
-		<h1 id="Renderer.RenderToTexture" class="hdr pkg hdr-method"><a href="#Renderer.RenderToTexture" title="permalink">»</a>&nbsp;func (r *Renderer) RenderToTexture(t *gfx.Texture) gfx.Canvas <span class="toplink">(<a href="#top">top</a>)</span></h1>
+		<h1 id="Renderer.RenderToTexture" class="hdr pkg hdr-method"><a href="#Renderer.RenderToTexture" title="permalink">»</a>&nbsp;func (r *Renderer) RenderToTexture(cfg gfx.RTTConfig) gfx.Canvas <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg method">
-			<pre>func (r *Renderer) RenderToTexture(t *gfx.Texture) gfx.Canvas</pre>
+			<pre>func (r *Renderer) RenderToTexture(cfg gfx.RTTConfig) gfx.Canvas</pre>
 			<p>
 Implements gfx.Renderer interface.
 </p>
@@ -470,9 +484,9 @@ in the future as well.
 		</span>
 	
 		
-		<h1 id="Renderer.SetMSAA" class="hdr pkg hdr-method"><a href="#Renderer.SetMSAA" title="permalink">»</a>&nbsp;func (r *Renderer) SetMSAA(msaa bool) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+		<h1 id="Renderer.SetMSAA" class="hdr pkg hdr-method"><a href="#Renderer.SetMSAA" title="permalink">»</a>&nbsp;func (c Renderer) SetMSAA(msaa bool) <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg method">
-			<pre>func (r *Renderer) SetMSAA(msaa bool)</pre>
+			<pre>func (c Renderer) SetMSAA(msaa bool)</pre>
 			<p>
 Implements gfx.Canvas interface.
 </p>
@@ -497,6 +511,8 @@ resize).
 <h1 id="package-files" class="hdr pkg hdr-files"><a href="#package-files" title="permalink">»</a>&nbsp;Package Files <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg files">
 	<p>
+	<a href="https:/github.com/azul3d/gfx/gl2/blob/v1/baseCanvas.go" title="view source">baseCanvas.go</a>
+	
 	<a href="https:/github.com/azul3d/gfx/gl2/blob/v1/doc.go" title="view source">doc.go</a>
 	
 	<a href="https:/github.com/azul3d/gfx/gl2/blob/v1/draw.go" title="view source">draw.go</a>
@@ -508,6 +524,8 @@ resize).
 	<a href="https:/github.com/azul3d/gfx/gl2/blob/v1/loadshader.go" title="view source">loadshader.go</a>
 	
 	<a href="https:/github.com/azul3d/gfx/gl2/blob/v1/loadtexture.go" title="view source">loadtexture.go</a>
+	
+	<a href="https:/github.com/azul3d/gfx/gl2/blob/v1/rtt.go" title="view source">rtt.go</a>
 	
 	<a href="https:/github.com/azul3d/gfx/gl2/blob/v1/state.go" title="view source">state.go</a>
 	</p>
