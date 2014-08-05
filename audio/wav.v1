@@ -223,18 +223,18 @@ This error only happens for audio files containing extensible wav data.
 <h1 id="package-files" class="hdr pkg hdr-files"><a href="#package-files" title="permalink">»</a>&nbsp;Package Files <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg files">
 	<p>
-	<a href="https:/github.com/azul3d/audio/wav/blob/v1/decoder.go" title="view source">decoder.go</a>
+	<a href="https:/github.com/azul3d/audio-wav/blob/v1/decoder.go" title="view source">decoder.go</a>
 	
-	<a href="https:/github.com/azul3d/audio/wav/blob/v1/doc.go" title="view source">doc.go</a>
+	<a href="https:/github.com/azul3d/audio-wav/blob/v1/doc.go" title="view source">doc.go</a>
 	
-	<a href="https:/github.com/azul3d/audio/wav/blob/v1/structs.go" title="view source">structs.go</a>
+	<a href="https:/github.com/azul3d/audio-wav/blob/v1/structs.go" title="view source">structs.go</a>
 	</p>
 
 	<h2><span class="linkarea">(<a href="#" id="tagged-files-toggle">show tagged files</a>)</span></h2>
 	<span id="tagged-files">
 		<h2>Test Files</h2>
 		<p>
-		<a href="https:/github.com/azul3d/audio/wav/blob/v1/decode_test.go" title="view source">decode_test.go</a>
+		<a href="https:/github.com/azul3d/audio-wav/blob/v1/decode_test.go" title="view source">decode_test.go</a>
 		</p>
 	</span>
 </span>

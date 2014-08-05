@@ -10738,13 +10738,13 @@ version number).
 <h1 id="package-files" class="hdr pkg hdr-files"><a href="#package-files" title="permalink">»</a>&nbsp;Package Files <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg files">
 	<p>
-	<a href="https:/github.com/azul3d/native/gl/blob/v0/enums.go" title="view source">enums.go</a>
+	<a href="https:/github.com/azul3d/native-gl/blob/v0/enums.go" title="view source">enums.go</a>
 	
-	<a href="https:/github.com/azul3d/native/gl/blob/v0/gl.go" title="view source">gl.go</a>
+	<a href="https:/github.com/azul3d/native-gl/blob/v0/gl.go" title="view source">gl.go</a>
 	
-	<a href="https:/github.com/azul3d/native/gl/blob/v0/gldebug.go" title="view source">gldebug.go</a>
+	<a href="https:/github.com/azul3d/native-gl/blob/v0/gldebug.go" title="view source">gldebug.go</a>
 	
-	<a href="https:/github.com/azul3d/native/gl/blob/v0/types.go" title="view source">types.go</a>
+	<a href="https:/github.com/azul3d/native-gl/blob/v0/types.go" title="view source">types.go</a>
 	</p>
 
 	<h2><span class="linkarea">(<a href="#" id="tagged-files-toggle">show tagged files</a>)</span></h2>

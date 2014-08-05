@@ -1839,48 +1839,48 @@ method.
 <h1 id="package-files" class="hdr pkg hdr-files"><a href="#package-files" title="permalink">»</a>&nbsp;Package Files <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg files">
 	<p>
-	<a href="https:/github.com/azul3d/native/al/blob/v1/al.go" title="view source">al.go</a>
+	<a href="https:/github.com/azul3d/native-al/blob/v1/al.go" title="view source">al.go</a>
 	
-	<a href="https:/github.com/azul3d/native/al/blob/v1/alc.go" title="view source">alc.go</a>
+	<a href="https:/github.com/azul3d/native-al/blob/v1/alc.go" title="view source">alc.go</a>
 	
-	<a href="https:/github.com/azul3d/native/al/blob/v1/alcenum.go" title="view source">alcenum.go</a>
+	<a href="https:/github.com/azul3d/native-al/blob/v1/alcenum.go" title="view source">alcenum.go</a>
 	
-	<a href="https:/github.com/azul3d/native/al/blob/v1/alenum.go" title="view source">alenum.go</a>
+	<a href="https:/github.com/azul3d/native-al/blob/v1/alenum.go" title="view source">alenum.go</a>
 	
-	<a href="https:/github.com/azul3d/native/al/blob/v1/dispatcher.go" title="view source">dispatcher.go</a>
+	<a href="https:/github.com/azul3d/native-al/blob/v1/dispatcher.go" title="view source">dispatcher.go</a>
 	
-	<a href="https:/github.com/azul3d/native/al/blob/v1/doc.go" title="view source">doc.go</a>
+	<a href="https:/github.com/azul3d/native-al/blob/v1/doc.go" title="view source">doc.go</a>
 	
-	<a href="https:/github.com/azul3d/native/al/blob/v1/extenum.go" title="view source">extenum.go</a>
+	<a href="https:/github.com/azul3d/native-al/blob/v1/extenum.go" title="view source">extenum.go</a>
 	
-	<a href="https:/github.com/azul3d/native/al/blob/v1/extract.go" title="view source">extract.go</a>
+	<a href="https:/github.com/azul3d/native-al/blob/v1/extract.go" title="view source">extract.go</a>
 	</p>
 
 	<h2><span class="linkarea">(<a href="#" id="tagged-files-toggle">show tagged files</a>)</span></h2>
 	<span id="tagged-files">
 		<h2>Linux Files</h2>
 		<p>
-		<a href="https:/github.com/azul3d/native/al/blob/v1/openal_linux.go" title="view source">openal_linux.go</a>
+		<a href="https:/github.com/azul3d/native-al/blob/v1/openal_linux.go" title="view source">openal_linux.go</a>
 		</p>
 	
 		<h2>Linux Amd64 Files</h2>
 		<p>
-		<a href="https:/github.com/azul3d/native/al/blob/v1/blob_linux_amd64.go" title="view source">blob_linux_amd64.go</a>
+		<a href="https:/github.com/azul3d/native-al/blob/v1/blob_linux_amd64.go" title="view source">blob_linux_amd64.go</a>
 		</p>
 	
 		<h2>Test Files</h2>
 		<p>
-		<a href="https:/github.com/azul3d/native/al/blob/v1/openal_test.go" title="view source">openal_test.go</a>
+		<a href="https:/github.com/azul3d/native-al/blob/v1/openal_test.go" title="view source">openal_test.go</a>
 		</p>
 	
 		<h2>Windows Files</h2>
 		<p>
-		<a href="https:/github.com/azul3d/native/al/blob/v1/openal_windows.go" title="view source">openal_windows.go</a>
+		<a href="https:/github.com/azul3d/native-al/blob/v1/openal_windows.go" title="view source">openal_windows.go</a>
 		</p>
 	
 		<h2>Windows Amd64 Files</h2>
 		<p>
-		<a href="https:/github.com/azul3d/native/al/blob/v1/blob_windows_amd64.go" title="view source">blob_windows_amd64.go</a>
+		<a href="https:/github.com/azul3d/native-al/blob/v1/blob_windows_amd64.go" title="view source">blob_windows_amd64.go</a>
 		</p>
 	</span>
 </span>

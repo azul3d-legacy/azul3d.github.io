@@ -206,7 +206,7 @@ Package window is the easiest way to open a window and render graphics.
 <h1 id="package-files" class="hdr pkg hdr-files"><a href="#package-files" title="permalink">»</a>&nbsp;Package Files <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg files">
 	<p>
-	<a href="https:/github.com/azul3d/gfx/window/blob/v0/window.go" title="view source">window.go</a>
+	<a href="https:/github.com/azul3d/gfx-window/blob/v0/window.go" title="view source">window.go</a>
 	</p>
 
 	<h2><span class="linkarea">(<a href="#" id="tagged-files-toggle">show tagged files</a>)</span></h2>

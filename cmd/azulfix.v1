@@ -279,32 +279,32 @@ looked for in the Embed list.
 <h1 id="package-files" class="hdr pkg hdr-files"><a href="#package-files" title="permalink">»</a>&nbsp;Package Files <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg files">
 	<p>
-	<a href="https:/github.com/azul3d/cmd/azulfix/blob/v1/azulnewversions.go" title="view source">azulnewversions.go</a>
+	<a href="https:/github.com/azul3d/cmd-azulfix/blob/v1/azulnewversions.go" title="view source">azulnewversions.go</a>
 	
-	<a href="https:/github.com/azul3d/cmd/azulfix/blob/v1/doc.go" title="view source">doc.go</a>
+	<a href="https:/github.com/azul3d/cmd-azulfix/blob/v1/doc.go" title="view source">doc.go</a>
 	
-	<a href="https:/github.com/azul3d/cmd/azulfix/blob/v1/fix.go" title="view source">fix.go</a>
+	<a href="https:/github.com/azul3d/cmd-azulfix/blob/v1/fix.go" title="view source">fix.go</a>
 	
-	<a href="https:/github.com/azul3d/cmd/azulfix/blob/v1/main.go" title="view source">main.go</a>
+	<a href="https:/github.com/azul3d/cmd-azulfix/blob/v1/main.go" title="view source">main.go</a>
 	
-	<a href="https:/github.com/azul3d/cmd/azulfix/blob/v1/netipv6zone.go" title="view source">netipv6zone.go</a>
+	<a href="https:/github.com/azul3d/cmd-azulfix/blob/v1/netipv6zone.go" title="view source">netipv6zone.go</a>
 	
-	<a href="https:/github.com/azul3d/cmd/azulfix/blob/v1/printerconfig.go" title="view source">printerconfig.go</a>
+	<a href="https:/github.com/azul3d/cmd-azulfix/blob/v1/printerconfig.go" title="view source">printerconfig.go</a>
 	
-	<a href="https:/github.com/azul3d/cmd/azulfix/blob/v1/typecheck.go" title="view source">typecheck.go</a>
+	<a href="https:/github.com/azul3d/cmd-azulfix/blob/v1/typecheck.go" title="view source">typecheck.go</a>
 	</p>
 
 	<h2><span class="linkarea">(<a href="#" id="tagged-files-toggle">show tagged files</a>)</span></h2>
 	<span id="tagged-files">
 		<h2>Test Files</h2>
 		<p>
-		<a href="https:/github.com/azul3d/cmd/azulfix/blob/v1/import_test.go" title="view source">import_test.go</a>
+		<a href="https:/github.com/azul3d/cmd-azulfix/blob/v1/import_test.go" title="view source">import_test.go</a>
 		
-		<a href="https:/github.com/azul3d/cmd/azulfix/blob/v1/main_test.go" title="view source">main_test.go</a>
+		<a href="https:/github.com/azul3d/cmd-azulfix/blob/v1/main_test.go" title="view source">main_test.go</a>
 		
-		<a href="https:/github.com/azul3d/cmd/azulfix/blob/v1/netipv6zone_test.go" title="view source">netipv6zone_test.go</a>
+		<a href="https:/github.com/azul3d/cmd-azulfix/blob/v1/netipv6zone_test.go" title="view source">netipv6zone_test.go</a>
 		
-		<a href="https:/github.com/azul3d/cmd/azulfix/blob/v1/printerconfig_test.go" title="view source">printerconfig_test.go</a>
+		<a href="https:/github.com/azul3d/cmd-azulfix/blob/v1/printerconfig_test.go" title="view source">printerconfig_test.go</a>
 		</p>
 	</span>
 </span>
