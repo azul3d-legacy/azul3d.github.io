@@ -269,6 +269,17 @@ h2 .linkarea{
 	line-height: 132%;
 }
 
+.article.hdr-general{
+	padding-bottom: 0;
+}
+
+.article.general .date{
+	font-family: 'Audiowide', cursive;
+	font-size: 80%;
+	padding-left: .5em;
+	padding-bottom: .5em;
+}
+
 
 /*
 	Package Documentation Styling.

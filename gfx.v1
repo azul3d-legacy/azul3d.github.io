@@ -543,6 +543,20 @@ is the bottom-left, instead the origin (0, 0) is the top-left because:
 				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Vec3.Vec3">func (v Vec3) Vec3() lmath.Vec3</a></span></span>
 			
 		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Vec4">type Vec4</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#ConvertVec4">func ConvertVec4(v lmath.Vec4) Vec4</a></span></span>
+			
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Vec4.Vec4">func (v Vec4) Vec4() lmath.Vec4</a></span></span>
+			
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#VertexAttrib">type VertexAttrib</a></span></span>
+			
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#VertexAttrib.Copy">func (a VertexAttrib) Copy() VertexAttrib</a></span></span>
+			
+		
 	</span>
 </span>
 
@@ -1924,6 +1938,37 @@ Mat4 converts this 32-bit Mat4 to a 64-bit lmath.Mat4 matrix.
 	// multiple sets which directly relate to multiple textures on a
 	// object.
 	TexCoords	[]TexCoordSet
+
+	// A map of custom per-vertex attributes for the mesh. It is analogous to
+	// the Colors, Bary, and TexCoords fields. It allows you to submit a set of
+	// named custom per-vertex data to shaders.
+	//
+	// For instance you could submit a set of per-vertex vec3&#39;s with:
+	//  myData := make([]gfx.Vec3, len(mesh.Vertices))
+	//  mesh.Attribs[&#34;MyName&#34;] = gfx.VertexAttrib{
+	//      Data: myData,
+	//  }
+	//
+	// If changes to the data are made, the data set will have to be uploaded
+	// to the graphics hardware again, so you must inform the renderer when you
+	// change the data:
+	//  ... modify myData ...
+	//  mesh.Attribs[&#34;MyName&#34;].Changed = true
+	//
+	// In GLSL you could access that per-vertex data by writing:
+	//  attribute vec3 MyName;
+	//
+	// Arrays of data are available in GLSL by slice indice suffixes:
+	//  // Data declared in Go:
+	//  myData := make([][]gfx.Mat4, 2)
+	//
+	//  // And in GLSL:
+	//  attribute mat4 MyName0; // Per-vertex data from myData[0].
+	//  attribute mat4 MyName1; // Per-vertex data from myData[1].
+	//
+	// See the documentation on the VertexAttrib type for more information
+	// regarding what data types may be used.
+	Attribs	map[string]VertexAttrib
 }</pre>
 		<p>
 Mesh represents a single mesh made up of several components. A mesh may or
@@ -2575,6 +2620,8 @@ Nil returns a renderer that does not actually render anything.
 	//  []float32
 	//  gfx.Vec3
 	//  []gfx.Vec3
+	//  gfx.Vec4
+	//  []gfx.Vec4
 	//  gfx.Mat4
 	//  []gfx.Mat4
 	Inputs	map[string]interface{}
@@ -3514,6 +3561,93 @@ ConvertVec3 converts the 64-bit lmath.Vec3 to a 32-bit Vec3 vector.
 			<pre>func (v Vec3) Vec3() lmath.Vec3</pre>
 			<p>
 Vec3 converts this 32-bit Vec3 to a 64-bit lmath.Vec3 vector.
+</p>
+
+		</span>
+	
+
+	
+	<h1 id="Vec4" class="hdr pkg hdr-type"><a href="#Vec4" title="permalink">»</a>&nbsp;type Vec4 <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg type">
+		<pre>type Vec4 struct {
+	X, Y, Z, W float32
+}</pre>
+		<p>
+Vec4 represents a 32-bit floating point four-component vector for
+compatability with graphics hardware.
+lmath.Vec4 should be used anywhere that an explicit 32-bit type is not
+needed.
+</p>
+
+	</span>
+
+	
+	
+		<h1 id="ConvertVec4" class="hdr pkg hdr-function"><a href="#ConvertVec4" title="permalink">»</a>&nbsp;func ConvertVec4(v lmath.Vec4) Vec4 <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg function">
+			<pre>func ConvertVec4(v lmath.Vec4) Vec4</pre>
+			<p>
+ConvertVec4 converts the 64-bit lmath.Vec4 to a 32-bit Vec4 vector.
+</p>
+
+		</span>
+	
+
+	
+	
+		
+		<h1 id="Vec4.Vec4" class="hdr pkg hdr-method"><a href="#Vec4.Vec4" title="permalink">»</a>&nbsp;func (v Vec4) Vec4() lmath.Vec4 <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (v Vec4) Vec4() lmath.Vec4</pre>
+			<p>
+Vec4 converts this 32-bit Vec4 to a 64-bit lmath.Vec4 vector.
+</p>
+
+		</span>
+	
+
+	
+	<h1 id="VertexAttrib" class="hdr pkg hdr-type"><a href="#VertexAttrib" title="permalink">»</a>&nbsp;type VertexAttrib <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg type">
+		<pre>type VertexAttrib struct {
+	// The literal per-vertex data slice. It must be a slice whose length is
+	// exactly the same as the mesh&#39;s Vertices slice (because it is literally
+	// per-vertex data). The underlying type must be one of the following or
+	// else the attribute may be ignored completely:
+	//  []float32
+	//  [][]float32
+	//  []gfx.Vec3
+	//  [][]gfx.Vec3
+	//  []gfx.Mat4
+	//  [][]gfx.Mat4
+	//  []gfx.Vec4
+	//  [][]gfx.Vec4
+	Data	interface{}
+
+	// Weather or not the per-vertex data (see the Data field) has changed
+	// since the last time the mesh was loaded. If set to true the renderer
+	// should take note and re-upload the data slice to the graphics hardware.
+	Changed	bool
+}</pre>
+		<p>
+VertexAttrib represents a per-vertex attribute.
+</p>
+
+	</span>
+
+	
+	
+
+	
+	
+		
+		<h1 id="VertexAttrib.Copy" class="hdr pkg hdr-method"><a href="#VertexAttrib.Copy" title="permalink">»</a>&nbsp;func (a VertexAttrib) Copy() VertexAttrib <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (a VertexAttrib) Copy() VertexAttrib</pre>
+			<p>
+Copy returns a new copy of this vertex attribute data set. It makes a deep
+copy of the underlying Data slice. Explicitly not copied is the Changed
+boolean.
 </p>
 
 		</span>
