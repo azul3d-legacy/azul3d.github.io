@@ -110,11 +110,9 @@
 <h1 class="hdr pkg hdr-general">Package audio</h1>
 <span class="section pkg general">
 	
-		
-			<p><em>Version 1</em></p>
-		
+		<p><em>In Development</em></p>
 	
-	<span class="pkg import">import "azul3d.org/audio.v1"</span>
+	<span class="pkg import">import "azul3d.org/audio.dev"</span>
 	<span class="list">
 		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#versions">Versions</a></span></span>
 		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#overview">Overview</a></span></span>
@@ -122,9 +120,14 @@
 		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#package-files">Package Files</a></span></span>
 	</span>
 	
-
+		<h2>WARNING!</h2>
+		<span class="sub">
+			
+				<p>This version is the in-development -- <em><strong>unstable</strong></em> -- version of this package. Backwards incompatable changes will be made to this package in the future and as such <em>you should not use this version</em>! Please use the latest release <a href="/audio.v1">here</a>.</p>
+			
+		</span>
 	
-		
+
 	
 </span>
 
@@ -133,7 +136,7 @@
 <h1 id="versions" class="hdr pkg hdr-versions"><a href="#versions" title="permalink">»</a>&nbsp;Versions <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg versions">
 	
-		<p>You are viewing the latest version of this package (v1).</p>
+		<p>You are viewing an older version of this package (dev).</p>
 	
 	<p>Other versions of this package are available as follows. <em>Dev</em> is the in-development version of this package and should not generally be used (see <a href="/doc/versioning.html#development-versions">here</a> for more details).</p>
 	<span class="list">
@@ -1846,32 +1849,32 @@ The Copy function uses WriterTo if available.
 <h1 id="package-files" class="hdr pkg hdr-files"><a href="#package-files" title="permalink">»</a>&nbsp;Package Files <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg files">
 	<p>
-	<a href="https:/github.com/azul3d/audio/blob/v1/alaw.go" title="view source">alaw.go</a>
+	<a href="https:/github.com/azul3d/audio/blob/dev/alaw.go" title="view source">alaw.go</a>
 	
-	<a href="https:/github.com/azul3d/audio/blob/v1/audio.go" title="view source">audio.go</a>
+	<a href="https:/github.com/azul3d/audio/blob/dev/audio.go" title="view source">audio.go</a>
 	
-	<a href="https:/github.com/azul3d/audio/blob/v1/buffer.go" title="view source">buffer.go</a>
+	<a href="https:/github.com/azul3d/audio/blob/dev/buffer.go" title="view source">buffer.go</a>
 	
-	<a href="https:/github.com/azul3d/audio/blob/v1/doc.go" title="view source">doc.go</a>
+	<a href="https:/github.com/azul3d/audio/blob/dev/doc.go" title="view source">doc.go</a>
 	
-	<a href="https:/github.com/azul3d/audio/blob/v1/float.go" title="view source">float.go</a>
+	<a href="https:/github.com/azul3d/audio/blob/dev/float.go" title="view source">float.go</a>
 	
-	<a href="https:/github.com/azul3d/audio/blob/v1/format.go" title="view source">format.go</a>
+	<a href="https:/github.com/azul3d/audio/blob/dev/format.go" title="view source">format.go</a>
 	
-	<a href="https:/github.com/azul3d/audio/blob/v1/io.go" title="view source">io.go</a>
+	<a href="https:/github.com/azul3d/audio/blob/dev/io.go" title="view source">io.go</a>
 	
-	<a href="https:/github.com/azul3d/audio/blob/v1/mulaw.go" title="view source">mulaw.go</a>
+	<a href="https:/github.com/azul3d/audio/blob/dev/mulaw.go" title="view source">mulaw.go</a>
 	
-	<a href="https:/github.com/azul3d/audio/blob/v1/pcm.go" title="view source">pcm.go</a>
+	<a href="https:/github.com/azul3d/audio/blob/dev/pcm.go" title="view source">pcm.go</a>
 	
-	<a href="https:/github.com/azul3d/audio/blob/v1/slice.go" title="view source">slice.go</a>
+	<a href="https:/github.com/azul3d/audio/blob/dev/slice.go" title="view source">slice.go</a>
 	</p>
 
 	<h2><span class="linkarea">(<a href="#" id="tagged-files-toggle">show tagged files</a>)</span></h2>
 	<span id="tagged-files">
 		<h2>Test Files</h2>
 		<p>
-		<a href="https:/github.com/azul3d/audio/blob/v1/io_test.go" title="view source">io_test.go</a>
+		<a href="https:/github.com/azul3d/audio/blob/dev/io_test.go" title="view source">io_test.go</a>
 		</p>
 	</span>
 </span>

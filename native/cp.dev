@@ -110,11 +110,9 @@
 <h1 class="hdr pkg hdr-general">Package cp</h1>
 <span class="section pkg general">
 	
-		
-			<p><em>Version 1</em></p>
-		
+		<p><em>In Development</em></p>
 	
-	<span class="pkg import">import "azul3d.org/native/cp.v1"</span>
+	<span class="pkg import">import "azul3d.org/native/cp.dev"</span>
 	<span class="list">
 		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#versions">Versions</a></span></span>
 		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#overview">Overview</a></span></span>
@@ -122,9 +120,14 @@
 		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#package-files">Package Files</a></span></span>
 	</span>
 	
-
+		<h2>WARNING!</h2>
+		<span class="sub">
+			
+				<p>This version is the in-development -- <em><strong>unstable</strong></em> -- version of this package. Backwards incompatable changes will be made to this package in the future and as such <em>you should not use this version</em>! Please use the latest release <a href="/native/cp.v1">here</a>.</p>
+			
+		</span>
 	
-		
+
 	
 </span>
 
@@ -133,7 +136,7 @@
 <h1 id="versions" class="hdr pkg hdr-versions"><a href="#versions" title="permalink">»</a>&nbsp;Versions <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg versions">
 	
-		<p>You are viewing the latest version of this package (v1).</p>
+		<p>You are viewing an older version of this package (dev).</p>
 	
 	<p>Other versions of this package are available as follows. <em>Dev</em> is the in-development version of this package and should not generally be used (see <a href="/doc/versioning.html#development-versions">here</a> for more details).</p>
 	<span class="list">
@@ -5830,73 +5833,73 @@ Inverse of Vrotate().
 <h1 id="package-files" class="hdr pkg hdr-files"><a href="#package-files" title="permalink">»</a>&nbsp;Package Files <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg files">
 	<p>
-	<a href="https:/github.com/azul3d/native-cp/blob/v1/arbiter.go" title="view source">arbiter.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/dev/arbiter.go" title="view source">arbiter.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/v1/bb.go" title="view source">bb.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/dev/bb.go" title="view source">bb.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/v1/body.go" title="view source">body.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/dev/body.go" title="view source">body.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/v1/chipmunk.go" title="view source">chipmunk.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/dev/chipmunk.go" title="view source">chipmunk.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/v1/constraint.go" title="view source">constraint.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/dev/constraint.go" title="view source">constraint.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/v1/dampedrotaryspring.go" title="view source">dampedrotaryspring.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/dev/dampedrotaryspring.go" title="view source">dampedrotaryspring.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/v1/dampedspring.go" title="view source">dampedspring.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/dev/dampedspring.go" title="view source">dampedspring.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/v1/gearjoint.go" title="view source">gearjoint.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/dev/gearjoint.go" title="view source">gearjoint.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/v1/groovejoint.go" title="view source">groovejoint.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/dev/groovejoint.go" title="view source">groovejoint.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/v1/pinjoint.go" title="view source">pinjoint.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/dev/pinjoint.go" title="view source">pinjoint.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/v1/pivotjoint.go" title="view source">pivotjoint.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/dev/pivotjoint.go" title="view source">pivotjoint.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/v1/polyshape.go" title="view source">polyshape.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/dev/polyshape.go" title="view source">polyshape.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/v1/ratchetjoint.go" title="view source">ratchetjoint.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/dev/ratchetjoint.go" title="view source">ratchetjoint.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/v1/rotarylimitjoint.go" title="view source">rotarylimitjoint.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/dev/rotarylimitjoint.go" title="view source">rotarylimitjoint.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/v1/shape.go" title="view source">shape.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/dev/shape.go" title="view source">shape.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/v1/simplemotor.go" title="view source">simplemotor.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/dev/simplemotor.go" title="view source">simplemotor.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/v1/slidejoint.go" title="view source">slidejoint.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/dev/slidejoint.go" title="view source">slidejoint.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/v1/space.go" title="view source">space.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/dev/space.go" title="view source">space.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/v1/spatialindex.go" title="view source">spatialindex.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/dev/spatialindex.go" title="view source">spatialindex.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/v1/transform.go" title="view source">transform.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/dev/transform.go" title="view source">transform.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/v1/typescompat.go" title="view source">typescompat.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/dev/typescompat.go" title="view source">typescompat.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/v1/unsafe.go" title="view source">unsafe.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/dev/unsafe.go" title="view source">unsafe.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/v1/vect.go" title="view source">vect.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/dev/vect.go" title="view source">vect.go</a>
 	</p>
 
 	<h2><span class="linkarea">(<a href="#" id="tagged-files-toggle">show tagged files</a>)</span></h2>
 	<span id="tagged-files">
 		<h2>Cgodefs Files</h2>
 		<p>
-		<a href="https:/github.com/azul3d/native-cp/blob/v1/types_cgodefs.go" title="view source">types_cgodefs.go</a>
+		<a href="https:/github.com/azul3d/native-cp/blob/dev/types_cgodefs.go" title="view source">types_cgodefs.go</a>
 		</p>
 	
 		<h2>Linux Amd64 Files</h2>
 		<p>
-		<a href="https:/github.com/azul3d/native-cp/blob/v1/types_linux_amd64.go" title="view source">types_linux_amd64.go</a>
+		<a href="https:/github.com/azul3d/native-cp/blob/dev/types_linux_amd64.go" title="view source">types_linux_amd64.go</a>
 		</p>
 	
 		<h2>Test Files</h2>
 		<p>
-		<a href="https:/github.com/azul3d/native-cp/blob/v1/debugdraw_test.go" title="view source">debugdraw_test.go</a>
+		<a href="https:/github.com/azul3d/native-cp/blob/dev/debugdraw_test.go" title="view source">debugdraw_test.go</a>
 		</p>
 	
 		<h2>Windows Amd64 Files</h2>
 		<p>
-		<a href="https:/github.com/azul3d/native-cp/blob/v1/types_windows_amd64.go" title="view source">types_windows_amd64.go</a>
+		<a href="https:/github.com/azul3d/native-cp/blob/dev/types_windows_amd64.go" title="view source">types_windows_amd64.go</a>
 		</p>
 	</span>
 </span>

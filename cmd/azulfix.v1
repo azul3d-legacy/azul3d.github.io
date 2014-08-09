@@ -135,7 +135,7 @@
 	
 		<p>You are viewing the latest version of this package (v1).</p>
 	
-	<p>Other versions of this package are available as follows. Version zero (v0) is the in-development version of this package and should not generally be used (see <a href="/doc/versioning.html#development-versions">here</a> for more details).</p>
+	<p>Other versions of this package are available as follows. <em>Dev</em> is the in-development version of this package and should not generally be used (see <a href="/doc/versioning.html#development-versions">here</a> for more details).</p>
 	<span class="list">
 		
 			
@@ -149,7 +149,7 @@
 			
 			
 			
-				<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="cmd/azulfix.v0" title="azul3d.org/cmd/azulfix.v0">v0</a> (in development)</span></span>
+				<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="cmd/azulfix.dev" title="azul3d.org/cmd/azulfix.dev">dev</a> (in development)</span></span>
 			
 		
 	</span>

@@ -110,11 +110,9 @@
 <h1 class="hdr pkg hdr-general">Package lmath</h1>
 <span class="section pkg general">
 	
-		
-			<p><em>Version 1</em></p>
-		
+		<p><em>In Development</em></p>
 	
-	<span class="pkg import">import "azul3d.org/lmath.v1"</span>
+	<span class="pkg import">import "azul3d.org/lmath.dev"</span>
 	<span class="list">
 		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#versions">Versions</a></span></span>
 		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#overview">Overview</a></span></span>
@@ -122,9 +120,14 @@
 		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#package-files">Package Files</a></span></span>
 	</span>
 	
-
+		<h2>WARNING!</h2>
+		<span class="sub">
+			
+				<p>This version is the in-development -- <em><strong>unstable</strong></em> -- version of this package. Backwards incompatable changes will be made to this package in the future and as such <em>you should not use this version</em>! Please use the latest release <a href="/lmath.v1">here</a>.</p>
+			
+		</span>
 	
-		
+
 	
 </span>
 
@@ -133,7 +136,7 @@
 <h1 id="versions" class="hdr pkg hdr-versions"><a href="#versions" title="permalink">»</a>&nbsp;Versions <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg versions">
 	
-		<p>You are viewing the latest version of this package (v1).</p>
+		<p>You are viewing an older version of this package (dev).</p>
 	
 	<p>Other versions of this package are available as follows. <em>Dev</em> is the in-development version of this package and should not generally be used (see <a href="/doc/versioning.html#development-versions">here</a> for more details).</p>
 	<span class="list">
@@ -3856,46 +3859,46 @@ This is an fully general operation.
 <h1 id="package-files" class="hdr pkg hdr-files"><a href="#package-files" title="permalink">»</a>&nbsp;Package Files <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg files">
 	<p>
-	<a href="https:/github.com/azul3d/lmath/blob/v1/coordsys.go" title="view source">coordsys.go</a>
+	<a href="https:/github.com/azul3d/lmath/blob/dev/coordsys.go" title="view source">coordsys.go</a>
 	
-	<a href="https:/github.com/azul3d/lmath/blob/v1/doc.go" title="view source">doc.go</a>
+	<a href="https:/github.com/azul3d/lmath/blob/dev/doc.go" title="view source">doc.go</a>
 	
-	<a href="https:/github.com/azul3d/lmath/blob/v1/mat3.go" title="view source">mat3.go</a>
+	<a href="https:/github.com/azul3d/lmath/blob/dev/mat3.go" title="view source">mat3.go</a>
 	
-	<a href="https:/github.com/azul3d/lmath/blob/v1/mat4.go" title="view source">mat4.go</a>
+	<a href="https:/github.com/azul3d/lmath/blob/dev/mat4.go" title="view source">mat4.go</a>
 	
-	<a href="https:/github.com/azul3d/lmath/blob/v1/math.go" title="view source">math.go</a>
+	<a href="https:/github.com/azul3d/lmath/blob/dev/math.go" title="view source">math.go</a>
 	
-	<a href="https:/github.com/azul3d/lmath/blob/v1/quat.go" title="view source">quat.go</a>
+	<a href="https:/github.com/azul3d/lmath/blob/dev/quat.go" title="view source">quat.go</a>
 	
-	<a href="https:/github.com/azul3d/lmath/blob/v1/rect3.go" title="view source">rect3.go</a>
+	<a href="https:/github.com/azul3d/lmath/blob/dev/rect3.go" title="view source">rect3.go</a>
 	
-	<a href="https:/github.com/azul3d/lmath/blob/v1/sphere.go" title="view source">sphere.go</a>
+	<a href="https:/github.com/azul3d/lmath/blob/dev/sphere.go" title="view source">sphere.go</a>
 	
-	<a href="https:/github.com/azul3d/lmath/blob/v1/vec2.go" title="view source">vec2.go</a>
+	<a href="https:/github.com/azul3d/lmath/blob/dev/vec2.go" title="view source">vec2.go</a>
 	
-	<a href="https:/github.com/azul3d/lmath/blob/v1/vec3.go" title="view source">vec3.go</a>
+	<a href="https:/github.com/azul3d/lmath/blob/dev/vec3.go" title="view source">vec3.go</a>
 	
-	<a href="https:/github.com/azul3d/lmath/blob/v1/vec4.go" title="view source">vec4.go</a>
+	<a href="https:/github.com/azul3d/lmath/blob/dev/vec4.go" title="view source">vec4.go</a>
 	</p>
 
 	<h2><span class="linkarea">(<a href="#" id="tagged-files-toggle">show tagged files</a>)</span></h2>
 	<span id="tagged-files">
 		<h2>Test Files</h2>
 		<p>
-		<a href="https:/github.com/azul3d/lmath/blob/v1/mat3_test.go" title="view source">mat3_test.go</a>
+		<a href="https:/github.com/azul3d/lmath/blob/dev/mat3_test.go" title="view source">mat3_test.go</a>
 		
-		<a href="https:/github.com/azul3d/lmath/blob/v1/mat4_test.go" title="view source">mat4_test.go</a>
+		<a href="https:/github.com/azul3d/lmath/blob/dev/mat4_test.go" title="view source">mat4_test.go</a>
 		
-		<a href="https:/github.com/azul3d/lmath/blob/v1/quat_test.go" title="view source">quat_test.go</a>
+		<a href="https:/github.com/azul3d/lmath/blob/dev/quat_test.go" title="view source">quat_test.go</a>
 		
-		<a href="https:/github.com/azul3d/lmath/blob/v1/rect3_test.go" title="view source">rect3_test.go</a>
+		<a href="https:/github.com/azul3d/lmath/blob/dev/rect3_test.go" title="view source">rect3_test.go</a>
 		
-		<a href="https:/github.com/azul3d/lmath/blob/v1/vec2_test.go" title="view source">vec2_test.go</a>
+		<a href="https:/github.com/azul3d/lmath/blob/dev/vec2_test.go" title="view source">vec2_test.go</a>
 		
-		<a href="https:/github.com/azul3d/lmath/blob/v1/vec3_test.go" title="view source">vec3_test.go</a>
+		<a href="https:/github.com/azul3d/lmath/blob/dev/vec3_test.go" title="view source">vec3_test.go</a>
 		
-		<a href="https:/github.com/azul3d/lmath/blob/v1/vec4_test.go" title="view source">vec4_test.go</a>
+		<a href="https:/github.com/azul3d/lmath/blob/dev/vec4_test.go" title="view source">vec4_test.go</a>
 		</p>
 	</span>
 </span>

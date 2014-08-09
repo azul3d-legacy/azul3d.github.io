@@ -110,11 +110,9 @@
 <h1 class="hdr pkg hdr-general">Package gl2</h1>
 <span class="section pkg general">
 	
-		
-			<p><em>Version 1</em></p>
-		
+		<p><em>In Development</em></p>
 	
-	<span class="pkg import">import "azul3d.org/gfx/gl2.v1"</span>
+	<span class="pkg import">import "azul3d.org/gfx/gl2.dev"</span>
 	<span class="list">
 		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#versions">Versions</a></span></span>
 		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#overview">Overview</a></span></span>
@@ -122,9 +120,14 @@
 		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#package-files">Package Files</a></span></span>
 	</span>
 	
-
+		<h2>WARNING!</h2>
+		<span class="sub">
+			
+				<p>This version is the in-development -- <em><strong>unstable</strong></em> -- version of this package. Backwards incompatable changes will be made to this package in the future and as such <em>you should not use this version</em>! Please use the latest release <a href="/gfx/gl2.v1">here</a>.</p>
+			
+		</span>
 	
-		
+
 	
 </span>
 
@@ -133,7 +136,7 @@
 <h1 id="versions" class="hdr pkg hdr-versions"><a href="#versions" title="permalink">»</a>&nbsp;Versions <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg versions">
 	
-		<p>You are viewing the latest version of this package (v1).</p>
+		<p>You are viewing an older version of this package (dev).</p>
 	
 	<p>Other versions of this package are available as follows. <em>Dev</em> is the in-development version of this package and should not generally be used (see <a href="/doc/versioning.html#development-versions">here</a> for more details).</p>
 	<span class="list">
@@ -512,30 +515,30 @@ resize).
 <h1 id="package-files" class="hdr pkg hdr-files"><a href="#package-files" title="permalink">»</a>&nbsp;Package Files <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg files">
 	<p>
-	<a href="https:/github.com/azul3d/gfx-gl2/blob/v1/baseCanvas.go" title="view source">baseCanvas.go</a>
+	<a href="https:/github.com/azul3d/gfx-gl2/blob/dev/baseCanvas.go" title="view source">baseCanvas.go</a>
 	
-	<a href="https:/github.com/azul3d/gfx-gl2/blob/v1/doc.go" title="view source">doc.go</a>
+	<a href="https:/github.com/azul3d/gfx-gl2/blob/dev/doc.go" title="view source">doc.go</a>
 	
-	<a href="https:/github.com/azul3d/gfx-gl2/blob/v1/draw.go" title="view source">draw.go</a>
+	<a href="https:/github.com/azul3d/gfx-gl2/blob/dev/draw.go" title="view source">draw.go</a>
 	
-	<a href="https:/github.com/azul3d/gfx-gl2/blob/v1/gl2.go" title="view source">gl2.go</a>
+	<a href="https:/github.com/azul3d/gfx-gl2/blob/dev/gl2.go" title="view source">gl2.go</a>
 	
-	<a href="https:/github.com/azul3d/gfx-gl2/blob/v1/loadmesh.go" title="view source">loadmesh.go</a>
+	<a href="https:/github.com/azul3d/gfx-gl2/blob/dev/loadmesh.go" title="view source">loadmesh.go</a>
 	
-	<a href="https:/github.com/azul3d/gfx-gl2/blob/v1/loadshader.go" title="view source">loadshader.go</a>
+	<a href="https:/github.com/azul3d/gfx-gl2/blob/dev/loadshader.go" title="view source">loadshader.go</a>
 	
-	<a href="https:/github.com/azul3d/gfx-gl2/blob/v1/loadtexture.go" title="view source">loadtexture.go</a>
+	<a href="https:/github.com/azul3d/gfx-gl2/blob/dev/loadtexture.go" title="view source">loadtexture.go</a>
 	
-	<a href="https:/github.com/azul3d/gfx-gl2/blob/v1/rtt.go" title="view source">rtt.go</a>
+	<a href="https:/github.com/azul3d/gfx-gl2/blob/dev/rtt.go" title="view source">rtt.go</a>
 	
-	<a href="https:/github.com/azul3d/gfx-gl2/blob/v1/state.go" title="view source">state.go</a>
+	<a href="https:/github.com/azul3d/gfx-gl2/blob/dev/state.go" title="view source">state.go</a>
 	</p>
 
 	<h2><span class="linkarea">(<a href="#" id="tagged-files-toggle">show tagged files</a>)</span></h2>
 	<span id="tagged-files">
 		<h2>Test Files</h2>
 		<p>
-		<a href="https:/github.com/azul3d/gfx-gl2/blob/v1/gl2_test.go" title="view source">gl2_test.go</a>
+		<a href="https:/github.com/azul3d/gfx-gl2/blob/dev/gl2_test.go" title="view source">gl2_test.go</a>
 		</p>
 	</span>
 </span>

@@ -107,14 +107,12 @@
 
 
 
-<h1 class="hdr pkg hdr-general">Package window</h1>
+<h1 class="hdr pkg hdr-general">Package binpack</h1>
 <span class="section pkg general">
 	
-		
-			<p><em>Version 1</em></p>
-		
+		<p><em>In Development</em></p>
 	
-	<span class="pkg import">import "azul3d.org/gfx/window.v1"</span>
+	<span class="pkg import">import "azul3d.org/binpack.dev"</span>
 	<span class="list">
 		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#versions">Versions</a></span></span>
 		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#overview">Overview</a></span></span>
@@ -122,9 +120,14 @@
 		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#package-files">Package Files</a></span></span>
 	</span>
 	
-
+		<h2>WARNING!</h2>
+		<span class="sub">
+			
+				<p>This version is the in-development -- <em><strong>unstable</strong></em> -- version of this package. Backwards incompatable changes will be made to this package in the future and as such <em>you should not use this version</em>! Please use the latest release <a href="/binpack.v1">here</a>.</p>
+			
+		</span>
 	
-		
+
 	
 </span>
 
@@ -133,7 +136,7 @@
 <h1 id="versions" class="hdr pkg hdr-versions"><a href="#versions" title="permalink">»</a>&nbsp;Versions <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg versions">
 	
-		<p>You are viewing the latest version of this package (v1).</p>
+		<p>You are viewing an older version of this package (dev).</p>
 	
 	<p>Other versions of this package are available as follows. <em>Dev</em> is the in-development version of this package and should not generally be used (see <a href="/doc/versioning.html#development-versions">here</a> for more details).</p>
 	<span class="list">
@@ -142,14 +145,14 @@
 			
 			
 				
-					<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="gfx/window.v1" title="azul3d.org/gfx/window.v1">v1</a> (latest version)</span></span>
+					<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="binpack.v1" title="azul3d.org/binpack.v1">v1</a> (latest version)</span></span>
 				
 			
 		
 			
 			
 			
-				<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="gfx/window.dev" title="azul3d.org/gfx/window.dev">dev</a> (in development)</span></span>
+				<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="binpack.dev" title="azul3d.org/binpack.dev">dev</a> (in development)</span></span>
 			
 		
 	</span>
@@ -160,8 +163,18 @@
 <h1 id="overview" class="hdr pkg hdr-overview"><a href="#overview" title="permalink">»</a>&nbsp;Overview <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg overview">
 	<p>
-Package window is the easiest way to open a window and render graphics.
+Package binpack implements Jake Gordon&#39;s 2D binpacking algorithm.
 </p>
+<p>
+The algorithm used is described on Jake&#39;s blog here:
+</p>
+<pre><a href="http://codeincomplete.com/posts/2011/5/7/bin_packing/">http://codeincomplete.com/posts/2011/5/7/bin_packing/</a>
+</pre>
+<p>
+And is also implemented by him in JavaScript here:
+</p>
+<pre><a href="https://github.com/jakesgordon/bin-packing">https://github.com/jakesgordon/bin-packing</a>
+</pre>
 
 </span>
 
@@ -172,8 +185,12 @@ Package window is the easiest way to open a window and render graphics.
 		
 		
 		
-			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Run">func Run(gfxLoop func(w *chippy.Window, r gfx.Renderer))</a></span></span>
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Pack">func Pack(p Packable) (width, height int)</a></span></span>
 		
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Packable">type Packable</a></span></span>
+			
+			
 		
 	</span>
 </span>
@@ -189,22 +206,71 @@ Package window is the easiest way to open a window and render graphics.
 
 
 
-	<h1 id="Run" class="hdr pkg hdr-function"><a href="#Run" title="permalink">»</a>&nbsp;func Run(gfxLoop func(w *chippy.Window, r gfx.Renderer)) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+	<h1 id="Pack" class="hdr pkg hdr-function"><a href="#Pack" title="permalink">»</a>&nbsp;func Pack(p Packable) (width, height int) <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg function">
-		<pre>func Run(gfxLoop func(w *chippy.Window, r gfx.Renderer))</pre>
-		
+		<pre>func Pack(p Packable) (width, height int)</pre>
+		<p>
+Pack uses the packable interface, p, to pack two dimensional blocks onto a
+larger two dimensional grid.
+</p>
+<p>
+The algorithm does not start with an fixed width and height, instead it
+starts with the width and height of the first block and then grows as
+neccessary to fit each block into the overall grid. As the grid is grown the
+algorithm attempts to maintain an roughly square ratio by making &#39;smart&#39;
+choices about whether to grow right or down.
+</p>
+<p>
+The returned width and height reflect how large the overall grid must be to
+contain at least each packed block.
+</p>
+<p>
+When growing, the algorithm can only grow to the right or down. If the new
+block is both wider and taller than the first [p.Size(0)] block, then the
+algorithm will be unable to pack the blocks, and [-1, -1] will be returned.
+</p>
+<p>
+To avoid the above problem, sort blocks by max(width, height).
+</p>
+<p>
+If the number of blocks is zero (p.Len() == 0) then this function is no-op
+and [0, 0] is returned.
+</p>
+
 	</span>
 
 
 
 
 
+	
+	<h1 id="Packable" class="hdr pkg hdr-type"><a href="#Packable" title="permalink">»</a>&nbsp;type Packable <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg type">
+		<pre>type Packable interface {
+	// Len should return the number of blocks in total.
+	Len() int
+
+	// Size should return the width and height of the block n
+	Size(n int) (width, height int)
+
+	// Place should place the block n, at the position [x, y].
+	Place(n, x, y int)
+}</pre>
+		
+	</span>
+
+	
+	
+
+	
+	
+
 
 
 <h1 id="package-files" class="hdr pkg hdr-files"><a href="#package-files" title="permalink">»</a>&nbsp;Package Files <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg files">
 	<p>
-	<a href="https:/github.com/azul3d/gfx-window/blob/v1/window.go" title="view source">window.go</a>
+	<a href="https:/github.com/azul3d/binpack/blob/dev/binpack.go" title="view source">binpack.go</a>
 	</p>
 
 	<h2><span class="linkarea">(<a href="#" id="tagged-files-toggle">show tagged files</a>)</span></h2>

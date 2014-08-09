@@ -107,14 +107,12 @@
 
 
 
-<h1 class="hdr pkg hdr-general">Package window</h1>
+<h1 class="hdr pkg hdr-general">Package main</h1>
 <span class="section pkg general">
 	
-		
-			<p><em>Version 1</em></p>
-		
+		<p><em>In Development</em></p>
 	
-	<span class="pkg import">import "azul3d.org/gfx/window.v1"</span>
+	<span class="pkg import">import "azul3d.org/cmd/azulfix.dev"</span>
 	<span class="list">
 		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#versions">Versions</a></span></span>
 		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#overview">Overview</a></span></span>
@@ -122,9 +120,14 @@
 		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#package-files">Package Files</a></span></span>
 	</span>
 	
-
+		<h2>WARNING!</h2>
+		<span class="sub">
+			
+				<p>This version is the in-development -- <em><strong>unstable</strong></em> -- version of this package. Backwards incompatable changes will be made to this package in the future and as such <em>you should not use this version</em>! Please use the latest release <a href="/cmd/azulfix.v1">here</a>.</p>
+			
+		</span>
 	
-		
+
 	
 </span>
 
@@ -133,7 +136,7 @@
 <h1 id="versions" class="hdr pkg hdr-versions"><a href="#versions" title="permalink">»</a>&nbsp;Versions <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg versions">
 	
-		<p>You are viewing the latest version of this package (v1).</p>
+		<p>You are viewing an older version of this package (dev).</p>
 	
 	<p>Other versions of this package are available as follows. <em>Dev</em> is the in-development version of this package and should not generally be used (see <a href="/doc/versioning.html#development-versions">here</a> for more details).</p>
 	<span class="list">
@@ -142,14 +145,14 @@
 			
 			
 				
-					<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="gfx/window.v1" title="azul3d.org/gfx/window.v1">v1</a> (latest version)</span></span>
+					<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="cmd/azulfix.v1" title="azul3d.org/cmd/azulfix.v1">v1</a> (latest version)</span></span>
 				
 			
 		
 			
 			
 			
-				<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="gfx/window.dev" title="azul3d.org/gfx/window.dev">dev</a> (in development)</span></span>
+				<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="cmd/azulfix.dev" title="azul3d.org/cmd/azulfix.dev">dev</a> (in development)</span></span>
 			
 		
 	</span>
@@ -160,7 +163,43 @@
 <h1 id="overview" class="hdr pkg hdr-overview"><a href="#overview" title="permalink">»</a>&nbsp;Overview <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg overview">
 	<p>
-Package window is the easiest way to open a window and render graphics.
+Fix finds Go programs that use old APIs and rewrites them to use
+newer ones.  After you update to a new Go release, fix helps make
+the necessary changes to your programs.
+</p>
+<p>
+Usage:
+</p>
+<pre>go tool fix [-r name,...] [path ...]
+</pre>
+<p>
+Without an explicit path, fix reads standard input and writes the
+result to standard output.
+</p>
+<p>
+If the named path is a file, fix rewrites the named files in place.
+If the named path is a directory, fix rewrites all .go files in that
+directory tree.  When fix rewrites a file, it prints a line to standard
+error giving the name of the file and the rewrite applied.
+</p>
+<p>
+If the -diff flag is set, no files are rewritten. Instead fix prints
+the differences a rewrite would introduce.
+</p>
+<p>
+The -r flag restricts the set of rewrites considered to those in the
+named list.  By default fix considers all known rewrites.  Fix&#39;s
+rewrites are idempotent, so that it is safe to apply fix to updated
+or partially updated code even without using the -r flag.
+</p>
+<p>
+Fix prints the full list of fixes it can apply in its help output;
+to see them, run go tool fix -?.
+</p>
+<p>
+Fix does not make backup copies of the files that it edits.
+Instead, use a version control system&#39;s &ldquo;diff&rdquo; functionality to inspect
+the changes that fix makes before committing them.
 </p>
 
 </span>
@@ -172,8 +211,14 @@ Package window is the easiest way to open a window and render graphics.
 		
 		
 		
-			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Run">func Run(gfxLoop func(w *chippy.Window, r gfx.Renderer))</a></span></span>
 		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Type">type Type</a></span></span>
+			
+			
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#TypeConfig">type TypeConfig</a></span></span>
+			
+			
 		
 	</span>
 </span>
@@ -189,26 +234,83 @@ Package window is the easiest way to open a window and render graphics.
 
 
 
-	<h1 id="Run" class="hdr pkg hdr-function"><a href="#Run" title="permalink">»</a>&nbsp;func Run(gfxLoop func(w *chippy.Window, r gfx.Renderer)) <span class="toplink">(<a href="#top">top</a>)</span></h1>
-<span class="section pkg function">
-		<pre>func Run(gfxLoop func(w *chippy.Window, r gfx.Renderer))</pre>
+
+
+
+
+	
+	<h1 id="Type" class="hdr pkg hdr-type"><a href="#Type" title="permalink">»</a>&nbsp;type Type <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg type">
+		<pre>type Type struct {
+	Field	map[string]string	// map field name to type
+	Method	map[string]string	// map method name to comma-separated return types (should start with &#34;func &#34;)
+	Embed	[]string		// list of types this type embeds (for extra methods)
+	Def	string			// definition of named type
+}</pre>
+		<p>
+Type describes the Fields and Methods of a type.
+If the field or method cannot be found there, it is next
+looked for in the Embed list.
+</p>
+
+	</span>
+
+	
+	
+
+	
+	
+
+	
+	<h1 id="TypeConfig" class="hdr pkg hdr-type"><a href="#TypeConfig" title="permalink">»</a>&nbsp;type TypeConfig <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg type">
+		<pre>type TypeConfig struct {
+	Type	map[string]*Type
+	Var	map[string]string
+	Func	map[string]string
+}</pre>
 		
 	</span>
 
+	
+	
 
-
-
+	
+	
 
 
 
 <h1 id="package-files" class="hdr pkg hdr-files"><a href="#package-files" title="permalink">»</a>&nbsp;Package Files <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg files">
 	<p>
-	<a href="https:/github.com/azul3d/gfx-window/blob/v1/window.go" title="view source">window.go</a>
+	<a href="https:/github.com/azul3d/cmd-azulfix/blob/dev/azulnewversions.go" title="view source">azulnewversions.go</a>
+	
+	<a href="https:/github.com/azul3d/cmd-azulfix/blob/dev/doc.go" title="view source">doc.go</a>
+	
+	<a href="https:/github.com/azul3d/cmd-azulfix/blob/dev/fix.go" title="view source">fix.go</a>
+	
+	<a href="https:/github.com/azul3d/cmd-azulfix/blob/dev/main.go" title="view source">main.go</a>
+	
+	<a href="https:/github.com/azul3d/cmd-azulfix/blob/dev/netipv6zone.go" title="view source">netipv6zone.go</a>
+	
+	<a href="https:/github.com/azul3d/cmd-azulfix/blob/dev/printerconfig.go" title="view source">printerconfig.go</a>
+	
+	<a href="https:/github.com/azul3d/cmd-azulfix/blob/dev/typecheck.go" title="view source">typecheck.go</a>
 	</p>
 
 	<h2><span class="linkarea">(<a href="#" id="tagged-files-toggle">show tagged files</a>)</span></h2>
-	<span id="tagged-files"></span>
+	<span id="tagged-files">
+		<h2>Test Files</h2>
+		<p>
+		<a href="https:/github.com/azul3d/cmd-azulfix/blob/dev/import_test.go" title="view source">import_test.go</a>
+		
+		<a href="https:/github.com/azul3d/cmd-azulfix/blob/dev/main_test.go" title="view source">main_test.go</a>
+		
+		<a href="https:/github.com/azul3d/cmd-azulfix/blob/dev/netipv6zone_test.go" title="view source">netipv6zone_test.go</a>
+		
+		<a href="https:/github.com/azul3d/cmd-azulfix/blob/dev/printerconfig_test.go" title="view source">printerconfig_test.go</a>
+		</p>
+	</span>
 </span>
 
 
