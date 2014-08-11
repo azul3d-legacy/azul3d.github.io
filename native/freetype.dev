@@ -123,7 +123,7 @@
 		<h2>WARNING!</h2>
 		<span class="sub">
 			
-				<p>This version is the in-development -- <em><strong>unstable</strong></em> -- version of this package. Backwards incompatable changes will be made to this package in the future and as such <em>you should not use this version</em>! Please use the latest release <a href="/native/freetype.v1">here</a>.</p>
+				<p>This version is the in-development -- <em><strong>unstable</strong></em> -- version of this package. Backwards incompatible changes will be made to this package in the future and as such <em>you should not use this version</em>! Please use the latest release <a href="/native/freetype.v1">here</a>.</p>
 			
 		</span>
 	
