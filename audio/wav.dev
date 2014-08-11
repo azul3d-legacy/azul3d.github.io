@@ -166,8 +166,8 @@
 Package wav decodes and encodes wav audio files.
 </p>
 <p>
-This decoder is capable of decoding all wav audio formats with any number of
-channels (except extensible formats), it can decode:
+The decoder and encoder are both able to manage all wav audio formats, with
+any number of channels (except extensible WAV formats), these formats are:
 </p>
 <pre>8-bit unsigned PCM
 16-bit signed PCM
@@ -178,6 +178,13 @@ channels (except extensible formats), it can decode:
 
 μ-law
 a-law
+</pre>
+<p>
+Please refer to the WAV specification for in-depth details about its file
+format:
+</p>
+<pre><a href="http://www.sonicspot.com/guide/wavefiles.html">http://www.sonicspot.com/guide/wavefiles.html</a>
+<a href="https://ccrma.stanford.edu/courses/422/projects/WaveFormat/">https://ccrma.stanford.edu/courses/422/projects/WaveFormat/</a>
 </pre>
 
 </span>
@@ -190,6 +197,8 @@ a-law
 		
 			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#variables">Variables</a></span></span>
 		
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#NewEncoder">func NewEncoder(w io.WriteSeeker, conf audio.Config) (audio.Encoder, error)</a></span></span>
 		
 		
 	</span>
@@ -218,6 +227,20 @@ This error only happens for audio files containing extensible wav data.
 
 
 
+	<h1 id="NewEncoder" class="hdr pkg hdr-function"><a href="#NewEncoder" title="permalink">»</a>&nbsp;func NewEncoder(w io.WriteSeeker, conf audio.Config) (audio.Encoder, error) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg function">
+		<pre>func NewEncoder(w io.WriteSeeker, conf audio.Config) (audio.Encoder, error)</pre>
+		<p>
+NewEncoder creates a new WAV encoder, which stores the audio configuration in
+a WAV header and encodes any audio samples written to it. The contents of the
+WAV header and the encoded audio samples are written to w.
+</p>
+<p>
+Note: The Close method of the encoder must be called when finished using it.
+</p>
+
+	</span>
+
 
 
 
@@ -230,6 +253,10 @@ This error only happens for audio files containing extensible wav data.
 	<a href="https:/github.com/azul3d/audio-wav/blob/dev/decoder.go" title="view source">decoder.go</a>
 	
 	<a href="https:/github.com/azul3d/audio-wav/blob/dev/doc.go" title="view source">doc.go</a>
+	
+	<a href="https:/github.com/azul3d/audio-wav/blob/dev/encoder.go" title="view source">encoder.go</a>
+	
+	<a href="https:/github.com/azul3d/audio-wav/blob/dev/header.go" title="view source">header.go</a>
 	
 	<a href="https:/github.com/azul3d/audio-wav/blob/dev/structs.go" title="view source">structs.go</a>
 	</p>
