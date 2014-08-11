@@ -250,6 +250,10 @@ This package aims to be like the &#39;image&#39; package, except for audio.
 			
 			
 		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Encoder">type Encoder</a></span></span>
+			
+			
+		
 			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#F32">type F32</a></span></span>
 			
 			
@@ -889,6 +893,32 @@ specific package.
 </p>
 
 		</span>
+	
+
+	
+	
+
+	
+	<h1 id="Encoder" class="hdr pkg hdr-type"><a href="#Encoder" title="permalink">»</a>&nbsp;type Encoder <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg type">
+		<pre>type Encoder interface {
+	Writer
+
+	// Close closes the audio encoder, and finalizes the encoding process.
+	// It must be called or else the encoding process may not finish, and
+	// the encoded data may be uncomplete.
+	//
+	// Writing data to a closed encoder causes an encoder-specific behavior
+	// but most often a panic will occur.
+	Close() error
+}</pre>
+		<p>
+Encoder is the generic audio encoder interface.
+</p>
+
+	</span>
+
+	
 	
 
 	
