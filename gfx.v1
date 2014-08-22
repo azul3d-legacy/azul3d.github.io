@@ -1432,6 +1432,10 @@ The camera&#39;s write lock must be held for this method to operate safely.
 	// SampleCount() is called it will return the number of samples last drawn
 	// by the object.
 	//
+	// The canvas must invoke o.Bounds() some time before clearing data slices
+	// of loaded meshes, such that the object has a chance to determine it&#39;s
+	// bounding box.
+	//
 	// The object will not be drawn if any of the following cases are true:
 	//  o.Shader == nil
 	//  len(o.Shader.Error) &gt; 0
@@ -2238,6 +2242,21 @@ responsible for creating these and fulfilling the interface.
 	// The order in which the textures appear in this slice is also the order
 	// in which they are sent to the graphics card.
 	Textures	[]*Texture
+
+	// CachedBounds represents the pre-calculated cached bounding box of this
+	// object. Note that the bounds are only calculated once Object.Bounds() is
+	// invoked.
+	//
+	// If you make changes to the vertices of any mesh associated with this
+	// object, or if you add / remove meshes from this object, the bounds will
+	// not reflect this automatically. Instead, you must clear the cached
+	// bounds explicitly:
+	//  o.Lock()
+	//  o.CachedBounds = nil
+	//  o.Unlock()
+	//
+	// And then simply invoke o.Bounds() again to calculate the bounds again.
+	CachedBounds	*lmath.Rect3
 }</pre>
 		<p>
 Object represents a single graphics object for rendering, it has a
@@ -2277,7 +2296,21 @@ Bounds implements the Boundable interface. The returned bounding box takes
 into account all of the mesh&#39;s bounding boxes, transformed into world space.
 </p>
 <p>
-This method properly read-locks the object.
+The bounding box is cached (see o.CachedBounds) so that multiple calls to
+this method are fast. If you make changes to the vertices, or add/remove
+meshes from this object you need to explicitly clear the cached bounds so
+that the next call to Bounds() will calculate the bounding box again:
+</p>
+<pre>o.Lock()
+o.CachedBounds = nil
+o.Unlock()
+</pre>
+<p>
+You do not need to clear the cached bounds if the transform of the object
+has changed (as it is applied after calculation of the bounding box).
+</p>
+<p>
+This method properly write-locks the object.
 </p>
 
 		</span>

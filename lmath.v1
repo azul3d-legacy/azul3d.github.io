@@ -184,6 +184,8 @@ Package lmath implements a 3D linear math library.
 		
 			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Equal">func Equal(a, b float64) bool</a></span></span>
 		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Lerp">func Lerp(a, b, t float64) float64</a></span></span>
+		
 			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Radians">func Radians(degrees float64) (radians float64)</a></span></span>
 		
 			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Rounded">func Rounded(v float64) float64</a></span></span>
@@ -650,8 +652,6 @@ Package lmath implements a 3D linear math library.
 			
 				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Vec3.TransformVecMat4">func (a Vec3) TransformVecMat4(b Mat4) Vec3</a></span></span>
 			
-				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Vec3.Vec3">func (a Vec3) Vec3() Vec3</a></span></span>
-			
 				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Vec3.XyzToHpr">func (v Vec3) XyzToHpr() Vec3</a></span></span>
 			
 		
@@ -717,6 +717,8 @@ Package lmath implements a 3D linear math library.
 				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Vec4.SubScalar">func (a Vec4) SubScalar(b float64) Vec4</a></span></span>
 			
 				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Vec4.Transform">func (a Vec4) Transform(b Mat4) Vec4</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Vec4.Vec3">func (a Vec4) Vec3() Vec3</a></span></span>
 			
 		
 	</span>
@@ -934,6 +936,25 @@ Equal tells if the two floating point values a and b are considered equal
 within the default EPSILON comparison value. It is short-handed for:
 </p>
 <pre>AlmostEqual(a, b, EPSILON)
+</pre>
+
+	</span>
+
+	<h1 id="Lerp" class="hdr pkg hdr-function"><a href="#Lerp" title="permalink">»</a>&nbsp;func Lerp(a, b, t float64) float64 <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg function">
+		<pre>func Lerp(a, b, t float64) float64</pre>
+		<p>
+Lerp performs a linear interpolation between a and b. The t parameter is a
+number in the range 0.0-1.0. Some examples:
+</p>
+<pre>Lerp(0, 10, 0) == 0
+Lerp(0, 10, 0.5) == 5
+Lerp(0, 10, 1) == 10
+</pre>
+<p>
+The interpolation method is precise, so it is guaranteed that:
+</p>
+<pre>Lerp(a, b, 1) == a
 </pre>
 
 	</span>
@@ -3484,18 +3505,6 @@ the orthonormal matrix and returns the result.
 		</span>
 	
 		
-		<h1 id="Vec3.Vec3" class="hdr pkg hdr-method"><a href="#Vec3.Vec3" title="permalink">»</a>&nbsp;func (a Vec3) Vec3() Vec3 <span class="toplink">(<a href="#top">top</a>)</span></h1>
-<span class="section pkg method">
-			<pre>func (a Vec3) Vec3() Vec3</pre>
-			<p>
-Vec3 converts this four-vector to three-component one. It&#39;s short-hand for:
-</p>
-<pre>Vec3{a.X, a.Y, a.Z}
-</pre>
-
-		</span>
-	
-		
 		<h1 id="Vec3.XyzToHpr" class="hdr pkg hdr-method"><a href="#Vec3.XyzToHpr" title="permalink">»</a>&nbsp;func (v Vec3) XyzToHpr() Vec3 <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg method">
 			<pre>func (v Vec3) XyzToHpr() Vec3</pre>
@@ -3847,6 +3856,19 @@ Transform transforms this vector by the matrix (vector * matrix) and returns
 the result.
 This is an fully general operation.
 </p>
+
+		</span>
+	
+		
+		<h1 id="Vec4.Vec3" class="hdr pkg hdr-method"><a href="#Vec4.Vec3" title="permalink">»</a>&nbsp;func (a Vec4) Vec3() Vec3 <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (a Vec4) Vec3() Vec3</pre>
+			<p>
+Vec3 converts this four-component vector to a three-component one. It&#39;s
+short-hand for:
+</p>
+<pre>Vec3{a.X, a.Y, a.Z}
+</pre>
 
 		</span>
 	

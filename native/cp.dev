@@ -1809,13 +1809,11 @@ This function should only be called from a post-solve, post-step or cpBodyEachAr
 	
 	<h1 id="BB" class="hdr pkg hdr-type"><a href="#BB" title="permalink">»</a>&nbsp;type BB <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg type">
-		<pre>type BB struct {
-	L	float64
-	B	float64
-	R	float64
-	T	float64
-}</pre>
-		
+		<pre>type BB C.cpBB</pre>
+		<p>
+Chipmunk&#39;s axis-aligned 2D bounding box type. (left, bottom, right, top)
+</p>
+
 	</span>
 
 	
@@ -1975,8 +1973,11 @@ Wrap a vector to a bounding box.
 	
 	<h1 id="Bitmask" class="hdr pkg hdr-type"><a href="#Bitmask" title="permalink">»</a>&nbsp;type Bitmask <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg type">
-		<pre>type Bitmask uint32</pre>
-		
+		<pre>type Bitmask C.cpBitmask</pre>
+		<p>
+Type used for cpShapeFilter category and mask.
+</p>
+
 	</span>
 
 	
@@ -2633,8 +2634,12 @@ colliding.
 	
 	<h1 id="CollisionID" class="hdr pkg hdr-type"><a href="#CollisionID" title="permalink">»</a>&nbsp;type CollisionID <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg type">
-		<pre>type CollisionID uint32</pre>
-		
+		<pre>type CollisionID C.cpCollisionID</pre>
+		<p>
+Type used internally to cache colliding object info for cpCollideShapes().
+Should be at least 32 bits.
+</p>
+
 	</span>
 
 	
@@ -2698,8 +2703,11 @@ Collision separate event function callback type.
 	
 	<h1 id="CollisionType" class="hdr pkg hdr-type"><a href="#CollisionType" title="permalink">»</a>&nbsp;type CollisionType <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg type">
-		<pre>type CollisionType uint64</pre>
-		
+		<pre>type CollisionType C.cpCollisionType</pre>
+		<p>
+Type used for cpSpace.collision_type.
+</p>
+
 	</span>
 
 	
@@ -3841,8 +3849,11 @@ A struct that wraps up the important collision data for an arbiter.
 	
 	<h1 id="DataPointer" class="hdr pkg hdr-type"><a href="#DataPointer" title="permalink">»</a>&nbsp;type DataPointer <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg type">
-		<pre>type DataPointer unsafe.Pointer</pre>
-		
+		<pre>type DataPointer C.cpDataPointer</pre>
+		<p>
+Type used for user data pointers.
+</p>
+
 	</span>
 
 	
@@ -3880,8 +3891,11 @@ A struct that wraps up the important collision data for an arbiter.
 	
 	<h1 id="Group" class="hdr pkg hdr-type"><a href="#Group" title="permalink">»</a>&nbsp;type Group <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg type">
-		<pre>type Group uint64</pre>
-		
+		<pre>type Group C.cpGroup</pre>
+		<p>
+Type used for cpShape.group.
+</p>
+
 	</span>
 
 	
@@ -3906,8 +3920,11 @@ A struct that wraps up the important collision data for an arbiter.
 	
 	<h1 id="HashValue" class="hdr pkg hdr-type"><a href="#HashValue" title="permalink">»</a>&nbsp;type HashValue <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg type">
-		<pre>type HashValue uint64</pre>
-		
+		<pre>type HashValue C.cpHashValue</pre>
+		<p>
+Hash value type.
+</p>
+
 	</span>
 
 	
@@ -3932,13 +3949,11 @@ A struct that wraps up the important collision data for an arbiter.
 	
 	<h1 id="Mat2x2" class="hdr pkg hdr-type"><a href="#Mat2x2" title="permalink">»</a>&nbsp;type Mat2x2 <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg type">
-		<pre>type Mat2x2 struct {
-	A	float64
-	B	float64
-	C	float64
-	D	float64
-}</pre>
-		
+		<pre>type Mat2x2 C.cpMat2x2</pre>
+		<p>
+Row major [[a, b][c d]]
+</p>
+
 	</span>
 
 	
@@ -5269,12 +5284,7 @@ Rectangle Query callback function type.
 	
 	<h1 id="SpaceDebugColor" class="hdr pkg hdr-type"><a href="#SpaceDebugColor" title="permalink">»</a>&nbsp;type SpaceDebugColor <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg type">
-		<pre>type SpaceDebugColor struct {
-	R	float32
-	G	float32
-	B	float32
-	A	float32
-}</pre>
+		<pre>type SpaceDebugColor C.cpSpaceDebugColor</pre>
 		
 	</span>
 
@@ -5454,8 +5464,11 @@ Shape query callback function type.
 	
 	<h1 id="Timestamp" class="hdr pkg hdr-type"><a href="#Timestamp" title="permalink">»</a>&nbsp;type Timestamp <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg type">
-		<pre>type Timestamp uint32</pre>
-		
+		<pre>type Timestamp C.cpTimestamp</pre>
+		<p>
+Type used for various timestamps in Chipmunk.
+</p>
+
 	</span>
 
 	
@@ -5467,15 +5480,11 @@ Shape query callback function type.
 	
 	<h1 id="Transform" class="hdr pkg hdr-type"><a href="#Transform" title="permalink">»</a>&nbsp;type Transform <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg type">
-		<pre>type Transform struct {
-	A	float64
-	B	float64
-	C	float64
-	D	float64
-	Tx	float64
-	Ty	float64
-}</pre>
-		
+		<pre>type Transform C.cpTransform</pre>
+		<p>
+Column major affine transform.
+</p>
+
 	</span>
 
 	
@@ -5642,11 +5651,11 @@ Transform a vector (i.e. a normal)
 	
 	<h1 id="Vect" class="hdr pkg hdr-type"><a href="#Vect" title="permalink">»</a>&nbsp;type Vect <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg type">
-		<pre>type Vect struct {
-	X	float64
-	Y	float64
-}</pre>
-		
+		<pre>type Vect C.cpVect</pre>
+		<p>
+Chipmunk&#39;s 2D vector type.
+</p>
+
 	</span>
 
 	
@@ -5833,73 +5842,75 @@ Inverse of Vrotate().
 <h1 id="package-files" class="hdr pkg hdr-files"><a href="#package-files" title="permalink">»</a>&nbsp;Package Files <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg files">
 	<p>
-	<a href="https:/github.com/azul3d/native-cp/blob/dev/arbiter.go" title="view source">arbiter.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/dev/zarbiter.go" title="view source">zarbiter.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/dev/bb.go" title="view source">bb.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/dev/zbb.go" title="view source">zbb.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/dev/body.go" title="view source">body.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/dev/zbody.go" title="view source">zbody.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/dev/chipmunk.go" title="view source">chipmunk.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/dev/zchipmunk.go" title="view source">zchipmunk.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/dev/constraint.go" title="view source">constraint.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/dev/zconstraint.go" title="view source">zconstraint.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/dev/dampedrotaryspring.go" title="view source">dampedrotaryspring.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/dev/zdampedrotaryspring.go" title="view source">zdampedrotaryspring.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/dev/dampedspring.go" title="view source">dampedspring.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/dev/zdampedspring.go" title="view source">zdampedspring.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/dev/gearjoint.go" title="view source">gearjoint.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/dev/zgearjoint.go" title="view source">zgearjoint.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/dev/groovejoint.go" title="view source">groovejoint.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/dev/zgroovejoint.go" title="view source">zgroovejoint.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/dev/pinjoint.go" title="view source">pinjoint.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/dev/zpinjoint.go" title="view source">zpinjoint.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/dev/pivotjoint.go" title="view source">pivotjoint.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/dev/zpivotjoint.go" title="view source">zpivotjoint.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/dev/polyshape.go" title="view source">polyshape.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/dev/zpolyshape.go" title="view source">zpolyshape.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/dev/ratchetjoint.go" title="view source">ratchetjoint.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/dev/zratchetjoint.go" title="view source">zratchetjoint.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/dev/rotarylimitjoint.go" title="view source">rotarylimitjoint.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/dev/zrotarylimitjoint.go" title="view source">zrotarylimitjoint.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/dev/shape.go" title="view source">shape.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/dev/zshape.go" title="view source">zshape.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/dev/simplemotor.go" title="view source">simplemotor.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/dev/zsimplemotor.go" title="view source">zsimplemotor.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/dev/slidejoint.go" title="view source">slidejoint.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/dev/zslidejoint.go" title="view source">zslidejoint.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/dev/space.go" title="view source">space.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/dev/zspace.go" title="view source">zspace.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/dev/spatialindex.go" title="view source">spatialindex.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/dev/zspatialindex.go" title="view source">zspatialindex.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/dev/transform.go" title="view source">transform.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/dev/ztransform.go" title="view source">ztransform.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/dev/typescompat.go" title="view source">typescompat.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/dev/ztypescompat.go" title="view source">ztypescompat.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/dev/unsafe.go" title="view source">unsafe.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/dev/zunsafe.go" title="view source">zunsafe.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/dev/vect.go" title="view source">vect.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/dev/zvect.go" title="view source">zvect.go</a>
 	</p>
 
 	<h2><span class="linkarea">(<a href="#" id="tagged-files-toggle">show tagged files</a>)</span></h2>
 	<span id="tagged-files">
-		<h2>Cgodefs Files</h2>
+		<h2>386 Files</h2>
 		<p>
-		<a href="https:/github.com/azul3d/native-cp/blob/dev/types_cgodefs.go" title="view source">types_cgodefs.go</a>
+		<a href="https:/github.com/azul3d/native-cp/blob/dev/ztypes_386.go" title="view source">ztypes_386.go</a>
 		</p>
 	
-		<h2>Linux Amd64 Files</h2>
+		<h2>Amd64 Files</h2>
 		<p>
-		<a href="https:/github.com/azul3d/native-cp/blob/dev/types_linux_amd64.go" title="view source">types_linux_amd64.go</a>
+		<a href="https:/github.com/azul3d/native-cp/blob/dev/ztypes_amd64.go" title="view source">ztypes_amd64.go</a>
+		</p>
+	
+		<h2>Cgodefs Files</h2>
+		<p>
+		<a href="https:/github.com/azul3d/native-cp/blob/dev/ztypes_cgodefs.go" title="view source">ztypes_cgodefs.go</a>
 		</p>
 	
 		<h2>Test Files</h2>
 		<p>
-		<a href="https:/github.com/azul3d/native-cp/blob/dev/debugdraw_test.go" title="view source">debugdraw_test.go</a>
-		</p>
-	
-		<h2>Windows Amd64 Files</h2>
-		<p>
-		<a href="https:/github.com/azul3d/native-cp/blob/dev/types_windows_amd64.go" title="view source">types_windows_amd64.go</a>
+		<a href="https:/github.com/azul3d/native-cp/blob/dev/zbody_test.go" title="view source">zbody_test.go</a>
+		
+		<a href="https:/github.com/azul3d/native-cp/blob/dev/zdebugdraw_test.go" title="view source">zdebugdraw_test.go</a>
 		</p>
 	</span>
 </span>
