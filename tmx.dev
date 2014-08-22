@@ -203,6 +203,10 @@ exception of embedded image data (I.e. non-external tileset images).
 			
 			
 		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Ellipse">type Ellipse</a></span></span>
+			
+			
+		
 			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Image">type Image</a></span></span>
 			
 			
@@ -231,7 +235,31 @@ exception of embedded image data (I.e. non-external tileset images).
 				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Map.TilesetTile">func (m *Map) TilesetTile(ts *Tileset, gid uint32) *Tile</a></span></span>
 			
 		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Object">type Object</a></span></span>
+			
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Object.String">func (o *Object) String() string</a></span></span>
+			
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#ObjectGroup">type ObjectGroup</a></span></span>
+			
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#ObjectGroup.String">func (o *ObjectGroup) String() string</a></span></span>
+			
+		
 			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Orientation">type Orientation</a></span></span>
+			
+			
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Point">type Point</a></span></span>
+			
+			
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Polygon">type Polygon</a></span></span>
+			
+			
+		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Polyline">type Polyline</a></span></span>
 			
 			
 		
@@ -383,6 +411,28 @@ Coord represents a single 2D coordinate pair (x, y)
 	
 
 	
+	<h1 id="Ellipse" class="hdr pkg hdr-type"><a href="#Ellipse" title="permalink">»</a>&nbsp;type Ellipse <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg type">
+		<pre>type Ellipse struct {
+	// The position and size of the ellipse.
+	//
+	// These values are identical to the parent object&#39;s fields of the same
+	// name, they are only provided for convenience.
+	X, Y, Width, Height int
+}</pre>
+		<p>
+Ellipse represents an ellipse object, found in the Object.Value field.
+</p>
+
+	</span>
+
+	
+	
+
+	
+	
+
+	
 	<h1 id="Image" class="hdr pkg hdr-type"><a href="#Image" title="permalink">»</a>&nbsp;type Image <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg type">
 		<pre>type Image struct {
@@ -504,6 +554,9 @@ String returns a string representation of this layer.
 
 	// A list of all the layers of this map.
 	Layers	[]*Layer
+
+	// A list of all the object groups in this map.
+	ObjectGroups	[]*ObjectGroup
 }</pre>
 		<p>
 Map represents a single TMX map file.
@@ -605,12 +658,192 @@ global tile id is invalid this function will return nil.
 	
 
 	
+	<h1 id="Object" class="hdr pkg hdr-type"><a href="#Object" title="permalink">»</a>&nbsp;type Object <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg type">
+		<pre>type Object struct {
+	// The name of this object.
+	Name	string
+
+	// The type of this object, which is an arbitrary string.
+	Type	string
+
+	// The X and Y coordinates, as well as the width and height of this object
+	// in pixels.
+	X, Y, Width, Height	int
+
+	// The rotation of this object in degrees clockwise.
+	Rotation	float64
+
+	// Reference to a tile (optional). If it is non-zero then this object is
+	// represented by the image of the tile with this global ID. Currently that
+	// means width and height are ignored for such objects. The image alignment
+	// currently depends on the map orientation:
+	//  Orthogonal - Aligned to the bottom-left
+	//  Isometric - Aligned to the bottom-center
+	Gid	uint32
+
+	// Boolean value representing whether or not the object group is visible.
+	Visible	bool
+
+	// Map of properties for this object group.
+	Properties	map[string]string
+
+	// Value represents the underlying object value (which is sometimes nil).
+	// You can use a type switch to determine it&#39;s value:
+	//  switch v := obj.Value.(type) {
+	//  case *tmx.Ellipse: handleEllipse(obj, v)
+	//  case *tmx.Polygon: handlePolygon(obj, v)
+	//  case *tmx.Polyline: handlePolyline(obj, v)
+	//  case *tmx.Image: handleImage(obj, v)
+	//  }
+	Value	interface{}
+}</pre>
+		<p>
+Object represents a single object, which are generally used to add custom
+information to tile maps, like collision information, spawn points, etc.
+</p>
+
+	</span>
+
+	
+	
+
+	
+	
+		
+		<h1 id="Object.String" class="hdr pkg hdr-method"><a href="#Object.String" title="permalink">»</a>&nbsp;func (o *Object) String() string <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (o *Object) String() string</pre>
+			<p>
+String returns a string representation of this object, like:
+</p>
+<pre>Object(Name=&#34;the name&#34;, X=%d, Y=%d, Width=%d, Height=%d)
+</pre>
+
+		</span>
+	
+
+	
+	<h1 id="ObjectGroup" class="hdr pkg hdr-type"><a href="#ObjectGroup" title="permalink">»</a>&nbsp;type ObjectGroup <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg type">
+		<pre>type ObjectGroup struct {
+	// The name of this object group.
+	Name	string
+
+	// Color of this object group.
+	Color	color.RGBA
+
+	// Value between 0 and 1 representing the opacity of the object group.
+	Opacity	float64
+
+	// Boolean value representing whether or not the object group is visible.
+	Visible	bool
+
+	// Map of properties for this object group.
+	Properties	map[string]string
+
+	// List of objects in this object group.
+	Objects	[]*Object
+}</pre>
+		<p>
+ObjectGroup represents a group of objects.
+</p>
+
+	</span>
+
+	
+	
+
+	
+	
+		
+		<h1 id="ObjectGroup.String" class="hdr pkg hdr-method"><a href="#ObjectGroup.String" title="permalink">»</a>&nbsp;func (o *ObjectGroup) String() string <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (o *ObjectGroup) String() string</pre>
+			<p>
+String returns a string representation of this object group, like:
+</p>
+<pre>ObjectGroup(Name=&#34;the name&#34;, 500 objects)
+</pre>
+
+		</span>
+	
+
+	
 	<h1 id="Orientation" class="hdr pkg hdr-type"><a href="#Orientation" title="permalink">»</a>&nbsp;type Orientation <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg type">
 		<pre>type Orientation int</pre>
 		<p>
 Orientation represents the map&#39;s orientation. It will always be one of the
 predefined Orientation constants and will never be Invalid.
+</p>
+
+	</span>
+
+	
+	
+
+	
+	
+
+	
+	<h1 id="Point" class="hdr pkg hdr-type"><a href="#Point" title="permalink">»</a>&nbsp;type Point <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg type">
+		<pre>type Point struct {
+	X, Y int
+}</pre>
+		<p>
+Point represents a single point.
+</p>
+
+	</span>
+
+	
+	
+
+	
+	
+
+	
+	<h1 id="Polygon" class="hdr pkg hdr-type"><a href="#Polygon" title="permalink">»</a>&nbsp;type Polygon <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg type">
+		<pre>type Polygon struct {
+	// The position/origin of the polygon.
+	//
+	// These values are identical to the parent object&#39;s fields of the same
+	// name, they are only provided for convenience.
+	X, Y	int
+
+	// Points making up the polygon, in pixels.
+	Points	[]Point
+}</pre>
+		<p>
+Polygon represents a polygon object, found in the Object.Value field.
+</p>
+
+	</span>
+
+	
+	
+
+	
+	
+
+	
+	<h1 id="Polyline" class="hdr pkg hdr-type"><a href="#Polyline" title="permalink">»</a>&nbsp;type Polyline <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg type">
+		<pre>type Polyline struct {
+	// The position/origin of the polyline.
+	//
+	// These values are identical to the parent object&#39;s fields of the same
+	// name, they are only provided for convenience.
+	X, Y	int
+
+	// Points making up the polyline, in pixels.
+	Points	[]Point
+}</pre>
+		<p>
+Polyline represents a polyline object, found in the Object.Value field.
 </p>
 
 	</span>
@@ -786,6 +1019,10 @@ String returns a string representation of this tileset.
 	<a href="https:/github.com/azul3d/tmx/blob/dev/layer.go" title="view source">layer.go</a>
 	
 	<a href="https:/github.com/azul3d/tmx/blob/dev/map.go" title="view source">map.go</a>
+	
+	<a href="https:/github.com/azul3d/tmx/blob/dev/object.go" title="view source">object.go</a>
+	
+	<a href="https:/github.com/azul3d/tmx/blob/dev/objectgroup.go" title="view source">objectgroup.go</a>
 	
 	<a href="https:/github.com/azul3d/tmx/blob/dev/orientation.go" title="view source">orientation.go</a>
 	
