@@ -189,6 +189,14 @@ Package mouse implements various mouse related data types.
 				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Event.Time">func (e Event) Time() time.Time</a></span></span>
 			
 		
+			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Scrolled">type Scrolled</a></span></span>
+			
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Scrolled.String">func (ev Scrolled) String() string</a></span></span>
+			
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Scrolled.Time">func (ev Scrolled) Time() time.Time</a></span></span>
+			
+		
 			<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#State">type State</a></span></span>
 			
 			
@@ -302,8 +310,8 @@ String returns an string representation of the mouse button.
 	State	State
 }</pre>
 		<p>
-Event represents an single mouse event, such as pushing an button, or using
-the scroll-wheel, etc.
+Event represents an single mouse event, such as pushing a button. Use the
+Scrolled type instead for scrolling events.
 </p>
 
 	</span>
@@ -329,6 +337,47 @@ String returns an string representation of this event.
 			<pre>func (e Event) Time() time.Time</pre>
 			<p>
 Time returns the time at which this event occured.
+</p>
+
+		</span>
+	
+
+	
+	<h1 id="Scrolled" class="hdr pkg hdr-type"><a href="#Scrolled" title="permalink">»</a>&nbsp;type Scrolled <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg type">
+		<pre>type Scrolled struct {
+	T	time.Time
+
+	// Amount of scrolling in horizontal (X) and vertical (Y) directions.
+	X, Y	float64
+}</pre>
+		<p>
+Scrolled is an event where the user has scrolled their mouse wheel.
+</p>
+
+	</span>
+
+	
+	
+
+	
+	
+		
+		<h1 id="Scrolled.String" class="hdr pkg hdr-method"><a href="#Scrolled.String" title="permalink">»</a>&nbsp;func (ev Scrolled) String() string <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (ev Scrolled) String() string</pre>
+			<p>
+String returns a string representation of this event.
+</p>
+
+		</span>
+	
+		
+		<h1 id="Scrolled.Time" class="hdr pkg hdr-method"><a href="#Scrolled.Time" title="permalink">»</a>&nbsp;func (ev Scrolled) Time() time.Time <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section pkg method">
+			<pre>func (ev Scrolled) Time() time.Time</pre>
+			<p>
+Time implements the Event interface.
 </p>
 
 		</span>

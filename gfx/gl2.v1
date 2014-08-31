@@ -125,6 +125,11 @@
 
 	
 		
+			<h2>Newer Version Available</h2>
+			<span class="sub">
+				<p>A newer version of this package is available, please view it <a href="/gfx/gl2.v2">here</a>.</p>
+			</span>
+		
 	
 </span>
 
@@ -133,7 +138,7 @@
 <h1 id="versions" class="hdr pkg hdr-versions"><a href="#versions" title="permalink">»</a>&nbsp;Versions <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg versions">
 	
-		<p>You are viewing the latest version of this package (v1).</p>
+		<p>You are viewing an older version of this package (v1).</p>
 	
 	<p>Other versions of this package are available as follows. <em>Dev</em> is the in-development version of this package and should not generally be used (see <a href="/doc/versioning.html#development-versions">here</a> for more details).</p>
 	<span class="list">
@@ -142,7 +147,15 @@
 			
 			
 				
-					<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="gfx/gl2.v1" title="azul3d.org/gfx/gl2.v1">v1</a> (latest version)</span></span>
+					<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="gfx/gl2.v2" title="azul3d.org/gfx/gl2.v2">v2</a> (latest version)</span></span>
+				
+			
+		
+			
+			
+			
+				
+					<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="gfx/gl2.v1" title="azul3d.org/gfx/gl2.v1">v1</a></span></span>
 				
 			
 		

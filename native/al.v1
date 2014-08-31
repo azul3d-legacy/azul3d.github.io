@@ -1859,6 +1859,16 @@ method.
 
 	<h2><span class="linkarea">(<a href="#" id="tagged-files-toggle">show tagged files</a>)</span></h2>
 	<span id="tagged-files">
+		<h2>Darwin Files</h2>
+		<p>
+		<a href="https:/github.com/azul3d/native-al/blob/v1/openal_darwin.go" title="view source">openal_darwin.go</a>
+		</p>
+	
+		<h2>Darwin Amd64 Files</h2>
+		<p>
+		<a href="https:/github.com/azul3d/native-al/blob/v1/blob_darwin_amd64.go" title="view source">blob_darwin_amd64.go</a>
+		</p>
+	
 		<h2>Linux Files</h2>
 		<p>
 		<a href="https:/github.com/azul3d/native-al/blob/v1/openal_linux.go" title="view source">openal_linux.go</a>

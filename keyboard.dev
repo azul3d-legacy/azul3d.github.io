@@ -338,6 +338,7 @@ Package keyboard implements various keyboard related data types.
 	F22
 	F23
 	F24
+	F25
 
 	// English characters
 	A	// &#34;a&#34;

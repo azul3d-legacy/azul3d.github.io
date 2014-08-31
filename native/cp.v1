@@ -922,7 +922,7 @@ license which can be found at:
 			
 				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Space.AddBody">func (s *Space) AddBody(body *Body) *Body</a></span></span>
 			
-				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Space.AddCollisionHandler">func (s *Space) AddCollisionHandler(a, b CollisionType)</a></span></span>
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Space.AddCollisionHandler">func (s *Space) AddCollisionHandler(a, b CollisionType, handler *CollisionHandler)</a></span></span>
 			
 				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Space.AddConstraint">func (s *Space) AddConstraint(constraint *Constraint) *Constraint</a></span></span>
 			
@@ -932,7 +932,7 @@ license which can be found at:
 			
 				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Space.AddShape">func (s *Space) AddShape(shape *Shape) *Shape</a></span></span>
 			
-				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Space.AddWildcardHandler">func (s *Space) AddWildcardHandler(t CollisionType)</a></span></span>
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Space.AddWildcardHandler">func (s *Space) AddWildcardHandler(t CollisionType, handler *CollisionHandler)</a></span></span>
 			
 				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Space.BBQuery">func (s *Space) BBQuery(bb BB, filter ShapeFilter, f SpaceBBQueryFunc, data interface{})</a></span></span>
 			
@@ -2616,8 +2616,8 @@ colliding.
 	BeginFunc	CollisionBeginFunc
 	PreSolveFunc	CollisionPreSolveFunc
 	PostSolveFunc	CollisionPostSolveFunc
-	SeperateFunc	CollisionSeparateFunc
-	// contains filtered or unexported fields
+	SeparateFunc	CollisionSeparateFunc
+	UserData	interface{}
 }</pre>
 		
 	</span>
@@ -4738,9 +4738,9 @@ Add a rigid body to the simulation.
 		</span>
 	
 		
-		<h1 id="Space.AddCollisionHandler" class="hdr pkg hdr-method"><a href="#Space.AddCollisionHandler" title="permalink">»</a>&nbsp;func (s *Space) AddCollisionHandler(a, b CollisionType) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+		<h1 id="Space.AddCollisionHandler" class="hdr pkg hdr-method"><a href="#Space.AddCollisionHandler" title="permalink">»</a>&nbsp;func (s *Space) AddCollisionHandler(a, b CollisionType, handler *CollisionHandler) <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg method">
-			<pre>func (s *Space) AddCollisionHandler(a, b CollisionType)</pre>
+			<pre>func (s *Space) AddCollisionHandler(a, b CollisionType, handler *CollisionHandler)</pre>
 			
 		</span>
 	
@@ -4785,9 +4785,9 @@ If the shape is attached to a static body, it will be added as a static shape.
 		</span>
 	
 		
-		<h1 id="Space.AddWildcardHandler" class="hdr pkg hdr-method"><a href="#Space.AddWildcardHandler" title="permalink">»</a>&nbsp;func (s *Space) AddWildcardHandler(t CollisionType) <span class="toplink">(<a href="#top">top</a>)</span></h1>
+		<h1 id="Space.AddWildcardHandler" class="hdr pkg hdr-method"><a href="#Space.AddWildcardHandler" title="permalink">»</a>&nbsp;func (s *Space) AddWildcardHandler(t CollisionType, handler *CollisionHandler) <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg method">
-			<pre>func (s *Space) AddWildcardHandler(t CollisionType)</pre>
+			<pre>func (s *Space) AddWildcardHandler(t CollisionType, handler *CollisionHandler)</pre>
 			
 		</span>
 	
