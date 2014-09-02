@@ -73,6 +73,8 @@
 
 
 
+
+
 <div id="toparea">
 	<div id="logo">
 		<a href="/"><span class="biohazard">☣</span>
@@ -116,6 +118,7 @@
 		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#how-do-i-install-it">How do I install it?</a></span></span>
 		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#how-does-updating-work">How does updating work?</a></span></span>
 		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#how-does-versioning-work">How does versioning work?</a></span></span>
+		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#why-opengl-2">Why OpenGL 2?</a></span></span>
 		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#what-about-the-garbage-collector">What about the garbage collector?</a></span></span>
 		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#does-it-have-a-level-editor">Does it have a level editor?</a></span></span>
 		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#can-it-be-scripted">Can it be scripted?</a></span></span>
@@ -180,6 +183,16 @@
 </span>
 
 
+<h1 id="why-opengl-2" class="hdr "><a href="#why-opengl-2" title="permalink">»</a>&nbsp;Why OpenGL 2? <span class="toplink">(<a href="#top">top</a>)</span></h1>
+<span class="section ">
+	<p>A less known fact about OpenGL is that it is <em>extremely forward compatible</em>. In fact all most everything you can do in OpenGL 3/4 is also readily available in OpenGL 2 via standardized extensions.</p>
+	<p>Although Azul3D only speaks to your GPU through the OpenGL 2 API; We only use the most modern OpenGL functions available.</p>
+	<p>This is actually benificial in many ways, one being that we are able to target older hardware that <em>mostly</em> supports OpenGL 3 but doesn't advertise it.</p>
+	<p>When we do begin using an OpenGL 3 renderer the change will be completely seamless thanks to our <a href="/gfx.v1">gfx</a> package, meaning you won't have to change a thing.</p>
+	<p><em>We get all the same features, the same performance, and we are able to access a wider range of hardware.</em></p>
+</span>
+
+
 <h1 id="what-about-the-garbage-collector" class="hdr "><a href="#what-about-the-garbage-collector" title="permalink">»</a>&nbsp;What about the garbage collector? <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section ">
 	<p>Go is by specification a <em>garbage collected programming language</em>, this means that developers do not need to manually control memory but also means they must be aware of how the garbage collector works in order to receive exceptional performance.</p>
@@ -197,7 +210,7 @@
 
 <h1 id="does-it-have-a-level-editor" class="hdr "><a href="#does-it-have-a-level-editor" title="permalink">»</a>&nbsp;Does it have a level editor? <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section ">
-	<p>No, and it likely never will. Azul3D is for programmers and doesn't provide GUI-editors. With that being said, there may be importers in the future for 3D modelers which will make importing scenes from those 3D modelers (such as Blender) into Azul3D trivial.</p>
+	<p>Not right now. Azul3D is mainly for programmers and doesn't yet offer any GUI-based tools. With that being said, there may be importers in the future for 3D modelers which will make importing scenes from those 3D modelers (such as Blender) into Azul3D trivial.</p>
 </span>
 
 
