@@ -3940,9 +3940,14 @@ Hash value type.
 	
 	<h1 id="Mat2x2" class="hdr pkg hdr-type"><a href="#Mat2x2" title="permalink">»</a>&nbsp;type Mat2x2 <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg type">
-		<pre>type Mat2x2 C.cpMat2x2</pre>
+		<pre>type Mat2x2 struct {
+	A	float64
+	B	float64
+	C	float64
+	D	float64
+}</pre>
 		<p>
-Row major [[a, b][c d]]
+Row major [[a, b][c, d]]
 </p>
 
 	</span>
@@ -5636,7 +5641,10 @@ Transform a vector (i.e. a normal)
 	
 	<h1 id="Vect" class="hdr pkg hdr-type"><a href="#Vect" title="permalink">»</a>&nbsp;type Vect <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg type">
-		<pre>type Vect C.cpVect</pre>
+		<pre>type Vect struct {
+	X	float64
+	Y	float64
+}</pre>
 		<p>
 Chipmunk&#39;s 2D vector type.
 </p>
