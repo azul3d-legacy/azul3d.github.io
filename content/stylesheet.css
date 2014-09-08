@@ -134,18 +134,32 @@ body{
 	font-family: "dejavu_sansbook";
 }
 
-.code{
+.code, .article code{
 	font-family: 'Cutive Mono';
 	padding: .21em;
-	background-color: #d6d6d6;
+	background-color: #E7E7E7;
+	display: inline-block;
+	max-width: 45em;
 }
 
 span{
 	display: inline-block;
 }
 
-.section{
+.article code {
+	margin-left: 2em;
+	margin-bottom: .5em;
+}
+.article p>code {
+	margin: 0;
+	padding: 0;
+	padding-left: .1em;
+	padding-right: .1em;
+}
+
+.section, .article p{
 	font-family: Arial, Helvetica, sans-serif;
+	text-indent: .25em;
 	padding-left: 1em;
 
 	width: 90%;
@@ -156,11 +170,6 @@ span{
 
 p{
 	padding-bottom: .5em;
-}
-
-.code{
-	display: inline-block;
-	max-width: 45em;
 }
 
 h1>.toplink{
@@ -269,18 +278,6 @@ h2 .linkarea{
 	line-height: 132%;
 }
 
-.article.hdr-general{
-	padding-bottom: 0;
-}
-
-.article.general .date{
-	font-family: 'Audiowide', cursive;
-	font-size: 80%;
-	padding-left: .5em;
-	padding-bottom: .5em;
-}
-
-
 /*
 	Package Documentation Styling.
 */
@@ -351,3 +348,44 @@ h2 .linkarea{
 .pkg.files p{
 	padding-left: .75em;
 }
+
+
+/* ---------- Article Markdown Styles ---------- */
+.article h1:first-of-type{
+	padding-bottom: 0;
+}
+
+.article .date{
+	font-family: 'Audiowide', cursive;
+	font-size: 80%;
+	padding-left: 1em;
+	padding-bottom: .5em;
+}
+
+.article ul {
+	display: block;
+    list-style-type: none;
+    padding: 0px;
+	padding-top: .5em;
+	padding-bottom: .5em;
+	padding-left: 1.25em;
+}
+
+.article ul>span {
+	display: block;
+	padding-bottom: .6em;
+	vertical-align: middle;
+	white-space: nowrap;
+}
+
+.article ul>span>.biohazard {
+	margin-right: .5em;
+}
+
+.article ul>span>li {
+	font-family: Arial, Helvetica, sans-serif;
+	display: inline-block;
+	white-space: normal;
+	vertical-align: middle;
+}
+

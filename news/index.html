@@ -7,7 +7,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<meta name="description" content="A 3D game engine written in Go!">
 		<meta name="author" content="The Azul3D Authors">
-		<title>Azul3D</title>
+		
+			<title>News - 2014 - Azul3D</title>
+		
 		<link rel="shortcut icon" href="/content/favicon.png"> 
 
 		
@@ -101,20 +103,61 @@
 
 
 <div id="content-container">
-	<div id="content" class="slim">
+	<div id="content" class="slim article">
+<h1>News - 2014</h1>
 
+<ul>
+<li><a href="/news/2014/mac-osx-support.html">Mac OS X Support!</a></li>
+<li><a href="/news/2014/yin-and-yang-using-glow-and-glfw.html">Yin and Yang: Using Glow and GLFW</a></li>
+<li><a href="/news/2014/important-import-paths-have-changed.html">Important - Import Paths Have Changed</a></li>
+<li><a href="/news/2014/moving-from-google-code-to-github.html">Moving From Google Code To GitHub</a></li>
+</ul>
 
+<script>
+$(function() {
+	var idName = function(text) {
+		
+		text = text.toLowerCase()
 
-<h1 class="hdr ">News - 2014</h1>
-<span class="section ">
-	<span class="list">
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="/news/2014/mac-osx-support.html">Mac OS X Support!</a></span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="/news/2014/yin-and-yang-using-glow-and-glfw.html">Yin and Yang: Using Glow and GLFW</a></span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="/news/2014/important-import-paths-have-changed.html">Important - Import Paths Have Changed</a></span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="/news/2014/moving-from-google-code-to-github.html">Moving From Google Code To GitHub</a></span></span>
-	</span>
-</span>
+		
+		text = text.replace(/[^a-z0-9- ]/g, "");
 
+		
+		text = text.replace(/[ ]/g, "-");
+
+		
+		return text.replace(/-+/g, "-");
+	}
+
+	
+	$(".article h1").each(function(i, obj) {
+		if(i == 0) {
+			return;
+		}
+		var id = idName(obj.innerHTML);
+		var link = $("<a />", {
+			id: id,
+			title: "permalink",
+			href: "#" + id,
+			text: "»",
+		});
+		$(this).prepend(" ");
+		link.prependTo($(this));
+	});
+
+	$("ul li").each(function(i, obj) {
+		var bio = $("<span />", {
+			class: "biohazard",
+			text: "☣",
+		});
+		var content = $("<span />", {
+			class: "content",
+		});
+		$(this).wrap('<span></span>');
+		bio.prependTo($(this).parent());
+	});
+});
+</script>
 	</div>
 </div>
 

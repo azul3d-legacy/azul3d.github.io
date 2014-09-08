@@ -8,7 +8,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<meta name="description" content="A 3D game engine written in Go!">
 		<meta name="author" content="The Azul3D Authors">
-		<title>Azul3D</title>
+		
+			<title>Azul3D</title>
+		
 		<link rel="shortcut icon" href="/content/favicon.png"> 
 
 		
@@ -170,11 +172,6 @@ More information about Chipmunk can be found at:
 <pre><a href="http://chipmunk-physics.net/">http://chipmunk-physics.net/</a>
 </pre>
 <p>
-This package does not attempt to hide the manual memory management of the C
-library, as such you must pay attention as you would if you where using the
-C library itself.
-</p>
-<p>
 This package uses the Chipmunk library, and as such it is also bound by it&#39;s
 license which can be found at:
 </p>
@@ -266,7 +263,7 @@ license which can be found at:
 			
 				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Arbiter.CallWildcardSeparateB">func (a *Arbiter) CallWildcardSeparateB(space *Space)</a></span></span>
 			
-				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Arbiter.ContactPointSet">func (a *Arbiter) ContactPointSet() ContactPointSet</a></span></span>
+				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Arbiter.ContactPointSet">func (a *Arbiter) ContactPointSet() *ContactPointSet</a></span></span>
 			
 				<span class="item indent"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#Arbiter.Count">func (a *Arbiter) Count() int</a></span></span>
 			
@@ -1590,9 +1587,9 @@ you to retrieve information on the collision and control it.
 		</span>
 	
 		
-		<h1 id="Arbiter.ContactPointSet" class="hdr pkg hdr-method"><a href="#Arbiter.ContactPointSet" title="permalink">»</a>&nbsp;func (a *Arbiter) ContactPointSet() ContactPointSet <span class="toplink">(<a href="#top">top</a>)</span></h1>
+		<h1 id="Arbiter.ContactPointSet" class="hdr pkg hdr-method"><a href="#Arbiter.ContactPointSet" title="permalink">»</a>&nbsp;func (a *Arbiter) ContactPointSet() *ContactPointSet <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg method">
-			<pre>func (a *Arbiter) ContactPointSet() ContactPointSet</pre>
+			<pre>func (a *Arbiter) ContactPointSet() *ContactPointSet</pre>
 			<p>
 Return a contact set from an arbiter.
 </p>
@@ -1808,7 +1805,12 @@ This function should only be called from a post-solve, post-step or cpBodyEachAr
 	
 	<h1 id="BB" class="hdr pkg hdr-type"><a href="#BB" title="permalink">»</a>&nbsp;type BB <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg type">
-		<pre>type BB C.cpBB</pre>
+		<pre>type BB struct {
+	L	float64
+	B	float64
+	R	float64
+	T	float64
+}</pre>
 		<p>
 Chipmunk&#39;s axis-aligned 2D bounding box type. (left, bottom, right, top)
 </p>
@@ -2191,10 +2193,7 @@ Get the force applied to the body for the next time step.
 <span class="section pkg method">
 			<pre>func (b *Body) Free()</pre>
 			<p>
-Free&#39;s this Body.
-</p>
-<p>
-It is required you use this, otherwise you are leaking memory.
+Free is deprecated. Do not use it, it is no-op.
 </p>
 
 		</span>
@@ -3063,10 +3062,7 @@ Get rate at which joint error is corrected.
 <span class="section pkg method">
 			<pre>func (c *Constraint) Free()</pre>
 			<p>
-Free&#39;s this Constraint.
-</p>
-<p>
-It is required you use this, otherwise you are leaking memory.
+Free is deprecated. Do not use it, it is no-op.
 </p>
 
 		</span>
@@ -3948,9 +3944,14 @@ Hash value type.
 	
 	<h1 id="Mat2x2" class="hdr pkg hdr-type"><a href="#Mat2x2" title="permalink">»</a>&nbsp;type Mat2x2 <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg type">
-		<pre>type Mat2x2 C.cpMat2x2</pre>
+		<pre>type Mat2x2 struct {
+	A	float64
+	B	float64
+	C	float64
+	D	float64
+}</pre>
 		<p>
-Row major [[a, b][c d]]
+Row major [[a, b][c, d]]
 </p>
 
 	</span>
@@ -4275,10 +4276,7 @@ Get the collision filtering parameters of this shape.
 <span class="section pkg method">
 			<pre>func (s *Shape) Free()</pre>
 			<p>
-Free&#39;s this Shape.
-</p>
-<p>
-It is required you use this, otherwise you are leaking memory.
+Free is deprecated. Do not use it, it is no-op.
 </p>
 
 		</span>
@@ -4960,10 +4958,7 @@ Call f for each shape in the space.
 <span class="section pkg method">
 			<pre>func (s *Space) Free()</pre>
 			<p>
-Free&#39;s this Body.
-</p>
-<p>
-It is required you use this, otherwise you are leaking memory.
+Free is deprecated. Do not use it, it is no-op.
 </p>
 
 		</span>
@@ -5479,7 +5474,14 @@ Type used for various timestamps in Chipmunk.
 	
 	<h1 id="Transform" class="hdr pkg hdr-type"><a href="#Transform" title="permalink">»</a>&nbsp;type Transform <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg type">
-		<pre>type Transform C.cpTransform</pre>
+		<pre>type Transform struct {
+	A	float64
+	B	float64
+	C	float64
+	D	float64
+	Tx	float64
+	Ty	float64
+}</pre>
 		<p>
 Column major affine transform.
 </p>
@@ -5650,7 +5652,10 @@ Transform a vector (i.e. a normal)
 	
 	<h1 id="Vect" class="hdr pkg hdr-type"><a href="#Vect" title="permalink">»</a>&nbsp;type Vect <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg type">
-		<pre>type Vect C.cpVect</pre>
+		<pre>type Vect struct {
+	X	float64
+	Y	float64
+}</pre>
 		<p>
 Chipmunk&#39;s 2D vector type.
 </p>
@@ -5841,75 +5846,75 @@ Inverse of Vrotate().
 <h1 id="package-files" class="hdr pkg hdr-files"><a href="#package-files" title="permalink">»</a>&nbsp;Package Files <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg files">
 	<p>
-	<a href="https:/github.com/azul3d/native-cp/blob/v1/zarbiter.go" title="view source">zarbiter.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/v1/arbiter.go" title="view source">arbiter.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/v1/zbb.go" title="view source">zbb.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/v1/bb.go" title="view source">bb.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/v1/zbody.go" title="view source">zbody.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/v1/body.go" title="view source">body.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/v1/zchipmunk.go" title="view source">zchipmunk.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/v1/chipmunk.go" title="view source">chipmunk.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/v1/zconstraint.go" title="view source">zconstraint.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/v1/constraint.go" title="view source">constraint.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/v1/zdampedrotaryspring.go" title="view source">zdampedrotaryspring.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/v1/dampedrotaryspring.go" title="view source">dampedrotaryspring.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/v1/zdampedspring.go" title="view source">zdampedspring.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/v1/dampedspring.go" title="view source">dampedspring.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/v1/zgearjoint.go" title="view source">zgearjoint.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/v1/gearjoint.go" title="view source">gearjoint.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/v1/zgroovejoint.go" title="view source">zgroovejoint.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/v1/groovejoint.go" title="view source">groovejoint.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/v1/zpinjoint.go" title="view source">zpinjoint.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/v1/pinjoint.go" title="view source">pinjoint.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/v1/zpivotjoint.go" title="view source">zpivotjoint.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/v1/pivotjoint.go" title="view source">pivotjoint.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/v1/zpolyshape.go" title="view source">zpolyshape.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/v1/polyshape.go" title="view source">polyshape.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/v1/zratchetjoint.go" title="view source">zratchetjoint.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/v1/ratchetjoint.go" title="view source">ratchetjoint.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/v1/zrotarylimitjoint.go" title="view source">zrotarylimitjoint.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/v1/rotarylimitjoint.go" title="view source">rotarylimitjoint.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/v1/zshape.go" title="view source">zshape.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/v1/shape.go" title="view source">shape.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/v1/zsimplemotor.go" title="view source">zsimplemotor.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/v1/simplemotor.go" title="view source">simplemotor.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/v1/zslidejoint.go" title="view source">zslidejoint.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/v1/slicejoint.go" title="view source">slicejoint.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/v1/zspace.go" title="view source">zspace.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/v1/space.go" title="view source">space.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/v1/zspatialindex.go" title="view source">zspatialindex.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/v1/spatialindex.go" title="view source">spatialindex.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/v1/ztransform.go" title="view source">ztransform.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/v1/transform.go" title="view source">transform.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/v1/ztypescompat.go" title="view source">ztypescompat.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/v1/typescompat.go" title="view source">typescompat.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/v1/zunsafe.go" title="view source">zunsafe.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/v1/unsafe.go" title="view source">unsafe.go</a>
 	
-	<a href="https:/github.com/azul3d/native-cp/blob/v1/zvect.go" title="view source">zvect.go</a>
+	<a href="https:/github.com/azul3d/native-cp/blob/v1/vect.go" title="view source">vect.go</a>
 	</p>
 
 	<h2><span class="linkarea">(<a href="#" id="tagged-files-toggle">show tagged files</a>)</span></h2>
 	<span id="tagged-files">
 		<h2>386 Files</h2>
 		<p>
-		<a href="https:/github.com/azul3d/native-cp/blob/v1/ztypes_386.go" title="view source">ztypes_386.go</a>
+		<a href="https:/github.com/azul3d/native-cp/blob/v1/types_386.go" title="view source">types_386.go</a>
 		</p>
 	
 		<h2>Amd64 Files</h2>
 		<p>
-		<a href="https:/github.com/azul3d/native-cp/blob/v1/ztypes_amd64.go" title="view source">ztypes_amd64.go</a>
+		<a href="https:/github.com/azul3d/native-cp/blob/v1/types_amd64.go" title="view source">types_amd64.go</a>
 		</p>
 	
 		<h2>Cgodefs Files</h2>
 		<p>
-		<a href="https:/github.com/azul3d/native-cp/blob/v1/ztypes_cgodefs.go" title="view source">ztypes_cgodefs.go</a>
+		<a href="https:/github.com/azul3d/native-cp/blob/v1/types_cgodefs.go" title="view source">types_cgodefs.go</a>
 		</p>
 	
 		<h2>Test Files</h2>
 		<p>
-		<a href="https:/github.com/azul3d/native-cp/blob/v1/zbody_test.go" title="view source">zbody_test.go</a>
+		<a href="https:/github.com/azul3d/native-cp/blob/v1/body_test.go" title="view source">body_test.go</a>
 		
-		<a href="https:/github.com/azul3d/native-cp/blob/v1/zdebugdraw_test.go" title="view source">zdebugdraw_test.go</a>
+		<a href="https:/github.com/azul3d/native-cp/blob/v1/debugdraw_test.go" title="view source">debugdraw_test.go</a>
 		</p>
 	</span>
 </span>

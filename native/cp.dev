@@ -8,7 +8,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<meta name="description" content="A 3D game engine written in Go!">
 		<meta name="author" content="The Azul3D Authors">
-		<title>Azul3D</title>
+		
+			<title>Azul3D</title>
+		
 		<link rel="shortcut icon" href="/content/favicon.png"> 
 
 		
@@ -1806,7 +1808,12 @@ This function should only be called from a post-solve, post-step or cpBodyEachAr
 	
 	<h1 id="BB" class="hdr pkg hdr-type"><a href="#BB" title="permalink">»</a>&nbsp;type BB <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg type">
-		<pre>type BB C.cpBB</pre>
+		<pre>type BB struct {
+	L	float64
+	B	float64
+	R	float64
+	T	float64
+}</pre>
 		<p>
 Chipmunk&#39;s axis-aligned 2D bounding box type. (left, bottom, right, top)
 </p>
@@ -5470,7 +5477,14 @@ Type used for various timestamps in Chipmunk.
 	
 	<h1 id="Transform" class="hdr pkg hdr-type"><a href="#Transform" title="permalink">»</a>&nbsp;type Transform <span class="toplink">(<a href="#top">top</a>)</span></h1>
 <span class="section pkg type">
-		<pre>type Transform C.cpTransform</pre>
+		<pre>type Transform struct {
+	A	float64
+	B	float64
+	C	float64
+	D	float64
+	Tx	float64
+	Ty	float64
+}</pre>
 		<p>
 Column major affine transform.
 </p>

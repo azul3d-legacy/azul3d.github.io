@@ -7,7 +7,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<meta name="description" content="A 3D game engine written in Go!">
 		<meta name="author" content="The Azul3D Authors">
-		<title>Azul3D</title>
+		
+			<title>Moving From Google Code To GitHub - Azul3D</title>
+		
 		<link rel="shortcut icon" href="/content/favicon.png"> 
 
 		
@@ -101,42 +103,82 @@
 
 
 <div id="content-container">
-	<div id="content" class="slim">
+	<div id="content" class="slim article">
+<h1>Moving From Google Code To GitHub</h1>
 
+<p class="date">July 20, 2014</p>
 
+<p>For a while now we have considered which project hosting website makes the most sense for us. Previously we have used Google Code, but this is now all changing. This article outlines the primary reasons why we moved to GitHub and what we think Google Code should work on to support open source projects in the future.</p>
 
-<h1 class="hdr article hdr-general">Moving From Google Code To GitHub</h1>
-<span class="section article general">
-	<p class="date">July 20, 2014</p>
-	<p>For a while now we have considered which project hosting website makes the most sense for us. Previously we have used Google Code, but this is now all changing. This article outlines the primary reasons why we moved to GitHub and what we think Google Code should work on to support open source projects in the future.</p>
-</span>
+<h1>What We Liked</h1>
 
+<p>Google Code is a great project hosting site and has aided us since <em>Jun 28, 2012</em>. It is certainly decent and being backed by Google gave us a lot of comfort in mind. We encourage others to try out Google Code because:</p>
 
-<h1 id="what-we-liked" class="hdr "><a href="#what-we-liked" title="permalink">»</a>&nbsp;What We Liked <span class="toplink">(<a href="#top">top</a>)</span></h1>
-<span class="section ">
-	<p>Google Code is a great project hosting site and has aided us since <em>Jun 28, 2012</em>. It is certainly decent and being backed by Google gave us a lot of comfort in mind. We encourage others to try out Google Code because:</p>
-	<span class="list">
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content">It has great Git support.</span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content">A very easy-to-use wiki system.</span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content">The issue tracker works wonders.</span></span>
-	</span>
-</span>
+<ul>
+<li>It has great Git support.</li>
+<li>A very easy-to-use wiki system.</li>
+<li>The issue tracker works wonders.</li>
+</ul>
 
+<h1>What We Didn&rsquo;t</h1>
 
-<h1 id="what-we-didnt" class="hdr "><a href="#what-we-didnt" title="permalink">»</a>&nbsp;What We Didn&#39;t <span class="toplink">(<a href="#top">top</a>)</span></h1>
-<span class="section ">
-	<p>Google Code does come with a few faults or lacking features though. Many of these are not the case with GitHub, which encouraged our move there. The things that we didn't like about it where:</p>
-	<span class="list">
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content">No Pull Requests: Contributing to a GitHub repository is clear and concise through forking and pull requests. Contributing to a Google Code repository involves submitting diffs over the issue tracker or giving, sometimes untrusted, users commit access to the repository. This has caused projects like Go itself to use third-party code review platforms like rietveld.</span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content">Per repository issue trackers: GitHub offers this, but it's almost like multiple repositories don't belong in the same project on Google Code.</span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content">Downloads Removal: Google Code users abused Downloads in some way <a href="http://google-opensource.blogspot.com/2013/05/a-change-to-google-code-download-service.html">according to Google</a>, the fix for this is that the Downloads section on Google Code is no more and it's now reccomended to offer downloads through Google Drive. Although certainly not the end of the world, it is a bit strange from a support standpoint.</span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content">Lack of programming API's / repository hooks: Google Code may support these but we couldn't find them anywhere. GitHub has well documented ones for many different features.</span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content">Missing personal association: GitHub users show up with nice profile pictures, etc.</span></span>
-	</span>
-	</p>In conclusion, Google Code is a popular and decent project hosting website, but GitHub offers features we find better and it's increasing popularity among developers speaks for itself. Our future is with GitHub.</p>
-</span>
+<p>Google Code does come with a few faults or lacking features though. Many of these are not the case with GitHub, which encouraged our move there. The things that we didn&rsquo;t like about it where:</p>
 
+<ul>
+<li>No Pull Requests: Contributing to a GitHub repository is clear and concise through forking and pull requests. Contributing to a Google Code repository involves submitting diffs over the issue tracker or giving, sometimes untrusted, users commit access to the repository. This has caused projects like Go itself to use third-party code review platforms like rietveld.</li>
+<li>Per repository issue trackers: GitHub offers this, but it&rsquo;s almost like multiple repositories don&rsquo;t belong in the same project on Google Code.</li>
+<li>Downloads Removal: Google Code users abused Downloads in some way <a href="http://google-opensource.blogspot.com/2013/05/a-change-to-google-code-download-service.html">according to Google</a>, the fix for this is that the Downloads section on Google Code is no more and it&rsquo;s now recommended to offer downloads through Google Drive. Although certainly not the end of the world, it is a bit strange from a support standpoint.</li>
+<li>Lack of programming API&rsquo;s / repository hooks: Google Code may support these but we couldn&rsquo;t find them anywhere. GitHub has well documented ones for many different features.</li>
+<li>Missing personal association: GitHub users show up with nice profile pictures, etc.</li>
+</ul>
 
+<p>In conclusion, Google Code is a popular and decent project hosting website, but GitHub offers features we find better and it&rsquo;s increasing popularity among developers speaks for itself. Our future is with GitHub.</p>
+
+<script>
+$(function() {
+	var idName = function(text) {
+		
+		text = text.toLowerCase()
+
+		
+		text = text.replace(/[^a-z0-9- ]/g, "");
+
+		
+		text = text.replace(/[ ]/g, "-");
+
+		
+		return text.replace(/-+/g, "-");
+	}
+
+	
+	$(".article h1").each(function(i, obj) {
+		if(i == 0) {
+			return;
+		}
+		var id = idName(obj.innerHTML);
+		var link = $("<a />", {
+			id: id,
+			title: "permalink",
+			href: "#" + id,
+			text: "»",
+		});
+		$(this).prepend(" ");
+		link.prependTo($(this));
+	});
+
+	$("ul li").each(function(i, obj) {
+		var bio = $("<span />", {
+			class: "biohazard",
+			text: "☣",
+		});
+		var content = $("<span />", {
+			class: "content",
+		});
+		$(this).wrap('<span></span>');
+		bio.prependTo($(this).parent());
+	});
+});
+</script>
 	</div>
 </div>
 

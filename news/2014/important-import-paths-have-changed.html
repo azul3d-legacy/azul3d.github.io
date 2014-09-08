@@ -7,7 +7,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<meta name="description" content="A 3D game engine written in Go!">
 		<meta name="author" content="The Azul3D Authors">
-		<title>Azul3D</title>
+		
+			<title>Important - Import Paths Have Changed - Azul3D</title>
+		
 		<link rel="shortcut icon" href="/content/favicon.png"> 
 
 		
@@ -101,55 +103,96 @@
 
 
 <div id="content-container">
-	<div id="content" class="slim">
+	<div id="content" class="slim article">
+<h1>Important - Import Paths Have Changed</h1>
 
+<p class="date">July 26, 2014</p>
 
+<p>During the <a href="/news/2014/moving-from-google-code-to-github.html">big move to GitHub</a> we reconsidered the layout of the versioned import paths of Azul3D packages.</p>
 
-<h1 class="hdr article hdr-general">Important - Import Paths Have Changed</h1>
-<span class="section article general">
-	<p class="date">July 26, 2014</p>
-	<p>During the <a href="/news/2014/moving-from-google-code-to-github.html">big move to GitHub</a> we reconsidered the layout of the versioned import paths of Azul3D packages.</p>
-	<p>Since one of the goals in our move to GitHub was to split up Azul3D's packages into multiple smaller repositories, it makes sense that we would want to possibly make API-incompatible changes (by incremented a version number, as usual) of a specific package <em>independent</em> of other packages: something that we couldn't do with the old versioning scheme.</p>
-</span>
+<p>Since one of the goals in our move to GitHub was to split up Azul3D&rsquo;s packages into multiple smaller repositories, it makes sense that we would want to possibly make API-incompatible changes (by incremented a version number, as usual) of a specific package <em>independent</em> of other packages: something that we couldn&rsquo;t do with the old versioning scheme.</p>
 
+<h1>What To Do</h1>
 
-<h1 id="what-to-do" class="hdr "><a href="#what-to-do" title="permalink">»</a>&nbsp;What To Do <span class="toplink">(<a href="#top">top</a>)</span></h1>
-<span class="section ">
-	<p>Updating to the new import path scheme is easy using a modified go-fix command:</p>
-	<span class="list">
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">go get azul3d.org/cmd/azulfix.v1</span></span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">azulfix.v1 path/to/src/</span></span></span>
-	</span>
-	<p>Which will rewrite all azul3d.org/v1 import paths to their new counterparts.</p>
-</span>
+<p>Updating to the new import path scheme is easy using a modified go-fix command:</p>
 
+<pre><code>go get azul3d.org/cmd/azulfix.v1
+azulfix.v1 path/to/src/
+</code></pre>
 
-<h1 id="why" class="hdr "><a href="#why" title="permalink">»</a>&nbsp;Why? <span class="toplink">(<a href="#top">top</a>)</span></h1>
-<span class="section ">
-	<p>Looking at the previous import paths we had paths that looked like this:</p>
-	<span class="list">
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">azul3d.org/<em>v1</em>/pkg</span></span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">azul3d.org/<em>v1</em>/pkg/subpkg</span></span></span>
-	</span>
-	<p>Because the version number is stored in the middle of the URL, it would not be possible to have packages with different versions because they are all under the same version number. Instead, by moving the version to the end, we can have import paths like this:</p>
-	<span class="list">
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">azul3d.org/pkg.<em>v1</em></span></span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">azul3d.org/pkg/subpkg.<em>v1</em></span></span></span>
-	</span>
-	<p>Which allows us to increment the version numbers of specific packages independently of one-another. This is crucial going forward because it means we can break API-compatability of a single package, but leave other ones alone. In code however you will still reference the packages using just:</p>
-	<span class="list">
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">pkg.DoSomething()</span></span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">subpkg.DoSomething()</span></span></span>
-	</span>
-	<p>All in all, upgrading to the new system is made easy by the <em>azulfix</em> tool and going forward this will allow for better code in many situations.</p>
-</span>
+<p>Which will rewrite all <code>azul3d.org/v1</code> import paths to their new counterparts.</p>
 
+<h1>Why?</h1>
 
-<h1 id="implementation" class="hdr "><a href="#implementation" title="permalink">»</a>&nbsp;Implementation <span class="toplink">(<a href="#top">top</a>)</span></h1>
-<span class="section ">
-	<p>If any part of this article is confusing to you, or if you're interested in the implementation details, please see <a href="/doc/versioning.html">this page</a>.</p>
-</span>
+<p>Looking at the previous import paths we had paths that looked like this:</p></p>
 
+<pre><code>azul3d.org/v1/pkg
+azul3d.org/v1/pkg/subpkg
+</code></pre>
+
+<p>Because the version number is stored in the middle of the URL, it would not be possible to have packages with different versions because they are all under the same version number. Instead, by moving the version to the end, we can have import paths like this:</p>
+
+<pre><code>azul3d.org/pkg.v1
+azul3d.org/pkg/subpkg.v1
+</code></pre>
+
+<p>Which allows us to increment the version numbers of specific packages independently of one-another. This is crucial going forward because it means we can break API-compatability of a single package, but leave other ones alone. In code however you will still reference the packages using just:</p>
+
+<pre><code>pkg.DoSomething()
+subpkg.DoSomething()
+</code></pre>
+
+<p>All in all, upgrading to the new system is made easy by the <em>azulfix</em> tool and going forward this will allow for better code in many situations.</p>
+
+<h1>Implementation</h1>
+
+<p>If any part of this article is confusing to you, or if you&rsquo;re interested in the implementation details, please see <a href="/doc/versioning.html">this page</a>.</p>
+
+<script>
+$(function() {
+	var idName = function(text) {
+		
+		text = text.toLowerCase()
+
+		
+		text = text.replace(/[^a-z0-9- ]/g, "");
+
+		
+		text = text.replace(/[ ]/g, "-");
+
+		
+		return text.replace(/-+/g, "-");
+	}
+
+	
+	$(".article h1").each(function(i, obj) {
+		if(i == 0) {
+			return;
+		}
+		var id = idName(obj.innerHTML);
+		var link = $("<a />", {
+			id: id,
+			title: "permalink",
+			href: "#" + id,
+			text: "»",
+		});
+		$(this).prepend(" ");
+		link.prependTo($(this));
+	});
+
+	$("ul li").each(function(i, obj) {
+		var bio = $("<span />", {
+			class: "biohazard",
+			text: "☣",
+		});
+		var content = $("<span />", {
+			class: "content",
+		});
+		$(this).wrap('<span></span>');
+		bio.prependTo($(this).parent());
+	});
+});
+</script>
 	</div>
 </div>
 
