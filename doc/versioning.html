@@ -8,7 +8,7 @@
 		<meta name="description" content="A 3D game engine written in Go!">
 		<meta name="author" content="The Azul3D Authors">
 		
-			<title>Azul3D</title>
+			<title>Versioning - Azul3D</title>
 		
 		<link rel="shortcut icon" href="/content/favicon.png"> 
 
@@ -103,98 +103,157 @@
 
 
 <div id="content-container">
-	<div id="content" class="slim">
+	<div id="content" class="slim article">
+<h1>Versioning</h1>
 
+<p>Azul3D packages are versioned such that when API compatible changes are made, programs using the previous package API are not broken. This document describes the versioning scheme used by Azul3D for all package imports.</p>
 
+<ul>
+<li><a href="#the-basics">The Basics</a></li>
+<li><a href="#development-versions">Development Versions</a></li>
+<li><a href="#implementation-git-tags">Implementation - Git Tags</a></li>
+<li><a href="#implementation-google-app-engine">Implementation - Google App Engine</a></li>
+</ul>
 
-<h1 class="hdr ">Versioning</h1>
-<span class="section ">
-	<p>Azul3D packages are versioned such that when API compatible changes are made, programs using the previous package API are not broken. This document describes the versioning scheme used by Azul3D for all package imports.</p>
-	<span class="list">
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#the-basics">The Basics</a></span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#development-versions">Development Versions</a></span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#implementation-git-tags">Implementation - Git Tags</a></span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#implementation-google-app-engine">Implementation - Google App Engine</a></span></span>
-	</span>
-</span>
+<h1>The Basics</h1>
 
+<p>In the most basic form a package import path has the following syntax:</p></p>
 
-<h1 id="the-basics" class="hdr "><a href="#the-basics" title="permalink">»</a>&nbsp;The Basics <span class="toplink">(<a href="#top">top</a>)</span></h1>
-<span class="section ">
-	<p>In the most basic form a package import path has the following syntax:</p>
-	<span class="list">
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">azul3d.org/somepkg.v(major)[.(minor)]</span></span></span>
-	</span>
+<pre><code>azul3d.org/somepkg.v(major)[.(minor)]
+</code></pre>
 
-	<p>For instance the import path for <em>somepkg</em> whose major version is one would be:</p>
-	<span class="list">
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">azul3d.org/somepkg.v1</span></span></span>
-	</span>
+<p>For instance the import path for <em>somepkg</em> whose major version is one would be:</p>
 
-	<p>Or the import path for <em>somepkg</em> whose major version is one and minor version is two:</p>
-	<span class="list">
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">azul3d.org/somepkg.v1.2</span></span></span>
-	</span>
+<pre><code>azul3d.org/somepkg.v1
+</code></pre>
 
-	<p>Even though the import path ends with a version number, the package is still referenced in code the same exact way:</p>
-	<span class="list">
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">somepkg.DoSomething()</span></span></span>
-	</span>
-	<p>This is because Go analyzes the package name from the source code files -- not the import URL.</p>
-</span>
+<p>Or the import path for <em>somepkg</em> whose major version is one and minor version is two:</p>
 
+<pre><code>azul3d.org/somepkg.v1.2
+</code></pre>
 
-<h1 id="development-versions" class="hdr "><a href="#development-versions" title="permalink">»</a>&nbsp;Development Versions <span class="toplink">(<a href="#top">top</a>)</span></h1>
-<span class="section ">
-	<p>There is a special path extension, <em>.dev</em>, which signifies the in-development version of the package, like so:</p>
-	<span class="list">
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">azul3d.org/somepkg.dev</span></span></span>
-	</span>
-	<p>This special extension should only be used if you need features only found in the in-development versions of packages, but most of the time you should never use it and instead stick with the most-recently released version (mentioned on the documentation page for that package).</p>
-</span>
+<p>Even though the import path ends with a version number, the package is still referenced in code the same exact way:</p>
 
+<pre><code>somepkg.DoSomething()
+</code></pre>
 
-<h1 id="implementation-git-tags" class="hdr "><a href="#implementation-git-tags" title="permalink">»</a>&nbsp;Implementation - Git Tags <span class="toplink">(<a href="#top">top</a>)</span></h1>
-<span class="section ">
-	<p>In our implementation of versioning, we use git tags like "v1" or "v1.2" to reference a specifically released version. This is important for a few reasons:</p>
-	<span class="list">
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><p>Tags can be moved to newer revisions, so that fixes can still be made to versions post-release (as long as no backwards-incompatible changes have been made yet).</p></span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><p>Tags are easy to view through the GitHub API which makes writing versioned-documentation easy.</p></span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><p>Version tags can be viewed through the GitHub's website (which even allows downloading zipped archives of version releases).</p></span></span>
-	</span>
-</span>
+<p>This is because Go analyzes the package name from the source code files &ndash; not the import URL.</p>
 
+<h1>Development Versions</h1>
 
-<h1 id="implementation-google-app-engine" class="hdr "><a href="#implementation-google-app-engine" title="permalink">»</a>&nbsp;Implementation - Google App Engine <span class="toplink">(<a href="#top">top</a>)</span></h1>
-<span class="section ">
-	<p>The Go tool is not aware of tags as version numbers, this means that we must theoretically host a different repository for each version of each package. But in reality we can actually work around this by using some trickery:</p>
+<p>There is a special path extension, <em>.dev</em>, which signifies the in-development version of the package, like so:</p>
 
-	<p>Using remote import path HTML meta tags (see <a href="http://golang.org/cmd/go/#hdr-Remote_import_paths">here</a>) the Go tool will let us alias an GitHub repository under a different domain name, such that the import path:</p>
-	<span class="list">
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">github.com/azul3d/somepkg</span></span></span>
-	</span>
-	<p>Becomes:</p>
-	<span class="list">
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">azul3d.org/somepkg</span></span></span>
-	</span>
+<pre><code>azul3d.org/somepkg.dev
+</code></pre>
 
-	<p>Then we make use of an appengine application responsible for acting as a proxy of sorts (view the source of this application <a href="https://github.com/azul3d/appengine">here</a>). For standard web requests, it simply makes a proxied request to our azul3d.github.io domain, where the entire website content generated through the <a href="https://github.com/azul3d/webgen">webgen</a> is hosted. In practice this is not slow because the website is fronted by <a href="https://www.cloudflare.com/">CloudFlare</a> which caches these requests</p>
+<p>This special extension should only be used if you need features only found in the in-development versions of packages, but most of the time you should never use it and instead stick with the most-recently released version (mentioned on the documentation page for that package).</p>
 
-	<p>When the appengine application receives a request from the go-get tool (signified by a URL query term "?go-get=1"), it first makes contact to GitHub to see if the repository exists, if it does then it serves a meta tag to go-get like:</p>
-	<span class="list">
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">&lt;meta name=&quot;go-import&quot; content=&quot;azul3d.org/somepkg.v1 git azul3d.org/somepkg.v1/repo&quot;&gt;</span></span></span>
-	</span>
+<h1>Implementation - Git Tags</h1>
 
-	<p>Then go get wil run the git clone command like:</p>
-	<span class="list">
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">git clone azul3d.org/somepkg.v1/repo $GOPATH/src/azul3d.org/somepkg.v1</span></span></span>
-	</span>
+<p>In our implementation of versioning, we use git tags like &ldquo;v1&rdquo; or &ldquo;v1.2&rdquo; to reference a specifically released version. This is important for a few reasons:</p>
 
-	<p>And since we claimed in the meta tag that <em>azul3d.org/somepkg.v1/repo</em> was our git repository, git clone issues a few HTTP requests to clone the repository hosted there. We intercept those requests and forward them over to GitHub, while also pointing them towards the correct version tag specified in the URL.</p>
-</span>
+<ul>
+<li>Tags can be moved to newer revisions, so that fixes can still be made to versions post-release (as long as no backwards-incompatible changes have been made yet).</li>
+<li>Tags are easy to view through the GitHub API which makes writing versioned-documentation easy.</li>
+<li>Version tags can be viewed through the GitHub&rsquo;s website (which even allows downloading zipped archives of version releases).</li>
+</ul>
 
+<h1>Implementation - Google App Engine</h1>
 
+<p>The Go tool is not aware of tags as version numbers, this means that we must theoretically host a different repository for each version of each package. But in reality we can actually work around this by using some trickery:</p>
 
+<p>Using remote import path HTML meta tags (see <a href="http://golang.org/cmd/go/#hdr-Remote_import_paths">here</a>) the Go tool will let us alias an GitHub repository under a different domain name, such that the import path:</p>
+
+<pre><code>github.com/azul3d/somepkg
+</code></pre>
+
+<p>Becomes:</p>
+
+<pre><code>azul3d.org/somepkg
+</code></pre>
+
+<p>Then we make use of an appengine application responsible for acting as a proxy of sorts (view the source of this application <a href="https://github.com/azul3d/appengine">here</a>). For standard web requests, it simply makes a proxied request to our <code>azul3d.github.io</code> domain, where the entire website content generated via the <a href="https://github.com/azul3d/cmd-webgen">webgen tool</a> is hosted. In practice this is not slow because the website is fronted by <a href="https://www.cloudflare.com/">CloudFlare</a> which caches these requests.</p>
+
+<p>When the appengine application receives a request from the go-get tool (signified by a URL query term <code>?go-get=1</code>), it first makes contact to GitHub to see if the repository exists, if it does then it serves a meta tag to go-get like:</p>
+
+<pre><code>&lt;meta name=&quot;go-import&quot; content=&quot;azul3d.org/somepkg.v1 git azul3d.org/somepkg.v1/repo&quot;&gt;
+</code></pre>
+
+<p>Then go get wil run the git clone command like:</p>
+
+<pre><code>git clone azul3d.org/somepkg.v1/repo $GOPATH/src/azul3d.org/somepkg.v1
+</code></pre>
+
+<p>And since we claimed in the meta tag that <code>azul3d.org/somepkg.v1/repo</code> was our git repository, git clone issues a few HTTP requests to clone the repository hosted there. We intercept those requests and forward them over to GitHub, while also pointing them towards the correct version tag specified in the URL.</p>
+
+<script>
+$(function() {
+	var idName = function(text) {
+		
+		text = text.toLowerCase()
+
+		
+		text = text.replace(/[^a-z0-9- ]/g, "");
+
+		
+		text = text.replace(/[ ]/g, "-");
+
+		
+		return text.replace(/-+/g, "-");
+	}
+
+	
+	$(".article h1").each(function(i, obj) {
+		if(i == 0) {
+			return;
+		}
+		var id = idName(obj.innerHTML);
+		var link = $("<a />", {
+			id: id,
+			title: "permalink",
+			href: "#" + id,
+			text: "»",
+		});
+		$(this).prepend(" ");
+		link.prependTo($(this));
+	});
+
+	
+	$(".article h1").each(function(i, obj) {
+		if(i == 0) {
+			return;
+		}
+		var id = idName(obj.innerHTML);
+
+		var span = $("<span />", {
+			class: "toplink",
+			text: "(",
+		});
+
+		var link = $("<a />", {
+			title: "permalink",
+			href: "#top",
+			text: "top",
+		});
+		link.appendTo(span);
+		span.append(")");
+		$(this).append(" ");
+		span.appendTo($(this));
+	});
+
+	$("ul li").each(function(i, obj) {
+		var bio = $("<span />", {
+			class: "biohazard",
+			text: "☣",
+		});
+		var content = $("<span />", {
+			class: "content",
+		});
+		$(this).wrap('<span></span>');
+		bio.prependTo($(this).parent());
+	});
+});
+</script>
 	</div>
 </div>
 

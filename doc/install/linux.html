@@ -8,7 +8,7 @@
 		<meta name="description" content="A 3D game engine written in Go!">
 		<meta name="author" content="The Azul3D Authors">
 		
-			<title>Azul3D</title>
+			<title>Linux Installation - Azul3D</title>
 		
 		<link rel="shortcut icon" href="/content/favicon.png"> 
 
@@ -103,97 +103,146 @@
 
 
 <div id="content-container">
-	<div id="content" class="slim">
+	<div id="content" class="slim article">
+<h1>Linux Installation</h1>
 
+<p>What follows is a detailed step-by-step guide to install all Azul3D dependencies on a Linux (386/amd64) platform. For other platforms please see the <a href="/doc/install">installation page</a>.</p>
 
+<ul>
+<li><a href="#install-go">Install Go</a></li>
+<li><a href="#dependencies">Dependencies</a></li>
+<li><a href="#ubuntu-1404">Ubuntu 14.04</a></li>
+<li><a href="#ubuntu-1310">Ubuntu 13.10</a></li>
+<li><a href="#arch-linux">Arch Linux</a></li>
+<li><a href="#install-azul3d">Install Azul3D</a></li>
+</ul>
 
-<h1 class="hdr ">Linux Installation</h1>
-<span class="section ">
-	<p>What follows is a detailed step-by-step guide on installing Azul3D on a Linux 386/amd64 platform. For other platforms please see <a href="/doc/install">the installation page</a>.</p>
+<h1>Install Go</h1>
 
-	<span class="list">
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#install-go">Install Go</a></span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#dependencies">Dependencies</a></span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#ubuntu-1404">Ubuntu 14.04</a></span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#ubuntu-1310">Ubuntu 13.10</a></span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#arch-linux">Arch Linux</a></span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#compiling-the-examples">Compiling The Examples</a></span></span>
-	</span>
-</span>
+<p>Install the latest version of Go from <a href="http://golang.org/doc/install">here</a>.</p>
 
+<p>Note: <em>Azul3D requires at least Go version 1.3</em></p>
 
-<h1 id="install-go" class="hdr "><a href="#install-go" title="permalink">»</a>&nbsp;Install Go <span class="toplink">(<a href="#top">top</a>)</span></h1>
-<span class="section ">
-	<p>Install the latest version of Go from <a href="http://golang.org/doc/install">here</a>.</p>
-	<p>Note: <em>Azul3D requires at least Go version 1.3</em></p>
-	<p>Set the environment variable GOPATH, for example:</p>
-	<span class="list">
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">/home/joe/godev</span></span></span>
-	</span>
-</span>
+<p>Set the environment variable <code>GOPATH</code>, for example to <code>/home/joe/godev</code>.</p>
 
+<h1>Dependencies</h1>
 
-<h1 id="dependencies" class="hdr "><a href="#dependencies" title="permalink">»</a>&nbsp;Dependencies <span class="toplink">(<a href="#top">top</a>)</span></h1>
-<span class="section ">
-	<span class="list">
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content">Go 1.3</span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content">git (to clone the source code).</span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content">gcc</span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content">OpenGL development files</span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content">libx11 development files</span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content">libx11-xcb development files</span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content">libxcb development files (including icccm, image, randr, render-util, and xcb-xkb parts)</span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content">libfreetype, libbz2 and libzip static libraries and headers</span></span>
-	</span>
-	<p>Single-line installers for dependencies are provided below. If your distro is not listed here please help us by <a href="https://github.com/azul3d/issues/issues">creating an issue</a>.</p>
-</span>
+<p>The following are general dependencies that Azul3D requires on Linux, single-line installers for common Linux distributions are provided below.</p>
 
+<p>If your distribution is not listed here please help us by <a href="http://github.com/azul3d/issues/issues">creating an issue</a>.</p>
 
-<h1 id="ubuntu-1404" class="hdr "><a href="#ubuntu-1404" title="permalink">»</a>&nbsp;Ubuntu 14.04 <span class="toplink">(<a href="#top">top</a>)</span></h1>
-<span class="section ">
-	<p>Using apt-get on Ubuntu 14.04 you can install all of the dependencies by running:</p>
-	<span class="list">
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">sudo apt-get install build-essential git mesa-common-dev libx11-dev libx11-xcb-dev libxcb-icccm4-dev libxcb-image0-dev libxcb-randr0-dev libxcb-render-util0-dev libxcb-xkb-dev libfreetype6-dev libbz2-dev</span></span></span>
-	</span>
-</span>
+<ul>
+<li>Go 1.3</li>
+<li>git (to clone the source code).</li>
+<li>gcc</li>
+<li>OpenGL development files</li>
+<li>libx11 development files</li>
+<li>libx11-xcb development files</li>
+<li>libxcb development files (including icccm, image, randr, render-util, and xcb-xkb parts)</li>
+<li>libfreetype, libbz2 and libzip static libraries and headers</li>
+</ul>
 
+<h1>Ubuntu 14.04</h1>
 
-<h1 id="ubuntu-1310" class="hdr "><a href="#ubuntu-1310" title="permalink">»</a>&nbsp;Ubuntu 13.10 <span class="toplink">(<a href="#top">top</a>)</span></h1>
-<span class="section ">
-	<p>With Ubuntu 13.10, you need to add the xorg-edgers PPA for the libxkb-xcb-dev package:</p>
-	<span class="list">
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">sudo add-apt-repository ppa:xorg-edgers/ppa</span></span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">sudo apt-get update</span></span></span>
-	</span>
+<p>Using apt-get on Ubuntu 14.04 you can install all of the dependencies by running:</p>
 
-	<p>Then you can use apt-get to install everything:</p>
-	<span class="list">
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">sudo apt-get install build-essential git mesa-common-dev libx11-dev libx11-xcb-dev libxcb-icccm4-dev libxcb-image0-dev libxcb-randr0-dev libxcb-render-util0-dev libxcb-xkb-dev libfreetype6-dev libbz2-dev</span></span></span>
-	</span>
-</span>
+<pre><code>sudo apt-get install build-essential git mesa-common-dev libx11-dev libx11-xcb-dev libxcb-icccm4-dev libxcb-image0-dev libxcb-randr0-dev libxcb-render-util0-dev libxcb-xkb-dev libfreetype6-dev libbz2-dev
+</code></pre>
 
+<h1>Ubuntu 13.10</h1>
 
-<h1 id="arch-linux" class="hdr "><a href="#arch-linux" title="permalink">»</a>&nbsp;Arch Linux <span class="toplink">(<a href="#top">top</a>)</span></h1>
-<span class="section ">
-	<p>Using pacman on Arch Linux you can install all of the dependencies by running:</p>
-	<span class="list">
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">pacman -Sy base-devel git mesa libx11 libxcb xcb-util-wm xcb-util-image libxrandr xcb-util-renderutil libxkbcommon-x11 freetype2 bzip2</span></span></span>
-	</span>
-</span>
+<p>With Ubuntu 13.10, you need to add the xorg-edgers PPA for the libxkb-xcb-dev package:</p>
 
+<pre><code>sudo add-apt-repository ppa:xorg-edgers/ppa
+sudo apt-get update
+</code></pre>
 
-<h1 id="compiling-the-examples" class="hdr "><a href="#compiling-the-examples" title="permalink">»</a>&nbsp;Compiling The Examples <span class="toplink">(<a href="#top">top</a>)</span></h1>
-<span class="section ">
+<p>Then you can use apt-get to install everything:</p>
+
+<pre><code>sudo apt-get install build-essential git mesa-common-dev libx11-dev libx11-xcb-dev libxcb-icccm4-dev libxcb-image0-dev libxcb-randr0-dev libxcb-render-util0-dev libxcb-xkb-dev libfreetype6-dev libbz2-dev
+</code></pre>
+
+<h1>Arch Linux</h1>
+
+<p>Using pacman on Arch Linux you can install all of the dependencies by running:</p>
+
+<pre><code>pacman -Sy base-devel git mesa libx11 libxcb xcb-util-wm xcb-util-image libxrandr xcb-util-renderutil libxkbcommon-x11 freetype2 bzip2
+</code></pre>
+
+<h1>Install Azul3D</h1>
+
+<p>At this point, <em>you&rsquo;ve successfully installed the dependencies</em>!</p>
+
+<p>Follow the rest of the instructions on the <a href="/doc/install">installation page</a>.</p>
+
+<script>
+$(function() {
+	var idName = function(text) {
+		
+		text = text.toLowerCase()
+
+		
+		text = text.replace(/[^a-z0-9- ]/g, "");
+
+		
+		text = text.replace(/[ ]/g, "-");
+
+		
+		return text.replace(/-+/g, "-");
+	}
+
 	
-	<p>Azul3D is installed via the standard <a href="https://golang.org/cmd/go/">go tool</a>. To download and compile the example source code run:</p>
-	<span class="list">
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">go get azul3d.org/examples.v1</span></span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">go get azul3d.org/examples.v1/...</span></span></span>
-	</span>
-	<p>The example binaries will be placed into the $GOPATH/bin directory.</p>
+	$(".article h1").each(function(i, obj) {
+		if(i == 0) {
+			return;
+		}
+		var id = idName(obj.innerHTML);
+		var link = $("<a />", {
+			id: id,
+			title: "permalink",
+			href: "#" + id,
+			text: "»",
+		});
+		$(this).prepend(" ");
+		link.prependTo($(this));
+	});
 
-</span>
+	
+	$(".article h1").each(function(i, obj) {
+		if(i == 0) {
+			return;
+		}
+		var id = idName(obj.innerHTML);
 
+		var span = $("<span />", {
+			class: "toplink",
+			text: "(",
+		});
+
+		var link = $("<a />", {
+			title: "permalink",
+			href: "#top",
+			text: "top",
+		});
+		link.appendTo(span);
+		span.append(")");
+		$(this).append(" ");
+		span.appendTo($(this));
+	});
+
+	$("ul li").each(function(i, obj) {
+		var bio = $("<span />", {
+			class: "biohazard",
+			text: "☣",
+		});
+		var content = $("<span />", {
+			class: "content",
+		});
+		$(this).wrap('<span></span>');
+		bio.prependTo($(this).parent());
+	});
+});
+</script>
 	</div>
 </div>
 

@@ -8,7 +8,7 @@
 		<meta name="description" content="A 3D game engine written in Go!">
 		<meta name="author" content="The Azul3D Authors">
 		
-			<title>Azul3D</title>
+			<title>Windows Installation - Azul3D</title>
 		
 		<link rel="shortcut icon" href="/content/favicon.png"> 
 
@@ -103,77 +103,122 @@
 
 
 <div id="content-container">
-	<div id="content" class="slim">
+	<div id="content" class="slim article">
+<h1>Windows Installation</h1>
 
+<p>What follows is a detailed step-by-step guide to install all Azul3D dependencies on a Windows (386/amd64) platform. For other platforms please see the <a href="/doc/install">installation page</a>.</p>
 
+<ul>
+<li><a href="#install-go">Install Go</a></li>
+<li><a href="#install-git">Install Git</a></li>
+<li><a href="#install-mingw">Install MinGW</a></li>
+<li><a href="#install-azul3d">Install Azul3D</a></li>
+</ul>
 
-<h1 class="hdr ">Windows Installation</h1>
-<span class="section ">
-	<p>What follows is a detailed step-by-step guide on installing Azul3D on a windows 386/amd64 platform. For other platforms please see <a href="/doc/install">the installation page</a>.</p>
+<h1>Install Go</h1>
 
-	<span class="list">
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#install-go">Install Go</a></span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#install-git">Install Git</a></span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#install-mingw-32">Install MinGW (32-bit Windows)</a></span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#install-mingw-64">Install MinGW (64-bit Windows)</a></span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#compiling-the-examples">Compiling The Examples</a></span></span>
-	</span>
-</span>
+<p>Install the latest version of Go from <a href="http://golang.org/doc/install">here</a>.</p>
 
+<p>Note: <em>Azul3D requires at least Go version 1.3</em></p>
 
-<h1 id="install-go" class="hdr "><a href="#install-go" title="permalink">»</a>&nbsp;Install Go <span class="toplink">(<a href="#top">top</a>)</span></h1>
-<span class="section ">
-	<p>Install the latest version of Go from <a href="http://golang.org/doc/install">here</a>.</p>
-	<p>Note: <em>Azul3D requires at least Go version 1.3</em></p>
-	<p>Set the environment variable GOPATH, for example:</p>
-	<span class="list">
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">C:\Users\joe\Desktop\godev</span></span></span>
-	</span>
-</span>
+<p>Set the environment variable <code>GOPATH</code>, for example to <code>C:\Users\joe\Desktop\godev</code>.</p>
 
+<h1>Install Git</h1>
 
-<h1 id="install-git" class="hdr "><a href="#install-git" title="permalink">»</a>&nbsp;Install Git <span class="toplink">(<a href="#top">top</a>)</span></h1>
-<span class="section ">
-	<p>Install git (use default installation options) from <a href="http://git-scm.com/downloads">here</a>.</p>
-	<p>(32-bit Windows) Add git to the PATH environment variable:</p>
-	<span class="list">
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">C:\Program Files\Git\bin</span></span></span>
-	</span>
-	<p>(64-bit Windows) Add git to the PATH environment variable:</p>
-	<span class="list">
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">C:\Program Files (x86)\Git\bin</span></span></span>
-	</span>
-</span>
+<p>Install git (use default installation options) from <a href="http://git-scm.com/downloads">here</a>.</p>
 
+<p>Add git to the PATH environment variable:</p>
 
-<h1 id="install-mingw-32-bit-windows" class="hdr "><a href="#install-mingw-32-bit-windows" title="permalink">»</a>&nbsp;Install MinGW (32-bit Windows) <span class="toplink">(<a href="#top">top</a>)</span></h1>
-<span class="section ">
-	<p>We highly reccomend using TDM GCC -- installation is very simple (use the default options).</p>
-	<p>Download the <em>32-bit installer</em> <a href="http://sourceforge.net/projects/tdm-gcc/files/TDM-GCC%20Installer/tdm-gcc-4.8.1-3.exe/download">here</a></p>
-	<p>Note: <em>Due to <a href="https://github.com/go-gl/glfw3/issues/91">an existing bug</a> we reccomend only using GCC 4.8.1 or lower versions for now.<em></p>
-</span>
+<ul>
+<li><em>32-bit:</em> <code>C:\Program Files\Git\bin</code></li>
+<li><em>64-bit:</em> <code>C:\Program Files (x86)\Git\bin</code></li>
+</ul>
 
+<h1>Install MinGW</h1>
 
-<h1 id="install-mingw-64-bit-windows" class="hdr "><a href="#install-mingw-64-bit-windows" title="permalink">»</a>&nbsp;Install MinGW (64-bit Windows) <span class="toplink">(<a href="#top">top</a>)</span></h1>
-<span class="section ">
-	<p>We highly reccomend using TDM GCC -- installation is very simple (use the default options).</p>
-	<p>Download the <em>64-bit installer</em> <a href="http://sourceforge.net/projects/tdm-gcc/files/TDM-GCC%20Installer/tdm64-gcc-4.8.1-3.exe/download">here</a></p>
-	<p>Note: <em>Due to <a href="https://github.com/go-gl/glfw3/issues/91">an existing bug</a> we reccomend only using GCC 4.8.1 or lower versions for now.<em></p>
-</span>
+<p>We highly reccomend using TDM GCC &ndash; installation is very simple, just download the installer and use the default options:</p>
 
+<ul>
+<li><a href="http://sourceforge.net/projects/tdm-gcc/files/TDM-GCC%20Installer/tdm-gcc-4.8.1-3.exe/download">32-bit Installer</a></li>
+<li><a href="http://sourceforge.net/projects/tdm-gcc/files/TDM-GCC%20Installer/tdm64-gcc-4.8.1-3.exe/download">64-bit Installer</a></li>
+</ul>
 
-<h1 id="compiling-the-examples" class="hdr "><a href="#compiling-the-examples" title="permalink">»</a>&nbsp;Compiling The Examples <span class="toplink">(<a href="#top">top</a>)</span></h1>
-<span class="section ">
+<p>Note: <em>Due to <a href="https://github.com/go-gl/glfw3/issues/91">an existing bug</a> we reccomend only using GCC 4.8.1 or lower.</em></p>
+
+<h1>Install Azul3D</h1>
+
+<p>At this point, <em>you&rsquo;ve successfully installed the dependencies</em>!</p>
+
+<p>Follow the rest of the instructions on the <a href="/doc/install">installation page</a>.</p>
+
+<script>
+$(function() {
+	var idName = function(text) {
+		
+		text = text.toLowerCase()
+
+		
+		text = text.replace(/[^a-z0-9- ]/g, "");
+
+		
+		text = text.replace(/[ ]/g, "-");
+
+		
+		return text.replace(/-+/g, "-");
+	}
+
 	
-	<p>Azul3D is installed via the standard <a href="https://golang.org/cmd/go/">go tool</a>. To download and compile the example source code run:</p>
-	<span class="list">
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">go get azul3d.org/examples.v1</span></span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">go get azul3d.org/examples.v1/...</span></span></span>
-	</span>
-	<p>The example binaries will be placed into the $GOPATH/bin directory.</p>
+	$(".article h1").each(function(i, obj) {
+		if(i == 0) {
+			return;
+		}
+		var id = idName(obj.innerHTML);
+		var link = $("<a />", {
+			id: id,
+			title: "permalink",
+			href: "#" + id,
+			text: "»",
+		});
+		$(this).prepend(" ");
+		link.prependTo($(this));
+	});
 
-</span>
+	
+	$(".article h1").each(function(i, obj) {
+		if(i == 0) {
+			return;
+		}
+		var id = idName(obj.innerHTML);
 
+		var span = $("<span />", {
+			class: "toplink",
+			text: "(",
+		});
+
+		var link = $("<a />", {
+			title: "permalink",
+			href: "#top",
+			text: "top",
+		});
+		link.appendTo(span);
+		span.append(")");
+		$(this).append(" ");
+		span.appendTo($(this));
+	});
+
+	$("ul li").each(function(i, obj) {
+		var bio = $("<span />", {
+			class: "biohazard",
+			text: "☣",
+		});
+		var content = $("<span />", {
+			class: "content",
+		});
+		$(this).wrap('<span></span>');
+		bio.prependTo($(this).parent());
+	});
+});
+</script>
 	</div>
 </div>
 

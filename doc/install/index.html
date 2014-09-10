@@ -8,7 +8,7 @@
 		<meta name="description" content="A 3D game engine written in Go!">
 		<meta name="author" content="The Azul3D Authors">
 		
-			<title>Azul3D</title>
+			<title>Installation - Azul3D</title>
 		
 		<link rel="shortcut icon" href="/content/favicon.png"> 
 
@@ -103,35 +103,151 @@
 
 
 <div id="content-container">
-	<div id="content" class="slim">
+	<div id="content" class="slim article">
+<h1>Installation</h1>
 
+<p>This page documents how to install Azul3D on any <a href="/doc/platform-support.html">supported platform</a>.</p>
 
+<ul>
+<li><a href="#dependencies">Dependencies</a></li>
+<li><a href="#modularity">Modularity</a></li>
+<li><a href="#examples">Examples</a></li>
+<li><a href="#from-scratch">From Scratch</a></li>
+</ul>
 
-<h1 class="hdr ">Installation</h1>
-<span class="section ">
-	<p>Azul3D does require installation of a few system tools and libraries (gcc/mingw, freetype, etc). For this reason we provide detailed installation instructions for each <a href="/doc/platform-support.html">supported platform</a>:</p>
+<h1>Dependencies</h1>
 
-	<span class="list">
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="/doc/install/windows.html">Windows (386 / amd64)</a></span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="/doc/install/linux.html">Linux (386 / amd64)</a></span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="/doc/install/osx.html">Mac OS X (amd64)</a></span></span>
-	</span>
-</span>
+<p>Azul3D requires a few system tools and libraries to be installed (like GCC/MinGW, FreeType, etc).</p>
 
+<p>Detailed installation instructions for each <a href="/doc/platform-support.html">supported platform</a>:</p>
 
-<h1 id="advanced" class="hdr "><a href="#advanced" title="permalink">»</a>&nbsp;Advanced <span class="toplink">(<a href="#top">top</a>)</span></h1>
-<span class="section ">
-	<p>If you're an advanced user <em><strong>and you know that you've installed the required system dependencies</strong></em>, then you can simply use the Go tool immediately:</p>
+<ul>
+<li><a href="/doc/install/windows.html">Windows (386 / amd64)</a></li>
+<li><a href="/doc/install/linux.html">Linux (386 / amd64)</a></li>
+<li><a href="/doc/install/osx.html">Mac OS X (amd64)</a></li>
+</ul>
+
+<h1>Modularity</h1>
+
+<p>Azul3D is very modular, each package is installed separately. This is very useful because you only need to install the specific Azul3D package that you intend to use (a full list of packages can be found on the <a href="/packages.html">packages page</a>).</p>
+
+<p>Want to use the <code>audio</code> package but not the <code>gfx</code> package? Simply just install the <code>audio</code> package:</p>
+
+<pre><code>go get -u azul3d.org/audio.v1
+</code></pre>
+
+<h1>Examples</h1>
+
+<p>After <a href="#dependencies">installing the dependencies</a>, you can install <em>most of</em> the Azul3D packages by simply installing the examples using the <a href="https://golang.org/cmd/go/">go tool</a>:</p>
+
+<pre><code>go get azul3d.org/examples.v1
+go get azul3d.org/examples.v1/...
+</code></pre>
+
+<p>And the example binaries will be installed into the $GOPATH/bin directory.</p>
+
+<h1>From Scratch</h1>
+
+<p>The best way to install Azul3D is by <a href="#examples">installing the examples</a>, optionally however you can install Azul3D packages from scratch.</p>
+
+<p>For instance if you wrote an <code>example</code> package with these import statements:</p>
+
+<pre><code>import(
+	_ &quot;azul3d.org/audio/wav.v1&quot;
+	&quot;azul3d.org/audio.v1&quot;
+)
+</code></pre>
+
+<p>If you tried to build that program and didn&rsquo;t have those packages installed yet, you would receive the following:</p>
+
+<pre><code>/godev/src/example$ go build
+example.go:5:2: cannot find package &quot;azul3d.org/audio.v1&quot; in any of:
+	/go/src/pkg/azul3d.org/audio.v1 (from $GOROOT)
+	/godev/src/azul3d.org/audio.v1 (from $GOPATH)
+example.go:4:2: cannot find package &quot;azul3d.org/audio/wav.v1&quot; in any of:
+	/go/src/pkg/azul3d.org/audio/wav.v1 (from $GOROOT)
+	/godev/src/azul3d.org/audio/wav.v1 (from $GOPATH)
+</code></pre>
+
+<p>These errors are telling you that you haven&rsquo;t installed the <code>audio</code> and <code>audio/wav</code> packages.</p>
+
+<p><strong>Installing everything the above program needs is very easy</strong>:</p>
+
+<pre><code>go get -u example
+</code></pre>
+
+<p>Every package needed by the <code>example</code> package will be downloaded and installed.</p>
+
+<p>There are other ways to install Azul3D packages from scratch, like downloading each package independantly via <code>go get</code>, but using the above command is by far the easiest way to download and install everything your program depends on.</p>
+
+<script>
+$(function() {
+	var idName = function(text) {
+		
+		text = text.toLowerCase()
+
+		
+		text = text.replace(/[^a-z0-9- ]/g, "");
+
+		
+		text = text.replace(/[ ]/g, "-");
+
+		
+		return text.replace(/-+/g, "-");
+	}
+
 	
-	<p>Azul3D is installed via the standard <a href="https://golang.org/cmd/go/">go tool</a>. To download and compile the example source code run:</p>
-	<span class="list">
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">go get azul3d.org/examples.v1</span></span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">go get azul3d.org/examples.v1/...</span></span></span>
-	</span>
-	<p>The example binaries will be placed into the $GOPATH/bin directory.</p>
+	$(".article h1").each(function(i, obj) {
+		if(i == 0) {
+			return;
+		}
+		var id = idName(obj.innerHTML);
+		var link = $("<a />", {
+			id: id,
+			title: "permalink",
+			href: "#" + id,
+			text: "»",
+		});
+		$(this).prepend(" ");
+		link.prependTo($(this));
+	});
 
-</span>
+	
+	$(".article h1").each(function(i, obj) {
+		if(i == 0) {
+			return;
+		}
+		var id = idName(obj.innerHTML);
 
+		var span = $("<span />", {
+			class: "toplink",
+			text: "(",
+		});
+
+		var link = $("<a />", {
+			title: "permalink",
+			href: "#top",
+			text: "top",
+		});
+		link.appendTo(span);
+		span.append(")");
+		$(this).append(" ");
+		span.appendTo($(this));
+	});
+
+	$("ul li").each(function(i, obj) {
+		var bio = $("<span />", {
+			class: "biohazard",
+			text: "☣",
+		});
+		var content = $("<span />", {
+			class: "content",
+		});
+		$(this).wrap('<span></span>');
+		bio.prependTo($(this).parent());
+	});
+});
+</script>
 	</div>
 </div>
 

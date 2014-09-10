@@ -8,7 +8,7 @@
 		<meta name="description" content="A 3D game engine written in Go!">
 		<meta name="author" content="The Azul3D Authors">
 		
-			<title>Azul3D</title>
+			<title>Updating - Azul3D</title>
 		
 		<link rel="shortcut icon" href="/content/favicon.png"> 
 
@@ -103,68 +103,130 @@
 
 
 <div id="content-container">
-	<div id="content" class="slim">
+	<div id="content" class="slim article">
+<h1>Updating</h1>
 
+<p>There are two different types of updating an Azul3D package. One is where you wish to update to a newer and better package API (if one is available), and the other is where you wish to receive bug fixes or new features for the latest available version of a package.</p>
 
+<ul>
+<li><a href="#updating-versions">Updating Versions</a></li>
+<li><a href="#getting-bug-fixes-and-features">Getting Bug Fixes And Features</a></li>
+</ul>
 
-<h1 class="hdr ">Updating</h1>
-<span class="section ">
-	<p>There are two different types of updating an Azul3D package. One is where you wish to update to a newer and better package API (if one is available), and the other is where you wish to receive bug fixes or new features for the latest available version of a package.</p>
-	<span class="list">
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#updating-versions">Updating Versions</a></span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#getting-bug-fixes-and-features">Getting Bug Fixes And Features</a></span></span>
-	</span>
-</span>
+<h1>Updating Versions</h1>
 
+<p>Any time API-incompatible changes must be made to an existing package, a new <a href="/doc/versioning.html">version</a> is created.</p>
 
-<h1 id="updating-versions" class="hdr "><a href="#updating-versions" title="permalink">»</a>&nbsp;Updating Versions <span class="toplink">(<a href="#top">top</a>)</span></h1>
-<span class="section ">
-	<p>Any time API-incompatible changes must be made to an existing package, a new <a href="/doc/versioning.html">version</a> is created.</p>
-	<p>Once a new version of a package is available, previous versions receive no further updates. As such it is important to periodically update your applications to newer versions of Azul3D packages. For example if an application imported the following package:</p>
-	<span class="list">
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">import "azul3d.org/chippy.v1"</span></span></span>
-	</span>
+<p>Once a new version of a package is available, previous versions receive no further updates. As such it is important to periodically update your applications to newer versions of Azul3D packages. For example if an application imported the following package:</p>
 
-	<p>And a newer version is available, (the package's <a href="/chippy.v1#versions">documentation</a> would mention if a newer version was available). You would want to change each import statement to the newer version:</p>
+<pre><code>import &quot;azul3d.org/chippy.v1&quot;
+</code></pre>
 
-	<span class="list">
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">import "azul3d.org/chippy.v2"</span></span></span>
-	</span>
+<p>And a newer version is available, (the package&rsquo;s <a href="/chippy.v1#versions">documentation</a> would mention if a newer version was available). You would want to change each import statement to the newer version:</p>
 
-	<p>This can be a very tedious task if you have many imports. To make it significantly easier you can use a tool like <a href="http://godoc.org/launchpad.net/govers">govers</a>. To do this you first need to install it using the Go tool:</p>
-	<span class="list">
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">go get launchpad.net/govers</span></span></span>
-	</span>
+<pre><code>import &quot;azul3d.org/chippy.v2
+</code></pre>
 
-	<p>And then in the root of the source tree you want to change, you would run:</p>
-	<span class="list">
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">govers azul3d.org/chippy.v2</span></span></span>
-	</span>
+<p>This can be a very tedious task if you have many imports. To make it significantly easier you can use a tool like <a href="http://godoc.org/launchpad.net/govers">govers</a>. To do this you first need to install it using the Go tool:</p>
 
-	<p>Which would rewrite all of the <em>v1</em> import paths to become <em>v2</em>. It will also warn you if you are importing code that uses a previous version of the same package -- which is a big no no.</p>
+<pre><code>go get launchpad.net/govers
+</code></pre>
 
-	<p>You may still need to do some manual fixing yourself -- though. Since it's a new package version it means that some API incompatible change has been made, so your code may need to be updated to reflect the new changes.</p>
-</span>
+<p>And then in the root of the source tree you want to change, you would run:</p>
 
+<pre><code>govers azul3d.org/chippy.v2
+</code></pre>
 
-<h1 id="getting-bug-fixes-and-features" class="hdr "><a href="#getting-bug-fixes-and-features" title="permalink">»</a>&nbsp;Getting Bug Fixes And Features <span class="toplink">(<a href="#top">top</a>)</span></h1>
-<span class="section ">
-	<p>When we don't have to make API-incompatible changes, we don't. Instead these changes are made to the latest released version of the package.</p>
-	<p>So for instance: version one of the chippy package (azul3d.org/chippy.v1), may still receive bug fixes and new features as time goes on. You can track these changes easily through the package's <a href="https://github.com/azul3d/chippy">GitHub repository</a>.</p>
+<p>Which would rewrite all of the <code>v1</code> import paths to become <code>v2</code>. It will also warn you if you are importing code that uses a previous version of the same package &ndash; which is a big no no.</p>
 
-	<p>Downloading all of the recent changes to a specific package is very easy to do using the update flag with the <em>go get</em> command:</p>
-	<span class="list">
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">go get -u azul3d.org/chippy.v1</span></span></span>
-	</span>
+<p>You may still need to do some manual fixing yourself &ndash; though. Since it&rsquo;s a new package version it means that some API incompatible change has been made, so your code may need to be updated to reflect the new changes.</p>
 
-	<p>If you want to update all of the Azul3D packages that you have downloaded, it is also easy using <em>...</em> file path expansion, like so:</p>
-	<span class="list">
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><span class="code">go get -u azul3d.org/...</span></span></span>
-	</span>
-	<p>Which would update every Azul3D package that you have installed.</p>
-</span>
+<h1>Getting Bug Fixes And Features</h1>
 
+<p>When we don&rsquo;t have to make API-incompatible changes, we don&rsquo;t. Instead these changes are made to the latest released version of the package.</p>
 
+<p>So for instance: version one of the chippy package (azul3d.org/chippy.v1), may still receive bug fixes and new features as time goes on. You can track these changes easily through the package&rsquo;s <a href="https://github.com/azul3d/chippy">GitHub repository</a>.</p>
+
+<p>Downloading all of the recent changes to a specific package is very easy to do using the update flag with the <em>go get</em> command:</p>
+
+<pre><code>go get -u azul3d.org/chippy.v1
+</code></pre>
+
+<p>If you want to update all of the Azul3D packages that you have downloaded, it is also easy using <em>&hellip;</em> file path expansion, like so:</p>
+
+<pre><code>go get -u azul3d.org/...
+</code></pre>
+
+<p>Which would update every Azul3D package that you have installed.</p>
+
+<script>
+$(function() {
+	var idName = function(text) {
+		
+		text = text.toLowerCase()
+
+		
+		text = text.replace(/[^a-z0-9- ]/g, "");
+
+		
+		text = text.replace(/[ ]/g, "-");
+
+		
+		return text.replace(/-+/g, "-");
+	}
+
+	
+	$(".article h1").each(function(i, obj) {
+		if(i == 0) {
+			return;
+		}
+		var id = idName(obj.innerHTML);
+		var link = $("<a />", {
+			id: id,
+			title: "permalink",
+			href: "#" + id,
+			text: "»",
+		});
+		$(this).prepend(" ");
+		link.prependTo($(this));
+	});
+
+	
+	$(".article h1").each(function(i, obj) {
+		if(i == 0) {
+			return;
+		}
+		var id = idName(obj.innerHTML);
+
+		var span = $("<span />", {
+			class: "toplink",
+			text: "(",
+		});
+
+		var link = $("<a />", {
+			title: "permalink",
+			href: "#top",
+			text: "top",
+		});
+		link.appendTo(span);
+		span.append(")");
+		$(this).append(" ");
+		span.appendTo($(this));
+	});
+
+	$("ul li").each(function(i, obj) {
+		var bio = $("<span />", {
+			class: "biohazard",
+			text: "☣",
+		});
+		var content = $("<span />", {
+			class: "content",
+		});
+		$(this).wrap('<span></span>');
+		bio.prependTo($(this).parent());
+	});
+});
+</script>
 	</div>
 </div>
 

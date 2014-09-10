@@ -8,7 +8,7 @@
 		<meta name="description" content="A 3D game engine written in Go!">
 		<meta name="author" content="The Azul3D Authors">
 		
-			<title>Azul3D</title>
+			<title>Platform Support - Azul3D</title>
 		
 		<link rel="shortcut icon" href="/content/favicon.png"> 
 
@@ -103,21 +103,113 @@
 
 
 <div id="content-container">
-	<div id="content" class="slim">
+	<div id="content" class="slim article">
+<h1>Platform Support</h1>
 
+<p>Below is a table of platforms that are supported by Azul3D <em>today</em>. More will be added in the future, if you wish to see a new one here please <a href="https://github.com/azul3d/issues/issues">create an issue</a>.</p></p>
 
+<table>
+<thead>
+<tr>
+<th>Operation System</th>
+<th>Version</th>
+<th>Architectures</th>
+</tr>
+</thead>
 
-<h1 class="hdr ">Platform Support</h1>
-<span class="section ">
-	<p>Below is a table of platforms that are supported by Azul3D <em>today</em>. More will be added in the future, if you wish to see a new one here please <a href="https://github.com/azul3d/issues/issues">create an issue</a>.</p>
-	<table>
-		<thead><td>Operation System</td><td>Architectures</td></thead>
-		<tr><td>Windows XP and higher</td><td>386, amd64</td></tr>
-		<tr><td>Linux (any Go supported kernel)</td><td>386, amd64</td></tr>
-		<tr><td>Mac OS X (any Go supported version)</td><td>amd64</td></tr>
-	</table>
-</span>
+<tbody>
+<tr>
+<td>Windows</td>
+<td>XP and higher</td>
+<td>386, amd64</td>
+</tr>
 
+<tr>
+<td>Linux</td>
+<td>Any Go supported kernel</td>
+<td>386, amd64</td>
+</tr>
+
+<tr>
+<td>Mac OS X</td>
+<td>Any Go supported version</td>
+<td>amd64</td>
+</tr>
+</tbody>
+</table>
+
+<h1>Future</h1>
+
+<p>Future platforms that Azul3D may support are outlined on the <a href="/doc/roadmap.html#future-platforms">roadmap</a>.</p>
+
+<script>
+$(function() {
+	var idName = function(text) {
+		
+		text = text.toLowerCase()
+
+		
+		text = text.replace(/[^a-z0-9- ]/g, "");
+
+		
+		text = text.replace(/[ ]/g, "-");
+
+		
+		return text.replace(/-+/g, "-");
+	}
+
+	
+	$(".article h1").each(function(i, obj) {
+		if(i == 0) {
+			return;
+		}
+		var id = idName(obj.innerHTML);
+		var link = $("<a />", {
+			id: id,
+			title: "permalink",
+			href: "#" + id,
+			text: "»",
+		});
+		$(this).prepend(" ");
+		link.prependTo($(this));
+	});
+
+	
+	$(".article h1").each(function(i, obj) {
+		if(i == 0) {
+			return;
+		}
+		var id = idName(obj.innerHTML);
+
+		var span = $("<span />", {
+			class: "toplink",
+			text: "(",
+		});
+
+		var link = $("<a />", {
+			title: "permalink",
+			href: "#top",
+			text: "top",
+		});
+		link.appendTo(span);
+		span.append(")");
+		$(this).append(" ");
+		span.appendTo($(this));
+	});
+
+	$("ul li").each(function(i, obj) {
+		var bio = $("<span />", {
+			class: "biohazard",
+			text: "☣",
+		});
+		var content = $("<span />", {
+			class: "content",
+		});
+		$(this).wrap('<span></span>');
+		bio.prependTo($(this).parent());
+	});
+});
+</script>
 	</div>
 </div>
 

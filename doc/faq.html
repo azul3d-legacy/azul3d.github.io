@@ -8,7 +8,7 @@
 		<meta name="description" content="A 3D game engine written in Go!">
 		<meta name="author" content="The Azul3D Authors">
 		
-			<title>Azul3D</title>
+			<title>FAQ - Azul3D</title>
 		
 		<link rel="shortcut icon" href="/content/favicon.png"> 
 
@@ -103,157 +103,196 @@
 
 
 <div id="content-container">
-	<div id="content" class="slim">
+	<div id="content" class="slim article">
+<h1>FAQ</h1>
 
+<p>Compiled here is a list of frequently asked questions about Azul3D. If you have questions not listed here please ask in the <a href="https://groups.google.com/forum/#!forum/azul3d">Mailing List</a>.</p>
 
+<ul>
+<li><a href="#what-is-azul3d">What is Azul3D?</a></li>
+<li><a href="#why-go">Why Go?</a></li>
+<li><a href="#what-does-it-provide">What does it provide?</a></li>
+<li><a href="#is-there-a-roadmap">Is there a roadmap?</a></li>
+<li><a href="#are-there-any-examples">Are there any examples?</a></li>
+<li><a href="#how-do-i-install-it">How do I install it?</a></li>
+<li><a href="#how-does-updating-work">How does updating work?</a></li>
+<li><a href="#how-does-versioning-work">How does versioning work?</a></li>
+<li><a href="#why-opengl-2">Why OpenGL 2?</a></li>
+<li><a href="#what-about-the-garbage-collector">What about the garbage collector?</a></li>
+<li><a href="#does-it-have-a-level-editor">Does it have a level editor?</a></li>
+<li><a href="#can-it-be-scripted">Can it be scripted?</a></li>
+<li><a href="#where-can-i-report-bugs">Where can I report bugs?</a></li>
+<li><a href="#where-can-i-request-features">Where can I request features?</a></li>
+<li><a href="#how-can-i-get-in-touch">How can I get in touch?</a></li>
+<li><a href="#what-types-of-applications">What types of applications?</a></li>
+<li><a href="#what-platforms-are-supported">What platforms are supported?</a></li>
+</ul>
 
-<h1 class="hdr ">FAQ</h1>
-<span class="section ">
-	<p>Compiled here is a list of frequently asked questions about Azul3D. If you have questions not listed here please ask in the <a href="https://groups.google.com/forum/#!forum/azul3d">Mailing List</a>.</p>
+<h1>What is Azul3D?</h1>
 
-	<span class="list">
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#what-is-azul3d">What is Azul3D?</a></span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#why-go">Why Go?</a></span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#what-does-it-provide">What does it provide?</a></span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#is-there-a-roadmap">Is there a roadmap?</a></span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#are-there-any-examples">Are there any examples?</a></span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#how-do-i-install-it">How do I install it?</a></span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#how-does-updating-work">How does updating work?</a></span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#how-does-versioning-work">How does versioning work?</a></span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#why-opengl-2">Why OpenGL 2?</a></span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#what-about-the-garbage-collector">What about the garbage collector?</a></span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#does-it-have-a-level-editor">Does it have a level editor?</a></span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#can-it-be-scripted">Can it be scripted?</a></span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#where-can-i-report-bugs">Where can I report bugs?</a></span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#where-can-i-request-features">Where can I request features?</a></span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#how-can-i-get-in-touch">How can I get in touch?</a></span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#what-types-of-applications">What types of applications?</a></span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content"><a href="#what-platforms-are-supported">What platforms are supported?</a></span></span>
-	</span>
-</span>
+<p>Azul3D is a 3D game engine written entirely from the ground up in the Go programming language. It is suitable for most types of 2D and 3D applications, it can even be used for non-game interactive applications. Unlike other modern game engines like Unity, JMonkey, etc, Azul3D does not attempt to provide anything more than programming packages suitable for game developers. There is no custom IDE, nor level editor.</p>
 
+<p>It is a game engine for programmers, by programmers. It is minimalistic, but also extensable compared to most other engines.</p>
 
-<h1 id="what-is-azul3d" class="hdr "><a href="#what-is-azul3d" title="permalink">»</a>&nbsp;What is Azul3D? <span class="toplink">(<a href="#top">top</a>)</span></h1>
-<span class="section ">
-	<p>Azul3D is a 3D game engine written entirely from the ground up in the Go programming language. It is suitable for most types of 2D and 3D applications, it can even be used for non-game interactive applications. Unlike other modern game engines like Unity, JMonkey, etc, Azul3D does not attempt to provide anything more than programming packages suitable for game developers. There is no custom IDE, nor level editor.</p>
-	<p>It is a game engine for programmers, by programmers. It is minimalistic, but also extensable compared to most other engines.</p>
-	<p>It tries to provide the things that most game developers will use daily -- and it tries to provide them well.</p>
-</span>
+<p>It tries to provide the things that most game developers will use daily &ndash; and it tries to provide them well.</p>
 
+<h1>Why Go?</h1>
 
-<h1 id="why-go" class="hdr "><a href="#why-go" title="permalink">»</a>&nbsp;Why Go? <span class="toplink">(<a href="#top">top</a>)</span></h1>
-<span class="section ">
-	<p>Go is one of the very few languages in existence today that provides concurrency at a language level, additionally, Go is compiled into native binaries and has the potential to reach C/C++ speeds. Only some of the most advanced open source game engines today provide good support for multi-threaded rendering and, because of Go, Azul3D is able to provide that feature with ease and simplicity.</p>
-	<p>There are many other areas where Go could excel at game development -- Go has syntax familiar to those coming from scripting languages and ideally games written in Go would also be 'scripted' in Go. You can also imagine each computer player in a simulated game being controlled by it's own goroutine -- something that would not be possible with the threading model present in other languages.</p>
-</span>
+<p>Go is one of the very few languages in existence today that provides concurrency at a language level, additionally, Go is compiled into native binaries and has the potential to reach C/C++ speeds. Only some of the most advanced open source game engines today provide good support for multi-threaded rendering and, because of Go, Azul3D is able to provide that feature with ease and simplicity.</p>
 
+<p>There are many other areas where Go could excel at game development &ndash; Go has syntax familiar to those coming from scripting languages and ideally games written in Go would also be &lsquo;scripted&rsquo; in Go. You can also imagine each computer player in a simulated game being controlled by it&rsquo;s own goroutine &ndash; something that would not be possible with the threading model present in other languages.</p>
 
-<h1 id="what-does-it-provide" class="hdr "><a href="#what-does-it-provide" title="permalink">»</a>&nbsp;What does it provide? <span class="toplink">(<a href="#top">top</a>)</span></h1>
-<span class="section ">
-	<p>Azul3D provides a set of packages for developing games and other interactive 2D or 3D applications in Go, a list of those packages and their documentation can be found <a href="/packages.html">here</a>.</p>
-</span>
+<h1>What does it provide?</h1>
 
+<p>Azul3D provides a set of packages for developing games and other interactive 2D or 3D applications in Go, a list of those packages and their documentation can be found <a href="/packages.html">here</a>.</p>
 
-<h1 id="is-there-a-roadmap" class="hdr "><a href="#is-there-a-roadmap" title="permalink">»</a>&nbsp;Is there a roadmap? <span class="toplink">(<a href="#top">top</a>)</span></h1>
-<span class="section ">
-	<p>Yes, please see the <a href="/doc/roadmap.html">roadmap page</a>.</p>
-</span>
+<h1>Is there a roadmap?</h1>
 
+<p>Yes, please see the <a href="/doc/roadmap.html">roadmap page</a>.</p>
 
-<h1 id="are-there-any-examples" class="hdr "><a href="#are-there-any-examples" title="permalink">»</a>&nbsp;Are there any examples? <span class="toplink">(<a href="#top">top</a>)</span></h1>
-<span class="section ">
-	<p>Yes! You can download and compile them by following the instructions found on the <a href="/doc/install">installation page</a>.</p>
-	<p>Alternatively, view the source on GitHub <a href="https://github.com/azul3d/examples">here</a>.</p>
-</span>
+<h1>Are there any examples?</h1>
 
+<p>Yes! You can download and compile them by following the instructions found on the <a href="/doc/install">installation page.
+Alternatively, <a href="https://github.com">view the source on GitHub</a>.</p>
 
-<h1 id="how-do-i-install-it" class="hdr "><a href="#how-do-i-install-it" title="permalink">»</a>&nbsp;How do I install it? <span class="toplink">(<a href="#top">top</a>)</span></h1>
-<span class="section ">
-	<p>Please see the <a href="/doc/install">installation page</a>.</p>
-</span>
+<h1>How do I install it?</h1>
 
+<p>Please see the <a href="/doc/install">installation page</a>.</p>
 
-<h1 id="how-does-updating-work" class="hdr "><a href="#how-does-updating-work" title="permalink">»</a>&nbsp;How does updating work? <span class="toplink">(<a href="#top">top</a>)</span></h1>
-<span class="section ">
-	<p>Please see the <a href="/doc/updating.html">updating page</a>.</p>
-</span>
+<h1>How does updating work?</h1>
 
+<p>Please see the <a href="/doc/updating.html">updating page</a>.</p>
 
-<h1 id="how-does-versioning-work" class="hdr "><a href="#how-does-versioning-work" title="permalink">»</a>&nbsp;How does versioning work? <span class="toplink">(<a href="#top">top</a>)</span></h1>
-<span class="section ">
-	<p>Please see the <a href="/doc/versioning.html">versioning page</a>.</p>
-</span>
+<h1>How does versioning work?</h1>
 
+<p>Please see the <a href="/doc/versioning.html">versioning page</a>.</p>
 
-<h1 id="why-opengl-2" class="hdr "><a href="#why-opengl-2" title="permalink">»</a>&nbsp;Why OpenGL 2? <span class="toplink">(<a href="#top">top</a>)</span></h1>
-<span class="section ">
-	<p>A less known fact about OpenGL is that it is <em>extremely forward compatible</em>. In fact all most everything you can do in OpenGL 3/4 is also readily available in OpenGL 2 via standardized extensions.</p>
-	<p>Although Azul3D only speaks to your GPU through the OpenGL 2 API; We only use the most modern OpenGL functions available.</p>
-	<p>This is actually benificial in many ways, one being that we are able to target older hardware that <em>mostly</em> supports OpenGL 3 but doesn't advertise it.</p>
-	<p>When we do begin using an OpenGL 3 renderer the change will be completely seamless thanks to our <a href="/gfx.v1">gfx</a> package, meaning you won't have to change a thing.</p>
-	<p><em>We get all the same features, the same performance, and we are able to access a wider range of hardware.</em></p>
-</span>
+<h1>Why OpenGL 2?</h1>
 
+<p>A less known fact about OpenGL is that it is <em>extremely forward compatible</em>. <em>In fact all most everything you can do in OpenGL <sup>3</sup>&frasl;<sub>4</sub> is also readily available in OpenGL 2 via standardized extensions</em>. Although Azul3D only speaks to your GPU through the OpenGL 2 API; It uses the most modern OpenGL functions available.</p>
 
-<h1 id="what-about-the-garbage-collector" class="hdr "><a href="#what-about-the-garbage-collector" title="permalink">»</a>&nbsp;What about the garbage collector? <span class="toplink">(<a href="#top">top</a>)</span></h1>
-<span class="section ">
-	<p>Go is by specification a <em>garbage collected programming language</em>, this means that developers do not need to manually control memory but also means they must be aware of how the garbage collector works in order to receive exceptional performance.</p>
-	<p>The default implementation of Go, uses a <em>stop-the-world</em> garbage collector. This means application code is paused while memory is being garbage collected. If this happens often, your graphical application will appear to be slow or laggy.</p>
-	<p>But Go is different from other garbage collected languages because it gives you much more control over garbage collection and memory management in general. In truth garbage collection does not hinder game development as much as people generally think because of the following reasons:</p>
-	<span class="list">
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content">OpenGL uses double buffering, when a frame is submitted to OpenGL it doesn't actually show up until the buffer swapping occurs.</span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content">Azul3D uses a multi-threaded renderer, providing yet-another level of buffering (application logic and the renderer operate independently).</span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content">GC pause times are often small, and much of the time negligible. If a developer pays special care to not make lots of garbage, all the better.</span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content">Go 1.3 introduced <a href="http://www.golang.org/pkg/sync/#Pool">sync.Pool</a>, a garbage collector aware free list which allows developers to alleviate GC pressure by re-using old already allocated objects.</span></span>
-		<span class="item"><span class="biohazard">☣</span>&nbsp;&nbsp;<span class="content">The goal of the Go 1.5 (June 2015) Garbage Collector (GC) is to reduce GC latency, making Go acceptable for implementing a broad spectrum of systems requiring low response times. For further details please refer to the following design document: <a href="http://golang.org/s/go14gc">Go 1.4+ Garbage Collection (GC) Plan and Roadmap</a>.</span></span>
-	</span>
-</span>
+<p>This is actually benificial in many ways, one being that Azul3D can target older hardware that <em>mostly</em> supports OpenGL 3 but doesn&rsquo;t advertise it. When Azul3D does begin using an OpenGL 3 renderer the change will be completely seamless thanks to our <a href="/packages.html#gfx">gfx package</a>, meaning you won&rsquo;t have to change a thing.</p>
 
+<p><strong>We get all the same features, the same performance, and we are able to access a wider range of hardware.</strong></p>
 
-<h1 id="does-it-have-a-level-editor" class="hdr "><a href="#does-it-have-a-level-editor" title="permalink">»</a>&nbsp;Does it have a level editor? <span class="toplink">(<a href="#top">top</a>)</span></h1>
-<span class="section ">
-	<p>Not right now. Azul3D is mainly for programmers and doesn't yet offer any GUI-based tools. With that being said, there may be importers in the future for 3D modelers which will make importing scenes from those 3D modelers (such as Blender) into Azul3D trivial.</p>
-</span>
+<h1>What about the garbage collector?</h1>
 
+<p>Go is by specification a <em>garbage collected programming language</em>, this means that developers do not need to manually control memory but also means they must be aware of how the garbage collector works in order to receive exceptional performance.</p>
 
-<h1 id="can-it-be-scripted" class="hdr "><a href="#can-it-be-scripted" title="permalink">»</a>&nbsp;Can it be scripted? <span class="toplink">(<a href="#top">top</a>)</span></h1>
-<span class="section ">
-	<p>One of the key points of making games in Go is the easy syntax. You probably don't actually need a scripting language at all. With that being said, you could probably use some scripting language that can interact with Go to script games, yes.</p>
-</span>
+<p>The default implementation of Go, uses a <em>stop-the-world garbage collector</em>. This means application code is paused while memory is being garbage collected. If this happens often, your graphical application could appear to be slow or laggy.</p>
 
+<p>But Go is different from other garbage collected languages because it gives you much more control over garbage collection and memory management in general. In truth garbage collection does not hinder game development as much as people generally think because of the following reasons:</p>
 
-<h1 id="where-can-i-report-bugs" class="hdr "><a href="#where-can-i-report-bugs" title="permalink">»</a>&nbsp;Where can I report bugs? <span class="toplink">(<a href="#top">top</a>)</span></h1>
-<span class="section ">
-	<p>We appreciate that bugs specific to a single package be reported on that package's GitHub repository.</p>
-	<p>For bugs related to this website, etc, please file them <a href="https://github.com/azul3d/issues/issues">here</a>.</p>
-</span>
+<ul>
+<li>OpenGL uses double buffering, when a frame is submitted to OpenGL it doesn&rsquo;t actually show up until the buffer swapping occurs.</li>
+<li>Azul3D uses a multi-threaded renderer, providing yet-another level of buffering (application logic and the renderer operate independently).</li>
+<li>GC pause times are often small, and much of the time negligible. If a developer pays special care to not make lots of garbage, all the better.</li>
+<li>Go 1.3 introduced <a href="http://www.golang.org/pkg/sync/#Pool">sync.Pool</a>, a garbage collector aware free list which allows developers to alleviate GC pressure by re-using old already allocated objects.</li>
+<li>The goal of the Go 1.5 (June 2015) Garbage Collector (GC) is to reduce GC latency, making Go acceptable for implementing a broad spectrum of systems requiring low response times. For further details please refer to the following design document: <a href="http://golang.org/s/go14gc">Go 1.4+ Garbage Collection (GC) Plan and Roadmap.</a>.</li>
+</ul>
 
+<h1>Does it have a level editor?</h1>
 
-<h1 id="where-can-i-request-features" class="hdr "><a href="#where-can-i-request-features" title="permalink">»</a>&nbsp;Where can I request features? <span class="toplink">(<a href="#top">top</a>)</span></h1>
-<span class="section ">
-	<p>We appreciate that feature requests specific to a single package be requested on that package's GitHub issue tracker.</p>
-	<p>For feature requests not related to any package, or related to this website, etc, please request them by creating an issue them <a href="https://github.com/azul3d/issues/issues">here</a>.</p>
-</span>
+<p>Not right now.</p>
 
+<p>Azul3D is mainly for programmers and doesn&rsquo;t yet offer any GUI-based tools. With that being said, there may be importers in the future for 3D modelers which will make importing scenes from those 3D modelers (such as Blender) into Azul3D trivial.</p>
 
-<h1 id="how-can-i-get-in-touch" class="hdr "><a href="#how-can-i-get-in-touch" title="permalink">»</a>&nbsp;How can I get in touch? <span class="toplink">(<a href="#top">top</a>)</span></h1>
-<span class="section ">
-	<p>Please make a post on the <a href="https://groups.google.com/forum/#!forum/azul3d">Mailing List</a>.</p>
-</span>
+<h1>Can it be scripted?</h1>
 
+<p>One of the key points of making games in Go is the easy syntax. You probably don&rsquo;t actually need a scripting language at all. With that being said, you could probably use some scripting language that can interact with Go to script games, yes.</p>
 
-<h1 id="what-types-of-applications" class="hdr "><a href="#what-types-of-applications" title="permalink">»</a>&nbsp;What types of applications? <span class="toplink">(<a href="#top">top</a>)</span></h1>
-<span class="section ">
-	<p>Any 2D or 3D application, but we mostly support games.</p>
-</span>
+<h1>Where can I report bugs?</h1>
 
+<p>We appreciate that bugs specific to a single package be reported on that package&rsquo;s GitHub repository.</p>
 
-<h1 id="what-platforms-are-supported" class="hdr "><a href="#what-platforms-are-supported" title="permalink">»</a>&nbsp;What platforms are supported? <span class="toplink">(<a href="#top">top</a>)</span></h1>
-<span class="section ">
-	<p>Please see the <a href="/doc/platform-support.html">platform support</a>.</p>
-</span>
+<p>For bugs related to this website, etc, please file them in the <a href="https://github.com/azul3d/issues/issues">generic issue tracker</a>.</p>
 
+<h1>Where can I request features?</h1>
 
+<p>We appreciate that feature requests specific to a single package be requested on that package&rsquo;s GitHub issue tracker.</p>
+
+<p>For feature requests not related to any package, or related to this website, etc, please request them by creating an issue for them in the <a href="https://github.com/azul3d/issues/issues">generic issue tracker</a>.</p>
+
+<h1>How can I get in touch?</h1>
+
+<p>Please make a post on the <a href="https://groups.google.com/forum/#!forum/azul3d">Mailing List</a>.</p>
+
+<h1>What types of applications?</h1>
+
+<p>Any 2D or 3D graphical application, but mainly games.</p>
+
+<h1>What platforms are supported?</h1>
+
+<p>Please see the <a href="/doc/platform-support.html">platform support</a> page.</p>
+
+<script>
+$(function() {
+	var idName = function(text) {
+		
+		text = text.toLowerCase()
+
+		
+		text = text.replace(/[^a-z0-9- ]/g, "");
+
+		
+		text = text.replace(/[ ]/g, "-");
+
+		
+		return text.replace(/-+/g, "-");
+	}
+
+	
+	$(".article h1").each(function(i, obj) {
+		if(i == 0) {
+			return;
+		}
+		var id = idName(obj.innerHTML);
+		var link = $("<a />", {
+			id: id,
+			title: "permalink",
+			href: "#" + id,
+			text: "»",
+		});
+		$(this).prepend(" ");
+		link.prependTo($(this));
+	});
+
+	
+	$(".article h1").each(function(i, obj) {
+		if(i == 0) {
+			return;
+		}
+		var id = idName(obj.innerHTML);
+
+		var span = $("<span />", {
+			class: "toplink",
+			text: "(",
+		});
+
+		var link = $("<a />", {
+			title: "permalink",
+			href: "#top",
+			text: "top",
+		});
+		link.appendTo(span);
+		span.append(")");
+		$(this).append(" ");
+		span.appendTo($(this));
+	});
+
+	$("ul li").each(function(i, obj) {
+		var bio = $("<span />", {
+			class: "biohazard",
+			text: "☣",
+		});
+		var content = $("<span />", {
+			class: "content",
+		});
+		$(this).wrap('<span></span>');
+		bio.prependTo($(this).parent());
+	});
+});
+</script>
 	</div>
 </div>
 

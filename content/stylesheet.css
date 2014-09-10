@@ -140,21 +140,11 @@ body{
 	background-color: #E7E7E7;
 	display: inline-block;
 	max-width: 45em;
+	word-wrap: break-word;
 }
 
 span{
 	display: inline-block;
-}
-
-.article code {
-	margin-left: 2em;
-	margin-bottom: .5em;
-}
-.article p>code {
-	margin: 0;
-	padding: 0;
-	padding-left: .1em;
-	padding-right: .1em;
 }
 
 .section, .article p{
@@ -188,6 +178,7 @@ table{
 	font-family: Arial, Helvetica, sans-serif;
 	padding-bottom: 1em;
 	margin-bottom: .5em;
+	margin-left: 1.5em;
 }
 
 thead{
@@ -204,6 +195,10 @@ table tr:nth-child(even) {
 table td{
 	padding: .25em;
 	padding-right: 1em;
+}
+
+table th {
+	padding: .5em;
 }
 
 .list{
@@ -389,3 +384,18 @@ h2 .linkarea{
 	vertical-align: middle;
 }
 
+.article code {
+	margin-left: 2em;
+	margin-bottom: .5em;
+	tab-size: 4;
+}
+
+.article p>code {
+	margin: 0;
+	padding: 0;
+	padding-right: .2em;
+}
+
+.article li>code {
+	margin: 0;
+}
