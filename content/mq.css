@@ -49,7 +49,7 @@ and (max-width: 1024px) {
 	#content, #content.slim {
 		margin-left: 1em;
 		margin-right: 1em;
-		max-width: initial;
+		max-width: 100%;
 	}
 	.list>.item{
 		max-width: 90%;

@@ -384,6 +384,14 @@ h2 .linkarea{
 	vertical-align: middle;
 }
 
+.article pre {
+	padding-right: 2em;
+}
+
+.article pre, .article code {
+	max-width: 100%;
+}
+
 .article code {
 	margin-left: 2em;
 	margin-bottom: .5em;
