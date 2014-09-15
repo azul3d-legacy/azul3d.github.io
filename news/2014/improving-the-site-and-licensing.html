@@ -13,7 +13,7 @@
 		<meta property="og:image" content="http://azul3d.org/content/symbol_256x256.png">
 
 		
-			<title>Mac OS X Support! - Azul3D</title>
+			<title>Improving The Site And Licensing - Azul3D</title>
 		
 		<link rel="shortcut icon" href="/content/favicon.png"> 
 
@@ -109,36 +109,43 @@
 
 <div id="content-container">
 	<div id="content" class="slim article">
-<h1>Mac OS X Support!</h1>
+<h1>Improving The Site And Licensing</h1>
 
-<p class="date">September 2, 2014</p>
+<p class="date">September 15, 2014</p>
 
-<p>When we officially announced Azul3D just one month ago; The two <a href="/doc/platform-support.html">supported platforms</a> were Windows and Linux, so the biggest question everyone had was <em>&ldquo;Will Azul3D support OS X?&rdquo;</em>.</p>
+<p>Today we&rsquo;re happy to announce several improvements to the website and licensing information of Azul3D. We truly want this website to be a comprehensive database about all things Azul3D.</p>
 
-<p>Today, we are proud to inform you that <strong><em>Mac OS X is officially supported by Azul3D!</em></strong></p>
+<h1>The Site</h1>
 
-<p><em>This means today you can use Azul3D to develop games in Go that run on Windows, Linux, and Mac OS X!</em></p>
+<p>This is by no means a slam on Go HTML templates &ndash; they incredibly useful and <em>in fact we&rsquo;re still using them to render the final HTML pages</em>. But what started out as just <a href="https://groups.google.com/forum/#!topic/azul3d/iDeeEHDVbok">a few minor changes</a> to the website eventually turned into moving all of the news articles, documentation (including installation instructions and FAQ), etc over to Markdown instead of Go HTML templates.</p>
 
-<h1>How can I get started?</h1>
+<p>We have found that Markdown is more suitable for writing content like news articles and documentation, and looking back it feels like we were abusing templates before. Markdown documents easier to read and write by hand, in addition to the fact that they can be styled independantly and their rendered HTML can be fed into a Go HTML template.</p>
 
-<p>Head on over to the <a href="/doc/install">installation page</a>!</p>
+<p>To render the Markdown we are using <em>Russ Ross</em>&rsquo;s Markdown parser, <a href="https://github.com/russross/blackfriday">Blackfriday</a>, which we have found to be very fast both in sheer speed and with it&rsquo;s incredibly clear API. We&rsquo;re really happy with it!</p>
 
-<h1>Why wasn&rsquo;t it supported before?</h1>
+<p>You can see how much more clear and concise this method is by comparing an old Go <a href="https://raw.githubusercontent.com/azul3d/cmd-webgen/9a76decd02028b4d7c2ca3b8734eb7c031a3b6b7/pages/news/2014/mac-osx-support.tmpl">HTML template</a> with it&rsquo;s new <a href="https://raw.githubusercontent.com/azul3d/cmd-webgen/9a76decd02028b4d7c2ca3b8734eb7c031a3b6b7/pages/news/2014/mac-osx-support.tmpl">Markdown version</a>.</p>
 
-<p>There were <a href="https://github.com/azul3d/issues/issues/5#issuecomment-51082780">a few major changes</a> that had to happen in order to get OS X support working just right. We wanted to make sure we did it the right way &ndash; so instead of jumping right in we took our time getting it just right.</p>
+<p>Additionally, there were several pages that did not have any dedicated navigation links to them, except through the <a href="/doc/faq.html">FAQ</a>. This started to become a problem because the <a href="/doc/faq.html">FAQ</a> <em>started to look like our navigation area</em> (how strange!).</p>
 
-<p>Two of the most major changes to Azul3D were outlined in our article: <a href="/news/2014/yin-and-yang-using-glow-and-glfw.html">Yin and Yang: Using Glow and GLFW</a>.</p>
+<p>We&rsquo;ve made a <a href="/doc/">Doc</a> page in the navigation bar that serves solely to give you an overview of all the Azul3D documentation (excluding <a href="/packages.html">package documentation</a>) available on the website.</p>
 
-<p>The third major change was the <em>release of a new version of Azul3D&rsquo;s <a href="/gfx/window.v2">gfx/window</a> package</em>.
-Major changes occured, so we do expect some issues to arise as well. We look forward to helping you by solving them: should you run into any, just let us know!</p>
+<h1>Licensing</h1>
+
+<p>Previously, we kept a copy of the <code>LICENSE</code> file in each package directory. This works well because no matter which package you clone the source code also has a copy of the license, <em>we&rsquo;re keeping this practice</em>. But for some people understanding legal documents like these is just plain time consuming. <em>We&rsquo;re not an alternative to a real lawyer, and we can&rsquo;t provide legal advice to you</em> but to help with understanding the license there is now a dedicated <a href="/doc/license.html">license page</a>.</p>
+
+<p>Also, each package had an <code>AUTHORS</code> file distributed with it. This was kind of a mishap on our part because none of them were in synchronization. The question we really want to answer is <em>&ldquo;Who all has actually worked on this code?&rdquo;</em> &ndash; because Azul3D truly is an open source project and it needs the help of people like you.</p>
+
+<p>We&rsquo;ve removed all of the <code>AUTHOR</code> files and instead made links to the new <a href="/doc/authors.html">authors page</a> which is maintained as an always up-to-date list of who has contributed to Azul3D. For those wanting to see who has actually worked on what &ndash; <code>git</code> history is much better than these old <code>AUTHOR</code> files anyway.</p>
+
+<p><em>Now contributers get the proper credit that they deserve</em>!</p>
+
+<p>One slight concern in moving to an online <a href="/doc/authors.html">authors page</a> was spam (we want to give credit to you, not spam you), and for this reason we&rsquo;ve made the file (optionally) have ROT13 encoded email addresses in it. The email addresses are decoded client-side in Javascript, so that <em>most</em> simple web crawlers won&rsquo;t find the proper email addresses.</p>
 
 <h1>Conclusion</h1>
 
-<p>Azul3D is an extremely versatile and extensible game engine written in Go now supporting all three major desktop operating systems, with <a href="/doc/roadmap.html#future-platforms">mobile support</a> coming in the future.</p>
+<p>We hope to increase the amount and quality of content being brought to you in a legible form through the Azul3D website. It&rsquo;s one of the things that we are constantly trying to improve.</p>
 
-<p><em>We truly hope that you will give Azul3D a try</em>, give us feedback and let us know what your experience is with it so we can improve upon it!</p>
-
-<p>Much work is still to be done, so inform us what you would like to see more of as well as what you dislike. We are prioritizing constantly based on what others want, so get your voice in and be heard!</p>
+<p>In the future we hope to provide detailed documentation relating to Azul3D packages, for instance we want to document how the graphics pipeline works, how digital audio works, etc all with real-world Azul3D code examples.</p>
 
 <script>
 $(function() {
