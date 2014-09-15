@@ -13,7 +13,7 @@
 		<meta property="og:image" content="http://azul3d.org/content/symbol_256x256.png">
 
 		
-			<title>Documentation - Azul3D</title>
+			<title>More Packages - Azul3D</title>
 		
 		<link rel="shortcut icon" href="/content/favicon.png"> 
 
@@ -109,23 +109,38 @@
 
 <div id="content-container">
 	<div id="content" class="slim article">
-<h1>Documentation</h1>
+<h1>More Packages</h1>
+
+<p>Below is a list of more (thirdparty / unofficial) packages for Azul3D.</p>
+
+<p>These packages are maintained by the community (some may become official Azul3D packages in the future). If you have a package you would like to appear on this list, then <a href="https://groups.google.com/forum/#!forum/azul3d">please let us know</a>!</p>
 
 <ul>
-<li><a href="/doc/install">Installation</a></li>
-<li><a href="/doc/faq.html">Frequently Asked Questions</a></li>
-<li><a href="/doc/platform-support.html">Supported Platforms</a></li>
-<li><a href="/more-packages.html">More Packages</a></li>
-<li><a href="/doc/roadmap.html">The Roadmap</a></li>
-<li><a href="/doc/updating.html">Updating Packages</a></li>
-<li><a href="/doc/versioning.html">How Versioning Works</a></li>
-<li><a href="/doc/authors.html">Authors</a></li>
-<li><a href="/doc/license.html">License</a></li>
+<li><a href="#ztext">ztext</a></li>
+<li><a href="#waveform">waveform</a></li>
 </ul>
 
-<h1>Packages</h1>
+<h1>ztext</h1>
 
-<p>A packages API documentation can be found through the <a href="/packages.html">packages page</a>.</p>
+<p>An interim text package for Azul3D</p>
+
+<pre><code>github.com/dskinner/ztext
+</code></pre>
+
+<ul>
+<li><a href="https://github.com/dskinner/ztext">GitHub</a> | <a href="https://godoc.org/dasa.cc/ztext">GoDoc</a></li>
+</ul>
+
+<h1>waveform</h1>
+
+<p>Generates waveform images from audio streams.</p>
+
+<pre><code>github.com/mdlayher/waveform
+</code></pre>
+
+<ul>
+<li><a href="https://github.com/mdlayher/waveform">GitHub</a> | <a href="http://godoc.org/github.com/mdlayher/waveform">GoDoc</a></li>
+</ul>
 
 <script>
 $(function() {
@@ -159,29 +174,6 @@ $(function() {
 		link.prependTo($(this));
 	});
 
-	
-	$(".article h1").each(function(i, obj) {
-		if(i == 0) {
-			return;
-		}
-		var id = idName(obj.innerHTML);
-
-		var span = $("<span />", {
-			class: "toplink",
-			text: "(",
-		});
-
-		var link = $("<a />", {
-			title: "permalink",
-			href: "#top",
-			text: "top",
-		});
-		link.appendTo(span);
-		span.append(")");
-		$(this).append(" ");
-		span.appendTo($(this));
-	});
-
 	$("ul li").each(function(i, obj) {
 		var bio = $("<span />", {
 			class: "biohazard",
@@ -192,18 +184,6 @@ $(function() {
 		});
 		$(this).wrap('<span></span>');
 		bio.prependTo($(this).parent());
-	});
-
-
-	
-	
-	$('a[href^="mailto:"]').each(function(i, obj) {
-		var s = $(this).attr("href");
-		console.log(s);
-		s = s.slice(("mailto:ROT13").length, s.length);
-		s = s.replace(/[a-zA-Z]/g,function(c){return String.fromCharCode((c<="Z"?90:122)>=(c=c.charCodeAt(0)+13)?c:c-26);});
-		$(this).attr("href", "mailto:" + s);
-		$(this).html(s);
 	});
 });
 </script>

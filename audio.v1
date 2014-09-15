@@ -520,7 +520,7 @@ string can contain &#34;?&#34; wildcards that each match any one byte.
 <p>
 newDecoder is the function that returns either [Decoder, nil] or
 [nil, ErrInvalidData] upon being called where the returned decoder is used
-to decode the encoded io.Reader or io.ReadSeeker&#39;s encoded audio data.
+to decode the io.Reader or io.ReadSeeker&#39;s encoded audio data.
 </p>
 
 	</span>
@@ -845,8 +845,8 @@ encountered during the write is also returned.
 	Channels	int
 }</pre>
 		<p>
-Config represents an audio stream&#39;s configuration, like it&#39;s sample rate
-and number of interleaved channels.
+Config represents an audio stream&#39;s configuration, like its sample rate and
+number of interleaved channels.
 </p>
 
 	</span>
@@ -938,7 +938,7 @@ Encoder is the generic audio encoder interface.
 <span class="section pkg type">
 		<pre>type F32 float32</pre>
 		<p>
-F32 represents an 32-bit floating-point linear audio sample in the range
+F32 represents a 32-bit floating-point linear audio sample in the range
 of -1 to +1.
 </p>
 
@@ -955,7 +955,7 @@ of -1 to +1.
 <span class="section pkg type">
 		<pre>type F32Samples []F32</pre>
 		<p>
-F32Samples represents an slice of F32 encoded audio samples.
+F32Samples represents a slice of F32 encoded audio samples.
 </p>
 
 	</span>
@@ -1041,7 +1041,7 @@ Implements Slice interface.
 <span class="section pkg type">
 		<pre>type F64 float64</pre>
 		<p>
-F64 represents an 64-bit floating-point linear audio sample in the range
+F64 represents a 64-bit floating-point linear audio sample in the range
 of -1 to +1.
 </p>
 
@@ -1085,7 +1085,7 @@ PCM8ToF64 converts a PCM8 encoded audio sample to F64.
 <span class="section pkg type">
 		<pre>type F64Samples []F64</pre>
 		<p>
-F32Samples represents an slice of F32 encoded audio samples.
+F32Samples represents a slice of F32 encoded audio samples.
 </p>
 
 	</span>
@@ -1283,7 +1283,7 @@ Implements Slice interface.
 <span class="section pkg type">
 		<pre>type PCM16 int16</pre>
 		<p>
-PCM16 represents an signed 16-bit linear PCM audio sample.
+PCM16 represents a signed 16-bit linear PCM audio sample.
 </p>
 
 	</span>
@@ -1328,7 +1328,7 @@ audio sample.
 <span class="section pkg type">
 		<pre>type PCM16Samples []PCM16</pre>
 		<p>
-PCM16Samples represents an slice of PCM16 encoded audio samples.
+PCM16Samples represents a slice of PCM16 encoded audio samples.
 </p>
 
 	</span>
@@ -1414,7 +1414,7 @@ Implements Slice interface.
 <span class="section pkg type">
 		<pre>type PCM32 int32</pre>
 		<p>
-PCM32 represents an signed 32-bit linear PCM audio sample.
+PCM32 represents a signed 32-bit linear PCM audio sample.
 </p>
 
 	</span>
@@ -1439,7 +1439,7 @@ F64ToPCM32 converts a F64 encoded audio sample to PCM32.
 <span class="section pkg type">
 		<pre>type PCM32Samples []PCM32</pre>
 		<p>
-PCM32Samples represents an slice of PCM32 encoded audio samples.
+PCM32Samples represents a slice of PCM32 encoded audio samples.
 </p>
 
 	</span>
@@ -1550,7 +1550,7 @@ F64ToPCM8 converts a F64 encoded audio sample to PCM8.
 <span class="section pkg type">
 		<pre>type PCM8Samples []PCM8</pre>
 		<p>
-PCM6Samples represents an slice of PCM8 encoded audio samples.
+PCM6Samples represents a slice of PCM8 encoded audio samples.
 </p>
 
 	</span>
@@ -1666,7 +1666,7 @@ ReadSeeker is the generic seekable audio reader interface.
 	// b.Len() audio samples.
 	//
 	// Returned is the number of samples that where read into the slice, and
-	// an error if any occured.
+	// an error if any occurred.
 	//
 	// It is possible for the number of samples read to be non-zero; and for an
 	// error to be returned at the same time (E.g. read 300 audio samples, but
