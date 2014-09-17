@@ -22,8 +22,8 @@
 		<link rel="stylesheet" type="text/css" href="/content/reset.css">
 
 		
-		<link href='http://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
-		<link href='http://fonts.googleapis.com/css?family=Cutive+Mono' rel='stylesheet' type='text/css'>
+		<link href='//fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
+		<link href='//fonts.googleapis.com/css?family=Cutive+Mono' rel='stylesheet' type='text/css'>
 
 		
 		<link href='/content/dejavusans_book/stylesheet.css' rel='stylesheet' type='text/css'>
@@ -35,7 +35,7 @@
 		
 
 		
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 		
 		<link rel="stylesheet" type="text/css" href="/content/stylesheet.css">
@@ -466,7 +466,7 @@ of by the registered formats of this package.
 </p>
 	
 		<pre>var ErrInvalidData = errors.New(&#34;audio: input data is invalid or corrupt&#34;)</pre>
-		<p>ErrInvalidData represents an error for decoding input data that is invalidd
+		<p>ErrInvalidData represents an error for decoding input data that is invalid
 or corrupted for some reason.
 </p>
 	
@@ -767,7 +767,7 @@ b.Reset() is the same as b.Truncate(0).
 			<p>
 Samples returns a slice of the unread portion of the buffer. If the caller
 changes the contents of the returned slice, the contents of the buffer will
-change provided there are no intervening method calls on the Buffer.
+change, provided there are no intervening method calls on the Buffer.
 </p>
 
 		</span>
@@ -917,10 +917,10 @@ specific package.
 	Writer
 
 	// Close closes the audio encoder, and finalizes the encoding process.
-	// It must be called or else the encoding process may not finish, and
-	// the encoded data may be uncomplete.
+	// It must be called, or else the encoding process may not finish, and
+	// the encoded data may be incomplete.
 	//
-	// Writing data to a closed encoder causes an encoder-specific behavior
+	// Writing data to a closed encoder causes an encoder-specific behavior,
 	// but most often a panic will occur.
 	Close() error
 }</pre>
@@ -1088,7 +1088,7 @@ PCM8ToF64 converts a PCM8 encoded audio sample to F64.
 <span class="section pkg type">
 		<pre>type F64Samples []F64</pre>
 		<p>
-F32Samples represents a slice of F32 encoded audio samples.
+F64Samples represents a slice of F64 encoded audio samples.
 </p>
 
 	</span>
@@ -1553,7 +1553,7 @@ F64ToPCM8 converts a F64 encoded audio sample to PCM8.
 <span class="section pkg type">
 		<pre>type PCM8Samples []PCM8</pre>
 		<p>
-PCM6Samples represents a slice of PCM8 encoded audio samples.
+PCM8Samples represents a slice of PCM8 encoded audio samples.
 </p>
 
 	</span>
@@ -1721,14 +1721,14 @@ The Copy function uses ReaderFrom if available.
 		<pre>type Slice interface {
 	// Len returns the number of elements in the slice.
 	//
-	// Equivilent slice syntax:
+	// Equivalent slice syntax:
 	//
 	//  len(b)
 	Len() int
 
 	// Cap returns the number of elements in the slice.
 	//
-	// Equivilent slice syntax:
+	// Equivalent slice syntax:
 	//
 	//  cap(b)
 	Cap() int
@@ -1743,7 +1743,7 @@ The Copy function uses ReaderFrom if available.
 	// Just like slices, slice indices must be non-negative; and no greater
 	// than (Len() - 1), or else a panic may occur.
 	//
-	// Equivilent slice syntax:
+	// Equivalent slice syntax:
 	//
 	//  b[index] = s
 	//   -&gt; b.Set(index, s)
@@ -1759,7 +1759,7 @@ The Copy function uses ReaderFrom if available.
 	// Just like slices, slice indices must be non-negative; and no greater
 	// than (Len() - 1), or else a panic may occur.
 	//
-	// Equivilent slice syntax:
+	// Equivalent slice syntax:
 	//
 	//  b[index]
 	//   -&gt; b.At(index)
@@ -1769,7 +1769,7 @@ The Copy function uses ReaderFrom if available.
 	// Slice returns a new slice of the slice, using the low and high
 	// parameters.
 	//
-	// Equivilent slice syntax:
+	// Equivalent slice syntax:
 	//
 	//  b[low:high]
 	//   -&gt; b.Slice(low, high)
@@ -1797,7 +1797,7 @@ The Copy function uses ReaderFrom if available.
 	Make(length, capacity int) Slice
 
 	// CopyTo operates exactly like the copy builtin, but this slice is always
-	// the source operand. Equivilent slice syntax:
+	// the source operand. Equivalent slice syntax:
 	//
 	//  copy(dst, src)
 	//   -&gt; src.CopyTo(dst)
