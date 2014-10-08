@@ -134,12 +134,15 @@ body{
 	font-family: "dejavu_sansbook";
 }
 
-.code, .article code{
-	font-family: 'Cutive Mono';
+.code, .article code, .article blockquote{
 	padding: .21em;
 	background-color: #E7E7E7;
 	display: inline-block;
 	max-width: 45em;
+}
+
+.code, .article code{
+	font-family: 'Cutive Mono';
 	word-wrap: break-word;
 }
 
@@ -388,22 +391,26 @@ h2 .linkarea{
 	padding-right: 2em;
 }
 
-.article pre, .article code {
+.article blockquote{
+	font-style: italic;
+}
+
+.article pre, .article code, .article blockquote {
 	max-width: 100%;
 }
 
-.article code {
+.article code, .article blockquote {
 	margin-left: 2em;
 	margin-bottom: .5em;
 	tab-size: 4;
 }
 
-.article p>code {
+.article p>code, .article blockquote>p {
 	margin: 0;
 	padding: 0;
 	padding-right: .2em;
 }
 
-.article li>code {
+.article li>code, .article li>blockquote {
 	margin: 0;
 }

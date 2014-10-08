@@ -13,7 +13,7 @@
 		<meta property="og:image" content="http://azul3d.org/content/symbol_256x256.png">
 
 		
-			<title>News - 2014 - Azul3D</title>
+			<title>Better Package Docs, Versioning - Azul3D</title>
 		
 		<link rel="shortcut icon" href="/content/favicon.png"> 
 
@@ -109,17 +109,79 @@
 
 <div id="content-container">
 	<div id="content" class="slim article">
-<h1>News - 2014</h1>
+<h1>Better Package Docs, Versioning</h1>
+
+<p class="date">October 7, 2014</p>
+
+<p>We&rsquo;ve made several improvements to package API documentation and versioning. We now link directly to <a href="https://godoc.org">GoDoc</a> for package documentation and we&rsquo;re <em>now truly using</em> <a href="http://semver.org/">Semantic Versioning</a>.</p>
+
+<p>No worries: <em>Everything we&rsquo;ve changed is completely backwards compatible!</em></p>
+
+<h1>Documentation</h1>
+
+<p>If you visited our online package API documentation in the past, you would have noticed that we generate and host all of it ourselves.</p>
+
+<p>If you did, you might have also noticed how completely sub-par it was in many different ways to <a href="https://godoc.org">GoDoc</a> documentation. It lacked things like the ability to follow types by clicking them, keyboard shortcuts, etc.</p>
+
+<p>In the past there were <a href="https://github.com/azul3d/issues/issues/26">circumstances</a> that caused us to be unable to utilize <em>godoc.org</em> fully, but we&rsquo;ve long since relieved those circumstances. <em>And today we&rsquo;ve completely removed our sub-par API documentation and directly replaced it with godoc.org</em>!</p>
+
+<p>If you visit the <a href="/packages.html">packages page</a> you&rsquo;ll notice that it now directly links to <a href="https://godoc.org">GoDoc</a> for every package&rsquo;s API documentation.</p>
+
+<p>Going forward this will give us better package documentation and allow us to focus more time on <a href="/doc/roadmap.html">appropriate things</a>. Maybe we can even contribute to <code>godoc.org</code> / <code>gddo</code> directly and provide benefits for all Gophers!</p>
+
+<h1>Semantic Versioning</h1>
+
+<p>After making some <a href="https://github.com/azul3d/issues/issues/25">bad statements</a> and publishing a, <em>both invalid and needless</em>, survey &ndash; we learned of something very important: <em>Semantic Versioning</em>.</p>
+
+<p>Take note, buckle up, and do whatever you have to do to convince yourself to just read <a href="http://semver.org">the specification</a>. It really will tell you all that you need to know about versioning, and it&rsquo;s super short (in comparison to most standards).</p>
+
+<p>Funny enough, what we were doing previously was actually written in the specification:</p>
+
+<blockquote>
+<p>This is not a new or revolutionary idea. In fact, you probably do something close to this already. The problem is that &ldquo;close&rdquo; isn&rsquo;t good enough.</p>
+</blockquote>
+
+<p>And &ndash; well &ndash; <em>they are right</em>.</p>
+
+<p>So what changed?</p>
 
 <ul>
-<li><a href="/news/2014/better-package-docs-versioning.html">Better Package Docs, Versioning</a></li>
-<li><a href="/news/2014/improving-the-site-and-licensing.html">Improving The Site And Licensing</a></li>
-<li><a href="/news/2014/gfx-window-version-2.html">gfx/window: version 2</a></li>
-<li><a href="/news/2014/mac-osx-support.html">Mac OS X Support!</a></li>
-<li><a href="/news/2014/yin-and-yang-using-glow-and-glfw.html">Yin and Yang: Using Glow and GLFW</a></li>
-<li><a href="/news/2014/important-import-paths-have-changed.html">Important - Import Paths Have Changed</a></li>
-<li><a href="/news/2014/moving-from-google-code-to-github.html">Moving From Google Code To GitHub</a></li>
+<li><em>All changes are backwards compatible</em>: existing code will continue to work.</li>
+<li>Only major versions are allowed in import paths now (e.g. <code>v1</code> is allowed, <code>v1.1</code> is not).</li>
+<li>Import the GLFW package at <code>native/glfw.v3</code> instead of <code>native/glfw.v3.1</code>.</li>
+<li>Import in-development packages using <code>pkg.vN-dev</code> instead of <code>pkg.dev</code> (SemVer section 9).</li>
+<li>Packages with no stable <code>v1</code> releases yet are imported under <code>v0</code> (SemVer section 4).</li>
 </ul>
+
+<p>The <a href="/doc/versioning.html">versioning page</a> has more information.</p>
+
+<h1>semver.v1</h1>
+
+<p>What is it?</p>
+
+<ul>
+<li><em>Semantic Versioning for Go packages.</em></li>
+<li><a href="http://godoc.org/azul3d.org/semver.v1"><img src="http://godoc.org/azul3d.org/semver.v1?status.svg" alt="GoDoc" />
+</a></li>
+<li>Like <a href="http://gopkg.in">gopkg.in</a>, but it runs in your own Go HTTP server.</li>
+<li>Folder-based packages (e.g. <code>mydomain/my/pkg.v1</code> -&gt; <code>github.com/myuser/my-pkg</code>).</li>
+<li>Git tags and branches (e.g. <code>v1</code> -&gt; <code>tag/branch v1.3.2</code>).</li>
+<li>Development branches (e.g. <code>import &quot;pkg.v2-dev&quot;</code>).</li>
+</ul>
+
+<p>We are using it because <em>our top priority is backwards compatability with existing code</em>, and we&rsquo;re certain <em>azul3d.org</em> isn&rsquo;t going away any time soon.</p>
+
+<p>You probably shouldn&rsquo;t use it unless you need to though. <a href="http://gopkg.in">gopkg.in</a> is a great service as-is and it will always be online &ndash; your personal website may not be.</p>
+
+<p>The new <code>semver.v1</code> package is well-documented and has plenty of tests, going forward it will work very well for us and perhaps a few others &ndash; just give us a shout, we&rsquo;d love to hear from you as always.</p>
+
+<h1>Conclusion</h1>
+
+<p>By switching to GoDoc we get better API documentation for all of our Go packages. By following semantic versioning more to-the-dot in our future work we will be better off than ever before, and the new <code>azul3d.org/semver.v1</code> package will help us with this.</p>
+
+<p><em>We want to point focus towards developing clean Go packages with well-defined backwards compatability guarantees, so that upgrading is easier and old applications still build.</em></p>
+
+<p>Take note that the new <code>semver.v1</code> package is <em>not related to game development</em>, so we chose not to write an article purely for it&rsquo;s announcement.</p>
 
 <script>
 $(function() {
