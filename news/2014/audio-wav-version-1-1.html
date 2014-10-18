@@ -13,7 +13,7 @@
 		<meta property="og:image" content="http://azul3d.org/content/symbol_256x256.png">
 
 		
-			<title>A 3D game engine written in Go! - Azul3D</title>
+			<title>audio/wav: version 1.1 - Azul3D</title>
 		
 		<link rel="shortcut icon" href="/content/favicon.png"> 
 
@@ -109,29 +109,63 @@
 
 <div id="content-container">
 	<div id="content" class="slim article">
-<h1>A 3D game engine written in Go!</h1>
+<h1>audio/wav: version 1.1</h1>
+
+<p class="date">October 18, 2014</p>
+
+<p>The <a href="/packages.html#audio-wav">audio/wav</a> package is a <em>WAV encoder and decoder</em>. It allows you to decode many different types of WAV files into raw PCM audio data.</p>
+
+<p>It operates through the <a href="/packages.html#audio">audio</a> package, which is like the standard image package &ndash; but for audio.</p>
+
+<h1>Version 1.1</h1>
+
+<p>Version 1.1 of the <a href="/audio/wav.v1">audio/wav</a> package is now available!</p>
 
 <ul>
-<li>State of the art shader-based modern 3D game engine.</li>
-<li>Cross-platform: Windows, Linux, and Mac OS X <a href="/doc/platform-support.html">support</a>.</li>
-<li>OpenGL 2.x based renderer (<a href="/doc/faq.html#why-opengl-2">why?</a>).</li>
-<li>3D audio via OpenAL.</li>
+<li><code>import &quot;azul3d.org/audio/wav.v1&quot;</code></li>
+<li><a href="https://godoc.org/azul3d.org/audio/wav.v1"><img src="https://godoc.org/azul3d.org/audio/wav.v1?status.svg" alt="GoDoc" />
+</a></li>
 </ul>
 
-<h1>Installation</h1>
+<h1>Overview</h1>
 
 <ul>
-<li><a href="/doc/install/windows.html">Windows</a></li>
-<li><a href="/doc/install/linux.html">Linux</a></li>
-<li><a href="/doc/install/osx.html">Mac OS X</a></li>
+<li>Encoding support (was issue <a href="https://github.com/azul3d/audio-wav/issues/1">#1</a>).
+
+<ul>
+<li><em>You can decode and encode WAV audio in Go (thanks goes out to <a href="https://github.com/mewmew">Robin Eklind</a> and <a href="https://github.com/mewkiz84">Henry Eklind</a>!).</em></li>
+</ul></li>
+<li>Massive (~100%) performance improvements (was issue <a href="https://github.com/azul3d/audio-wav/issues/8">#8</a>).
+
+<ul>
+<li><em>The decoder is much faster averaging around 5.5ms to decode 1s of 44100hz/2ch WAV audio (On a Pentium&reg; Dual-Core CPU - T4500 @ 2.30GHz), which is on-par with the WAV encoder.</em></li>
+</ul></li>
+<li>Removed the unsafe dependency (was issue <a href="https://github.com/azul3d/audio-wav/issues/4">#4</a>).
+
+<ul>
+<li><em>The entire package is now pure Go.</em></li>
+</ul></li>
+<li>Tests and benchmarks have been added.
+
+<ul>
+<li><em>Which lead to the identification of a now-fixed, <a href="https://github.com/azul3d/audio-wav/issues/12">critical bug</a>.</em></li>
+</ul></li>
+<li><a href="https://github.com/azul3d/audio-wav/compare/v1...v1.1">Full Changelog</a></li>
 </ul>
 
-<h1>News</h1>
+<h1>Updating</h1>
+
+<p>To update you need to run the following (<em>note that the import path is the same</em>):</p>
+
+<pre><code>go get -u azul3d.org/audio/wav.v1
+</code></pre>
+
+<h1>Future Audio Work</h1>
 
 <ul>
-<li><a href="/news/2014/audio-wav-version-1-1.html">audio/wav: version 1.1</a></li>
-<li><a href="/news/2014/gfx-gfx-gl2-minor-update.html">gfx, gfx/gl2: minor update</a></li>
-<li><a href="/news/">&gt;&gt;&gt; more news</a></li>
+<li>More WAV performance enhancements (see issue <a href="https://github.com/azul3d/audio-wav/issues/8">#8</a>).</li>
+<li>A FLAC decoder (<a href="https://github.com/azul3d/audio-flac">currently in-development</a>).</li>
+<li>Idiomatic audio playback in Go, <em>with support for spatial 3D audio</em> (see issue <a href="https://github.com/azul3d/issues/issues/2">#2</a>).</li>
 </ul>
 
 <script>

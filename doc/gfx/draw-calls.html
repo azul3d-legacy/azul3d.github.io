@@ -13,7 +13,7 @@
 		<meta property="og:image" content="http://azul3d.org/content/symbol_256x256.png">
 
 		
-			<title>Documentation - Azul3D</title>
+			<title>gfx - Draw Calls - Azul3D</title>
 		
 		<link rel="shortcut icon" href="/content/favicon.png"> 
 
@@ -109,37 +109,109 @@
 
 <div id="content-container">
 	<div id="content" class="slim article">
-<h1>Documentation</h1>
+<h1>gfx - Draw Calls</h1>
+
+<p>Draw calls occur any time that you <em>draw</em> an object to a canvas. Understanding <em>draw calls</em> is critical to diagnosing performance of 3D applications.</p>
 
 <ul>
-<li>General
+<li><a href="#what-are-they">What are they?</a></li>
+<li><a href="#performance-trade-off">Performance trade-off</a></li>
+<li><a href="#example-voxels">Example - Voxels</a></li>
+<li><a href="#example-sprites">Example - Sprites</a></li>
+<li><a href="#batchers">Batchers</a></li>
+</ul>
+
+<h1>What are they?</h1>
+
+<p>Using the gfx package a draw call is done through the <code>gfx.Canvas</code> interface, like so:</p>
+
+<p><code>canvas.Draw(image.Rect(0,0,0,0), obj, cam)</code></p>
+
+<p>Where <code>obj</code> is a <code>gfx.Object</code>, and <code>cam</code> is a <code>gfx.Camera</code>.</p>
+
+<p>In literal OpenGL code the above draw operation would equate to either <code>glDrawArrays</code> or <code>glDrawElements</code> (depending on whether or not the mesh is indexed). Technically each <code>canvas.Draw</code> operations makes <code>N</code> draw calls, where <code>N</code> is the number of <code>gfx.Mesh</code> that the <code>gfx.Object</code> being drawn contains.</p>
+
+<h1>Performance trade-off</h1>
+
+<p>The performance of draw calls depends on many factors. As a simple example lets say that we want to draw <em>10,000 triangles</em>:</p>
 
 <ul>
-<li><a href="/doc/faq.html">FAQ</a></li>
-<li><a href="/doc/install">Installation</a></li>
-<li><a href="/doc/platform-support.html">Platform Support</a></li>
-<li><a href="/doc/roadmap.html">Roadmap</a></li>
-<li><a href="/doc/authors.html">Authors</a></li>
-<li><a href="/doc/license.html">License</a></li>
+<li><em>Fast</em>: 1 draw call, 10,000 triangles/call.</li>
+<li><em>Also Fast</em>: 2 draw calls, 5,000 triangles/call.</li>
+<li><em>Slow</em>: 100 draw calls, 100 triangles/call.</li>
+</ul>
+
+<p>You might be thinking: <em>&ldquo;Well, just draw the entire scene in one draw call!&rdquo;</em>. (If you did want to do this, you would just have one <code>gfx.Object</code> with one giant <code>gfx.Mesh</code>). It&rsquo;s not so simple though &ndash; for one thing a single draw call is restricted to:</p>
+
+<ul>
+<li>One mesh &ndash; Since every mesh equates 1:1 to a single draw call.
+
+<ul>
+<li>Modifying a mesh requires that modification to be uploaded to the GPU again, making dynamic modifications slow.</li>
 </ul></li>
-<li>Packages
+<li>One shader.
 
 <ul>
-<li><a href="/packages.html">Official Packages</a></li>
-<li><a href="/more-packages.html">More Packages</a></li>
-<li><a href="/doc/updating.html">Updating</a></li>
-<li><a href="/doc/versioning.html">Versioning</a></li>
+<li>Super-shaders (i.e. all-in-one) are slow and expensive due to their excessive use of branching (<code>if</code> statements, etc).</li>
 </ul></li>
-<li>Graphics
+<li>One set of textures.
 
 <ul>
-<li><a href="/doc/gfx/draw-calls.html">Draw Calls</a></li>
+<li>Requires special care to handle properly in shaders.</li>
+</ul></li>
+<li>One <em>graphics state</em>.
+
+<ul>
+<li>Single alpha mode.</li>
+<li>Single stencil state.</li>
+<li>etc.</li>
 </ul></li>
 </ul>
 
-<h1>API Reference</h1>
+<p>Not to mention the fact that with a single mesh <em>you can&rsquo;t control the draw order of triangles independantly</em>. To recap on what we have learned thus far:</p>
 
-<p>Each package&rsquo;s API documentation can be found through the <a href="/packages.html">packages page</a>.</p>
+<ul>
+<li>Draw calls <em>are expensive</em>.</li>
+<li>To do anything cool, we need multiple of them.</li>
+</ul>
+
+<h1>Example - Voxels</h1>
+
+<p>Voxel-based games often make sections of multiple blocks effectively called <em>chunks</em>. With our new knowledge of <em>draw calls</em> we can explain one of the things that <em>chunks</em> solved for these games:</p>
+
+<ul>
+<li>Draw calls are expensive.</li>
+<li>Putting all of the blocks into one single giant mesh makes updates (read: <em>creating/destroying blocks</em>) slow.</li>
+<li>The idea: break things up into medium sized <em>chunks</em>.
+
+<ul>
+<li>Small enough that dynamic updates are fast, the smaller the chunk the more fast dynamic updates are.</li>
+<li>Large enough that we have <em>lesser draw calls</em>, the larger the chunk the more fast rendering of it is.</li>
+</ul></li>
+</ul>
+
+<h1>Example - Sprites</h1>
+
+<p>For another example let&rsquo;s take static (i.e. non-animated) sprites. A sprite is a square card made up of two triangles (a quad) and a <code>gfx.Texture</code> (i.e. the sprites actual image). We can now look at this in a real-world situation:</p>
+
+<ul>
+<li>500 sprites &ndash; each one has their own <code>gfx.Object</code> and <code>gfx.Mesh</code> &ndash; totalling to <em>500 draw calls</em>.
+
+<ul>
+<li>Con: <em>Slow.</em></li>
+<li>Pro: <em>Sprites can pick-and-choose any shader, texture, etc.</em></li>
+<li>Pro: <em>Each sprite can move, scale, rotate, etc independently.</em></li>
+</ul></li>
+<li>500 sprites &ndash; one single <code>gfx.Object</code> and <code>gfx.Mesh</code> &ndash; totalling to <em>1 draw call.</em>
+
+<ul>
+<li>Pro: <em>Fast.</em></li>
+<li>Con: <em>Each sprite must use the same exact shader, texture, etc.</em></li>
+<li>Con: <em>Moving, scaling, rotating, etc requires re-uploading the sprites to the GPU or tricky shaders.</em></li>
+</ul></li>
+</ul>
+
+<p>The best solution here is to <em>know your target, and test</em>. Does the sprite need to move constantly, and use it&rsquo;s own dedicated shader, textures, etc? Or will it be mostly static, could it share shaders and textures with many other sprites? The performance you acquire depends highly on how well you can answer these questions.</p>
 
 <script>
 $(function() {

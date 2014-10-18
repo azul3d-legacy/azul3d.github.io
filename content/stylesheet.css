@@ -135,15 +135,20 @@ body{
 }
 
 .code, .article code, .article blockquote{
-	padding: .21em;
 	background-color: #E7E7E7;
-	display: inline-block;
 	max-width: 45em;
+	padding-left: .21em;
+	padding-right: .21em;
+}
+
+.article pre>code, .article blockquote {
+	display: inline-block;
 }
 
 .code, .article code{
 	font-family: 'Cutive Mono';
 	word-wrap: break-word;
+	line-height: 1.2em;
 }
 
 span{
@@ -251,7 +256,7 @@ h1{
 	font-size: 1.5em;
 	line-height: 125%;
 	padding-top: .25em;
-	padding-bottom: .5em;
+	padding-bottom: .25em;
 }
 
 h2{
@@ -360,20 +365,30 @@ h2 .linkarea{
 	padding-bottom: .5em;
 }
 
+.article ol {
+	list-style-type: decimal;
+	font-family: Arial, Helvetica, sans-serif;
+    padding: 0px;
+	padding-left: 2.5em;
+}
+
 .article ul {
-	display: block;
     list-style-type: none;
     padding: 0px;
-	padding-top: .5em;
-	padding-bottom: .5em;
 	padding-left: 1.25em;
+}
+
+.article ul, .article ol {
+	display: block;
+	line-height: 1.5em;
 }
 
 .article ul>span {
 	display: block;
-	padding-bottom: .6em;
 	vertical-align: middle;
 	white-space: nowrap;
+	padding-top: .1em;
+	padding-bottom: .1em;
 }
 
 .article ul>span>.biohazard {
@@ -384,7 +399,7 @@ h2 .linkarea{
 	font-family: Arial, Helvetica, sans-serif;
 	display: inline-block;
 	white-space: normal;
-	vertical-align: middle;
+	vertical-align: top;
 }
 
 .article pre {
@@ -407,8 +422,6 @@ h2 .linkarea{
 
 .article p>code, .article blockquote>p {
 	margin: 0;
-	padding: 0;
-	padding-right: .2em;
 }
 
 .article li>code, .article li>blockquote {

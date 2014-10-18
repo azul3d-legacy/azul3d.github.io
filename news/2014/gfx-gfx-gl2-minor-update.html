@@ -13,7 +13,7 @@
 		<meta property="og:image" content="http://azul3d.org/content/symbol_256x256.png">
 
 		
-			<title>A 3D game engine written in Go! - Azul3D</title>
+			<title>gfx, gfx/gl2: minor update - Azul3D</title>
 		
 		<link rel="shortcut icon" href="/content/favicon.png"> 
 
@@ -109,30 +109,35 @@
 
 <div id="content-container">
 	<div id="content" class="slim article">
-<h1>A 3D game engine written in Go!</h1>
+<h1>gfx, gfx/gl2: minor update</h1>
 
-<ul>
-<li>State of the art shader-based modern 3D game engine.</li>
-<li>Cross-platform: Windows, Linux, and Mac OS X <a href="/doc/platform-support.html">support</a>.</li>
-<li>OpenGL 2.x based renderer (<a href="/doc/faq.html#why-opengl-2">why?</a>).</li>
-<li>3D audio via OpenAL.</li>
-</ul>
+<p class="date">October 18, 2014</p>
 
-<h1>Installation</h1>
+<p>Recently two bugs were discovered that caused some matrices to be calculated when they shouldn&rsquo;t have been. We&rsquo;ve fixed the issue in each respective package and have released the fix in a new minor version.</p>
 
-<ul>
-<li><a href="/doc/install/windows.html">Windows</a></li>
-<li><a href="/doc/install/linux.html">Linux</a></li>
-<li><a href="/doc/install/osx.html">Mac OS X</a></li>
-</ul>
+<h1>gfx: version 1.0.1</h1>
 
-<h1>News</h1>
+<p>There was a small bug that effectively caused any <code>Transform</code> who had a <code>nil</code> parent transform to have it&rsquo;s <em>transformation matrix</em> recalculated every time it was requested. Although the calculation is not very expensive &ndash; it can be noticable in some cases (hence why the calculated transformation matrix is cached in the first place).</p>
 
-<ul>
-<li><a href="/news/2014/audio-wav-version-1-1.html">audio/wav: version 1.1</a></li>
-<li><a href="/news/2014/gfx-gfx-gl2-minor-update.html">gfx, gfx/gl2: minor update</a></li>
-<li><a href="/news/">&gt;&gt;&gt; more news</a></li>
-</ul>
+<p>See the actual issue for this bug <a href="https://github.com/azul3d/gfx/issues/16">here</a>.</p>
+
+<h1>gfx/gl2: version 2.0.1</h1>
+
+<p>In a similar nature to the above &ndash; the gfx/gl2 package performs the calculation of what is called the <em>model view projection (MVP) matrix</em>. This is a simple three 4x4 matrix multiplications &ndash; which again isn&rsquo;t very expensive. But to get the best performance we do have a caching system to ensure that we don&rsquo;t calculate that matrix each time an object is drawn. We discovered a small bug that rendered the cache ineffective and have fixed it.</p>
+
+<p>See the actual issue for this bug <a href="https://github.com/azul3d/gfx-gl2/issues/22">here</a>.</p>
+
+<h1>Updating</h1>
+
+<p>To update all you need to do is run the following (<em>import paths are the same</em>):</p>
+
+<pre><code>go get -u azul3d.org/gfx.v1
+go get -u azul3d.org/gfx/gl2.v2
+</code></pre>
+
+<h1>Conclusion</h1>
+
+<p>Users should expect to see a small performance gain when updating. If your application makes heavy use of <em>transforms</em> then you should see a significant performance increase.</p>
 
 <script>
 $(function() {
