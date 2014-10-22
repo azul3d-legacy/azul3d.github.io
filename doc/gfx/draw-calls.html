@@ -118,7 +118,6 @@
 <li><a href="#performance-trade-off">Performance trade-off</a></li>
 <li><a href="#example-voxels">Example - Voxels</a></li>
 <li><a href="#example-sprites">Example - Sprites</a></li>
-<li><a href="#batchers">Batchers</a></li>
 </ul>
 
 <h1>What are they?</h1>
@@ -127,13 +126,13 @@
 
 <p><code>canvas.Draw(image.Rect(0,0,0,0), obj, cam)</code></p>
 
-<p>Where <code>obj</code> is a <code>gfx.Object</code>, and <code>cam</code> is a <code>gfx.Camera</code>.</p>
+<p>Where <code>obj</code> is a <code>gfx.Object</code> and <code>cam</code> is a <code>gfx.Camera</code>.</p>
 
 <p>In literal OpenGL code the above draw operation would equate to either <code>glDrawArrays</code> or <code>glDrawElements</code> (depending on whether or not the mesh is indexed). Technically each <code>canvas.Draw</code> operations makes <code>N</code> draw calls, where <code>N</code> is the number of <code>gfx.Mesh</code> that the <code>gfx.Object</code> being drawn contains.</p>
 
-<h1>Performance trade-off</h1>
+<h1>Performance</h1>
 
-<p>The performance of draw calls depends on many factors. As a simple example lets say that we want to draw <em>10,000 triangles</em>:</p>
+<p>The performance of draw calls depends primarily upon <strong>the number of draw calls</strong> and the <strong>speed of the CPU</strong>. Here is a simple example:</p>
 
 <ul>
 <li><em>Fast</em>: 1 draw call, 10,000 triangles/call.</li>
@@ -141,77 +140,62 @@
 <li><em>Slow</em>: 100 draw calls, 100 triangles/call.</li>
 </ul>
 
-<p>You might be thinking: <em>&ldquo;Well, just draw the entire scene in one draw call!&rdquo;</em>. (If you did want to do this, you would just have one <code>gfx.Object</code> with one giant <code>gfx.Mesh</code>). It&rsquo;s not so simple though &ndash; for one thing a single draw call is restricted to:</p>
+<p><em>High numbers of draw-calls primarily max out the CPU &ndash; not the GPU.</em></p>
+
+<p>For more information the performance of draw-calls, see the NVIDIA slides <em><a href="http://www.nvidia.com/docs/IO/8228/BatchBatchBatch.pdf">&ldquo;Batch, Batch, Batch:&rdquo; What Does It Really Mean?</a></em>.</p>
+
+<h1>Performance trade-off</h1>
+
+<p>A naive thought would be <em>&ldquo;Well, just draw the entire scene in one draw call then!&rdquo;</em>. It&rsquo;s certainly possible to do &ndash; but keep in mind that a single draw call is restricted to:</p>
 
 <ul>
-<li>One mesh &ndash; Since every mesh equates 1:1 to a single draw call.
-
-<ul>
-<li>Modifying a mesh requires that modification to be uploaded to the GPU again, making dynamic modifications slow.</li>
-</ul></li>
-<li>One shader.
-
-<ul>
-<li>Super-shaders (i.e. all-in-one) are slow and expensive due to their excessive use of branching (<code>if</code> statements, etc).</li>
-</ul></li>
-<li>One set of textures.
-
-<ul>
-<li>Requires special care to handle properly in shaders.</li>
-</ul></li>
-<li>One <em>graphics state</em>.
-
-<ul>
-<li>Single alpha mode.</li>
-<li>Single stencil state.</li>
-<li>etc.</li>
-</ul></li>
+<li>One single graphics state (one shader, one set of textures, one alpha mode, etc).</li>
+<li>One draw order (triangles are drawn in the order that they appear in the mesh).</li>
 </ul>
 
-<p>Not to mention the fact that with a single mesh <em>you can&rsquo;t control the draw order of triangles independantly</em>. To recap on what we have learned thus far:</p>
-
-<ul>
-<li>Draw calls <em>are expensive</em>.</li>
-<li>To do anything cool, we need multiple of them.</li>
-</ul>
+<p>Thus you can see <em>the trade-off of dynamism</em> in place. If you want to use multiple shaders, have objects with different textures, etc then <em>you need several draw calls</em>.</p>
 
 <h1>Example - Voxels</h1>
 
 <p>Voxel-based games often make sections of multiple blocks effectively called <em>chunks</em>. With our new knowledge of <em>draw calls</em> we can explain one of the things that <em>chunks</em> solved for these games:</p>
 
 <ul>
-<li>Draw calls are expensive.</li>
+<li>Many draw calls are expensive.</li>
 <li>Putting all of the blocks into one single giant mesh makes updates (read: <em>creating/destroying blocks</em>) slow.</li>
 <li>The idea: break things up into medium sized <em>chunks</em>.
 
 <ul>
 <li>Small enough that dynamic updates are fast, the smaller the chunk the more fast dynamic updates are.</li>
-<li>Large enough that we have <em>lesser draw calls</em>, the larger the chunk the more fast rendering of it is.</li>
+<li>Large enough that we have <em>lesser draw calls</em>, the larger the chunk the faster rendering is.</li>
 </ul></li>
 </ul>
 
 <h1>Example - Sprites</h1>
 
-<p>For another example let&rsquo;s take static (i.e. non-animated) sprites. A sprite is a square card made up of two triangles (a quad) and a <code>gfx.Texture</code> (i.e. the sprites actual image). We can now look at this in a real-world situation:</p>
+<p>For another example let&rsquo;s take simple non-animated sprites. A sprite is a square card made up of two triangles (a quad) and a <code>gfx.Texture</code> (i.e. the sprite sheet image). Lets say we want to draw <em>500 sprites</em>, there are two cases:</p>
+
+<ol>
+<li>Each sprite is it&rsquo;s own <code>gfx.Object</code> (i.e. no <em>&ldquo;batching&rdquo;</em>):
 
 <ul>
-<li>500 sprites &ndash; each one has their own <code>gfx.Object</code> and <code>gfx.Mesh</code> &ndash; totalling to <em>500 draw calls</em>.
-
-<ul>
-<li>Con: <em>Slow.</em></li>
-<li>Pro: <em>Sprites can pick-and-choose any shader, texture, etc.</em></li>
-<li>Pro: <em>Each sprite can move, scale, rotate, etc independently.</em></li>
+<li>500 draw calls (more draw calls means more CPU will be used: <em>slower overall performance</em>).</li>
+<li>Sprites can pick-and-choose any shader, texture, etc.</li>
+<li>Sprites can be drawn in any order.</li>
+<li>Each sprite can move, scale, rotate, etc independently (without merging all of the objects into a <em>&ldquo;batch&rdquo;</em>).</li>
 </ul></li>
-<li>500 sprites &ndash; one single <code>gfx.Object</code> and <code>gfx.Mesh</code> &ndash; totalling to <em>1 draw call.</em>
+<li>Each sprite is merged into one single <code>gfx.Object</code>, called a <em>batch</em>.
 
 <ul>
-<li>Pro: <em>Fast.</em></li>
-<li>Con: <em>Each sprite must use the same exact shader, texture, etc.</em></li>
-<li>Con: <em>Moving, scaling, rotating, etc requires re-uploading the sprites to the GPU or tricky shaders.</em></li>
+<li>1 draw call (the CPU and GPU will be working in parralel: better overall performance).</li>
+<li>Each sprite must use the same exact shader, texture, etc.</li>
+<li>Sprites can only be drawn in one single order (their natural draw order).</li>
+<li>Moving, scaling, rotating sprites required merging all of the objects into a <em>batch</em> again.</li>
 </ul></li>
-</ul>
+</ol>
 
 <p>The best solution here is to <em>know your target, and test</em>. Does the sprite need to move constantly, and use it&rsquo;s own dedicated shader, textures, etc? Or will it be mostly static, could it share shaders and textures with many other sprites? The performance you acquire depends highly on how well you can answer these questions.</p>
+
+<p>Note that with modern hardware, 500 draw calls is <em>very little</em> and you could get away with many more than that &ndash; <em>it&rsquo;s just an example</em>.</p>
 
 <script>
 $(function() {
